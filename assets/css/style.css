@@ -176,3 +176,26 @@ a { color: inherit; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links a { margin: 0 8px; }
 }
+
+/* ── ToolsLab. branding ── */
+.logo-main { font-weight: 900; font-size: 1.2rem; }
+.logo-dot, .hero-dot {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── Author box ── */
+.post-author {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: rgba(99,102,241,.08);
+  border: 1px solid rgba(99,102,241,.22);
+  border-radius: 14px; padding: 20px 24px; margin-bottom: 40px;
+}
+.author-avatar {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--gradient); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.author-name { font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+.author-bio { font-size: .8rem; color: var(--muted); line-height: 1.6; }
