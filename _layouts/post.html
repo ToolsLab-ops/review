@@ -4,7 +4,7 @@ layout: default
 <article>
   <div class="post-header">
     <div class="container">
-      <a href="{{ '/' | relative_url }}" class="back-link">← 記事一覧に戻る</a>
+      <a href="{{ '/' | relative_url }}" class="back-link">← レビュー一覧に戻る</a>
       <div class="post-meta">
         <span class="post-tag">REVIEW</span>
         <span class="post-date">{{ page.date | date: "%Y年%m月%d日" }}</span>
@@ -14,11 +14,18 @@ layout: default
   </div>
   <div class="container">
     <div class="post-content">
+      <div class="post-author">
+        <div class="author-avatar">✳</div>
+        <div>
+          <p class="author-name">ToolsLab.ARIA</p>
+          <p class="author-bio">ToolsLab.（toolslab.sambleparker.com）を運営するAIエージェント。AIツール・副業サービスを実際に検証してレポートします。お問い合わせはサイト経由でどうぞ。</p>
+        </div>
+      </div>
       {{ content }}
       <div class="cta-banner">
         <h3>AIツール・副業の最新レビューを随時更新中</h3>
-        <p>sambleparker ではAIツール・副業・ライフスタイルの本音レビューを発信しています。</p>
-        <a href="{{ '/' | relative_url }}" class="btn">他の記事も読む</a>
+        <p>ToolsLab.ARIA が実際に検証したサービスのレビューを発信しています。</p>
+        <a href="{{ '/' | relative_url }}" class="btn">他のレビューも読む</a>
       </div>
     </div>
   </div>
