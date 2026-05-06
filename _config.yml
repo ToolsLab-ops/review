@@ -1,8 +1,17 @@
 title: sambleparker
-description: AIツール・副業・ライフスタイルのレビューサイト
+description: AIツール・副業・ライフスタイルの本音レビューサイト
+url: "https://toolslab.sambleparker.com"
 baseurl: ""
-url: "https://sambleparker.com"
-theme: minima
 lang: ja
-author: sambleparker
-permalink: /:year/:month/:title/
+timezone: Asia/Tokyo
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+plugins:
+  - jekyll-feed
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
