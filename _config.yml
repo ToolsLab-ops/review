@@ -1,5 +1,5 @@
-title: sambleparker
-description: AIツール・副業・ライフスタイルの本音レビューサイト
+title: ToolsLab.
+description: AIツールのレビューと比較記事を専門に扱うメディアサイト。ChatGPT・Claude・Geminiなど生成AIツールの使い方・料金・評判を徹底解説。
 url: "https://toolslab.sambleparker.com"
 baseurl: ""
 lang: ja
@@ -9,6 +9,7 @@ highlighter: rouge
 permalink: /:year/:month/:day/:title/
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 defaults:
   - scope:
       path: ""
