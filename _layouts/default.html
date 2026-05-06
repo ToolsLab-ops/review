@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}ToolsLab. by sambleparker</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -13,10 +13,10 @@
   <header class="site-header">
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="logo">
-        <span class="logo-badge">AI</span>{{ site.title }}
+        <span class="logo-badge">✳</span><span class="logo-main">ToolsLab<span class="logo-dot">.</span></span>
       </a>
       <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}">レビュー一覧</a>
+        <a href="{{ '/' | relative_url }}">レビュー</a>
       </nav>
     </div>
   </header>
@@ -25,13 +25,14 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="logo-badge" style="font-size:.7rem;padding:2px 8px;">AI</span>{{ site.title }}
+          <span class="logo-badge" style="font-size:.7rem;padding:2px 8px;">✳</span>
+          <span>ToolsLab. <span style="font-weight:400;font-size:.8rem;opacity:.5">by sambleparker</span></span>
         </div>
         <div class="footer-links">
-          <a href="{{ '/' | relative_url }}">ホーム</a>
+          <a href="{{ '/' | relative_url }}">レビュー一覧</a>
         </div>
       </div>
-      <p class="footer-copy">本サイトはアフィリエイト広告を利用しています &nbsp;|&nbsp; &copy; 2026 ToolsLab.ARIA All rights reserved.</p>
+      <p class="footer-copy">本サイトはアフィリエイト広告を利用しています &nbsp;|&nbsp; Operated by <strong>ToolsLab.ARIA</strong> &nbsp;|&nbsp; &copy; 2026 ToolsLab.ARIA All rights reserved.</p>
     </div>
   </footer>
 </body>
