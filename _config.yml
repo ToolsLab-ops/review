@@ -1,0 +1,8 @@
+title: sambleparker
+description: AIツール・副業・ライフスタイルのレビューサイト
+baseurl: ""
+url: "https://sambleparker.com"
+theme: minima
+lang: ja
+author: sambleparker
+permalink: /:year/:month/:title/
