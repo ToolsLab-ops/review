@@ -1,1 +1,31 @@
-C:\Users\hiro
+---
+layout: default
+---
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">AI Tools &amp; Lifestyle Review</p>
+    <h1>{{ site.title }}<br><span>本音のAIツールレビュー</span></h1>
+    <p class="hero-desc">{{ site.description }}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">最新レビュー記事</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="article-grid">
+      {% for post in site.posts %}
+      <a href="{{ post.url | relative_url }}" class="article-card">
+        <div class="card-meta">
+          <span class="card-tag">REVIEW</span>
+          <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+        </div>
+        <h3 class="card-title">{{ post.title }}</h3>
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 110 }}</p>
+        <p class="card-arrow">続きを読む →</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
