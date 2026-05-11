@@ -8,6 +8,12 @@ tags: [neuro-dive, データサイエンス, 就労移行支援, ai学習]
 ---
 
 本記事には広告・プロモーションが含まれます。
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1682464651356?w=800&q=75&auto=format&fit=crop"
+       alt="プログラミング学習とコード"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 ## Neuro Diveとは？AIとデータサイエンスに特化した就労移行支援
 
