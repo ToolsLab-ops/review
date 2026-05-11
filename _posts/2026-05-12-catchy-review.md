@@ -9,6 +9,14 @@ tags: [Catchy, AIライティング, キャッチコピー, コピーライテ�
 
 本記事にはプロモーションが含まれます。
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1677442135751?w=800&q=75&auto=format&fit=crop" 
+       alt="AIライティングツール・人工知能テクノロジー" 
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
+
 ## 【結論】Catchyとは
 
 Catchyは株式会社デジタルレシピが開発した**日本語特化型AIライティングツール**です。キャッチコピーや広告文、ブログ記事、SNS投稿など、マーケティングに必要な文章をAIが自動生成してくれます。
