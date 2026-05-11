@@ -34,13 +34,6 @@ tags: [neuro-dive, データサイエンス, 就労移行支援, ai学習]
 
 ## カリキュラムと学習内容
 
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75&auto=format&fit=crop"
-       alt="AIとデータサイエンスの学習イメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
-
 Neuro Diveでは以下の分野を体系的に学べます。
 
 | 学習分野 | 内容 |
@@ -69,13 +62,6 @@ Neuro Diveでは以下の分野を体系的に学べます。
 ---
 
 ## 就職・キャリアチェンジのサポート
-
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1573497019236-17f8177b81e8?w=800&q=75&auto=format&fit=crop"
-       alt="キャリアサポート・就職支援のイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
 
 Neuro DiveはIT企業・データ関連企業への就職支援を行っており、以下のサポートを受けられます。
 
