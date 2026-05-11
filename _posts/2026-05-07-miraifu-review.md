@@ -34,13 +34,6 @@ tags: [ミライフ, 転職エージェント, SaaS転職, AI業界転職]
 
 ## SaaS・AI業界専門の強み
 
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=75&auto=format&fit=crop"
-       alt="SaaS・AI業界に特化した転職面談のイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
-
 ミライフの最大の特徴は、**業界に精通したアドバイザーによる深い転職支援**です。
 
 | 特徴 | 内容 |
@@ -66,13 +59,6 @@ tags: [ミライフ, 転職エージェント, SaaS転職, AI業界転職]
 ---
 
 ## 他の転職エージェントとの比較
-
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1573497019236-17f8177b81e8?w=800&q=75&auto=format&fit=crop"
-       alt="転職エージェントのサポートイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
 
 | | ミライフ | リクルートエージェント | doda |
 |--|---------|---------------------|------|
