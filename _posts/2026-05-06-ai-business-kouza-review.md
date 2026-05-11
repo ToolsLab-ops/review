@@ -25,6 +25,13 @@ AIビジネス活用講座は、ChatGPTや生成AIをビジネスや副業に活
 
 ## 基本情報
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=75&auto=format&fit=crop"
+       alt="AIビジネス活用のイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
 | 項目 | 内容 |
 |------|------|
 | 形式 | オンライン個別相談 |
@@ -35,6 +42,13 @@ AIビジネス活用講座は、ChatGPTや生成AIをビジネスや副業に活
 ---
 
 ## 個別相談の内容・流れ
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=75&auto=format&fit=crop"
+       alt="オンライン個別相談・AIビジネス研修のイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 AIビジネス活用講座の個別相談では、以下のような内容を相談できます。
 
