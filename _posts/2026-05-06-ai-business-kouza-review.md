@@ -8,6 +8,12 @@ tags: [ai, ビジネス, 副業, 講座, レビュー]
 ---
 
 本記事にはプロモーションが含まれます。
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1683121710572?w=800&q=75&auto=format&fit=crop"
+       alt="AIビジネス活用講座の学習"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 ## 【結論】AIビジネス活用講座とは
 
