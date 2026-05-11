@@ -8,6 +8,12 @@ tags: [イルシル, AIスライド, プレゼン作成, 資料作成]
 ---
 
 本記事には広告・プロモーションが含まれます。
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1720610706902?w=800&q=75&auto=format&fit=crop"
+       alt="プレゼンテーションとデザインツール"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 ## イルシルとは？テキストからスライドを自動生成するAIツール
 
