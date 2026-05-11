@@ -25,6 +25,13 @@ Speak（スピーク）は、AIを活用したオンライン英会話学習ア�
 
 ## Speakの主な機能
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=75&auto=format&fit=crop"
+       alt="スマートフォンで英会話・AI学習のイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
 | 機能 | 内容 |
 |------|------|
 | AIスピーキング練習 | 日常会話・ビジネス英語・旅行英語など場面別に練習 |
@@ -49,6 +56,13 @@ Duolingoはゲーミフィケーションで習慣化を促す設計が特徴で
 ---
 
 ## 料金プランと無料トライアル
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=75&auto=format&fit=crop"
+       alt="英語学習・オンライン学習のイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 Speakは無料トライアルから始められます。
 
