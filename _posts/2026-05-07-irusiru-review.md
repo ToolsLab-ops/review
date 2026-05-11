@@ -35,13 +35,6 @@ tags: [イルシル, AIスライド, プレゼン作成, 資料作成]
 
 ## 主な機能と特徴
 
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=75&auto=format&fit=crop"
-       alt="AIでプレゼンテーション資料を自動生成するイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
-
 | 機能 | 内容 |
 |------|------|
 | **AIスライド自動生成** | テキスト・URLを入力するだけでスライドを生成 |
@@ -66,13 +59,6 @@ tags: [イルシル, AIスライド, プレゼン作成, 資料作成]
 ---
 
 ## Canva・Gammaとの比較
-
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=75&auto=format&fit=crop"
-       alt="スライド作成ツールの使い分けイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
 
 | | イルシル | Canva | Gamma |
 |--|---------|-------|-------|
