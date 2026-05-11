@@ -29,6 +29,13 @@ ChatGPTをベースにした独自モデルを採用しており、**140種類�
 
 ## Catchyが選ばれる理由
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=75&auto=format&fit=crop"
+       alt="AIライティングツールでコンテンツ作成するイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
 ### 1. 日本語に強い
 ChatGPTは英語ベースですが、Catchyは日本語での出力品質を重視した設計になっています。ビジネス文書・マーケティングコピー・SNS投稿のような実用的な文章を日本語で高品質に生成できます。
 
@@ -41,6 +48,13 @@ ChatGPTは英語ベースですが、Catchyは日本語での出力品質を重�
 ---
 
 ## 主な機能一覧
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=75&auto=format&fit=crop"
+       alt="マーケティングコピー・文章生成ツールの活用"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 | カテゴリ | 機能例 |
 |---------|--------|
