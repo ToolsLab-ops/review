@@ -35,6 +35,13 @@ tags: [Plaud, AIボイスレコーダー, 文字起こし, 会議録]
 
 ## 主な機能
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=75&auto=format&fit=crop"
+       alt="AI搭載ボイスレコーダー・録音機能のイメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
 | 機能 | 内容 |
 |------|------|
 | **AI文字起こし** | 録音音声をリアルタイムでテキスト化 |
@@ -77,6 +84,13 @@ Plaudはデバイス購入型で、月額不要で使い始めることができ
 ---
 
 ## こんな場面で活躍する
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=75&auto=format&fit=crop"
+       alt="ビジネス会議・ミーティングでの活用イメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 - **営業商談**: 会議室でのヒアリング内容をその場で文字起こし
 - **社内会議**: 長い会議を自動で要点整理
