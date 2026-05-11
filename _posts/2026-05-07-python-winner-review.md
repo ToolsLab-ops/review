@@ -34,13 +34,6 @@ tags: [Python Winner, Pythonスクール, 機械学習, AI学習]
 
 ## カリキュラムと学習内容
 
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=75&auto=format&fit=crop"
-       alt="Pythonプログラミング学習のイメージ"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
-
 | 学習ステージ | 内容 |
 |------------|------|
 | **Python基礎** | 文法・データ型・関数・ライブラリ |
@@ -64,13 +57,6 @@ tags: [Python Winner, Pythonスクール, 機械学習, AI学習]
 ---
 
 ## 他スクールとの比較
-
-<figure style="margin: 2rem 0; text-align: center;">
-  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=75&auto=format&fit=crop"
-       alt="オンラインプログラミングスクール比較"
-       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
-  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
-</figure>
 
 | | Python Winner | Neuro Dive |
 |--|--------------|------------|
