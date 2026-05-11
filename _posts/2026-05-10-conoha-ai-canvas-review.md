@@ -35,6 +35,13 @@ tags: [ConoHa, AI画像生成, 画像生成AI, GMO]
 
 ## 主な機能と特徴
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=75&auto=format&fit=crop"
+       alt="AI画像生成サービスの機能イメージ"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
+
 | 機能 | 内容 |
 |------|------|
 | **テキスト→画像生成** | プロンプト（指示文）を入力するだけで高品質な画像を生成 |
@@ -73,6 +80,13 @@ tags: [ConoHa, AI画像生成, 画像生成AI, GMO]
 ---
 
 ## どんな画像が作れるのか
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=75&auto=format&fit=crop"
+       alt="AI画像生成で制作できるデジタルアート"
+       style="width: 100%; max-width: 720px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+  <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+</figure>
 
 ConoHa AI Canvasで作成できる画像の例：
 
