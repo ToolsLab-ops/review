@@ -17,6 +17,9 @@ tags: [ai, 英会話, 英語学習, スピーク, speak]
 
 ## 【結論】Speakとはどんなサービスか
 
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="200" fill="#0f172a" rx="10"/><defs><marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/></marker></defs><rect x="95" y="68" width="130" height="64" fill="#3b82f6" rx="8"/><text x="160" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">課題・ニーズ</text><line x1="227" y1="100" x2="251" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="255" y="68" width="130" height="64" fill="#6366f1" rx="8"/><text x="320" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">ツール活用</text><line x1="387" y1="100" x2="411" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="415" y="68" width="130" height="64" fill="#ec4899" rx="8"/><text x="480" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">効率化・改善</text><line x1="547" y1="100" x2="571" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="575" y="68" width="130" height="64" fill="#14b8a6" rx="8"/><text x="640" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">成果・価値</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：このツール/サービスが提供する価値の流れ</figcaption></figure>
+
+
 Speak（スピーク）は、AIを活用したオンライン英会話学習アプリです。ネイティブスピーカーとの会話練習をAIがシミュレートし、発音のリアルタイムフィードバックや会話の添削を自動で行います。
 
 最大の特徴は「人間の講師なしで話す練習ができる」点です。いつでも・何度でも練習できるため、英会話の「話すことへの苦手意識」を克服するのに向いているとされています。
@@ -68,6 +71,9 @@ Speakは無料トライアルから始められます。
 ---
 
 ## こんな人に向いている
+
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 110" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="110" fill="#0f172a" rx="10"/><rect x="10" y="10" width="185" height="80" fill="#3b82f6" rx="8"/><text x="102" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">🎯</text><text x="102" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">明確な目標がある</text><rect x="210" y="10" width="185" height="80" fill="#6366f1" rx="8"/><text x="302" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">⏰</text><text x="302" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">効率化したい</text><rect x="410" y="10" width="185" height="80" fill="#ec4899" rx="8"/><text x="502" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">💡</text><text x="502" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">スキルアップ中</text><rect x="610" y="10" width="185" height="80" fill="#14b8a6" rx="8"/><text x="702" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">📊</text><text x="702" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">成果を出したい</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：このサービスがおすすめな人の特徴</figcaption></figure>
+
 
 ✅ 英会話が「話す練習不足」で伸び悩んでいる人  
 ✅ 隙間時間に毎日少しずつ英語を練習したい人  
