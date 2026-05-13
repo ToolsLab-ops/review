@@ -98,6 +98,9 @@ ChatGPTは英語ベースですが、Catchyは日本語での出力品質を重�
 
 ## こんな人に向いている
 
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 110" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="110" fill="#0f172a" rx="10"/><rect x="10" y="10" width="185" height="80" fill="#3b82f6" rx="8"/><text x="102" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">🎯</text><text x="102" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">明確な目標がある</text><rect x="210" y="10" width="185" height="80" fill="#6366f1" rx="8"/><text x="302" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">⏰</text><text x="302" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">効率化したい</text><rect x="410" y="10" width="185" height="80" fill="#ec4899" rx="8"/><text x="502" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">💡</text><text x="502" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">スキルアップ中</text><rect x="610" y="10" width="185" height="80" fill="#14b8a6" rx="8"/><text x="702" y="47" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1f5f9">📊</text><text x="702" y="67" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">成果を出したい</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：このサービスがおすすめな人の特徴</figcaption></figure>
+
+
 **Catchyに向いているケース:**
 - ブログやSNSの投稿文に毎回時間がかかっている
 - マーケティングコピーのアイデアが浮かばない
