@@ -26,7 +26,7 @@ Catchyは株式会社デジタルレシピが開発した**日本語特化型AI�
 
 ChatGPTをベースにした独自モデルを採用しており、**140種類以上のクリエイティブ機能（テンプレート）**が用意されています。
 
-<a href="https://catchyapp.jp/" rel="nofollow">Catchyの公式サイトを見る →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+60WN6" rel="nofollow">Catchyの公式サイトを見る →</a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4B3KUS+DBA1UA+52IU+60WN6" alt="">
 
 ---
 
@@ -149,4 +149,4 @@ Catchyは**日本語コンテンツの制作を効率化したい人に最もお
 
 まずは無料プランで「自分の用途に合うか」を確認してから、有料プランへの移行を検討するのがベストな選択です。
 
-<a href="https://catchyapp.jp/" rel="nofollow">Catchyを無料で試してみる →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" rel="nofollow">Catchyを無料で試してみる →</a><img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" alt="">
