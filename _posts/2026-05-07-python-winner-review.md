@@ -83,7 +83,7 @@ AIエンジニア・機械学習エンジニアへの転職を目指すなら[Ne
 - **業務自動化**: Pythonスクリプトで繰り返し作業を効率化
 - **データ分析**: 売上・顧客データの可視化・分析
 - **AI活用**: ChatGPT APIを使った社内ツール開発
-- **副業・フリーランス**: データ分析・自動化の受注案件
+- **副業・フリーランス**: データ分析・自動化の受注案件（<a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">クラウドワークス</a><img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">で案件を探せます）
 
 ---
 
