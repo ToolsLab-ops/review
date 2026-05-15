@@ -125,6 +125,8 @@ A. 営業・マーケター・企画職・管理職など、プログラマー�
 **Q. 副業・フリーランスに活かせますか？**  
 A. 生成AIを活用したライティング・画像制作・業務効率化は副業への応用が期待できます。詳細は公式サイトをご確認ください。
 
+副業・フリーランス案件の受注先として、<a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">クラウドワークス</a><img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">も活用できます。日本最大級のクラウドソーシングで、ライティング・データ入力・デザインなど246種類以上の仕事が掲載されています。
+
 ---
 
 生成AIはビジネスの「使える前提」になりつつあります。まずは無料セミナーから内容を確認してみましょう。
