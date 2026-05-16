@@ -1,0 +1,176 @@
+---
+layout: null
+title: "AIツール・副業の情報メディア"
+description: "AIツールのレビューと、ブラウザで即使える無料ツールをお届けするメディアサイト"
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="6Qwa0FA5N2vR2nP44qoL5Tu5xaOoxwVvAQ-mE9r6MfA" />
+  <title>ToolsLab. — AIツール・副業の情報メディア</title>
+  <meta name="description" content="AIツールのレビューと、ブラウザで即使える無料ツールをお届けするメディアサイトです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:  #FFFFFF;
+      --bg:     #F8FAFC;
+      --bg2:    #F1F5F9;
+      --border: #E2E8F0;
+      --text:   #1E293B;
+      --sub:    #64748B;
+      --blue:   #2563EB;
+      --blue-d: #1D4ED8;
+      --blue-l: #DBEAFE;
+      --r16: 16px; --r12: 12px; --r8: 8px;
+    }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .site-header { position: sticky; top: 0; z-index: 300; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .hdr-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 900; font-size: 1.15rem; }
+    .logo-badge { background: var(--blue); color: #fff; font-size: .65rem; padding: 3px 7px; border-radius: 6px; font-weight: 700; }
+    .logo-dot { color: var(--blue); }
+    .site-nav { display: flex; align-items: center; gap: 4px; }
+    .site-nav a { text-decoration: none; color: var(--sub); font-size: .9rem; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: background .15s, color .15s; }
+    .site-nav a:hover { background: var(--bg2); color: var(--text); }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .hero { background: var(--white); border-bottom: 1px solid var(--border); padding: 72px 0 80px; text-align: center; }
+    .hero-eyebrow { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; color: var(--blue); background: var(--blue-l); padding: 4px 14px; border-radius: 99px; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 12px; }
+    .hero h1 .dot { color: var(--blue); }
+    .hero-tagline { font-size: 1.15rem; font-weight: 700; color: var(--sub); margin-bottom: 16px; }
+    .hero-desc { font-size: .95rem; color: var(--sub); max-width: 520px; margin: 0 auto 36px; }
+    .cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; background: var(--blue); color: #fff; font-size: .95rem; font-weight: 700; padding: 13px 28px; border-radius: 10px; text-decoration: none; transition: background .15s, transform .1s; }
+    .btn-primary:hover { background: var(--blue-d); transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--blue); font-size: .95rem; font-weight: 700; padding: 12px 28px; border-radius: 10px; border: 2px solid var(--blue-l); text-decoration: none; transition: border-color .15s, background .15s; }
+    .btn-outline:hover { border-color: var(--blue); background: var(--blue-l); }
+    .stats-bar { background: var(--blue); padding: 28px 0; }
+    .stats-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .stat-item { text-align: center; color: #fff; }
+    .stat-num { font-size: 2rem; font-weight: 900; letter-spacing: -.02em; }
+    .stat-label { font-size: .8rem; opacity: .8; margin-top: 2px; }
+    .section { padding: 64px 0; }
+    .section:nth-child(even) { background: var(--white); }
+    .section-hdr { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
+    .section-hdr h2 { font-size: 1.4rem; font-weight: 900; position: relative; padding-bottom: 10px; }
+    .section-hdr h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 36px; height: 3px; background: var(--blue); border-radius: 2px; }
+    .see-all { font-size: .85rem; font-weight: 700; color: var(--blue); text-decoration: none; padding: 6px 14px; border-radius: 8px; background: var(--blue-l); transition: background .15s; }
+    .see-all:hover { background: #BFDBFE; }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 720px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .tools-grid { grid-template-columns: 1fr; } }
+    .tool-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); padding: 20px; text-decoration: none; color: var(--text); display: flex; align-items: flex-start; gap: 14px; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .tool-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(37,99,235,.1); transform: translateY(-2px); }
+    .tool-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+    .tool-info { min-width: 0; }
+    .tool-name { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+    .tool-desc { font-size: .8rem; color: var(--sub); line-height: 1.4; }
+    .tool-cat { display: inline-block; margin-top: 8px; font-size: .7rem; font-weight: 700; background: var(--blue-l); color: var(--blue); padding: 2px 8px; border-radius: 99px; }
+    .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .articles-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .articles-grid { grid-template-columns: 1fr; } }
+    .article-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); padding: 24px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .article-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(37,99,235,.08); transform: translateY(-2px); }
+    .card-meta { display: flex; align-items: center; gap: 8px; }
+    .card-tag { font-size: .65rem; font-weight: 700; letter-spacing: .08em; background: var(--blue); color: #fff; padding: 2px 8px; border-radius: 4px; }
+    .card-date { font-size: .8rem; color: var(--sub); }
+    .card-title { font-size: .95rem; font-weight: 700; line-height: 1.45; flex: 1; }
+    .card-excerpt { font-size: .8rem; color: var(--sub); line-height: 1.5; }
+    .card-arrow { font-size: .82rem; font-weight: 700; color: var(--blue); margin-top: auto; }
+    .site-footer { background: var(--text); color: rgba(255,255,255,.7); padding: 36px 0 24px; font-size: .85rem; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 20px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 900; font-size: 1rem; text-decoration: none; }
+    .footer-nav { display: flex; gap: 20px; }
+    .footer-nav a { color: rgba(255,255,255,.6); text-decoration: none; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { max-width: 1160px; margin: 0 auto; padding: 0 24px; font-size: .75rem; opacity: .5; text-align: center; }
+    @media (max-width: 600px) { .hero { padding: 48px 0 56px; } .stats-inner { gap: 32px; } .section { padding: 48px 0; } }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="hdr-inner">
+    <a href="{{ '/' | relative_url }}" class="logo">
+      <span class="logo-badge">✳</span>
+      <span>ToolsLab<span class="logo-dot">.</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}">レビュー</a>
+      <a href="{{ '/tools/' | relative_url }}">ツール</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">AI TOOLS &amp; REVIEW MEDIA</p>
+    <h1>ToolsLab<span class="dot">.</span></h1>
+    <p class="hero-tagline">AIツール・副業の情報メディア</p>
+    <p class="hero-desc">AIツールのレビューと、ブラウザで即使える無料ツールをお届けするメディアサイトです。</p>
+    <div class="cta-row">
+      <a href="{{ '/tools/' | relative_url }}" class="btn-primary">🔧 ツールを使う</a>
+      <a href="#articles" class="btn-outline">📖 記事を読む</a>
+    </div>
+  </div>
+</section>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">無料ツール</div></div>
+    <div class="stat-item"><div class="stat-num">13+</div><div class="stat-label">レビュー記事</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">ブラウザで完結</div></div>
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    <div class="section-hdr">
+      <h2>人気の無料ツール</h2>
+      <a href="{{ '/tools/' | relative_url }}" class="see-all">すべて見る →</a>
+    </div>
+    <div class="tools-grid">
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🌍</div><div class="tool-info"><div class="tool-name">世界時計・時差計算</div><div class="tool-desc">国と時間を入力→各国の時刻を表示</div><span class="tool-cat">グローバル</span></div></a>
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">💱</div><div class="tool-info"><div class="tool-name">為替換算</div><div class="tool-desc">リアルタイムレートで通貨換算</div><span class="tool-cat">グローバル</span></div></a>
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-info"><div class="tool-name">消費税計算</div><div class="tool-desc">税込⇔税抜、8%/10%対応</div><span class="tool-cat">お金・計算</span></div></a>
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🔐</div><div class="tool-info"><div class="tool-name">パスワード生成</div><div class="tool-desc">安全なランダムパスワードを即生成</div><span class="tool-cat">テキスト</span></div></a>
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">📝</div><div class="tool-info"><div class="tool-name">文字数カウンター</div><div class="tool-desc">文字数・バイト数をリアルタイム表示</div><span class="tool-cat">テキスト</span></div></a>
+      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">📱</div><div class="tool-info"><div class="tool-name">QRコード生成</div><div class="tool-desc">URLや文字列を即QRコード化</div><span class="tool-cat">デザイン</span></div></a>
+    </div>
+  </div>
+</section>
+<section class="section" id="articles">
+  <div class="container">
+    <div class="section-hdr">
+      <h2>最新レビュー記事</h2>
+    </div>
+    <div class="articles-grid">
+      {% for post in site.posts limit:6 %}
+      <a href="{{ post.url | relative_url }}" class="article-card">
+        <div class="card-meta">
+          <span class="card-tag">REVIEW</span>
+          <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+        </div>
+        <h3 class="card-title">{{ post.title }}</h3>
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 110 }}</p>
+        <p class="card-arrow">続きを読む →</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="{{ '/' | relative_url }}" class="footer-logo">
+      <span class="logo-badge" style="font-size:.6rem;padding:2px 6px;">✳</span>
+      ToolsLab. <span style="font-weight:400;font-size:.8rem;opacity:.5;margin-left:6px;">by sambleparker</span>
+    </a>
+    <nav class="footer-nav">
+      <a href="{{ '/' | relative_url }}">レビュー一覧</a>
+      <a href="{{ '/tools/' | relative_url }}">ツール一覧</a>
+    </nav>
+  </div>
+  <p class="footer-copy">本サイトはアフィリエイト広告を利用しています &nbsp;|&nbsp; Operated by <strong style="color:rgba(255,255,255,.7)">ToolsLab.ARIA</strong> &nbsp;|&nbsp; &copy; 2026 ToolsLab.ARIA All rights reserved.</p>
+</footer>
+</body>
+</html>
