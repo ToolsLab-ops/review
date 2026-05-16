@@ -28,6 +28,8 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
       --r16: 16px; --r12: 12px; --r8: 8px;
     }
     body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── HEADER ── */
     .site-header { position: sticky; top: 0; z-index: 300; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .hdr-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 900; font-size: 1.15rem; }
@@ -36,62 +38,78 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
     .site-nav { display: flex; align-items: center; gap: 4px; }
     .site-nav a { text-decoration: none; color: var(--sub); font-size: .9rem; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: background .15s, color .15s; }
     .site-nav a:hover { background: var(--bg2); color: var(--text); }
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    .hero { background: var(--white); border-bottom: 1px solid var(--border); padding: 72px 0 80px; text-align: center; }
-    .hero-eyebrow { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; color: var(--blue); background: var(--blue-l); padding: 4px 14px; border-radius: 99px; margin-bottom: 24px; }
-    .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 12px; }
+
+    /* ── HERO ── */
+    .hero { background: var(--white); border-bottom: 1px solid var(--border); padding: 64px 0 72px; text-align: center; }
+    .hero-eyebrow { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; color: var(--blue); background: var(--blue-l); padding: 4px 14px; border-radius: 99px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 10px; }
     .hero h1 .dot { color: var(--blue); }
-    .hero-tagline { font-size: 1.15rem; font-weight: 700; color: var(--sub); margin-bottom: 16px; }
-    .hero-desc { font-size: .95rem; color: var(--sub); max-width: 520px; margin: 0 auto 36px; }
+    .hero-tagline { font-size: 1.1rem; font-weight: 700; color: var(--sub); margin-bottom: 12px; }
+    .hero-desc { font-size: .9rem; color: var(--sub); max-width: 480px; margin: 0 auto 28px; }
     .cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .btn-primary { display: inline-flex; align-items: center; background: var(--blue); color: #fff; font-size: .95rem; font-weight: 700; padding: 13px 28px; border-radius: 10px; text-decoration: none; transition: background .15s, transform .1s; }
+    .btn-primary { display: inline-flex; align-items: center; background: var(--blue); color: #fff; font-size: .9rem; font-weight: 700; padding: 11px 24px; border-radius: 10px; text-decoration: none; transition: background .15s, transform .1s; }
     .btn-primary:hover { background: var(--blue-d); transform: translateY(-1px); }
-    .btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--blue); font-size: .95rem; font-weight: 700; padding: 12px 28px; border-radius: 10px; border: 2px solid var(--blue-l); text-decoration: none; transition: border-color .15s, background .15s; }
+    .btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--blue); font-size: .9rem; font-weight: 700; padding: 10px 24px; border-radius: 10px; border: 2px solid var(--blue-l); text-decoration: none; transition: border-color .15s, background .15s; }
     .btn-outline:hover { border-color: var(--blue); background: var(--blue-l); }
-    .stats-bar { background: var(--blue); padding: 28px 0; }
-    .stats-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--blue); padding: 22px 0; }
+    .stats-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; }
     .stat-item { text-align: center; color: #fff; }
-    .stat-num { font-size: 2rem; font-weight: 900; letter-spacing: -.02em; }
-    .stat-label { font-size: .8rem; opacity: .8; margin-top: 2px; }
-    .section { padding: 64px 0; }
-    .section:nth-child(even) { background: var(--white); }
-    .section-hdr { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; }
-    .section-hdr h2 { font-size: 1.4rem; font-weight: 900; position: relative; padding-bottom: 10px; }
-    .section-hdr h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 36px; height: 3px; background: var(--blue); border-radius: 2px; }
-    .see-all { font-size: .85rem; font-weight: 700; color: var(--blue); text-decoration: none; padding: 6px 14px; border-radius: 8px; background: var(--blue-l); transition: background .15s; }
-    .see-all:hover { background: #BFDBFE; }
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    @media (max-width: 720px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .tools-grid { grid-template-columns: 1fr; } }
-    .tool-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); padding: 20px; text-decoration: none; color: var(--text); display: flex; align-items: flex-start; gap: 14px; transition: border-color .15s, box-shadow .15s, transform .15s; }
-    .tool-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(37,99,235,.1); transform: translateY(-2px); }
-    .tool-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-    .tool-info { min-width: 0; }
-    .tool-name { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
-    .tool-desc { font-size: .8rem; color: var(--sub); line-height: 1.4; }
-    .tool-cat { display: inline-block; margin-top: 8px; font-size: .7rem; font-weight: 700; background: var(--blue-l); color: var(--blue); padding: 2px 8px; border-radius: 99px; }
-    .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    @media (max-width: 900px) { .articles-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 580px) { .articles-grid { grid-template-columns: 1fr; } }
-    .article-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); padding: 24px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, box-shadow .15s, transform .15s; }
-    .article-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(37,99,235,.08); transform: translateY(-2px); }
+    .stat-num { font-size: 1.8rem; font-weight: 900; letter-spacing: -.02em; }
+    .stat-label { font-size: .75rem; opacity: .8; }
+
+    /* ── MAIN GRID ── */
+    .main-wrap { max-width: 1160px; margin: 0 auto; padding: 48px 24px 64px; display: grid; grid-template-columns: 1fr 290px; gap: 32px; align-items: start; }
+    @media (max-width: 860px) { .main-wrap { grid-template-columns: 1fr; } .tool-sidebar { display: none; } }
+
+    /* ── ARTICLES ── */
+    .section-hdr { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
+    .section-hdr h2 { font-size: 1.25rem; font-weight: 900; position: relative; padding-bottom: 8px; }
+    .section-hdr h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 32px; height: 3px; background: var(--blue); border-radius: 2px; }
+    .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } }
+    .article-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); padding: 20px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .article-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(37,99,235,.08); transform: translateY(-2px); }
     .card-meta { display: flex; align-items: center; gap: 8px; }
-    .card-tag { font-size: .65rem; font-weight: 700; letter-spacing: .08em; background: var(--blue); color: #fff; padding: 2px 8px; border-radius: 4px; }
-    .card-date { font-size: .8rem; color: var(--sub); }
-    .card-title { font-size: .95rem; font-weight: 700; line-height: 1.45; flex: 1; }
-    .card-excerpt { font-size: .8rem; color: var(--sub); line-height: 1.5; }
-    .card-arrow { font-size: .82rem; font-weight: 700; color: var(--blue); margin-top: auto; }
-    .site-footer { background: var(--text); color: rgba(255,255,255,.7); padding: 36px 0 24px; font-size: .85rem; }
-    .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 20px; }
+    .card-tag { font-size: .6rem; font-weight: 700; letter-spacing: .08em; background: var(--blue); color: #fff; padding: 2px 7px; border-radius: 4px; }
+    .card-date { font-size: .75rem; color: var(--sub); }
+    .card-title { font-size: .9rem; font-weight: 700; line-height: 1.45; flex: 1; }
+    .card-excerpt { font-size: .78rem; color: var(--sub); line-height: 1.5; }
+    .card-arrow { font-size: .78rem; font-weight: 700; color: var(--blue); margin-top: auto; }
+
+    /* ── RIGHT SIDEBAR ── */
+    .tool-sidebar { position: sticky; top: 76px; }
+    .sidebar-box { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r16); overflow: hidden; }
+    .sidebar-hdr { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg2); }
+    .sidebar-hdr-title { font-size: .85rem; font-weight: 700; }
+    .see-all-sm { font-size: .75rem; font-weight: 700; color: var(--blue); text-decoration: none; background: var(--blue-l); padding: 4px 10px; border-radius: 6px; }
+    .see-all-sm:hover { background: #BFDBFE; }
+    .sidebar-scroll { max-height: calc(100vh - 160px); overflow-y: auto; }
+    .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+    .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+    .sidebar-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .sidebar-cat { font-size: .7rem; font-weight: 700; color: var(--sub); padding: 10px 16px 4px; letter-spacing: .06em; }
+    .sidebar-tool { display: flex; align-items: center; gap: 10px; padding: 9px 16px; text-decoration: none; color: var(--text); transition: background .12s; border-left: 3px solid transparent; }
+    .sidebar-tool:hover { background: var(--bg2); border-left-color: var(--blue); }
+    .s-icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
+    .s-name { font-size: .82rem; font-weight: 500; line-height: 1.3; }
+    .sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); text-align: center; }
+    .sidebar-footer a { font-size: .8rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--text); color: rgba(255,255,255,.7); padding: 32px 0 20px; font-size: .85rem; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 16px; }
     .footer-logo { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 900; font-size: 1rem; text-decoration: none; }
     .footer-nav { display: flex; gap: 20px; }
     .footer-nav a { color: rgba(255,255,255,.6); text-decoration: none; }
     .footer-nav a:hover { color: #fff; }
-    .footer-copy { max-width: 1160px; margin: 0 auto; padding: 0 24px; font-size: .75rem; opacity: .5; text-align: center; }
-    @media (max-width: 600px) { .hero { padding: 48px 0 56px; } .stats-inner { gap: 32px; } .section { padding: 48px 0; } }
+    .footer-copy { max-width: 1160px; margin: 0 auto; padding: 0 24px; font-size: .72rem; opacity: .45; text-align: center; }
   </style>
 </head>
 <body>
+
+<!-- HEADER -->
 <header class="site-header">
   <div class="hdr-inner">
     <a href="{{ '/' | relative_url }}" class="logo">
@@ -104,8 +122,10 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
     </nav>
   </div>
 </header>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="container">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;">
     <p class="hero-eyebrow">AI TOOLS &amp; REVIEW MEDIA</p>
     <h1>ToolsLab<span class="dot">.</span></h1>
     <p class="hero-tagline">AIツール・副業の情報メディア</p>
@@ -116,6 +136,8 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
     </div>
   </div>
 </section>
+
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">無料ツール</div></div>
@@ -123,24 +145,12 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">ブラウザで完結</div></div>
   </div>
 </div>
-<section class="section">
-  <div class="container">
-    <div class="section-hdr">
-      <h2>人気の無料ツール</h2>
-      <a href="{{ '/tools/' | relative_url }}" class="see-all">すべて見る →</a>
-    </div>
-    <div class="tools-grid">
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🌍</div><div class="tool-info"><div class="tool-name">世界時計・時差計算</div><div class="tool-desc">国と時間を入力→各国の時刻を表示</div><span class="tool-cat">グローバル</span></div></a>
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">💱</div><div class="tool-info"><div class="tool-name">為替換算</div><div class="tool-desc">リアルタイムレートで通貨換算</div><span class="tool-cat">グローバル</span></div></a>
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🧾</div><div class="tool-info"><div class="tool-name">消費税計算</div><div class="tool-desc">税込⇔税抜、8%/10%対応</div><span class="tool-cat">お金・計算</span></div></a>
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">🔐</div><div class="tool-info"><div class="tool-name">パスワード生成</div><div class="tool-desc">安全なランダムパスワードを即生成</div><span class="tool-cat">テキスト</span></div></a>
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">📝</div><div class="tool-info"><div class="tool-name">文字数カウンター</div><div class="tool-desc">文字数・バイト数をリアルタイム表示</div><span class="tool-cat">テキスト</span></div></a>
-      <a href="{{ '/tools/' | relative_url }}" class="tool-card"><div class="tool-icon">📱</div><div class="tool-info"><div class="tool-name">QRコード生成</div><div class="tool-desc">URLや文字列を即QRコード化</div><span class="tool-cat">デザイン</span></div></a>
-    </div>
-  </div>
-</section>
-<section class="section" id="articles">
-  <div class="container">
+
+<!-- MAIN: articles + sidebar -->
+<div class="main-wrap" id="articles">
+
+  <!-- LEFT: article grid -->
+  <main>
     <div class="section-hdr">
       <h2>最新レビュー記事</h2>
     </div>
@@ -152,13 +162,64 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
           <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
         </div>
         <h3 class="card-title">{{ post.title }}</h3>
-        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 110 }}</p>
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
         <p class="card-arrow">続きを読む →</p>
       </a>
       {% endfor %}
     </div>
-  </div>
-</section>
+  </main>
+
+  <!-- RIGHT: tool sidebar -->
+  <aside class="tool-sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-hdr">
+        <span class="sidebar-hdr-title">🔧 無料ツール一覧</span>
+        <a href="{{ '/tools/' | relative_url }}" class="see-all-sm">すべて →</a>
+      </div>
+      <div class="sidebar-scroll">
+        <div class="sidebar-cat">🌐 グローバル</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🌍</span><span class="s-name">世界時計・時差計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">💱</span><span class="s-name">為替換算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">📐</span><span class="s-name">単位換算</span></a>
+
+        <div class="sidebar-cat">💰 お金・計算</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🧾</span><span class="s-name">消費税計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🏦</span><span class="s-name">ローン返済計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🍽️</span><span class="s-name">割り勘計算</span></a>
+
+        <div class="sidebar-cat">📅 日時</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">📅</span><span class="s-name">日付差分計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🎂</span><span class="s-name">年齢計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🍅</span><span class="s-name">ポモドーロタイマー</span></a>
+
+        <div class="sidebar-cat">📝 テキスト</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">abc</span><span class="s-name">文字数カウンター</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🔤</span><span class="s-name">Base64 変換</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🔐</span><span class="s-name">パスワード生成</span></a>
+
+        <div class="sidebar-cat">🎨 デザイン</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">📱</span><span class="s-name">QRコード生成</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🎨</span><span class="s-name">カラーコード変換</span></a>
+
+        <div class="sidebar-cat">💪 健康</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">⚖️</span><span class="s-name">BMI計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🔥</span><span class="s-name">カロリー消費計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">📊</span><span class="s-name">体脂肪率計算</span></a>
+
+        <div class="sidebar-cat">🎉 エンタメ</div>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🎲</span><span class="s-name">乱数生成</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">🥁</span><span class="s-name">BPM→音符長計算</span></a>
+        <a href="{{ '/tools/' | relative_url }}" class="sidebar-tool"><span class="s-icon">✍️</span><span class="s-name">姓名判断・画数占い</span></a>
+      </div>
+      <div class="sidebar-footer">
+        <a href="{{ '/tools/' | relative_url }}">🔧 すべてのツールを開く →</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <a href="{{ '/' | relative_url }}" class="footer-logo">
@@ -172,5 +233,6 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
   </div>
   <p class="footer-copy">本サイトはアフィリエイト広告を利用しています &nbsp;|&nbsp; Operated by <strong style="color:rgba(255,255,255,.7)">ToolsLab.ARIA</strong> &nbsp;|&nbsp; &copy; 2026 ToolsLab.ARIA All rights reserved.</p>
 </footer>
+
 </body>
 </html>
