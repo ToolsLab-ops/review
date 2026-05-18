@@ -150,7 +150,61 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
       margin-bottom: 3px; background: var(--white);
     }
     .list-tool-card:hover { border-color: var(--blue-md); background: #EFF6FF; }
+    .list-tool-card.active { border-color: var(--blue); background: var(--blue-lt); }
+    .list-tool-card.active::before { content: ''; position: absolute; left: -13px; top: 50%; transform: translateY(-50%); border: 8px solid transparent; border-right: 8px solid var(--blue); border-left: 0; }
     .list-tool-card.hidden { display: none; }
+
+    /* ── TOOL BUBBLE ── */
+    #contentPanel { min-height: 400px; }
+    .tool-bubble-wrap { position: relative; background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.10); display: none; animation: bubbleIn .22s cubic-bezier(.34,1.56,.64,1); }
+    .tool-bubble-wrap.visible { display: block; }
+    .tool-bubble-wrap::before { content: ''; position: absolute; right: -15px; top: var(--arrow-y, 60px); transform: translateY(-50%); border: 13px solid transparent; border-left: 13px solid var(--border); border-right: 0; pointer-events: none; }
+    .tool-bubble-wrap::after  { content: ''; position: absolute; right: -12px; top: var(--arrow-y, 60px); transform: translateY(-50%); border: 12px solid transparent; border-left: 12px solid var(--white); border-right: 0; pointer-events: none; }
+    @keyframes bubbleIn { from { opacity:0; transform:translateX(18px) scale(.97); } to { opacity:1; transform:none; } }
+    .bubble-tool-header { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; }
+    .bubble-tool-icon { font-size: 2rem; line-height: 1; }
+    .bubble-tool-name { font-size: 1.1rem; font-weight: 900; }
+    .bubble-tool-desc { font-size: .75rem; color: var(--muted); }
+    .bubble-close { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1.1rem; padding: 4px 8px; border-radius: 6px; line-height: 1; }
+    .bubble-close:hover { background: var(--bg); }
+    .bubble-tool-body { padding: 18px 22px; }
+    .tool-input-row { margin-bottom: 14px; }
+    .tool-input-row label { display: block; font-size: .75rem; font-weight: 700; margin-bottom: 5px; }
+    .tool-input-row input, .tool-input-row select { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: .88rem; font-family: inherit; color: var(--text); background: var(--white); }
+    .tool-input-row input:focus, .tool-input-row select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+    .tool-input-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .with-unit { position: relative; }
+    .with-unit input { padding-right: 40px; }
+    .with-unit .unit { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: .78rem; color: var(--muted); font-weight: 600; }
+    .rate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .rate-btn { padding: 9px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--white); font-family: inherit; font-size: .83rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all .15s; }
+    .rate-btn.on { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); }
+    .calc-btn { width: 100%; padding: 11px; background: var(--blue); color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background .15s; }
+    .calc-btn:hover { background: var(--blue-d); }
+    .result-area { margin-top: 14px; display: none; }
+    .result-area.visible { display: block; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .result-item { background: var(--bg); border-radius: 10px; padding: 12px 14px; }
+    .result-item.span2 { grid-column: span 2; background: var(--blue-lt); }
+    .result-label { font-size: .67rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+    .result-value { font-size: 1.25rem; font-weight: 900; color: var(--blue); }
+    .result-value .unit { font-size: .75rem; font-weight: 500; color: var(--muted); margin-left: 2px; }
+    .clock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .clock-item { background: var(--bg); border-radius: 10px; padding: 10px 14px; }
+    .clock-country { font-size: .7rem; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+    .clock-time { font-size: 1.05rem; font-weight: 900; color: var(--text); letter-spacing: -.02em; }
+    .clock-date { font-size: .66rem; color: var(--muted); }
+    .contextual-ads { border-top: 1px solid var(--border); padding: 14px 22px 18px; }
+    .ads-label { font-size: .63rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .ads-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .ad-banner { display: flex; align-items: center; gap: 12px; padding: 11px 13px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 8px; background: var(--white); text-decoration: none; color: var(--text); transition: box-shadow .15s, border-color .15s; }
+    .ad-banner:hover { box-shadow: 0 1px 3px rgba(0,0,0,.07); border-color: var(--blue-md); }
+    .ad-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .ad-body { flex: 1; min-width: 0; }
+    .ad-title { font-size: .81rem; font-weight: 700; }
+    .ad-sub { font-size: .7rem; color: var(--muted); }
+    .ad-pr { flex-shrink: 0; font-size: .58rem; font-weight: 700; border-radius: 4px; padding: 2px 6px; color: #fff; }
+    .ad-cta { font-size: .7rem; font-weight: 700; color: var(--blue); flex-shrink: 0; }
     .card-icon { font-size: 1.25rem; line-height: 1; flex-shrink: 0; }
     .card-info { flex: 1; min-width: 0; }
     .card-name { font-size: .8rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -218,23 +272,37 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 <!-- MAIN -->
 <div class="main-wrap" id="articles">
 
-  <!-- LEFT: articles -->
-  <main>
-    <div class="section-hdr">
-      <h2>最新レビュー記事</h2>
+  <!-- LEFT: articles + tool bubble -->
+  <main id="contentPanel">
+    <div id="articlesView">
+      <div class="section-hdr">
+        <h2>最新レビュー記事</h2>
+      </div>
+      <div class="articles-grid">
+        {% for post in site.posts limit:6 %}
+        <a href="{{ post.url | relative_url }}" class="article-card">
+          <div class="card-meta">
+            <span class="card-tag">REVIEW</span>
+            <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          </div>
+          <h3 class="card-title">{{ post.title }}</h3>
+          <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          <p class="card-arrow">続きを読む →</p>
+        </a>
+        {% endfor %}
+      </div>
     </div>
-    <div class="articles-grid">
-      {% for post in site.posts limit:6 %}
-      <a href="{{ post.url | relative_url }}" class="article-card">
-        <div class="card-meta">
-          <span class="card-tag">REVIEW</span>
-          <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+    <div class="tool-bubble-wrap" id="toolBubble">
+      <div class="bubble-tool-header">
+        <span class="bubble-tool-icon" id="bubbleIcon"></span>
+        <div>
+          <div class="bubble-tool-name" id="bubbleName"></div>
+          <div class="bubble-tool-desc" id="bubbleDesc"></div>
         </div>
-        <h3 class="card-title">{{ post.title }}</h3>
-        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-        <p class="card-arrow">続きを読む →</p>
-      </a>
-      {% endfor %}
+        <button class="bubble-close" onclick="closeTool()">✕</button>
+      </div>
+      <div class="bubble-tool-body" id="bubbleBody"></div>
+      <div class="contextual-ads" id="contextualAds" style="display:none"></div>
     </div>
   </main>
 
@@ -302,53 +370,95 @@ const TOOLS = [
   { id:'random',      cat:'fun',      icon:'🎲', name:'乱数生成',           desc:'さいころ・カード・くじ引き' },
   { id:'bpm',         cat:'fun',      icon:'🎵', name:'BPM→音符長計算',    desc:'テンポから各音符の長さを一覧' },
 ];
+const SECTION_LABELS = { global:'🌐 グローバル', money:'💰 お金・計算', datetime:'📅 日時', text:'📝 テキスト', design:'🎨 デザイン', health:'💪 健康', fun:'🔮 エンタメ' };
 
-const SECTION_LABELS = {
-  global:'🌐 グローバル', money:'💰 お金・計算',
-  datetime:'📅 日時', text:'📝 テキスト',
-  design:'🎨 デザイン', health:'💪 健康', fun:'🔮 エンタメ',
+/* ── ツールUI定義 ── */
+const RENDERERS = {
+  tax: ()=>`<div class="tool-input-row"><label>金額（円）</label><div class="with-unit"><input id="taxAmt" type="number" value="1000" oninput="calcTax()"><span class="unit">円</span></div></div><div class="tool-input-row"><label>税率</label><div class="rate-grid"><button class="rate-btn" id="tax8" onclick="setRate(8)">8%（軽減）</button><button class="rate-btn on" id="tax10" onclick="setRate(10)">10%（標準）</button></div></div><div class="tool-input-row"><label>計算モード</label><select id="taxMode" onchange="calcTax()"><option value="ex">税抜き → 税込みを計算</option><option value="in">税込み → 税抜きを計算</option></select></div><div class="result-area visible"><div class="result-grid"><div class="result-item"><div class="result-label">税抜き</div><div class="result-value" id="taxEx">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">税額</div><div class="result-value" id="taxAmt2">—<span class="unit">円</span></div></div><div class="result-item span2"><div class="result-label">税込み</div><div class="result-value" id="taxIn">—<span class="unit">円</span></div></div></div></div>`,
+  warikan: ()=>`<div class="tool-input-pair"><div class="tool-input-row"><label>合計金額</label><div class="with-unit"><input id="wTotal" type="number" value="12800" oninput="calcWarikan()"><span class="unit">円</span></div></div><div class="tool-input-row"><label>人数</label><div class="with-unit"><input id="wPeople" type="number" value="4" min="2" oninput="calcWarikan()"><span class="unit">人</span></div></div></div><div class="tool-input-row"><label>端数処理</label><select id="wRound" onchange="calcWarikan()"><option value="round">四捨五入</option><option value="ceil">切り上げ</option><option value="floor">切り捨て</option></select></div><div class="result-area visible"><div class="result-grid"><div class="result-item span2"><div class="result-label">1人あたり</div><div class="result-value" id="wPer">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">幹事集金額</div><div class="result-value" id="wCollect">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">端数</div><div class="result-value" id="wRem">—<span class="unit">円</span></div></div></div></div>`,
+  loan: ()=>`<div class="tool-input-pair"><div class="tool-input-row"><label>借入金額</label><div class="with-unit"><input id="lAmount" type="number" value="3000" oninput="calcLoan()"><span class="unit">万円</span></div></div><div class="tool-input-row"><label>年利</label><div class="with-unit"><input id="lRate" type="number" value="1.5" step="0.1" oninput="calcLoan()"><span class="unit">%</span></div></div></div><div class="tool-input-row"><label>返済期間</label><div class="with-unit"><input id="lYears" type="number" value="35" oninput="calcLoan()"><span class="unit">年</span></div></div><div class="result-area visible"><div class="result-grid"><div class="result-item span2"><div class="result-label">毎月の返済額</div><div class="result-value" id="lMonthly">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">総返済額</div><div class="result-value" id="lTotal">—<span class="unit">万円</span></div></div><div class="result-item"><div class="result-label">利息合計</div><div class="result-value" id="lInterest">—<span class="unit">万円</span></div></div></div></div>`,
+  'world-clock': ()=>`<div class="clock-grid">${[['東京','Asia/Tokyo'],['ニューヨーク','America/New_York'],['ロンドン','Europe/London'],['パリ','Europe/Paris'],['シドニー','Australia/Sydney'],['シンガポール','Asia/Singapore'],['ドバイ','Asia/Dubai'],['ロサンゼルス','America/Los_Angeles']].map(([n,tz])=>`<div class="clock-item"><div class="clock-country">${n}</div><div class="clock-time" id="clk-${tz.replace(/\//g,'-')}">--:--</div><div class="clock-date" id="clkd-${tz.replace(/\//g,'-')}"></div></div>`).join('')}</div>`,
+  password: ()=>`<div class="tool-input-row"><label>文字数</label><input id="pwLen" type="range" min="8" max="32" value="16" oninput="updatePwLen();genPw()"><div style="text-align:right;font-size:.75rem;color:var(--muted);margin-top:2px;"><span id="pwLenVal">16</span>文字</div></div><div class="tool-input-row"><label>文字種</label><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;"><label style="font-size:.78rem;display:flex;align-items:center;gap:4px;"><input type="checkbox" id="pwUpper" checked onchange="genPw()"> 大文字</label><label style="font-size:.78rem;display:flex;align-items:center;gap:4px;"><input type="checkbox" id="pwLower" checked onchange="genPw()"> 小文字</label><label style="font-size:.78rem;display:flex;align-items:center;gap:4px;"><input type="checkbox" id="pwNum" checked onchange="genPw()"> 数字</label><label style="font-size:.78rem;display:flex;align-items:center;gap:4px;"><input type="checkbox" id="pwSym" onchange="genPw()"> 記号</label></div></div><div class="result-area visible"><div style="background:var(--bg);border-radius:10px;padding:13px 15px;font-family:monospace;font-size:.88rem;letter-spacing:.05em;word-break:break-all;cursor:pointer;" id="pwOutput" onclick="copyPw()" title="クリックでコピー">—</div><div style="text-align:right;margin-top:6px;display:flex;gap:8px;justify-content:flex-end;"><button class="calc-btn" style="width:auto;padding:6px 16px;font-size:.78rem;" onclick="genPw()">再生成</button><button class="calc-btn" style="width:auto;padding:6px 16px;font-size:.78rem;background:var(--bg);color:var(--blue);border:1.5px solid var(--blue);" onclick="copyPw()">コピー</button></div></div>`,
+  default: (t)=>`<div style="text-align:center;padding:32px 16px;color:var(--muted);"><div style="font-size:2.5rem;margin-bottom:12px;">${t.icon}</div><div style="font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px;">${t.name}</div><div style="font-size:.8rem;">このツールは準備中です。近日公開予定。</div></div>`,
 };
 
-const TOOL_URL = '/tools/';
+/* ── 計算ロジック ── */
+let taxRate=10;
+function setRate(r){taxRate=r;document.getElementById('tax8').classList.toggle('on',r===8);document.getElementById('tax10').classList.toggle('on',r===10);calcTax();}
+function calcTax(){const amt=parseFloat(document.getElementById('taxAmt')?.value)||0;const mode=document.getElementById('taxMode')?.value;const rate=taxRate/100;let ex,tax,inc;if(mode==='ex'){ex=amt;tax=Math.round(amt*rate);inc=ex+tax;}else{inc=amt;ex=Math.round(inc/(1+rate));tax=inc-ex;}const fmt=n=>n.toLocaleString();const set=(id,v)=>{const el=document.getElementById(id);if(el)el.innerHTML=`${fmt(v)}<span class="unit">円</span>`;};set('taxEx',ex);set('taxAmt2',tax);set('taxIn',inc);}
+function calcWarikan(){const total=parseFloat(document.getElementById('wTotal')?.value)||0;const ppl=parseInt(document.getElementById('wPeople')?.value)||1;const mode=document.getElementById('wRound')?.value||'round';let per;if(mode==='round')per=Math.round(total/ppl);else if(mode==='ceil')per=Math.ceil(total/ppl);else per=Math.floor(total/ppl);const collect=per*ppl;const rem=Math.abs(collect-total);const fmt=n=>n.toLocaleString();const set=(id,v)=>{const el=document.getElementById(id);if(el)el.innerHTML=`${fmt(v)}<span class="unit">円</span>`;};set('wPer',per);set('wCollect',collect);set('wRem',rem);}
+function calcLoan(){const P=(parseFloat(document.getElementById('lAmount')?.value)||0)*10000;const r=(parseFloat(document.getElementById('lRate')?.value)||0)/100/12;const n=(parseInt(document.getElementById('lYears')?.value)||1)*12;if(P<=0||n<=0)return;const monthly=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;const total=monthly*n;const interest=total-P;const set=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=`${v}<span class="unit">${u}</span>`;};set('lMonthly',Math.round(monthly).toLocaleString(),'円');set('lTotal',(total/10000).toFixed(1),'万円');set('lInterest',(interest/10000).toFixed(1),'万円');}
+let clockInterval=null;
+function startClock(){stopClock();const zones=[['東京','Asia/Tokyo'],['ニューヨーク','America/New_York'],['ロンドン','Europe/London'],['パリ','Europe/Paris'],['シドニー','Australia/Sydney'],['シンガポール','Asia/Singapore'],['ドバイ','Asia/Dubai'],['ロサンゼルス','America/Los_Angeles']];function tick(){const now=new Date();zones.forEach(([,tz])=>{const key=tz.replace(/\//g,'-');const tel=document.getElementById('clk-'+key);const del=document.getElementById('clkd-'+key);if(!tel)return;tel.textContent=now.toLocaleTimeString('ja-JP',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit'});del.textContent=now.toLocaleDateString('ja-JP',{timeZone:tz,month:'short',day:'numeric',weekday:'short'});});}tick();clockInterval=setInterval(tick,1000);}
+function stopClock(){if(clockInterval){clearInterval(clockInterval);clockInterval=null;}}
+let pwLen=16;
+function updatePwLen(){pwLen=parseInt(document.getElementById('pwLen')?.value||16);const el=document.getElementById('pwLenVal');if(el)el.textContent=pwLen;}
+function genPw(){const u=document.getElementById('pwUpper')?.checked;const l=document.getElementById('pwLower')?.checked;const n=document.getElementById('pwNum')?.checked;const s=document.getElementById('pwSym')?.checked;let chars='';if(u)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';if(l)chars+='abcdefghijklmnopqrstuvwxyz';if(n)chars+='0123456789';if(s)chars+='!@#$%^&*()-_=+[]{}';if(!chars)chars='abcdefghijklmnopqrstuvwxyz';const arr=new Uint32Array(pwLen);crypto.getRandomValues(arr);const pw=Array.from(arr).map(v=>chars[v%chars.length]).join('');const el=document.getElementById('pwOutput');if(el)el.textContent=pw;}
+function copyPw(){const pw=document.getElementById('pwOutput')?.textContent||'';navigator.clipboard?.writeText(pw).then(()=>{const el=document.getElementById('pwOutput');if(el){el.style.background='var(--blue-lt)';setTimeout(()=>el.style.background='',800);}});}
 
-function buildSidebar() {
-  const listEl = document.getElementById('homeToolList');
-  const cats = [...new Set(TOOLS.map(t => t.cat))];
-  let html = '';
-  cats.forEach(cat => {
-    const tools = TOOLS.filter(t => t.cat === cat);
-    html += `<div class="list-section" data-cat="${cat}">`;
-    html += `<div class="list-section-label">${SECTION_LABELS[cat]}</div>`;
-    tools.forEach(t => {
-      html += `<a href="${TOOL_URL}" class="list-tool-card" data-cat="${t.cat}">` +
-        `<span class="card-icon">${t.icon}</span>` +
-        `<div class="card-info"><div class="card-name">${t.name}</div><div class="card-desc">${t.desc}</div></div>` +
-        `</a>`;
+/* ── バブル開閉 ── */
+let activeToolId=null;
+function openTool(toolId, cardEl){
+  stopClock();
+  activeToolId=toolId;
+  const tool=TOOLS.find(t=>t.id===toolId);
+  if(!tool)return;
+  document.querySelectorAll('.list-tool-card').forEach(c=>c.classList.remove('active'));
+  cardEl.classList.add('active');
+  const fn=RENDERERS[toolId]||(()=>RENDERERS.default(tool));
+  document.getElementById('bubbleIcon').textContent=tool.icon;
+  document.getElementById('bubbleName').textContent=tool.name;
+  document.getElementById('bubbleDesc').textContent=tool.desc;
+  document.getElementById('bubbleBody').innerHTML=fn(tool);
+  document.getElementById('contextualAds').style.display='none';
+  const panel=document.getElementById('contentPanel');
+  const cardRect=cardEl.getBoundingClientRect();
+  const panelRect=panel.getBoundingClientRect();
+  const arrowY=Math.max(40,cardRect.top+cardRect.height/2-panelRect.top);
+  const bubble=document.getElementById('toolBubble');
+  bubble.style.setProperty('--arrow-y',arrowY+'px');
+  document.getElementById('articlesView').style.display='none';
+  bubble.classList.remove('visible');
+  void bubble.offsetWidth;
+  bubble.classList.add('visible');
+  if(toolId==='tax')calcTax();
+  if(toolId==='warikan')calcWarikan();
+  if(toolId==='loan')calcLoan();
+  if(toolId==='world-clock')startClock();
+  if(toolId==='password'){updatePwLen();genPw();}
+}
+function closeTool(){
+  stopClock();
+  document.querySelectorAll('.list-tool-card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('toolBubble').classList.remove('visible');
+  document.getElementById('articlesView').style.display='';
+  activeToolId=null;
+}
+
+/* ── サイドバー構築・フィルター ── */
+function buildSidebar(){
+  const listEl=document.getElementById('homeToolList');
+  const cats=[...new Set(TOOLS.map(t=>t.cat))];
+  let html='';
+  cats.forEach(cat=>{
+    const tools=TOOLS.filter(t=>t.cat===cat);
+    html+=`<div class="list-section" data-cat="${cat}"><div class="list-section-label">${SECTION_LABELS[cat]}</div>`;
+    tools.forEach(t=>{
+      html+=`<div class="list-tool-card" data-cat="${t.cat}" onclick="openTool('${t.id}',this)"><span class="card-icon">${t.icon}</span><div class="card-info"><div class="card-name">${t.name}</div><div class="card-desc">${t.desc}</div></div></div>`;
     });
-    html += `</div>`;
+    html+=`</div>`;
   });
-  listEl.innerHTML = html;
+  listEl.innerHTML=html;
 }
-
-function applyFilter(filter) {
-  document.querySelectorAll('#homeFilterBar .filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.filter === filter);
-  });
-  document.querySelectorAll('#homeToolList .list-tool-card').forEach(card => {
-    card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter);
-  });
-  document.querySelectorAll('#homeToolList .list-section').forEach(sec => {
-    const visible = [...sec.querySelectorAll('.list-tool-card')].some(c => !c.classList.contains('hidden'));
-    sec.classList.toggle('section-hidden', !visible);
-  });
+function applyFilter(filter){
+  document.querySelectorAll('#homeFilterBar .filter-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.filter===filter));
+  document.querySelectorAll('#homeToolList .list-tool-card').forEach(card=>card.classList.toggle('hidden',filter!=='all'&&card.dataset.cat!==filter));
+  document.querySelectorAll('#homeToolList .list-section').forEach(sec=>{const v=[...sec.querySelectorAll('.list-tool-card')].some(c=>!c.classList.contains('hidden'));sec.classList.toggle('section-hidden',!v);});
+  if(activeToolId){const t=TOOLS.find(t=>t.id===activeToolId);if(t&&filter!=='all'&&t.cat!==filter)closeTool();}
 }
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',()=>{
   buildSidebar();
-  document.getElementById('homeFilterBar').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (btn) applyFilter(btn.dataset.filter);
-  });
+  document.getElementById('homeFilterBar').addEventListener('click',e=>{const b=e.target.closest('.filter-btn');if(b)applyFilter(b.dataset.filter);});
 });
 </script>
 </body>
