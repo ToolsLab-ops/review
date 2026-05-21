@@ -24,8 +24,7 @@ tags: [DMM生成AI CAMP, AI学習, ChatGPT講座, 生成AI]
 
 ChatGPT・画像生成AI・ビジネス活用など、生成AIを実務で使いこなすためのスキルを体系的に学べます。DMMというブランドの信頼性と、継続的にアップデートされるカリキュラムが特徴です。
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" rel="nofollow">DMM 生成AI CAMP 無料セミナーを確認する →</a>
-<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 無料セミナーを確認する →<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
 
 ### こんな人におすすめ
 
@@ -63,8 +62,7 @@ ChatGPT・画像生成AI・ビジネス活用など、生成AIを実務で使い
 
 まずは無料セミナーで内容を確認してから、有料プランへの移行を検討できます。
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" rel="nofollow">DMM 生成AI CAMP 無料セミナーに参加する →</a>
-<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 無料セミナーに参加する →<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
 
 ---
 
@@ -106,8 +104,7 @@ ChatGPT・画像生成AI・ビジネス活用など、生成AIを実務で使い
 4. 有料カリキュラムの説明を聞いて判断
 5. 入会を決めた場合は申し込み手続き
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" rel="nofollow">DMM 生成AI CAMP 無料セミナーを予約する →</a>
-<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 無料セミナーを予約する →<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
 
 ---
 
@@ -131,5 +128,4 @@ A. 生成AIを活用したライティング・画像制作・業務効率化は
 
 生成AIはビジネスの「使える前提」になりつつあります。まずは無料セミナーから内容を確認してみましょう。
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" rel="nofollow">DMM 生成AI CAMP 無料セミナーに申し込む →</a>
-<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YJRM" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 無料セミナーに申し込む →<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
