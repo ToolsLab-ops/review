@@ -49,7 +49,7 @@ DMM 生成AI CAMPは、**ChatGPTなどの生成AIを仕事で活用するスキ�
 - 副業やフリーランス向けにAIを使いこなしたい
 - スキマ時間に動画で学習を進めたい
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YRHE" rel="nofollow">DMM 生成AI CAMP 学び放題 — 公式サイトを見る</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YRHE" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 学び放題 — 公式サイトを見る<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
 
 ---
 
