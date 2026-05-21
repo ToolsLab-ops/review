@@ -79,7 +79,7 @@ ChatGPT・Gemini・Claudeを仕事に活用するスキルを、動画で体系�
 - **料金**: 学び放題プランあり
 - **こんな人に**: AI活用のノウハウを体系的に身に付けたい・DX推進担当者・副業に活かしたい
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLYEJ6+5VEK+5YRHE" rel="nofollow">DMM 生成AI CAMP 学び放題</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4B3JAH+BLYEJ6+5VEK+5YRHE" alt="">
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade">DMM 生成AI CAMP 学び放題<img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt=""></a>
 
 ---
 
