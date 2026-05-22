@@ -452,6 +452,7 @@ const TOOLS = [
   { id:'kanji',        cat:'fun',      icon:'🀄', name:'姓名判断・画数占い', desc:'五格で運勢判定' },
   { id:'random',       cat:'fun',      icon:'🎲', name:'乱数生成',           desc:'さいころ・カード・くじ引き' },
   { id:'bpm',          cat:'fun',      icon:'🎵', name:'BPM→音符長計算',    desc:'テンポから各音符の長さを一覧' },
+  { id:'shichu',      cat:'fun',      icon:'🔯', name:'四柱推命',           desc:'生年月日から四柱・五行・大運を算出' },
 ];
 
 const SECTION_LABELS = {
@@ -531,6 +532,12 @@ const ADS = {
     any: [
       { icon:'🔮', title:'電話占いヴェルニ', sub:'国内最大級 — 5分無料鑑定キャンペーン中', pr:'#7c3aed', cta:'鑑定する →' },
       { icon:'💍', title:'ゼクシィ縁結び', sub:'真剣な出会い。名前の相性もチェック', pr:'#ec4899', cta:'無料登録 →' },
+    ],
+  },
+  shichu: {
+    any: [
+      { icon:'🔮', title:'電話占いヴェルニ', sub:'四柱推命・命式・大運…プロ占い師に5分無料相談', pr:'#7c3aed', cta:'鑑定する →' },
+      { icon:'💍', title:'ゼクシィ縁結び', sub:'命式相性も各柱でチェック。真剣な出会い', pr:'#ec4899', cta:'無料登録 →' },
     ],
   },
   default: {
@@ -690,6 +697,8 @@ const RENDERERS = {
       </div>
     </div>`,
 
+  shichu: () => `<div style="display:flex;gap:6px;margin-bottom:8px;"><div class="tool-input-row" style="flex:2;margin:0;"><label>生年月日</label><input id="scDate" type="date" min="1924-01-01" max="2060-12-31" value="1990-01-01" oninput="calcShichu()" style="font-size:.85rem;"></div><div class="tool-input-row" style="flex:3;margin:0;"><label>出生時刻（任意）</label><select id="scHour" onchange="calcShichu()"><option value="-1">不明</option><option value="0">子Ｈ23～1時）</option><option value="1">丑Ｈ1～3時）</option><option value="2">寅Ｈ3～5時）</option><option value="3">卯Ｈ5～7時）</option><option value="4">辰Ｈ7～9時）</option><option value="5">巳Ｈ9～11時）</option><option value="6">午Ｈ11～13時）</option><option value="7">未Ｈ13～15時）</option><option value="8">申Ｈ15～17時）</option><option value="9">酉Ｈ17～19時）</option><option value="10">戌Ｈ19～21時）</option><option value="11">亥Ｈ21～23時）</option></select></div></div><div class="tool-input-row" style="margin-bottom:10px;"><label>性別</label><div class="rate-grid"><button class="rate-btn on" id="scMale" onclick="scSetGender(0)">男命</button><button class="rate-btn" id="scFemale" onclick="scSetGender(1)">女命</button></div></div><div id="scResult"></div>`,
+
   default: (tool) => `
     <div style="text-align:center;padding:32px 16px;color:var(--muted);">
       <div style="font-size:2.5rem;margin-bottom:12px;">${tool.icon}</div>
@@ -791,6 +800,110 @@ function copyPw() {
 }
 
 /* =============================================
+   四柱推命 — SC_ CONSTANTS & FUNCTIONS
+   ============================================= */
+const SC_S=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const SC_B=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+const SC_ES=['木','木','火','火','土','土','金','金','水','水'];
+const SC_EB=['水','土','木','木','土','火','火','土','金','金','土','水'];
+const SC_EC={'木':'#16a34a','火':'#dc2626','土':'#b45309','金':'#78716c','水':'#2563eb'};
+const SC_SK=[6,4,6,5,6,6,7,7,8,8,7,7];
+const SC_SYOMI=['きのえ','きのと','ひのえ','ひのと','つちのえ','つちのと','かのえ','かのと','みずのえ','みずのと'];
+const SC_SD=[
+  {k:'直進・開拓',d:'強い意志と向上心をもつリーダー気質。困難にも正面から向き合う'},
+  {k:'柔軟・調和',d:'穏やかに進める適応力の持ち主。人間関係を大切にする'},
+  {k:'情熱・明朗',d:'太陽のように明るく活動的。場を盛り上げる表現力が豊か'},
+  {k:'思慮・洞察',d:'細部まで気を配る繊細さと洞察力。内向きの強さをもつ'},
+  {k:'安定・信頼',d:'大地のような包容力で周囲を支える。粘り強く誠実な人柄'},
+  {k:'育成・調停',d:'周囲を育て調和をもたらす。面倒見がよく心が広い'},
+  {k:'意志・決断',d:'白黒つけることが得意な行動派。筋を通すことを重んじる'},
+  {k:'繊細・洗練',d:'美意識が高く、物事を丁寧に磨き上げる技術者気質'},
+  {k:'知性・探求',d:'広い視野と豊かな知識で柔軟に動く。変化を楽しむ性質'},
+  {k:'直感・奉仕',d:'直感が鮮く、陰で人を支えることに力を発揮する'},
+];
+const SC_BD=[
+  {y:'ね',a:'鼠',k:'始動・繁栄',d:'新しいことを始める力がある。親しみやすく人が集まる'},
+  {y:'うし',a:'牛',k:'忍耐・蓄積',d:'コツコツと積み上げる力がある。努力が着実に実を結ぶ'},
+  {y:'とら',a:'虎',k:'勇気・前進',d:'大胆に前へ進む行動力。カリスマ的な存在感がある'},
+  {y:'う',a:'兔',k:'調和・温和',d:'人当たりがよく周囲とうまくやる社交性がある'},
+  {y:'たつ',a:'龍',k:'変化・成功',d:'変化の中で力を発揮する。大きな成果を出せる'},
+  {y:'み',a:'蛇',k:'知恵・変革',d:'直感力と洞察力に優れる。静かに物事を深く見通す'},
+  {y:'うま',a:'馬',k:'情熱・自由',d:'自由を求め情熱的に行動する。表現力とエネルギーが高い'},
+  {y:'ひつじ',a:'羊',k:'誠実・芸術',d:'温かく誠実な心の持ち主。芸術的なセンスがある'},
+  {y:'さる',a:'猴',k:'機敏・知略',d:'機身がきき頭の回転が速い。多芸多才な面がある'},
+  {y:'とり',a:'鸡',k:'洗練・勤勉',d:'細部に気を配る几帳面さと高い審美眼をもつ'},
+  {y:'いぬ',a:'犬',k:'忠実・正義',d:'義理堅く誠実。一度決めたことはやり通す'},
+  {y:'い',a:'猪',k:'剛毅・純粋',d:'一途で純粋。目標に向かって真っすぐに進む'},
+];
+const SC_EMD={
+  '木':{h:'成長・創造',d:'向上心と柔軟性に富み、新しいことへの意欲が高い傾向。人や環境を育てる力がある。',lack:'計画を立てて行動に移す習慣が開運につながります。'},
+  '火':{h:'情熱・活動',d:'情熱的で明るく行動力に富む。自己表現が得意で周囲を明るくする。',lack:'積極的に自己表現・コミュニケーションを取ることで運気が高まります。'},
+  '土':{h:'安定・信頼',d:'安定感と信頼感が高く、着実な積み上げを得意とする。土台を作る力がある。',lack:'地に足のついた日常習慣・継続力が開運のカギです。'},
+  '金':{h:'意志・結実',d:'意志力と集中力が強く、やり遂げる力がある。目標に向かってぶれない。',lack:'決断力と判断軸を磨くことで潜在力が引き出されます。'},
+  '水':{h:'知性・流動',d:'知性と感受性が高く、柔軟な対応力がある。情報収集・直感に優れる。',lack:'学びと直感を磨くことで大きな可能性が開けます。'},
+};
+function scRis(y){const Y=y-1900;return Math.floor(Y*.2422+4.81)-Math.floor(Y/4);}
+function scSkDay(y,m){return m===2?scRis(y):SC_SK[m-1];}
+function scJDN(y,m,d){if(m<=2){y--;m+=12;}const A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524;}
+function scYearIdx(y,m,d){return(((((m<2||(m===2&&d<scRis(y)))?y-1:y)-1924)%60)+600)%60;}
+function scMonthBranch(y,m,d){let mo=m;if(d<scSkDay(y,m)){mo--;if(mo<1)mo=12;}return[1,2,3,4,5,6,7,8,9,10,11,0][mo-1];}
+function scMonthStem(ys,mb){return([2,4,6,8,0,2,4,6,8,0][ys]+(mb-2+12)%12)%10;}
+function scDayIdx(y,m,d){return((scJDN(y,m,d)-2451545+20)%60+600)%60;}
+function scHourStem(ds,hb){return([0,2,4,6,8,0,2,4,6,8][ds]+hb)%10;}
+function scGSIdx(s,b){for(let i=0;i<60;i++)if(i%10===s&&i%12===b)return i;return 0;}
+let scGender=0;
+function scSetGender(g){scGender=g;['scMale','scFemale'].forEach((id,i)=>document.getElementById(id)?.classList.toggle('on',i===g));calcShichu();}
+function calcShichu(){
+  const dv=document.getElementById('scDate')?.value;
+  const hv=parseInt(document.getElementById('scHour')?.value??'-1');
+  const res=document.getElementById('scResult');
+  if(!res||!dv)return;
+  const[y,m,d]=dv.split('-').map(Number);
+  if(!y||!m||!d){res.innerHTML='';return;}
+  const yi=scYearIdx(y,m,d),ys=yi%10,yb=yi%12;
+  const mb=scMonthBranch(y,m,d),ms=scMonthStem(ys,mb);
+  const di=scDayIdx(y,m,d),ds=di%10,db=di%12;
+  const hasH=hv>=0;
+  const cols=hasH?[[ys,yb],[ms,mb],[ds,db],[scHourStem(ds,hv),hv]]:[[ys,yb],[ms,mb],[ds,db]];
+  const cnames=['年柱','月柱','日柱','時柱'];
+  const csubs=['先祖・社会運','兄弟・青年期','自己・配偶者','子供・晊年'];
+  const cnt={'木':0,'火':0,'土':0,'金':0,'水':0};
+  cols.forEach(([s,b])=>{cnt[SC_ES[s]]++;cnt[SC_EB[b]]++;});
+  const mx=Math.max(...Object.values(cnt))||1;
+  const eList=Object.entries(cnt).sort((a,b2)=>b2[1]-a[1]);
+  const domE=eList[0][0],domCount=eList[0][1];
+  const lackE=eList[eList.length-1][0],lackCount=eList[eList.length-1][1];
+  const isYang=ys%2===0;
+  const fwd=(scGender===0&&isYang)||(scGender===1&&!isYang);
+  let nm=m,ny=y;const skd=scSkDay(y,m);
+  if(fwd){if(d>=skd){nm++;if(nm>12){nm=1;ny++;}}}
+  else{if(d<skd){nm--;if(nm<1){nm=12;ny--;}}}
+  const tJDN=scJDN(ny,nm,scSkDay(ny,nm));
+  const days=Math.abs(tJDN-scJDN(y,m,d));
+  const sAge=Math.floor(days/3),sMo=Math.floor((days%3)*4);
+  const bMoI=scGSIdx(ms,mb);
+  const daiunP=[];
+  for(let i=1;i<=10;i++){const idx=((bMoI+(fwd?i:-i))%60+600)%60;daiunP.push([idx%10,idx%12]);}
+  const now=new Date(),cy=now.getFullYear(),cm=now.getMonth()+1,cd2=now.getDate();
+  const ryuI=scYearIdx(cy,cm,cd2);
+  const nearBound=Math.abs(d-scSkDay(y,m))<=2;
+  const card=([s,b],nm2,sub)=>`<div style="text-align:center;flex:1;min-width:52px;"><div style="font-size:.58rem;color:var(--muted);margin-bottom:2px;">${nm2}</div><div style="background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:6px 4px;"><div style="font-size:1.5rem;font-weight:900;color:${SC_EC[SC_ES[s]]};line-height:1.1;">${SC_S[s]}</div><div style="font-size:.5rem;color:${SC_EC[SC_ES[s]]};margin-bottom:2px;">${SC_ES[s]}</div><div style="height:1px;background:var(--border);margin:2px 0;"></div><div style="font-size:1.5rem;font-weight:900;color:${SC_EC[SC_EB[b]]};line-height:1.1;">${SC_B[b]}</div><div style="font-size:.5rem;color:${SC_EC[SC_EB[b]]};">${SC_EB[b]}</div></div><div style="font-size:.5rem;color:var(--muted);margin-top:2px;">${sub}</div></div>`;
+  const gogyoBar=Object.entries(cnt).map(([e,n])=>`<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><span style="width:18px;font-size:.68rem;font-weight:700;color:${SC_EC[e]};">${e}</span><div style="flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;"><div style="width:${Math.round(n/mx*100)}%;height:100%;background:${SC_EC[e]};border-radius:4px;"></div></div><span style="width:14px;font-size:.65rem;text-align:right;color:var(--muted);">${n}</span></div>`).join('');
+  const nowY=new Date().getFullYear();
+  const daiunCards=daiunP.map(([s,b],i)=>{const age=sAge+i*10;const yr=y+age;const cur=nowY>=yr&&nowY<yr+10;return `<div style="flex:1;min-width:40px;text-align:center;padding:4px 2px;border-radius:6px;background:${cur?'var(--blue-lt)':'transparent'};border:1.5px solid ${cur?'var(--blue)':'var(--border)'};margin:1px;"><div style="font-size:.5rem;color:var(--muted);">${age}歳～</div><div style="font-size:.5rem;color:var(--muted);">${yr}～</div><div style="font-size:.95rem;font-weight:900;color:${SC_EC[SC_ES[s]]};">${SC_S[s]}</div><div style="font-size:.95rem;font-weight:900;color:${SC_EC[SC_EB[b]]};">${SC_B[b]}</div></div>`;}).join('');
+  const curDaiunI=daiunP.findIndex((_,i)=>{const age=sAge+i*10;const yr=y+age;return nowY>=yr&&nowY<yr+10;});
+  const curDaiun=curDaiunI>=0?daiunP[curDaiunI]:null;
+  const curDaiunAge=curDaiunI>=0?sAge+curDaiunI*10:null;
+  const curDaiunDesc=curDaiun?`現在（${nowY}年）は <strong>${SC_S[curDaiun[0]]}${SC_B[curDaiun[1]]}</strong> の大運（${y+curDaiunAge}～${y+curDaiunAge+9}年）。${SC_SD[curDaiun[0]].d}。${SC_BD[curDaiun[1]].d}。`:'大運の算出範囲外です。';
+  const ryuS=ryuI%10,ryuB=ryuI%12;
+  const pillarRows=cols.map(([s,b],i)=>{
+    const isDay=i===2;const sd=SC_SD[s];const bd=SC_BD[b];
+    return `<div style="border-bottom:${i<cols.length-1?'1px solid var(--border)':'none'};padding:7px 0 6px;"><div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">${isDay?`<span style="font-size:.52rem;background:var(--blue);color:#fff;border-radius:3px;padding:1px 4px;font-weight:700;">最重要</span>`:''}<span style="font-size:.6rem;font-weight:700;color:var(--text);">${cnames[i]}</span><span style="font-size:.58rem;color:var(--muted);">（${csubs[i]}）</span></div><div style="display:flex;align-items:center;flex-wrap:wrap;gap:3px;margin-bottom:4px;"><span style="font-size:.95rem;font-weight:900;color:${SC_EC[SC_ES[s]]};">${SC_S[s]}</span><span style="font-size:.58rem;color:var(--muted);">${SC_SYOMI[s]}</span><span style="font-size:.75rem;font-weight:700;color:${SC_EC[SC_ES[s]]}">・</span><span style="font-size:.95rem;font-weight:900;color:${SC_EC[SC_EB[b]]};">${SC_B[b]}</span><span style="font-size:.58rem;color:var(--muted);">${bd.y}（${bd.a}）</span><span style="margin-left:4px;font-size:.58rem;font-weight:700;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text);">${sd.k} × ${bd.k}</span></div><div style="font-size:.65rem;color:var(--text);line-height:1.55;background:${isDay?'var(--blue-lt)':'#f8fafc'};border-left:2px solid ${isDay?'var(--blue)':'var(--border)'};padding:4px 8px;border-radius:0 4px 4px 0;">${sd.d}。${bd.d}。</div></div>`;
+  }).join('');
+  res.innerHTML=`<div style="display:flex;gap:4px;margin-bottom:10px;">${cols.map((p,i)=>card(p,cnames[i],csubs[i])).join('')}</div>${nearBound?`<div style="font-size:.63rem;color:#b45309;background:#fef3c7;border-radius:6px;padding:4px 8px;margin-bottom:8px;">⚠️ 節入り前後のため、時刻により柱が変わる場合があります</div>`:''}<div style="font-size:.6rem;color:var(--muted);background:var(--bg);border-radius:6px;padding:6px 10px;margin-bottom:8px;line-height:1.6;">四柱推命は生年月日から4つの「柱」を読む占術です。<br>年柱＝社会・祖先運、月柱＝親・青年期、<strong>日柱＝自己・配偷者（最重要）</strong>、時柱＝子・晊年運を示します。</div><div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;"><div style="font-size:.6rem;font-weight:700;color:var(--muted);margin-bottom:2px;">🔍 柱の読み解き</div>${pillarRows}</div><div style="background:var(--bg);border-radius:8px;padding:9px 11px;margin-bottom:8px;"><div style="font-size:.6rem;font-weight:700;color:var(--muted);margin-bottom:5px;">🌿 五行バランス</div>${gogyoBar}<div style="margin-top:7px;font-size:.65rem;color:var(--text);line-height:1.55;border-left:3px solid ${SC_EC[domE]};padding-left:8px;"><strong style="color:${SC_EC[domE]};">${domE}（${SC_EMD[domE].h}）</strong>が優勢（${domCount}）。${SC_EMD[domE].d}${lackCount===0?`<br>一方、<strong>${lackE}</strong>が命式にないため、${SC_EMD[lackE].lack}`:''}</div></div><div style="background:var(--bg);border-radius:8px;padding:9px 11px;margin-bottom:8px;"><div style="font-size:.6rem;font-weight:700;color:var(--muted);margin-bottom:5px;">📅 大運（${fwd?'順行':'逆行'} / ${sAge}歳${sMo>0?' '+sMo+'ヶ月':''}〜）</div><div style="font-size:.62rem;color:var(--muted);margin-bottom:5px;line-height:1.5;">大運は10年ごとに切り替わる人生の大きな流れです。青色ハイライトが現在の大運。</div><div style="display:flex;flex-wrap:wrap;gap:1px;margin-bottom:8px;">${daiunCards}</div><div style="font-size:.65rem;color:var(--text);line-height:1.55;background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px 9px;">${curDaiunDesc}</div></div><div style="background:var(--bg);border-radius:8px;padding:9px 11px;"><div style="font-size:.6rem;font-weight:700;color:var(--muted);margin-bottom:4px;">🗓 流年（${cy}年 ${SC_S[ryuS]}${SC_B[ryuB]}）</div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:1.2rem;font-weight:900;color:${SC_EC[SC_ES[ryuS]]};">${SC_S[ryuS]}</span><span style="font-size:1.2rem;font-weight:900;color:${SC_EC[SC_EB[ryuB]]};">${SC_B[ryuB]}</span><span style="font-size:.7rem;color:var(--muted);">${SC_ES[ryuS]}・${SC_EB[ryuB]}の年</span></div><div style="font-size:.62rem;color:var(--muted);margin-bottom:5px;line-height:1.5;">流年はその年の干支から読ど1年ごとの運勢の傾向です。</div><div style="font-size:.65rem;color:var(--text);line-height:1.55;background:#fff;border:1px solid var(--border);border-radius:6px;padding:6px 9px;">${cy}年は <strong style="color:${SC_EC[SC_ES[ryuS]]};">${SC_S[ryuS]}${SC_B[ryuB]}（${SC_SYOMI[ryuS]}・${SC_BD[ryuB].y}）</strong> の年。${SC_SD[ryuS].k}×${SC_BD[ryuB].k}のエネルギーが働く。${SC_SD[ryuS].d}。${SC_BD[ryuB].d}。</div></div><div style="font-size:.58rem;color:var(--muted);text-align:center;margin-top:6px;">※節入り日はJST基準の概算値。専門家の鑑定と異なる場合があります。</div>`;
+}
+
+/* =============================================
    OPEN / CLOSE TOOL
    ============================================= */
 let activeToolId = null;
@@ -857,6 +970,7 @@ function openTool(toolId, cardEl) {
   if (toolId === 'loan')         { calcLoan(); }
   if (toolId === 'world-clock')  { startClock(); }
   if (toolId === 'password')     { updatePwLen(); genPw(); }
+  if (toolId === 'shichu') calcShichu();
 }
 
 function closeTool() {
