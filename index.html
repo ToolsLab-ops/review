@@ -126,9 +126,9 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     /* ── MAIN 2-COL GRID ── */
 
-    .main-wrap { max-width: 1160px; margin: 0 auto; padding: 40px 24px 64px; display: flex; flex-direction: column; gap: 28px; }
+    .main-wrap { max-width: 1160px; margin: 0 auto; padding: 40px 24px 64px; display: grid; grid-template-columns: 1fr var(--sidebar-w); gap: 28px; align-items: start; }
 
-    @media (max-width: 860px) { .main-wrap { grid-template-columns: 1fr; } .home-tool-sidebar { display: flex; } }
+    @media (max-width: 860px) { .main-wrap { grid-template-columns: 1fr; } .home-tool-sidebar { display: none; } }
 
 
 
@@ -170,11 +170,9 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     .home-tool-sidebar {
 
-      position: static;
+      position: sticky; top: calc(var(--header-h) + 16px);
 
-      height: auto;
-
-      order: -1;
+      height: calc(100vh - var(--header-h) - 32px);
 
       display: flex; flex-direction: column;
 
@@ -460,20 +458,6 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     @media (max-width: 600px) { .hero { padding: 40px 0 48px; } .stats-inner { gap: 32px; } }
 
-    /* ── TOOLS TOP MODE ── */
-    .sidebar-tool-list { flex-wrap: wrap; max-height: 340px; overflow-y: auto; }
-    .list-section { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; margin-bottom: 6px; }
-    .list-section-label { flex-basis: 100%; width: 100%; }
-    .list-tool-card { flex: 1 1 160px; max-width: 260px; }
-    .tool-bubble-wrap::before, .tool-bubble-wrap::after { display: none !important; }
-    #contentPanel { width: 100%; }
-    /* == TOOLS TOP MODE == */
-    .sidebar-tool-list { flex-wrap: wrap; max-height: 340px; overflow-y: auto; }
-    .list-section { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; margin-bottom: 6px; }
-    .list-section-label { flex-basis: 100%; width: 100%; }
-    .list-tool-card { flex: 1 1 160px; max-width: 260px; }
-    .tool-bubble-wrap::before, .tool-bubble-wrap::after { display: none !important; }
-    #contentPanel { width: 100%; }
 
   </style>
 
@@ -715,6 +699,14 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
 const TOOLS = [
 
+  { id:'shichu',      cat:'fun',      icon:'🔯', name:'四柱推命',           desc:'生年月日から四柱・五行・大運を算出' },
+
+  { id:'kanji',       cat:'fun',      icon:'🀄', name:'姓名判断・画数占い', desc:'五格で運勢判定' },
+
+  { id:'random',      cat:'fun',      icon:'🎲', name:'乱数生成',           desc:'さいころ・カード・くじ引き' },
+
+  { id:'bpm',         cat:'fun',      icon:'🎵', name:'BPM→音符長計算',    desc:'テンポから各音符の長さを一覧' },
+
   { id:'world-clock', cat:'global',   icon:'🌍', name:'世界時計・時差計算', desc:'国と時間を入力→各国の時刻を表示' },
 
   { id:'currency',    cat:'global',   icon:'💱', name:'為替換算',           desc:'リアルタイムレートで通貨換算' },
@@ -748,14 +740,6 @@ const TOOLS = [
   { id:'calorie',     cat:'health',   icon:'🔥', name:'カロリー消費計算',   desc:'運動種目×体重×時間で算出' },
 
   { id:'body-fat',    cat:'health',   icon:'📊', name:'体脂肪率・理想体重', desc:'年齢・性別・身長から算出' },
-
-  { id:'shichu',      cat:'fun',      icon:'🔯', name:'四柱推命',           desc:'生年月日から四柱・五行・大運を算出' },
-
-  { id:'kanji',       cat:'fun',      icon:'🀄', name:'姓名判断・画数占い', desc:'五格で運勢判定' },
-
-  { id:'random',      cat:'fun',      icon:'🎲', name:'乱数生成',           desc:'さいころ・カード・くじ引き' },
-
-  { id:'bpm',         cat:'fun',      icon:'🎵', name:'BPM→音符長計算',    desc:'テンポから各音符の長さを一覧' },
 
 ];
 
