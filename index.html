@@ -126,9 +126,9 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     /* ── MAIN 2-COL GRID ── */
 
-    .main-wrap { max-width: 1160px; margin: 0 auto; padding: 40px 24px 64px; display: grid; grid-template-columns: 1fr var(--sidebar-w); gap: 28px; align-items: start; }
+    .main-wrap { max-width: 1160px; margin: 0 auto; padding: 40px 24px 64px; display: flex; flex-direction: column; gap: 28px; }
 
-    @media (max-width: 860px) { .main-wrap { grid-template-columns: 1fr; } .home-tool-sidebar { display: none; } }
+    @media (max-width: 860px) { .main-wrap { grid-template-columns: 1fr; } .home-tool-sidebar { display: flex; } }
 
 
 
@@ -170,11 +170,11 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     .home-tool-sidebar {
 
-      position: sticky;
+      position: static;
 
-      top: calc(var(--header-h) + 16px);
+      height: auto;
 
-      height: calc(100vh - var(--header-h) - 32px);
+      order: -1;
 
       display: flex; flex-direction: column;
 
@@ -460,6 +460,21 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     @media (max-width: 600px) { .hero { padding: 40px 0 48px; } .stats-inner { gap: 32px; } }
 
+    /* ── TOOLS TOP MODE ── */
+    .sidebar-tool-list { flex-wrap: wrap; max-height: 340px; overflow-y: auto; }
+    .list-section { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; margin-bottom: 6px; }
+    .list-section-label { flex-basis: 100%; width: 100%; }
+    .list-tool-card { flex: 1 1 160px; max-width: 260px; }
+    .tool-bubble-wrap::before, .tool-bubble-wrap::after { display: none !important; }
+    #contentPanel { width: 100%; }
+    /* == TOOLS TOP MODE == */
+    .sidebar-tool-list { flex-wrap: wrap; max-height: 340px; overflow-y: auto; }
+    .list-section { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; margin-bottom: 6px; }
+    .list-section-label { flex-basis: 100%; width: 100%; }
+    .list-tool-card { flex: 1 1 160px; max-width: 260px; }
+    .tool-bubble-wrap::before, .tool-bubble-wrap::after { display: none !important; }
+    #contentPanel { width: 100%; }
+
   </style>
 
 </head>
@@ -530,7 +545,7 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">無料ツール</div></div>
 
-    <div class="stat-item"><div class="stat-num">13+</div><div class="stat-label">レビュー記事</div></div>
+    <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">レビュー記事</div></div>
 
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">ブラウザで完結</div></div>
 
@@ -734,12 +749,13 @@ const TOOLS = [
 
   { id:'body-fat',    cat:'health',   icon:'📊', name:'体脂肪率・理想体重', desc:'年齢・性別・身長から算出' },
 
+  { id:'shichu',      cat:'fun',      icon:'🔯', name:'四柱推命',           desc:'生年月日から四柱・五行・大運を算出' },
+
   { id:'kanji',       cat:'fun',      icon:'🀄', name:'姓名判断・画数占い', desc:'五格で運勢判定' },
 
   { id:'random',      cat:'fun',      icon:'🎲', name:'乱数生成',           desc:'さいころ・カード・くじ引き' },
 
   { id:'bpm',         cat:'fun',      icon:'🎵', name:'BPM→音符長計算',    desc:'テンポから各音符の長さを一覧' },
-  { id:'shichu',      cat:'fun',      icon:'🔯', name:'四柱推命',           desc:'生年月日から四柱・五行・大運を算出' },
 
 ];
 
@@ -1042,3 +1058,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 </body>
 
 </html>
+
