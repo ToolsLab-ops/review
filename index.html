@@ -320,6 +320,12 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
     .card-arrow { font-size: .75rem; font-weight: 700; color: var(--blue); margin-top: auto; }
 
+    /* ── FILTER BAR ── */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; padding: 4px 0; }
+    .filter-btn { border: 1.5px solid var(--border); background: var(--white); color: var(--muted); font-size: .78rem; font-weight: 700; padding: 6px 14px; border-radius: 99px; cursor: pointer; transition: all .15s; font-family: inherit; }
+    .filter-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+    .filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
 
 
 
@@ -1101,73 +1107,30 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
 
     <div id="articlesView">
-
-
-
       <div class="section-hdr">
-
-
-
         <h2>レビュー記事一覧</h2>
-
-
-
       </div>
-
-
-
-      <div class="articles-grid">
-
-
-
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">すべて</button>
+        <button class="filter-btn" data-filter="ai-tools">🤖 AIツール</button>
+        <button class="filter-btn" data-filter="side-job">💰 副業・フリーランス</button>
+        <button class="filter-btn" data-filter="tax">📊 税務・確定申告</button>
+        <button class="filter-btn" data-filter="hardware">💻 PC・機材</button>
+      </div>
+      <div class="articles-grid" id="articlesGrid">
         {% for post in site.posts %}
-
-
-
-        <a href="{{ post.url | relative_url }}" class="article-card">
-
-
-
+        {% if post.url contains 'kakuteishinkoku' or post.url contains 'moneyforward' %}{% assign sec = 'tax' %}{% elsif post.url contains 'minisforum' or post.url contains 'gmktec' or post.url contains 'sourcenext' %}{% assign sec = 'hardware' %}{% elsif post.url contains 'workship' or post.url contains 'crowdsourcing' or post.url contains 'crowdworks' or post.url contains 'zaitaku' or post.url contains 'note-fukugyou' or post.url contains 'programming-fukugyou' or post.url contains 'ai-tool-fukugyou' or post.url contains 'miraifu' %}{% assign sec = 'side-job' %}{% else %}{% assign sec = 'ai-tools' %}{% endif %}
+        <a href="{{ post.url | relative_url }}" class="article-card" data-section="{{ sec }}">
           <div class="card-meta">
-
-
-
             <span class="card-tag">REVIEW</span>
-
-
-
             <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-
-
-
           </div>
-
-
-
           <h3 class="card-title">{{ post.title }}</h3>
-
-
-
           <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-
-
-
           <p class="card-arrow">続きを読む →</p>
-
-
-
         </a>
-
-
-
         {% endfor %}
-
-
-
       </div>
-
-
-
     </div>
 
 
@@ -2094,6 +2057,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filter-btn');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      var f = this.dataset.filter;
+      document.querySelectorAll('.article-card').forEach(function(card){
+        card.style.display = (f === 'all' || card.dataset.section === f) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
 </body>
 
 
