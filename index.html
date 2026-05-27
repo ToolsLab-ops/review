@@ -1673,7 +1673,7 @@ function startClock(){
         if(rEl) rEl.textContent=now.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit',second:'2-digit'});
         if(tEl){
           if(hasInput){
-            tEl.textContent='['+baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit'}).replace(':','h')+']';
+            tEl.textContent='['+baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit'})+']';
             tEl.setAttribute('visibility','visible');
           } else {
             tEl.setAttribute('visibility','hidden');
