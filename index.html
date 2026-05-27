@@ -1556,83 +1556,125 @@ let clockInterval=null;
 
 
 const WC_PINS=[
-  {id:'Asia/Tokyo',      name:'東京',       lon:139.69, lat:35.68,  ax:'end',    dx:-7},
-  {id:'Asia/Shanghai',   name:'北京',       lon:116.39, lat:39.90,  ax:'end',    dx:-7},
-  {id:'Asia/Singapore',  name:'シンガポール', lon:103.82, lat:1.35,   ax:'middle', dx:0},
-  {id:'Asia/Dubai',      name:'ドバイ',      lon:55.27,  lat:25.20,  ax:'middle', dx:0},
-  {id:'Asia/Kolkata',    name:'ムンバイ',    lon:72.87,  lat:19.08,  ax:'middle', dx:0},
-  {id:'Europe/Moscow',   name:'モスクワ',    lon:37.62,  lat:55.75,  ax:'middle', dx:0},
-  {id:'Europe/London',   name:'ロンドン',    lon:-0.13,  lat:51.51,  ax:'middle', dx:0},
-  {id:'America/New_York',name:'ニューヨーク', lon:-74.01, lat:40.71,  ax:'middle', dx:0},
-  {id:'America/Los_Angeles',name:'ロサンゼルス',lon:-118.24,lat:34.05,ax:'start',  dx:7},
-  {id:'Australia/Sydney',name:'シドニー',    lon:151.21, lat:-33.87, ax:'end',    dx:-7},
-  {id:'America/Sao_Paulo',name:'サンパウロ', lon:-46.63, lat:-23.55, ax:'middle', dx:0}
+  {id:'Asia/Tokyo',      name:'東京',         lon:139.69, lat:35.68,  ax:'end',    dx:-7},
+  {id:'Asia/Shanghai',   name:'北京',         lon:116.39, lat:39.90,  ax:'end',    dx:-7},
+  {id:'Asia/Singapore',  name:'シンガポール',  lon:103.82, lat:1.35,   ax:'middle', dx:0},
+  {id:'Asia/Dubai',      name:'ドバイ',        lon:55.27,  lat:25.20,  ax:'end',    dx:-7},
+  {id:'Asia/Kolkata',    name:'ムンバイ',      lon:72.87,  lat:19.08,  ax:'start',  dx:7},
+  {id:'Europe/Moscow',   name:'モスクワ',      lon:37.62,  lat:55.75,  ax:'start',  dx:7},
+  {id:'Europe/London',   name:'ロンドン',      lon:-0.13,  lat:51.51,  ax:'end',    dx:-7},
+  {id:'America/New_York',name:'NY',           lon:-74.01, lat:40.71,  ax:'end',    dx:-7},
+  {id:'America/Los_Angeles',name:'LA',        lon:-118.24,lat:34.05,  ax:'start',  dx:7},
+  {id:'Australia/Sydney',name:'シドニー',      lon:151.21, lat:-33.87, ax:'end',    dx:-7},
+  {id:'America/Sao_Paulo',name:'São Paulo',   lon:-46.63, lat:-23.55, ax:'start',  dx:7}
 ];
 function lngToX(lon){return (lon+180)/360*680;}
 function latToY(lat){return (90-lat)/180*340;}
-function buildMapSVG(){
+
+function buildMapSVG(paths){
   var bg='<rect width="680" height="340" fill="#0d2137"/>';
   var grid='';
-  for(var gx=0;gx<=8;gx++){var gxx=Math.round(gx*85);grid+='<line x1="'+gxx+'" y1="0" x2="'+gxx+'" y2="340" stroke="#1a3a5c" stroke-width="0.4"/>';}
-  for(var gy=0;gy<=6;gy++){var gyy=Math.round(gy*56.7);grid+='<line x1="0" y1="'+gyy+'" x2="680" y2="'+gyy+'" stroke="#1a3a5c" stroke-width="0.4"/>';}
-  grid+='<line x1="0" y1="170" x2="680" y2="170" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,3"/>';
-  var land='<g fill="#2c4a3c" stroke="#3d6b55" stroke-width="0.5">'
-    +'<path d="M23,95 L28,88 L38,82 L52,80 L68,78 L85,76 L102,74 L118,72 L130,68 L142,64 L155,60 L168,56 L180,52 L192,50 L205,48 L215,46 L225,46 L232,47 L237,50 L235,54 L228,58 L218,62 L208,66 L198,70 L190,76 L184,82 L178,88 L172,94 L165,100 L158,106 L150,110 L142,112 L133,112 L124,110 L116,108 L108,106 L100,104 L90,102 L80,100 L70,98 L58,96 L45,95 Z"/>'
-    +'<path d="M230,40 L240,30 L255,22 L270,18 L282,20 L290,26 L292,34 L286,40 L275,44 L262,44 Z"/>'
-    +'<path d="M155,112 L168,108 L182,106 L195,106 L205,108 L212,112 L216,118 L218,126 L216,135 L210,144 L202,152 L193,158 L182,162 L170,163 L158,160 L148,155 L140,148 L135,140 L132,132 L133,122 Z"/>'
-    +'<path d="M240,104 L255,96 L272,88 L290,80 L310,72 L328,66 L342,62 L355,60 L368,62 L380,68 L390,76 L398,84 L402,92 L400,100 L392,107 L380,112 L365,115 L350,116 L336,115 L322,112 L308,108 L294,105 L278,103 L262,102 L248,103 Z"/>'
-    +'<path d="M240,106 L255,110 L270,114 L284,118 L296,124 L306,130 L314,138 L318,146 L318,155 L314,164 L306,172 L296,178 L284,182 L270,183 L256,180 L244,174 L234,166 L227,156 L224,146 L224,136 L228,126 L234,116 Z"/>'
-    +'<path d="M330,58 L345,44 L360,34 L375,26 L390,20 L405,16 L420,14 L435,14 L450,16 L463,20 L474,26 L482,32 L487,38 L490,44 L490,50 L486,56 L480,62 L471,68 L460,74 L446,79 L430,83 L413,86 L396,87 L380,86 L364,83 L350,78 L338,72 Z"/>'
-    +'<path d="M395,88 L415,86 L435,86 L452,88 L466,92 L476,98 L482,106 L484,115 L480,124 L472,133 L460,141 L445,148 L428,153 L410,156 L393,157 L377,155 L362,150 L349,143 L340,134 L335,124 L334,114 L336,104 L342,95 Z"/>'
-    +'<path d="M452,88 L468,80 L484,72 L500,66 L518,60 L537,55 L557,50 L577,46 L596,43 L614,40 L630,38 L645,36 L658,36 L668,38 L675,42 L678,48 L678,56 L674,64 L666,72 L654,80 L638,87 L620,93 L600,98 L580,102 L560,104 L540,104 L522,102 L506,98 L490,93 Z"/>'
-    +'<path d="M402,88 L420,88 L436,90 L448,94 L455,100 L456,108 L452,116 L444,124 L432,130 L418,134 L404,136 L390,134 L378,128 L370,120 L367,110 L368,100 L374,92 Z"/>'
-    +'<path d="M456,88 L472,88 L488,90 L504,94 L520,100 L534,108 L545,118 L553,129 L556,141 L552,153 L544,163 L532,171 L516,177 L498,180 L480,180 L462,176 L446,168 L434,158 L426,147 L423,135 L425,123 L430,112 L438,102 Z"/>'
-    +'<path d="M588,96 L602,86 L616,78 L628,72 L638,68 L646,66 L651,66 L654,70 L652,76 L646,82 L636,88 L624,93 L610,97 Z"/>'
-    +'<path d="M566,196 L582,188 L598,182 L614,178 L628,176 L640,177 L648,181 L651,188 L648,196 L640,204 L628,210 L614,214 L598,215 L582,212 L570,206 Z"/>'
-    +'<path d="M550,160 L562,154 L575,150 L586,150 L594,154 L596,160 L590,166 L578,170 L564,170 Z"/>'
-    +'</g>';
+  // 経線（30度ごと）
+  for(var gx=0;gx<=12;gx++){var gxx=(gx/12*680).toFixed(1);grid+='<line x1="'+gxx+'" y1="0" x2="'+gxx+'" y2="340" stroke="#1a3a5c" stroke-width="0.3"/>';}
+  // 緯線（30度ごと）
+  for(var gy=0;gy<=6;gy++){var gyy=(gy/6*340).toFixed(1);grid+='<line x1="0" y1="'+gyy+'" x2="680" y2="'+gyy+'" stroke="#1a3a5c" stroke-width="0.3"/>';}
+  // 赤道
+  grid+='<line x1="0" y1="170" x2="680" y2="170" stroke="#2a5a7c" stroke-width="0.8" stroke-dasharray="4,3"/>';
+  var land='<g fill="#2d5a3d" stroke="#3d7a55" stroke-width="0.4">'+paths+'</g>';
   var pins='';
   WC_PINS.forEach(function(p){
     var px=lngToX(p.lon).toFixed(1);
     var py=latToY(p.lat).toFixed(1);
     pins+='<g transform="translate('+px+','+py+')">'
-      +'<circle r="3.5" fill="#f59e0b" stroke="#fff" stroke-width="1"/>'
-      +'<circle r="9" fill="#f59e0b" opacity="0.15"/>'
-      +'<text x="'+p.dx+'" y="-9" text-anchor="'+p.ax+'" font-family="sans-serif" font-size="7.5" fill="#e2e8f0" font-weight="700">'+p.name+'</text>'
-      +'<text x="'+p.dx+'" id="wct-'+p.id.replace('/','_')+'" y="13" text-anchor="'+p.ax+'" font-family="monospace" font-size="8.5" fill="#fbbf24" font-weight="700">--:--</text>'
+      +'<circle r="3" fill="#f59e0b" stroke="#fff" stroke-width="0.8"/>'
+      +'<circle r="8" fill="#f59e0b" opacity="0.12"/>'
+      +'<text x="'+p.dx+'" y="-8" text-anchor="'+p.ax+'" font-family="sans-serif" font-size="7" fill="#e2e8f0" font-weight="700">'+p.name+'</text>'
+      +'<text x="'+p.dx+'" id="wct-'+p.id.replace('/','_')+'" y="12" text-anchor="'+p.ax+'" font-family="monospace" font-size="8" fill="#fbbf24" font-weight="700">--:--</text>'
       +'</g>';
   });
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" style="width:100%;height:auto;display:block;">'+bg+grid+land+pins+'</svg>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" style="width:100%;height:auto;display:block;border-radius:8px;">'+bg+grid+land+pins+'</svg>';
 }
+
+// TopoJSONの座標を等長方形投影でSVGパスに変換
+function topoToSvgPaths(topo){
+  var countries=topojson.feature(topo,topo.objects.countries);
+  var svgPaths='';
+  countries.features.forEach(function(f){
+    var d='';
+    function ring(coords){
+      var pts=coords.map(function(c){
+        return lngToX(c[0]).toFixed(1)+','+latToY(c[1]).toFixed(1);
+      });
+      return 'M'+pts.join('L')+'Z';
+    }
+    var geom=f.geometry;
+    if(!geom) return;
+    if(geom.type==='Polygon'){
+      geom.coordinates.forEach(function(r){d+=ring(r);});
+    } else if(geom.type==='MultiPolygon'){
+      geom.coordinates.forEach(function(poly){poly.forEach(function(r){d+=ring(r);});});
+    }
+    if(d) svgPaths+='<path d="'+d+'"/>';
+  });
+  return svgPaths;
+}
+
+// UTC変換: tzでのhh:mm → UTC milliseconds (今日の日付基準)
+function inputToUtcMs(tz, timeStr){
+  var now=new Date();
+  // 今のtzオフセット(ms)を測定
+  var utcStr=now.toLocaleString('sv-SE',{timeZone:'UTC'});
+  var tzStr=now.toLocaleString('sv-SE',{timeZone:tz});
+  var offsetMs=new Date(tzStr+' UTC').getTime()-new Date(utcStr+' UTC').getTime();
+  // tzでの今日の日付
+  var todayInTz=now.toLocaleDateString('sv-SE',{timeZone:tz});
+  // 入力時刻をUTCとして解釈してからオフセット分を引く
+  var inputAsUtcMs=new Date(todayInTz+'T'+timeStr+':00Z').getTime();
+  return inputAsUtcMs-offsetMs;
+}
+
+var wcMapPaths=null; // キャッシュ
 function startClock(){
   stopClock();
   var wrap=document.getElementById('wcWrap');
   if(!wrap) return;
-  wrap.innerHTML=buildMapSVG();
-  function tick(){
-    var fromTz=document.getElementById('wcFromTz')?document.getElementById('wcFromTz').value:'';
-    var fromTime=document.getElementById('wcFromTime')?document.getElementById('wcFromTime').value:'';
-    var baseDate;
-    if(fromTz&&fromTime){
-      var now=new Date();
-      var dateStr=now.toLocaleDateString('sv-SE',{timeZone:fromTz});
-      var localMs=new Date(dateStr+'T'+fromTime+':00').getTime();
-      var localOffset=new Date(now.toLocaleString('sv-SE',{timeZone:fromTz})).getTime()-new Date(now.toLocaleString('sv-SE',{timeZone:'UTC'})).getTime();
-      baseDate=new Date(localMs-localOffset);
-    } else {
-      baseDate=new Date();
+  // topojsonが未ロードなら動的ロード
+  function doStart(paths){
+    wrap.innerHTML=buildMapSVG(paths);
+    function tick(){
+      var fromTz=document.getElementById('wcFromTz')?document.getElementById('wcFromTz').value:'';
+      var fromTime=document.getElementById('wcFromTime')?document.getElementById('wcFromTime').value:'';
+      var baseDate;
+      if(fromTz&&fromTime){
+        baseDate=new Date(inputToUtcMs(fromTz,fromTime));
+      } else {
+        baseDate=new Date();
+      }
+      WC_PINS.forEach(function(p){
+        var el=document.getElementById('wct-'+p.id.replace('/','_'));
+        if(el) el.textContent=baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+      });
     }
-    WC_PINS.forEach(function(p){
-      var elId='wct-'+p.id.replace('/','_');
-      var el=document.getElementById(elId);
-      if(el) el.textContent=baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    });
+    tick();
+    clockInterval=setInterval(tick,1000);
   }
-  tick();
-  clockInterval=setInterval(tick,1000);
+  if(wcMapPaths!==null){doStart(wcMapPaths);return;}
+  // topojson-client をロード
+  wrap.innerHTML='<div style="padding:20px;text-align:center;color:#64748b;font-size:.82rem;">🌍 地図を読み込み中...</div>';
+  function loadScript(src,cb){var s=document.createElement('script');s.src=src;s.onload=cb;document.head.appendChild(s);}
+  function fetchMap(){
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+      .then(function(r){return r.json();})
+      .then(function(topo){
+        wcMapPaths=topoToSvgPaths(topo);
+        doStart(wcMapPaths);
+      })
+      .catch(function(){wcMapPaths='';doStart('');});
+  }
+  if(typeof topojson!=='undefined'){fetchMap();}
+  else{loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js',fetchMap);}
 }
-function stopClock(){if(clockInterval){clearInterval(clockInterval);clockInterval=null;}}
-function calcWcConv(){stopClock();startClock();}
+function stopClock(){if(clockInterval){clearInterval(clockInterval);clockInterval=null;}}function calcWcConv(){stopClock();startClock();}
 function resetWcConv(){var s=document.getElementById('wcFromTz');var t=document.getElementById('wcFromTime');if(s)s.value='';if(t)t.value='';stopClock();startClock();}
 
 
