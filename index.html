@@ -1687,7 +1687,7 @@ function startClock(){
         if(hasInput){
           var fromPin=WC_PINS.find(function(p){return p.id===fromTz;});
           var fromName=fromPin?fromPin.name:fromTz;
-          var tzAbbr=new Date().toLocaleTimeString('ja-JP',{timeZone:fromTz,timeZoneName:'short'}).split(' ').pop()||fromTz;
+          var tzAbbr=new Date().toLocaleTimeString('en-GB',{timeZone:fromTz,timeZoneName:'short'}).split(' ').pop()||fromTz;
           cap.textContent='📌 '+fromName+'（'+tzAbbr+'）を '+fromTime+' とした場合の各国の時刻（黄色 [ ] が変換結果）';
         } else {
           cap.textContent='';
