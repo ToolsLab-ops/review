@@ -42,7 +42,7 @@ image: /assets/images/thumb-aiarty-review.jpg
 | **永久ライセンス** | $59.99（約¥9,000） | 1PC・生涯無料アップデート |
 | **ファミリー永久** | $99.99（約¥15,000） | 3PC利用可 |
 
-永久ライセンスは一度の購入で以降の費用不要のため、継続的に使う方はコスパが高くなります。セール時に30〜50%割引されることもあります。最新価格は<a href="https://www.aiarty.com/image-enhancer/" target="_blank" rel="nofollow noopener">Aiarty公式サイト</a>でご確認ください。
+永久ライセンスは一度の購入で以降の費用不要のため、継続的に使う方はコスパが高くなります。セール時に30〜50%割引されることもあります。最新価格は<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+ESV322+428G+HWPVM" target="_blank" rel="nofollow noopener">Aiarty公式サイト</a>でご確認ください。
 
 ---
 
@@ -98,5 +98,5 @@ Aiarty Image Enhancerは**低コストで高品質なAI画像高解像度化が�
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f5f3ff;border-left:4px solid #a78bfa;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">Aiarty Image Enhancer の無料版を試す</p>
-<a href="https://www.aiarty.com/image-enhancer/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#7c3aed;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">Aiarty 公式サイトへ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+ESV322+428G+HWPVM" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#7c3aed;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">Aiarty 公式サイトへ →</a>
 </div>
