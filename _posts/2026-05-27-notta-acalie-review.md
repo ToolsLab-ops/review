@@ -58,7 +58,7 @@ image: /assets/images/thumb-notta-acalie-review.jpg
 | **Pro** | ¥1,400 | ¥1,166 | 無制限 |
 | **Business** | ¥2,200/人 | ¥1,833/人 | 無制限＋チーム管理 |
 
-無料プランでも月3件まで使えるため、まず試してから有料プランを検討できます。最新価格は<a href="https://acalie.notta.ai/" target="_blank" rel="nofollow noopener">Notta Acalie公式サイト</a>でご確認ください。
+無料プランでも月3件まで使えるため、まず試してから有料プランを検討できます。最新価格は<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+EU1Y9M+5QLS+HV7V6" target="_blank" rel="nofollow noopener">Notta Acalie公式サイト</a>でご確認ください。
 
 ---
 
@@ -84,5 +84,5 @@ Notta Acalieは**会議・授業の音声からリアルタイムでAIノート�
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #60a5fa;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">Notta Acalieの無料プランで試してみる</p>
-<a href="https://acalie.notta.ai/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#2563eb;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">Notta Acalie 公式サイトへ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+EU1Y9M+5QLS+HV7V6" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#2563eb;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">Notta Acalie 公式サイトへ →</a>
 </div>
