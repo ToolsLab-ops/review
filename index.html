@@ -1062,11 +1062,11 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
 
 
-    <div class="stat-item"><div class="stat-num">40</div><div class="stat-label">レビュー記事</div></div>
+    <div class="stat-item"><div class="stat-num" id="statReviewCount">—</div><div class="stat-label">レビュー記事</div></div>
 
 
 
-    <div class="stat-item"><div class="stat-num">22</div><div class="stat-label">無料ツール</div></div>
+    <div class="stat-item"><div class="stat-num" id="statToolCount">—</div><div class="stat-label">無料ツール</div></div>
 
 
 
@@ -2203,6 +2203,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
   buildSidebar();const bar=document.getElementById('toolCountBar');if(bar)bar.textContent=`全${TOOLS.length}件のツール`;
+  // スタッツバー動的更新
+  const reviewCount=document.querySelectorAll('#articlesGrid .article-card').length;
+  const toolCount=Object.keys(RENDERERS).filter(k=>k!=='default').length;
+  const elR=document.getElementById('statReviewCount');const elT=document.getElementById('statToolCount');
+  if(elR)elR.textContent=reviewCount;if(elT)elT.textContent=toolCount;
 
 
 
