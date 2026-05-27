@@ -1,0 +1,94 @@
+---
+layout: post
+title: "AI Agent Campの評判・料金・カリキュラムを解説【2026年版】AIエージェント開発スクール"
+description: "AI Agent Campの評判・料金・カリキュラム・無料体験の内容を解説。ChatGPTやLangChainを使ったAIエージェント開発を学べる内容、Neuro Diveとの違い、向いている人をわかりやすく説明します。"
+date: 2026-05-27
+categories: [ai-tools, review]
+tags: [AI Agent Camp, AIエージェント, AIスクール, LangChain, ChatGPT, プログラミング学習]
+image: /assets/images/thumb-ai-agent-camp-review.jpg
+---
+
+<p style="font-size:.85em;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;padding:.5rem 1rem;border-radius:4px;margin-bottom:1.5rem;">本記事はアフィリエイト広告（A8.net）を含む場合があります。</p>
+
+## 【結論】AI Agent Campとは
+
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 170" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="170" fill="#0f172a" rx="10"/><defs><marker id="arr5" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#34d399"/></marker></defs><rect x="16" y="50" width="130" height="70" fill="#1e293b" rx="8" stroke="#34d399" stroke-width="1.5"/><text x="81" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">① 入門</text><text x="81" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">Python基礎</text><text x="81" y="103" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">ChatGPT API入門</text><line x1="146" y1="85" x2="166" y2="85" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr5)"/><rect x="170" y="50" width="140" height="70" fill="#1e293b" rx="8" stroke="#34d399" stroke-width="1.5"/><text x="240" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">② 基礎</text><text x="240" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">LangChain基礎</text><text x="240" y="103" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">RAG・ベクトルDB</text><line x1="310" y1="85" x2="330" y2="85" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr5)"/><rect x="334" y="50" width="140" height="70" fill="#064e3b" rx="8" stroke="#34d399" stroke-width="2"/><text x="404" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#a7f3d0" font-weight="bold">③ エージェント</text><text x="404" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#6ee7b7">自律型AIエージェント設計</text><text x="404" y="103" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#6ee7b7">ツール連携・自動実行</text><line x1="474" y1="85" x2="494" y2="85" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr5)"/><rect x="498" y="50" width="140" height="70" fill="#1e293b" rx="8" stroke="#34d399" stroke-width="1.5"/><text x="568" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">④ 実践</text><text x="568" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">個人プロジェクト</text><text x="568" y="103" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">ポートフォリオ作成</text><line x1="638" y1="85" x2="658" y2="85" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr5)"/><rect x="662" y="50" width="122" height="70" fill="#064e3b" rx="8" stroke="#34d399" stroke-width="1.5"/><text x="723" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">⑤ 修了・転職</text><text x="723" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">AIエンジニア</text><text x="723" y="103" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">AIフリーランス</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：AI Agent Campの学習ステップ — Python入門からAIエージェント実装・修了まで</figcaption></figure>
+
+**AI Agent Camp**は、ChatGPT・LangChain・自律型AIエージェント開発を実践的に学べるオンラインプログラミングスクールです。AIをただ使うだけでなく、**自分でAIエージェントを構築・実装できる技術者**を目指すカリキュラムが特徴です。
+
+2025〜2026年にかけてAIエージェント（AutoGPT・LangChain・CrewAI等）の需要が急拡大しており、「AIを動かす側」のスキルを習得したいエンジニア・副業志向者に注目されています。
+
+---
+
+## カリキュラムと学習内容
+
+| フェーズ | 内容 |
+|---------|------|
+| **Phase 1: 入門** | Python基礎・ChatGPT API・プロンプトエンジニアリング |
+| **Phase 2: 基礎** | LangChain・RAG（検索拡張生成）・ベクトルデータベース |
+| **Phase 3: エージェント** | 自律型AIエージェント設計・ツール統合・自動実行フロー |
+| **Phase 4: 実践** | 個人プロジェクト開発・ポートフォリオ作成 |
+
+実際のAIエージェント（複数のツールを自律的に使って目標を達成するAI）を自分で実装するまでを学習範囲としており、**AIを活用するだけでなく自ら構築できるスキル**が身に付きます。
+
+---
+
+## 料金と無料体験
+
+AI Agent Campの詳細料金は無料体験・説明会参加後に案内されます。
+
+| 内容 | 詳細 |
+|------|------|
+| **無料体験** | 一部コンテンツ・説明会を無料で受講可 |
+| **受講料** | 無料体験後に案内（分割払い対応） |
+| **修了証** | 発行あり |
+
+まずは**無料体験**で自分のレベル・カリキュラムの内容が合うか確認することをおすすめします。
+
+最新情報は<a href="https://ai-agent.camp/" target="_blank" rel="nofollow noopener">AI Agent Camp公式サイト</a>でご確認ください。
+
+---
+
+## Neuro Diveとの比較
+
+AIスキルを学ぶスクールとして「Neuro Dive」とよく比較されます。
+
+| 比較項目 | AI Agent Camp | Neuro Dive |
+|---------|-------------|-----------|
+| **強み** | AIエージェント・LangChain実装 | データサイエンス・機械学習・AI設計 |
+| **対象レベル** | 入門〜中級エンジニア | 中級〜上級 |
+| **カリキュラム** | 実装・プロダクト開発中心 | データ分析・DS/AI設計 |
+| **転職サポート** | あり | あり（WEB説明会参加報酬対象） |
+| **向いている人** | AIエージェントを自分で作りたい | データサイエンティストを目指したい |
+
+「自律型AIエージェントを自分で構築したい」なら**AI Agent Camp**、「データ分析・機械学習のキャリアを目指したい」なら**Neuro Dive**が向いています。
+
+<a href="/2026/05/07/neuro-dive-review/">→ Neuro Diveの詳細レビューはこちら</a>
+
+---
+
+## AI Agent Campをおすすめする人・しない人
+
+**おすすめする人**
+- AIエージェント・LangChainを実装できるエンジニアになりたい
+- ChatGPT APIやPythonを業務・副業に活かしたい
+- AI開発のポートフォリオを作りたい
+- AIを「使う」だけでなく「作る」側に移行したい
+
+**おすすめしない人**
+- プログラミング未経験から始める（→ 入門コースを別途先に学ぶ必要がある場合も）
+- データ分析・統計のキャリアを目指している（→ Neuro Diveが向いている）
+- AIツールを業務効率化に使いたいだけ（→ DMM生成AI CAMPやFammが適切）
+
+---
+
+## まとめ
+
+AI Agent Campは**AIエージェントを自分で構築・実装できる技術スキルを習得できるスクール**です。ChatGPT API・LangChain・自律型エージェント開発という2026年最需要のAIスキルを体系的に学べます。
+
+まず**無料体験**でカリキュラムと自分のレベルが合うかを確認してみましょう。
+
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #34d399;border-radius:8px;">
+<p style="margin:0 0 .5rem;font-weight:bold;">AI Agent Campの無料体験はこちら</p>
+<a href="https://ai-agent.camp/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#059669;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">AI Agent Camp 公式サイトへ →</a>
+</div>
