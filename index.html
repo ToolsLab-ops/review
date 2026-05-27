@@ -1574,13 +1574,14 @@ function latToY(lat){return (90-lat)/180*340;}
 function buildMapSVG(paths){
   var bg='<rect width="680" height="340" fill="#0d2137"/>';
   var grid='';
-  // 経線（30度ごと）
-  for(var gx=0;gx<=12;gx++){var gxx=(gx/12*680).toFixed(1);grid+='<line x1="'+gxx+'" y1="0" x2="'+gxx+'" y2="340" stroke="#1a3a5c" stroke-width="0.3"/>';}
-  // 緯線（30度ごと）
-  for(var gy=0;gy<=6;gy++){var gyy=(gy/6*340).toFixed(1);grid+='<line x1="0" y1="'+gyy+'" x2="680" y2="'+gyy+'" stroke="#1a3a5c" stroke-width="0.3"/>';}
+  // 経線（60度ごと: -180,-120,-60,0,60,120,180）
+  for(var gx=0;gx<=6;gx++){var gxx=(gx/6*680).toFixed(1);grid+='<line x1="'+gxx+'" y1="0" x2="'+gxx+'" y2="340" stroke="#1a3a5c" stroke-width="0.4"/>';}
+  // 緯線（60度ごと: -60,0,60）＋赤道を赤道線で上書き
+  grid+='<line x1="0" y1="56.7" x2="680" y2="56.7" stroke="#1a3a5c" stroke-width="0.4"/>'; // 60°N
+  grid+='<line x1="0" y1="283.3" x2="680" y2="283.3" stroke="#1a3a5c" stroke-width="0.4"/>'; // 60°S
   // 赤道
-  grid+='<line x1="0" y1="170" x2="680" y2="170" stroke="#2a5a7c" stroke-width="0.8" stroke-dasharray="4,3"/>';
-  var land='<g fill="#2d5a3d" stroke="#3d7a55" stroke-width="0.4">'+paths+'</g>';
+  grid+='<line x1="0" y1="170" x2="680" y2="170" stroke="#2a6a8c" stroke-width="0.8" stroke-dasharray="5,3"/>';
+  var land='<g fill="#2d5a3d" stroke="#3a7050" stroke-width="0.3">'+paths+'</g>';
   var pins='';
   WC_PINS.forEach(function(p){
     var px=lngToX(p.lon).toFixed(1);
@@ -1588,24 +1589,40 @@ function buildMapSVG(paths){
     pins+='<g transform="translate('+px+','+py+')">'
       +'<circle r="3" fill="#f59e0b" stroke="#fff" stroke-width="0.8"/>'
       +'<circle r="8" fill="#f59e0b" opacity="0.12"/>'
-      +'<text x="'+p.dx+'" y="-8" text-anchor="'+p.ax+'" font-family="sans-serif" font-size="7" fill="#e2e8f0" font-weight="700">'+p.name+'</text>'
-      +'<text x="'+p.dx+'" id="wct-'+p.id.replace('/','_')+'" y="12" text-anchor="'+p.ax+'" font-family="monospace" font-size="8" fill="#fbbf24" font-weight="700">--:--</text>'
+      +'<text x="'+p.dx+'" y="-10" text-anchor="'+p.ax+'" font-family="sans-serif" font-size="7" fill="#e2e8f0" font-weight="700">'+p.name+'</text>'
+      +'<text x="'+p.dx+'" id="wcr-'+p.id.replace(/\//g,'_')+'" y="3" text-anchor="'+p.ax+'" font-family="monospace" font-size="7.5" fill="#94d4ff" font-weight="700">--:--:--</text>'
+      +'<text x="'+p.dx+'" id="wct-'+p.id.replace(/\//g,'_')+'" y="14" text-anchor="'+p.ax+'" font-family="monospace" font-size="8" fill="#fbbf24" font-weight="700" visibility="hidden">--:--</text>'
       +'</g>';
   });
   return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" style="width:100%;height:auto;display:block;border-radius:8px;">'+bg+grid+land+pins+'</svg>';
 }
 
-// TopoJSONの座標を等長方形投影でSVGパスに変換
+// TopoJSONの座標を等長方形投影でSVGパスに変換（アンチメリジアン対応）
 function topoToSvgPaths(topo){
   var countries=topojson.feature(topo,topo.objects.countries);
   var svgPaths='';
   countries.features.forEach(function(f){
     var d='';
     function ring(coords){
-      var pts=coords.map(function(c){
-        return lngToX(c[0]).toFixed(1)+','+latToY(c[1]).toFixed(1);
-      });
-      return 'M'+pts.join('L')+'Z';
+      if(!coords||coords.length<2) return '';
+      var seg='';
+      var prevX=null;
+      for(var i=0;i<coords.length;i++){
+        var cx=lngToX(coords[i][0]);
+        var cy=latToY(coords[i][1]);
+        if(i===0){
+          seg+='M'+cx.toFixed(1)+','+cy.toFixed(1);
+        } else {
+          // 経度差が300px以上（約160°相当）なら経線をまたいでいる→新サブパス
+          if(prevX!==null && Math.abs(cx-prevX)>300){
+            seg+='M'+cx.toFixed(1)+','+cy.toFixed(1);
+          } else {
+            seg+='L'+cx.toFixed(1)+','+cy.toFixed(1);
+          }
+        }
+        prevX=cx;
+      }
+      return seg+'Z';
     }
     var geom=f.geometry;
     if(!geom) return;
@@ -1640,20 +1657,42 @@ function startClock(){
   if(!wrap) return;
   // topojsonが未ロードなら動的ロード
   function doStart(paths){
-    wrap.innerHTML=buildMapSVG(paths);
+    wrap.innerHTML=buildMapSVG(paths)
+      +'<div id="wcCaption" style="margin-top:6px;font-size:0.78rem;color:#94a3b8;text-align:center;min-height:1.2em;"></div>';
     function tick(){
       var fromTz=document.getElementById('wcFromTz')?document.getElementById('wcFromTz').value:'';
       var fromTime=document.getElementById('wcFromTime')?document.getElementById('wcFromTime').value:'';
-      var baseDate;
-      if(fromTz&&fromTime){
-        baseDate=new Date(inputToUtcMs(fromTz,fromTime));
-      } else {
-        baseDate=new Date();
-      }
+      var now=new Date();
+      var hasInput=!!(fromTz&&fromTime);
+      var baseDate=hasInput?new Date(inputToUtcMs(fromTz,fromTime)):null;
+
       WC_PINS.forEach(function(p){
-        var el=document.getElementById('wct-'+p.id.replace('/','_'));
-        if(el) el.textContent=baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+        var key=p.id.replace(/\//g,'_');
+        var rEl=document.getElementById('wcr-'+key); // リアルタイム（青）
+        var tEl=document.getElementById('wct-'+key); // 入力変換（黄）
+        if(rEl) rEl.textContent=now.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+        if(tEl){
+          if(hasInput){
+            tEl.textContent='['+baseDate.toLocaleTimeString('ja-JP',{timeZone:p.id,hour:'2-digit',minute:'2-digit'}).replace(':','h')+']';
+            tEl.setAttribute('visibility','visible');
+          } else {
+            tEl.setAttribute('visibility','hidden');
+          }
+        }
       });
+
+      // キャプション更新
+      var cap=document.getElementById('wcCaption');
+      if(cap){
+        if(hasInput){
+          var fromPin=WC_PINS.find(function(p){return p.id===fromTz;});
+          var fromName=fromPin?fromPin.name:fromTz;
+          var tzAbbr=new Date().toLocaleTimeString('ja-JP',{timeZone:fromTz,timeZoneName:'short'}).split(' ').pop()||fromTz;
+          cap.textContent='📌 '+fromName+'（'+tzAbbr+'）を '+fromTime+' とした場合の各国の時刻（黄色 [ ] が変換結果）';
+        } else {
+          cap.textContent='';
+        }
+      }
     }
     tick();
     clockInterval=setInterval(tick,1000);
