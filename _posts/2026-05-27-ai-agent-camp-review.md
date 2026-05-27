@@ -45,7 +45,7 @@ AI Agent Campの詳細料金は無料体験・説明会参加後に案内され�
 
 まずは**無料体験**で自分のレベル・カリキュラムの内容が合うか確認することをおすすめします。
 
-最新情報は<a href="https://ai-agent.camp/" target="_blank" rel="nofollow noopener">AI Agent Camp公式サイト</a>でご確認ください。
+最新情報は<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+EV8TH6+5VRC+5YJRM" target="_blank" rel="nofollow noopener">AI Agent Camp公式サイト</a>でご確認ください。
 
 ---
 
@@ -90,5 +90,5 @@ AI Agent Campは**AIエージェントを自分で構築・実装できる技術
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #34d399;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">AI Agent Campの無料体験はこちら</p>
-<a href="https://ai-agent.camp/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#059669;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">AI Agent Camp 公式サイトへ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+EV8TH6+5VRC+5YJRM" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#059669;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">AI Agent Camp 公式サイトへ →</a>
 </div>
