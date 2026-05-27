@@ -44,7 +44,7 @@ image: /assets/images/thumb-bunken-review.jpg
 
 年払いを選ぶと月換算で約17〜20%お得です。個人ライターには**ライタープラン**、メディアのマーケティング担当や薬機法対応が必要な方には**Proプラン**が向いています。
 
-最新料金は<a href="https://bun-ken.com/" target="_blank" rel="nofollow noopener">文賢公式サイト</a>でご確認ください。
+最新料金は<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F6K1YY+3Q2O+HYFLU" target="_blank" rel="nofollow noopener">文賢公式サイト</a>でご確認ください。
 
 ---
 
@@ -102,5 +102,5 @@ image: /assets/images/thumb-bunken-review.jpg
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#fefce8;border-left:4px solid #f59e0b;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">文賢の詳細・無料体験はこちら</p>
-<a href="https://bun-ken.com/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#f59e0b;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">文賢 公式サイトへ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F6K1YY+3Q2O+HYFLU" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#f59e0b;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">文賢 公式サイトへ →</a>
 </div>
