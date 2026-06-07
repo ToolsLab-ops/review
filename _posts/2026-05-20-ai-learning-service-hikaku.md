@@ -139,7 +139,19 @@ Copilotなど企業向けツールの習得に強みがあります。
 
 ---
 
-<!-- AFFILIATE LINK CODES
+
+
+---
+
+## 番外編：単発講座でAIを試してみたい方へ
+
+体系的なコースに踏み出す前に「まずAIの特定スキルだけ学びたい」という場合は、単発購入できるオンライン学習プラットフォームも選択肢です。
+
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #a21caf;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4D6; 気になる講座から始めたい方に</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">ChatGPT活用・プロンプトエンジニアリング・Python入門など、AI関連講座が豊富に揃っています。セール時は数百円から受講可能。</p>
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3770660&pid=892627872" rel="nofollow" style="display:inline-block;background:#a21caf;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3770660&pid=892627872" height="1" width="1" border="0">Udemyで講座を探す →</a>
+</div><!-- AFFILIATE LINK CODES
 DMM生成AI CAMP: a8mat=4B3JAH+BLYEJ6+5VEK+5YRHE (承認済み)
 Neuro Dive: a8mat=4B3JAH+BLCYXE+47GS+HV7V6 (承認済み)
 AI CONNECT: A8.net審査中（2026-05-20時点）→承認後にpx.a8.netリンク追加予定
