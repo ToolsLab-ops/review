@@ -130,4 +130,5 @@ ChatGPTを学習に使うメリットをまとめると：
 <a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Neuro Diveで学ぶ →</a>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">DMM生成AI CAMPを見る →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt="">
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3770660&pid=892627872" rel="nofollow" style="display:inline-block;background:#a21caf;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3770660&pid=892627872" height="1" width="1" border="0">Udemyで講座を探す →</a>
 </div>
