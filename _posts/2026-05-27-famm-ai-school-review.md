@@ -91,3 +91,4 @@ Famm生成AIスクールは、**子育て世代・働く女性がスキマ時間
 <p style="margin:0 0 .5rem;font-weight:bold;">Famm生成AIスクールの無料説明会に申し込む</p>
 <a href="https://famm.us/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#db2777;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">Famm 公式サイトへ →</a>
 </div>
+<!-- TODO: Famm AccessTrade（Famm生成AIスクール）承認後にAccessTradeリンクに差し替え要（1.3.27） -->
