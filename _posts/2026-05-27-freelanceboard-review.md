@@ -92,6 +92,6 @@ image: /assets/images/thumb-freelanceboard-review.jpg
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #38bdf8;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">フリーランスボードで案件を探す（無料）</p>
-<a href="https://freelanceboard.jp/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" rel="nofollow" target="_blank" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" alt="">
 </div>
-<!-- TODO: フリーランスボード A8.net承認済み（s00000026833001）→ A8.net管理画面でa8matコードを確認してpx.a8.netリンクに差し替える（1.2.18） -->
