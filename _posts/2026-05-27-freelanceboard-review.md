@@ -94,3 +94,4 @@ image: /assets/images/thumb-freelanceboard-review.jpg
 <p style="margin:0 0 .5rem;font-weight:bold;">フリーランスボードで案件を探す（無料）</p>
 <a href="https://freelanceboard.jp/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
 </div>
+<!-- TODO: フリーランスボード A8.net承認済み（s00000026833001）→ A8.net管理画面でa8matコードを確認してpx.a8.netリンクに差し替える（1.2.18） -->
