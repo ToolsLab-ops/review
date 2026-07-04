@@ -422,63 +422,72 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 
 <script>
 /* ============================================================
-   Chord Metronome Engine — shared core (Web Audio API, no deps)
+   Chord Metronome Engine v2 — shared core (Web Audio API, no deps)
    ============================================================ */
-(function (global) {
+(function (root) {
   'use strict';
 
-  const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-  const DEGREE_MAJOR = { I:0, II:2, III:4, IV:5, V:7, VI:9, VII:11 };
-  const DEGREE_MINOR = { I:0, II:2, IIIb:3, III:3, IV:5, V:7, VIb:8, VI:8, VIIb:10, VII:10 };
+  var NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  var DEGREE_MAJOR = { I:0, II:2, III:4, IV:5, V:7, VI:9, VII:11 };
+  var DEGREE_MINOR = { I:0, II:2, IIIb:3, III:3, IV:5, V:7, VIb:8, VI:8, VIIb:10, VII:10 };
 
-  const PROGRESSIONS = {
-    oudou:    { name:'王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）', chords:[{deg:'IV',q:''},{deg:'V',q:''},{deg:'III',q:'m'},{deg:'VI',q:'m'}] },
-    canon:    { name:'カノン進行（I-V-VIm-IIIm-IV-I-IV-V）', chords:[{deg:'I',q:''},{deg:'V',q:''},{deg:'VI',q:'m'},{deg:'III',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'IV',q:''},{deg:'V',q:''}] },
-    komuro:   { name:'小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'V',q:''}] },
-    marusa:   { name:'丸サ進行（I-VIm-IIm-V）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'II',q:'m'},{deg:'V',q:''}] },
-    junkan:   { name:'循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''}] },
-    blues:    { name:'ブルース進行（Ⅰ-Ⅳ-Ⅴ）', chords:[{deg:'I',q:'7'},{deg:'IV',q:'7'},{deg:'V',q:'7'}] },
-    setsunai: { name:'切ない系進行（VIm-IV-V-VIm）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''},{deg:'VI',q:'m'}] },
-    cliche:   { name:'クリシェ進行（I-I/VII-I7/♭VII-VIm）', chords:[
-                  { deg:'I', q:'' , bassDeg:'I' },
-                  { deg:'I', q:'' , bassDeg:'VII', bassLowered:true },
-                  { deg:'I', q:'7', bassDeg:'VII', bassLowered:true },
-                  { deg:'VI', q:'m', bassDeg:'VI' },
-                ] },
+  var QUALITY_INTERVALS = {
+    '':     [0,4,7],
+    'm':    [0,3,7],
+    '7':    [0,4,7,10],
+    'maj7': [0,4,7,11],
+    'm7':   [0,3,7,10],
+    'm7b5': [0,3,6,10],
   };
-
-  const QUALITY_INTERVALS = { '':[0,4,7], 'm':[0,3,7], '7':[0,4,7,10] };
 
   function noteNameToMidiBase(name) { return NOTE_NAMES.indexOf(name); }
 
-  function buildChordNotes(chordDef, keyRootSemitone, isMinorKey) {
-    const scaleMap = isMinorKey ? DEGREE_MINOR : DEGREE_MAJOR;
-    const rootOffset = scaleMap[chordDef.deg];
-    const intervals = QUALITY_INTERVALS[chordDef.q] || QUALITY_INTERVALS[''];
-    const rootAbs = keyRootSemitone + rootOffset;
-    let notes = intervals.map(iv => rootAbs + iv);
+  // Build a chord's absolute note list (semitones from C4=0), applying a per-chord octave shift.
+  function buildChordNotes(chordDef, keyRootSemitone, isMinorKey, octaveShift) {
+    var scaleMap = isMinorKey ? DEGREE_MINOR : DEGREE_MAJOR;
+    var rootOffset = scaleMap[chordDef.deg];
+    var intervals = QUALITY_INTERVALS[chordDef.q] || QUALITY_INTERVALS[''];
+    var rootAbs = keyRootSemitone + rootOffset;
+    var notes = intervals.map(function (iv) { return rootAbs + iv; });
+
     if (chordDef.bassDeg) {
-      let bassOffset = scaleMap[chordDef.bassDeg];
+      var bassOffset = scaleMap[chordDef.bassDeg];
       if (chordDef.bassLowered) bassOffset -= 1;
-      const bassAbs = keyRootSemitone + bassOffset;
-      notes = [bassAbs - 12, ...notes.filter(n => (n % 12 + 12) % 12 !== (bassAbs % 12 + 12) % 12)];
+      var bassAbs = keyRootSemitone + bassOffset;
+      notes = [bassAbs - 12].concat(notes.filter(function (n) {
+        return ((n % 12) + 12) % 12 !== ((bassAbs % 12) + 12) % 12;
+      }));
     }
-    return notes;
+    var shift = (octaveShift || 0) * 12;
+    return notes.map(function (n) { return n + shift; });
   }
 
   function semitoneToFreq(semitoneFromC4) {
-    const midi = 60 + semitoneFromC4;
+    var midi = 60 + semitoneFromC4;
     return 440 * Math.pow(2, (midi - 69) / 12);
   }
 
+  // Note name + octave label for staff/reference display, e.g. semitone 0 -> "C4"
+  function semitoneToLabel(semitoneFromC4) {
+    var midi = 60 + semitoneFromC4;
+    var name = NOTE_NAMES[((midi % 12) + 12) % 12];
+    var octave = Math.floor(midi / 12) - 1;
+    return name + octave;
+  }
+
+  /* ---------------- Audio Engine ---------------- */
   function ChordMetronomeEngine() {
     this.ctx = null;
     this.isPlaying = false;
     this.timerId = null;
     this.beatCount = 0;
     this.chordIndex = 0;
-    this.onBeat = null;
-    this.onChordChange = null;
+    this.state = 'idle'; // 'idle' | 'countdown' | 'playing'
+    this.countdownBeatsLeft = 0;
+    this.onBeat = null;          // (beatInBar, beatsPerBar, state)
+    this.onChordChange = null;   // (chordIndex, chordDef, notes)
+    this.metronomeGain = 0.8;    // 0..1
+    this.chordGain = 0.8;        // 0..1
   }
 
   ChordMetronomeEngine.prototype._ensureCtx = function () {
@@ -487,40 +496,103 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     return this.ctx;
   };
 
-  ChordMetronomeEngine.prototype.playClick = function (accent) {
-    const ctx = this._ensureCtx();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = 'square';
-    osc.frequency.value = accent ? 1500 : 1000;
-    gain.gain.setValueAtTime(accent ? 0.35 : 0.2, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-    osc.connect(gain).connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.06);
+  // sound: 'click' (electronic), 'wood' (woodblock-ish), 'beep'
+  ChordMetronomeEngine.prototype.playClick = function (accent, sound) {
+    var ctx = this._ensureCtx();
+    var vol = this.metronomeGain;
+    if (vol <= 0) return;
+    var now = ctx.currentTime;
+
+    if (sound === 'wood') {
+      // Short noise burst through a bandpass filter -> woodblock-like tick
+      var bufferSize = ctx.sampleRate * 0.05;
+      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      var data = buffer.getChannelData(0);
+      for (var i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 3);
+      var noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      var filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = accent ? 1800 : 1200;
+      filter.Q.value = 3;
+      var gain = ctx.createGain();
+      gain.gain.setValueAtTime((accent ? 0.9 : 0.6) * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      noise.connect(filter).connect(gain).connect(ctx.destination);
+      noise.start(now);
+      noise.stop(now + 0.06);
+    } else if (sound === 'beep') {
+      var osc = ctx.createOscillator();
+      var g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = accent ? 1800 : 1200;
+      g.gain.setValueAtTime((accent ? 0.4 : 0.25) * vol, now);
+      g.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.09);
+    } else {
+      // 'click' — original electronic square click
+      var osc2 = ctx.createOscillator();
+      var g2 = ctx.createGain();
+      osc2.type = 'square';
+      osc2.frequency.value = accent ? 1500 : 1000;
+      g2.gain.setValueAtTime((accent ? 0.35 : 0.2) * vol, now);
+      g2.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc2.connect(g2).connect(ctx.destination);
+      osc2.start(now);
+      osc2.stop(now + 0.06);
+    }
   };
 
-  ChordMetronomeEngine.prototype.playChordNotes = function (semitones, durationSec, timbre) {
-    const ctx = this._ensureCtx();
-    const now = ctx.currentTime;
-    semitones.forEach(st => this._playVoice(semitoneToFreq(st), now, durationSec, timbre || 'piano'));
+  // timbre: 'piano' | 'organ' | 'strings' | 'soft'
+  // pattern: 'block' (all notes together) | 'arpeggio-up' | 'arpeggio-updown' | 'rhythm' (quarter-note comping)
+  ChordMetronomeEngine.prototype.playChordNotes = function (semitones, durationSec, timbre, pattern) {
+    var ctx = this._ensureCtx();
+    var vol = this.chordGain;
+    if (vol <= 0) return;
+    var now = ctx.currentTime;
+    var self = this;
+
+    if (pattern === 'arpeggio-up' || pattern === 'arpeggio-updown') {
+      var seq = semitones.slice();
+      if (pattern === 'arpeggio-updown') seq = seq.concat(seq.slice(0, -1).reverse());
+      var step = durationSec / seq.length;
+      seq.forEach(function (st, i) {
+        self._playVoice(semitoneToFreq(st), now + i * step, step * 0.95, timbre, vol);
+      });
+    } else if (pattern === 'rhythm') {
+      // Simple comping: hit on beat 1 and the "and" of beat 2 (durationSec assumed = 1 chord's full hold)
+      var hits = [0, durationSec * 0.5];
+      hits.forEach(function (t) {
+        semitones.forEach(function (st) {
+          self._playVoice(semitoneToFreq(st), now + t, durationSec * 0.4, timbre, vol);
+        });
+      });
+    } else {
+      // 'block' (default): all notes together, sustained
+      semitones.forEach(function (st) {
+        self._playVoice(semitoneToFreq(st), now, durationSec, timbre, vol);
+      });
+    }
   };
 
-  ChordMetronomeEngine.prototype._playVoice = function (freq, startTime, duration, timbre) {
-    const ctx = this.ctx;
-    const master = ctx.createGain();
+  ChordMetronomeEngine.prototype._playVoice = function (freq, startTime, duration, timbre, vol) {
+    var ctx = this.ctx;
+    var master = ctx.createGain();
     master.connect(ctx.destination);
+    vol = vol == null ? 1 : vol;
 
     if (timbre === 'organ') {
-      const partials = [1, 2, 3, 4];
-      const gains = [0.5, 0.22, 0.12, 0.08];
+      var partials = [1, 2, 3, 4];
+      var gains = [0.5, 0.22, 0.12, 0.08];
       master.gain.setValueAtTime(0.0001, startTime);
-      master.gain.linearRampToValueAtTime(0.5, startTime + 0.03);
-      master.gain.setValueAtTime(0.5, startTime + Math.max(0.03, duration - 0.08));
+      master.gain.linearRampToValueAtTime(0.5 * vol, startTime + 0.03);
+      master.gain.setValueAtTime(0.5 * vol, startTime + Math.max(0.03, duration - 0.08));
       master.gain.linearRampToValueAtTime(0.0001, startTime + duration);
-      partials.forEach((p, i) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
+      partials.forEach(function (p, i) {
+        var osc = ctx.createOscillator();
+        var g = ctx.createGain();
         osc.type = 'sine';
         osc.frequency.value = freq * p;
         g.gain.value = gains[i];
@@ -529,86 +601,222 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
         osc.stop(startTime + duration + 0.05);
       });
     } else if (timbre === 'strings') {
-      const osc1 = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
+      var osc1 = ctx.createOscillator();
+      var osc2 = ctx.createOscillator();
       osc1.type = 'sawtooth'; osc2.type = 'sawtooth';
       osc1.frequency.value = freq; osc2.frequency.value = freq * 1.005;
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass'; filter.frequency.value = 2200;
+      var filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass'; filter.frequency.value = 1800;
       master.gain.setValueAtTime(0.0001, startTime);
-      master.gain.linearRampToValueAtTime(0.28, startTime + 0.25);
-      master.gain.setValueAtTime(0.28, startTime + Math.max(0.25, duration - 0.3));
+      master.gain.linearRampToValueAtTime(0.26 * vol, startTime + 0.25);
+      master.gain.setValueAtTime(0.26 * vol, startTime + Math.max(0.25, duration - 0.3));
       master.gain.linearRampToValueAtTime(0.0001, startTime + duration + 0.2);
       osc1.connect(filter); osc2.connect(filter); filter.connect(master);
       osc1.start(startTime); osc2.start(startTime);
       osc1.stop(startTime + duration + 0.3);
       osc2.stop(startTime + duration + 0.3);
+    } else if (timbre === 'soft') {
+      // Soft pad: sine-based, slow attack, gentle lowpass — non-fatiguing
+      var s1 = ctx.createOscillator();
+      var s2 = ctx.createOscillator();
+      s1.type = 'sine'; s2.type = 'sine';
+      s1.frequency.value = freq; s2.frequency.value = freq * 2;
+      var g2b = ctx.createGain();
+      g2b.gain.value = 0.12;
+      var lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass'; lp.frequency.value = 1400;
+      master.gain.setValueAtTime(0.0001, startTime);
+      master.gain.linearRampToValueAtTime(0.22 * vol, startTime + 0.18);
+      master.gain.setValueAtTime(0.22 * vol, startTime + Math.max(0.18, duration - 0.25));
+      master.gain.linearRampToValueAtTime(0.0001, startTime + duration + 0.25);
+      s1.connect(lp); s2.connect(g2b); g2b.connect(lp); lp.connect(master);
+      s1.start(startTime); s2.start(startTime);
+      s1.stop(startTime + duration + 0.3); s2.stop(startTime + duration + 0.3);
     } else {
-      const osc = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
-      osc.type = 'triangle'; osc2.type = 'sine';
-      osc.frequency.value = freq; osc2.frequency.value = freq * 2.001;
-      const g2 = ctx.createGain();
-      g2.gain.value = 0.15;
-      master.gain.setValueAtTime(0.45, startTime);
+      // 'piano' (default): triangle + soft 2nd partial, exponential decay, lowpass to remove harshness
+      var osc = ctx.createOscillator();
+      var osc2b = ctx.createOscillator();
+      osc.type = 'triangle'; osc2b.type = 'sine';
+      osc.frequency.value = freq; osc2b.frequency.value = freq * 2.001;
+      var g2c = ctx.createGain();
+      g2c.gain.value = 0.12;
+      var lp2 = ctx.createBiquadFilter();
+      lp2.type = 'lowpass'; lp2.frequency.value = 3200;
+      master.gain.setValueAtTime(0.4 * vol, startTime);
       master.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-      osc.connect(master);
-      osc2.connect(g2).connect(master);
-      osc.start(startTime); osc2.start(startTime);
+      osc.connect(lp2); osc2b.connect(g2c); g2c.connect(lp2); lp2.connect(master);
+      osc.start(startTime); osc2b.start(startTime);
       osc.stop(startTime + duration + 0.05);
-      osc2.stop(startTime + duration + 0.05);
+      osc2b.stop(startTime + duration + 0.05);
     }
   };
 
   ChordMetronomeEngine.prototype.stop = function () {
     this.isPlaying = false;
+    this.state = 'idle';
     if (this.timerId) { clearTimeout(this.timerId); this.timerId = null; }
     this.beatCount = 0;
     this.chordIndex = 0;
   };
 
+  /**
+   * options:
+   *  bpm, beatsPerBar, progressionKey/progression (custom array), keyRoot, keyMode,
+   *  chordDuration ('whole'|'half'|'quarter'|'eighth'),
+   *  timbre, pattern, metronomeSound ('click'|'wood'|'beep'),
+   *  metronomeOn, chordsOn, octaveShifts (array parallel to chords, semitone-octave shift per chord index),
+   *  countdownBars (int, number of metronome-only bars to play before EACH chord change; 0 = off)
+   */
   ChordMetronomeEngine.prototype.start = function (options) {
     this.stop();
     this._ensureCtx();
     this.isPlaying = true;
-    const beatsPerBar = options.beatsPerBar || 4;
-    const bpm = options.bpm || 120;
-    const beatDurSec = 60 / bpm;
-    const progression = PROGRESSIONS[options.progressionKey] || PROGRESSIONS.oudou;
-    const keyRootSemitone = noteNameToMidiBase(options.keyRoot || 'C');
-    const isMinorKey = options.keyMode === 'minor';
-    const chordBeatMap = { whole: beatsPerBar, quarter: 1, eighth: 0.5 };
-    const chordBeats = chordBeatMap[options.chordDuration] || beatsPerBar;
+    var beatsPerBar = options.beatsPerBar || 4;
+    var bpm = options.bpm || 90;
+    var beatDurSec = 60 / bpm;
+    var progression = options.progression || { chords: [{ deg: 'I', q: '' }] };
+    var keyRootSemitone = noteNameToMidiBase(options.keyRoot || 'C');
+    var isMinorKey = options.keyMode === 'minor';
+    var chordBeatMap = { whole: beatsPerBar, half: beatsPerBar / 2, quarter: 1, eighth: 0.5 };
+    var chordBeats = chordBeatMap[options.chordDuration] || beatsPerBar;
+    var octaveShifts = options.octaveShifts || [];
+    var countdownBars = options.countdownBars || 0;
 
     this.beatCount = 0;
     this.chordIndex = 0;
-    let beatsIntoChord = 0;
+    // beatsIntoChord counts how many "playing" beats have elapsed for the CURRENT chord,
+    // BEFORE this tick. When it's 0, this tick must sound a new chord.
+    var beatsIntoChord = 0;
+    this.state = (countdownBars > 0 && options.chordsOn) ? 'countdown' : 'playing';
+    this.countdownBeatsLeft = countdownBars * beatsPerBar;
 
-    const self = this;
+    var self = this;
+
+    function soundChord() {
+      if (!options.chordsOn) return;
+      var chordDef = progression.chords[self.chordIndex % progression.chords.length];
+      var shift = octaveShifts[self.chordIndex % progression.chords.length] || 0;
+      var notes = buildChordNotes(chordDef, keyRootSemitone, isMinorKey, shift);
+      var durSec = chordBeats * beatDurSec * 0.95;
+      self.playChordNotes(notes, durSec, options.timbre, options.pattern);
+      if (typeof self.onChordChange === 'function') {
+        self.onChordChange(self.chordIndex % progression.chords.length, chordDef, notes);
+      }
+    }
+
     function tick() {
       if (!self.isPlaying) return;
-      const beatInBar = self.beatCount % beatsPerBar;
-      const isAccent = beatInBar === 0;
-      if (options.metronomeOn !== false) self.playClick(isAccent);
-      if (typeof self.onBeat === 'function') self.onBeat(beatInBar, beatsPerBar);
-      if (options.chordsOn && beatsIntoChord === 0) {
-        const chordDef = progression.chords[self.chordIndex % progression.chords.length];
-        const notes = buildChordNotes(chordDef, keyRootSemitone, isMinorKey);
-        const durSec = chordBeats * beatDurSec * 0.92;
-        self.playChordNotes(notes, durSec, options.timbre);
-        if (typeof self.onChordChange === 'function') self.onChordChange(self.chordIndex % progression.chords.length, chordDef);
+      var beatInBar = self.beatCount % beatsPerBar;
+      var isAccent = beatInBar === 0;
+
+      if (options.metronomeOn !== false) {
+        self.playClick(isAccent, options.metronomeSound);
       }
+
+      if (self.state === 'countdown') {
+        self.countdownBeatsLeft--;
+        if (self.countdownBeatsLeft <= 0) {
+          self.state = 'playing';
+          beatsIntoChord = 0;
+        }
+      }
+
+      if (typeof self.onBeat === 'function') self.onBeat(beatInBar, beatsPerBar, self.state);
+
+      if (self.state === 'playing') {
+        if (beatsIntoChord === 0) soundChord();
+        beatsIntoChord++;
+        if (beatsIntoChord >= chordBeats) {
+          beatsIntoChord = 0;
+          self.chordIndex++;
+          if (countdownBars > 0 && options.chordsOn) {
+            self.state = 'countdown';
+            self.countdownBeatsLeft = countdownBars * beatsPerBar;
+          }
+        }
+      }
+
       self.beatCount++;
-      beatsIntoChord = (beatsIntoChord + 1) % chordBeats;
-      if (beatsIntoChord === 0 && options.chordsOn) self.chordIndex++;
       self.timerId = setTimeout(tick, beatDurSec * 1000);
     }
     tick();
   };
 
-  global.ChordMetronomeEngine = ChordMetronomeEngine;
-  global.CHORD_PROGRESSIONS = PROGRESSIONS;
+  root.ChordMetronomeEngineV2 = ChordMetronomeEngine;
+  root.buildChordNotes = buildChordNotes;
+  root.semitoneToLabel = semitoneToLabel;
+  root.NOTE_NAMES_V2 = NOTE_NAMES;
 })(window);
+
+/* ============================================================
+   UI helper functions shared by ToolsLab + Cooltake embeds (v2)
+   Requires: engine-v2.js loaded first (window.ChordMetronomeEngineV2, buildChordNotes, semitoneToLabel)
+   ============================================================ */
+
+// Very small staff renderer: draws a 5-line treble staff and note heads for given semitone offsets (relative to C4=0).
+// Returns an SVG string. Good enough for "which notes will sound" reference, not full notation engraving.
+function ctpRenderStaffSVG(semitones, width) {
+  width = width || 260;
+  var height = 100;
+  var lineGap = 10;
+  var top = 20;
+  var linesY = [0,1,2,3,4].map(function(i){ return top + i*lineGap; });
+  // Staff line pitches (treble clef): E4 F4 G4 A4 B4 C5 D5 E5 F5 (bottom to top: E4,G4,B4,D5,F5)
+  // Map semitone-from-C4 to a vertical position using a simple diatonic step approximation.
+  var REF = { // semitone-from-C4 -> staff step (0 = bottom line E4), fractional steps for accidentals
+    '-8':-3.5,'-7':-3,'-6':-2.5,'-5':-2,'-4':-1.5,'-3':-1,'-2':-0.5,'-1':0,
+    '0':0.5,'1':1,'2':1.5,'3':2,'4':2.5,'5':3,'6':3.5,'7':4,'8':4.5,'9':5,'10':5.5,'11':6,
+    '12':6.5,'13':7,'14':7.5,'15':8,'16':8.5,'17':9,'18':9.5,'19':10,'20':10.5,'21':11,'22':11.5,'23':12
+  };
+  function stepFor(s) {
+    var v = REF[String(s)];
+    if (v == null) v = 6 + (s - 11) * 0.5; // fallback extrapolation for far-out notes
+    return v;
+  }
+  var noteEls = semitones.map(function (s, i) {
+    var step = stepFor(s);
+    var y = top + 4*lineGap - step*lineGap*0.7; // bottom line (E4)=step0 anchored near line index4
+    var x = 60 + i*28;
+    var ledger = '';
+    if (y < top - 2) ledger = '<line x1="'+(x-10)+'" y1="'+top+'" x2="'+(x+10)+'" y2="'+top+'" stroke="#8b9bff" stroke-width="1"/>';
+    if (y > top + 4*lineGap + 2) ledger = '<line x1="'+(x-10)+'" y1="'+(top+4*lineGap)+'" x2="'+(x+10)+'" y2="'+(top+4*lineGap)+'" stroke="#8b9bff" stroke-width="1"/>';
+    return ledger + '<ellipse cx="'+x+'" cy="'+y+'" rx="6" ry="4.5" fill="#8b9bff"/>';
+  }).join('');
+  var lines = linesY.map(function(y){ return '<line x1="20" y1="'+y+'" x2="'+width+'" y2="'+y+'" stroke="#555" stroke-width="1"/>'; }).join('');
+  return '<svg viewBox="0 0 '+width+' '+height+'" width="100%" height="'+height+'" xmlns="http://www.w3.org/2000/svg">'+
+    '<text x="18" y="'+(top+4*lineGap+4)+'" font-size="30" fill="#8b9bff">𝄞</text>' +
+    lines + noteEls + '</svg>';
+}
+
+function ctpQualityLabel(q) {
+  return { '':'', m:'m', '7':'7', maj7:'maj7', m7:'m7', m7b5:'m7♭5' }[q] || '';
+}
+
+function ctpChordLabel(chordDef) {
+  var base = chordDef.deg + ctpQualityLabel(chordDef.q);
+  if (chordDef.bassDeg && chordDef.bassDeg !== chordDef.deg) {
+    base += '/' + (chordDef.bassLowered ? '♭' : '') + chordDef.bassDeg;
+  }
+  return base;
+}
+
+const CHORD_PROGRESSIONS = {
+  oudou:    { name:'王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）', chords:[{deg:'IV',q:''},{deg:'V',q:''},{deg:'III',q:'m'},{deg:'VI',q:'m'}] },
+  canon:    { name:'カノン進行（I-V-VIm-IIIm-IV-I-IV-V）', chords:[{deg:'I',q:''},{deg:'V',q:''},{deg:'VI',q:'m'},{deg:'III',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'IV',q:''},{deg:'V',q:''}] },
+  komuro:   { name:'小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'V',q:''}] },
+  marusa:   { name:'丸サ進行（I-VIm-IIm-V）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'II',q:'m'},{deg:'V',q:''}] },
+  junkan:   { name:'循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''}] },
+  blues:    { name:'ブルース進行（Ⅰ-Ⅳ-Ⅴ）', chords:[{deg:'I',q:'7'},{deg:'IV',q:'7'},{deg:'V',q:'7'}] },
+  setsunai: { name:'切ない系進行（VIm-IV-V-VIm）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''},{deg:'VI',q:'m'}] },
+  cliche:   { name:'クリシェ進行（I-I/VII-I7/♭VII-VIm）', chords:[
+                { deg:'I', q:'' , bassDeg:'I' },
+                { deg:'I', q:'' , bassDeg:'VII', bassLowered:true },
+                { deg:'I', q:'7', bassDeg:'VII', bassLowered:true },
+                { deg:'VI', q:'m', bassDeg:'VI' },
+              ] },
+};
+window.CHORD_PROGRESSIONS = CHORD_PROGRESSIONS;
+
 </script>
 <script>
 /* =============================================
@@ -891,82 +1099,137 @@ const RENDERERS = {
 
   kanji: () => `<div style="text-align:center;padding:16px 16px 8px;"><div style="font-size:2rem;margin-bottom:6px;">🀄</div><div style="font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:3px;">姓名判断・画数占い</div><div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;">五格の自動計算ツールは近日公開予定です。</div></div><a href="https://note.com/tools_aria/n/n76654c6a3d8c" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:10px;text-decoration:none;cursor:pointer;"><div style="font-size:1.4rem;flex-shrink:0;">📖</div><div style="flex:1;"><div style="font-size:.65rem;font-weight:700;color:#c7d2fe;margin-bottom:2px;">姓名判断の結果と命式を組み合わせて読み解く</div><div style="font-size:.78rem;font-weight:900;color:#fff;line-height:1.4;">四柱推命×姓名判断 完全ガイド<br>【5格の吉凶・81数霊も解説】</div><div style="font-size:.62rem;color:#a5b4fc;margin-top:3px;">¥300 — ToolsLab.ARIA</div></div><div style="background:#4f46e5;color:#fff;font-size:.68rem;font-weight:700;padding:5px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0;">詳細 →</div></a>`,
   bpm: () => `
+  <div class="tool-input-row">
+    <label>テンポ（BPM）</label>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <input id="bpmVal" type="range" min="40" max="240" value="90" oninput="bpmSlide()" style="flex:1;">
+      <div style="width:56px;text-align:right;font-weight:900;font-size:1.1rem;color:var(--blue);"><span id="bpmValNum">90</span></div>
+    </div>
+  </div>
+  <div class="tool-input-pair">
     <div class="tool-input-row">
-      <label>テンポ（BPM）</label>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <input id="bpmVal" type="range" min="40" max="240" value="120" oninput="bpmSlide()" style="flex:1;">
-        <div style="width:56px;text-align:right;font-weight:900;font-size:1.1rem;color:var(--blue);"><span id="bpmValNum">120</span></div>
+      <label>拍子</label>
+      <select id="bpmBeats" onchange="bpmApplyIfPlaying()">
+        <option value="2">2拍子（2/4）</option>
+        <option value="3">3拍子（3/4）</option>
+        <option value="4" selected>4拍子（4/4）</option>
+        <option value="6">6拍子（6/8）</option>
+      </select>
+    </div>
+    <div class="tool-input-row">
+      <label>メトロノーム音</label>
+      <select id="bpmMetroSound" onchange="bpmApplyIfPlaying()">
+        <option value="click">電子音（クリック）</option>
+        <option value="wood" selected>ウッドブロック</option>
+        <option value="beep">ソフトビープ</option>
+      </select>
+    </div>
+  </div>
+  <div class="tool-input-pair">
+    <div class="tool-input-row">
+      <label>メトロノーム音量</label>
+      <input id="bpmMetroVol" type="range" min="0" max="100" value="80" oninput="bpmApplyIfPlaying()">
+    </div>
+    <div class="tool-input-row">
+      <label>コード音量</label>
+      <input id="bpmChordVol" type="range" min="0" max="100" value="80" oninput="bpmApplyIfPlaying()">
+    </div>
+  </div>
+
+  <div class="tool-input-row" style="text-align:center;margin:16px 0;">
+    <button class="calc-btn" id="bpmStartBtn" style="font-size:1rem;" onclick="bpmToggle()">▶ メトロノーム開始</button>
+    <div style="display:flex;gap:6px;justify-content:center;margin-top:10px;" id="bpmBeatDots"></div>
+    <div id="bpmStateLabel" style="font-size:.72rem;color:var(--muted);margin-top:6px;"></div>
+  </div>
+
+  <div style="border-top:1.5px solid var(--border);margin:16px 0 14px;padding-top:14px;">
+    <div style="font-size:.85rem;font-weight:900;margin-bottom:10px;">🎹 コード進行を鳴らす</div>
+    <div class="tool-input-row">
+      <label>進行パターン</label>
+      <select id="bpmProgression" onchange="bpmOnProgressionChange()">
+        <option value="oudou">王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）</option>
+        <option value="canon">カノン進行（I-V-VIm-IIIm-IV-I-IV-V）</option>
+        <option value="komuro">小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）</option>
+        <option value="marusa">丸サ進行（I-VIm-IIm-V）</option>
+        <option value="junkan">循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）</option>
+        <option value="blues">ブルース進行（Ⅰ-Ⅳ-Ⅴ）</option>
+        <option value="setsunai">切ない系進行（VIm-IV-V-VIm）</option>
+        <option value="cliche">クリシェ進行（I-I/VII-I7/♭VII-VIm）</option>
+      </select>
+    </div>
+
+    <div id="bpmProgressionSeq" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;"></div>
+
+    <div class="tool-input-pair">
+      <div class="tool-input-row">
+        <label>キー</label>
+        <div style="display:flex;gap:6px;">
+          <select id="bpmKeyRoot" onchange="bpmApplyIfPlaying()" style="flex:1;">
+            <option>C</option><option>C#</option><option>D</option><option>D#</option>
+            <option>E</option><option>F</option><option>F#</option><option>G</option>
+            <option>G#</option><option>A</option><option>A#</option><option>B</option>
+          </select>
+          <select id="bpmKeyMode" onchange="bpmApplyIfPlaying()" style="flex:1;">
+            <option value="major">Major</option>
+            <option value="minor">Minor</option>
+          </select>
+        </div>
+      </div>
+      <div class="tool-input-row">
+        <label>拍の長さ（1コードの保持）</label>
+        <select id="bpmChordDur" onchange="bpmApplyIfPlaying()">
+          <option value="whole" selected>全音符（1小節）</option>
+          <option value="half">2分音符</option>
+          <option value="quarter">4分音符</option>
+          <option value="eighth">8分音符</option>
+        </select>
       </div>
     </div>
     <div class="tool-input-pair">
       <div class="tool-input-row">
-        <label>拍子</label>
-        <select id="bpmBeats" onchange="bpmApplyIfPlaying()">
-          <option value="2">2拍子（2/4）</option>
-          <option value="3">3拍子（3/4）</option>
-          <option value="4" selected>4拍子（4/4）</option>
-          <option value="6">6拍子（6/8）</option>
-        </select>
-      </div>
-      <div class="tool-input-row">
         <label>音色</label>
         <select id="bpmTimbre" onchange="bpmApplyIfPlaying()">
+          <option value="soft" selected>ソフトパッド</option>
           <option value="piano">ピアノ</option>
           <option value="organ">オルガン</option>
           <option value="strings">ストリングス</option>
         </select>
       </div>
-    </div>
-    <div class="tool-input-row" style="text-align:center;margin:16px 0;">
-      <button class="calc-btn" id="bpmStartBtn" style="font-size:1rem;" onclick="bpmToggle()">▶ メトロノーム開始</button>
-      <div style="display:flex;gap:6px;justify-content:center;margin-top:10px;" id="bpmBeatDots"></div>
-    </div>
-    <div style="border-top:1.5px solid var(--border);margin:16px 0 14px;padding-top:14px;">
-      <div style="font-size:.85rem;font-weight:900;margin-bottom:10px;">🎹 コード進行を鳴らす</div>
       <div class="tool-input-row">
-        <label>進行パターン</label>
-        <select id="bpmProgression" onchange="bpmApplyIfPlaying()">
-          <option value="oudou">王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）</option>
-          <option value="canon">カノン進行（I-V-VIm-IIIm-IV-I-IV-V）</option>
-          <option value="komuro">小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）</option>
-          <option value="marusa">丸サ進行（I-VIm-IIm-V）</option>
-          <option value="junkan">循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）</option>
-          <option value="blues">ブルース進行（Ⅰ-Ⅳ-Ⅴ）</option>
-          <option value="setsunai">切ない系進行（VIm-IV-V-VIm）</option>
-          <option value="cliche">クリシェ進行（I-I/VII-I7/♭VII-VIm）</option>
+        <label>演奏パターン</label>
+        <select id="bpmPattern" onchange="bpmApplyIfPlaying()">
+          <option value="block">ブロック（同時に鳴らす）</option>
+          <option value="arpeggio-up">アルペジオ（上行）</option>
+          <option value="arpeggio-updown">アルペジオ（上下）</option>
+          <option value="rhythm">リズムカッティング</option>
         </select>
       </div>
-      <div class="tool-input-pair">
-        <div class="tool-input-row">
-          <label>キー</label>
-          <div style="display:flex;gap:6px;">
-            <select id="bpmKeyRoot" onchange="bpmApplyIfPlaying()" style="flex:1;">
-              <option>C</option><option>C#</option><option>D</option><option>D#</option>
-              <option>E</option><option>F</option><option>F#</option><option>G</option>
-              <option>G#</option><option>A</option><option>A#</option><option>B</option>
-            </select>
-            <select id="bpmKeyMode" onchange="bpmApplyIfPlaying()" style="flex:1;">
-              <option value="major">Major</option>
-              <option value="minor">Minor</option>
-            </select>
-          </div>
-        </div>
-        <div class="tool-input-row">
-          <label>拍の長さ（1コードの保持）</label>
-          <select id="bpmChordDur" onchange="bpmApplyIfPlaying()">
-            <option value="whole">全音符（1小節）</option>
-            <option value="quarter" selected>4分音符</option>
-            <option value="eighth">8分音符</option>
-          </select>
-        </div>
+    </div>
+    <div class="tool-input-row" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <label style="margin:0;display:flex;align-items:center;gap:6px;font-size:.8rem;">
+        <input type="checkbox" id="bpmChordsOn" checked onchange="bpmApplyIfPlaying()"> コード進行を再生に含める
+      </label>
+      <label style="margin:0;display:flex;align-items:center;gap:6px;font-size:.8rem;">
+        コード変更前のカウント:
+        <select id="bpmCountdown" onchange="bpmApplyIfPlaying()" style="width:auto;">
+          <option value="0">なし</option>
+          <option value="1">1小節</option>
+          <option value="2">2小節</option>
+        </select>
+      </label>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div style="font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:6px;">🎼 現在のコードの構成音（オクターブ上下可・次回も記憶）</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <button class="rate-btn" onclick="bpmShiftOctave(-1)" style="width:auto;padding:6px 14px;">－1oct</button>
+        <span id="bpmOctaveLabel" style="font-size:.8rem;color:var(--muted);">オクターブ: 0</span>
+        <button class="rate-btn" onclick="bpmShiftOctave(1)" style="width:auto;padding:6px 14px;">+1oct</button>
       </div>
-      <div class="tool-input-row" style="display:flex;align-items:center;gap:8px;">
-        <label style="margin:0;display:flex;align-items:center;gap:6px;font-size:.8rem;">
-          <input type="checkbox" id="bpmChordsOn" onchange="bpmApplyIfPlaying()"> コード進行を再生に含める
-        </label>
-      </div>
-      <div id="bpmChordDisplay" style="background:var(--bg);border-radius:10px;padding:12px 14px;margin-top:6px;text-align:center;font-size:1.1rem;font-weight:900;color:var(--blue);min-height:32px;">—</div>
-    </div>`,
+      <div id="bpmStaff" style="background:#1a1d29;border-radius:8px;padding:8px;"></div>
+    </div>
+  </div>
+`,
   default: (tool) => `
     <div style="text-align:center;padding:32px 16px;color:var(--muted);">
       <div style="font-size:2.5rem;margin-bottom:12px;">${tool.icon}</div>
@@ -1049,59 +1312,130 @@ function startClock() {
 }
 function stopClock() { if (clockInterval) { clearInterval(clockInterval); clockInterval = null; } }
 
-/* =============================================
-   METRONOME & CHORD PROGRESSION PLAYER (bpm tool)
-   ============================================= */
+/* ToolsLab bpm glue v2 */
 let bpmEngine = null;
+let bpmOctaveShifts = {}; // { "progressionKey:chordIndex": shiftInt }
+
+function bpmLoadShifts() {
+  try {
+    const raw = localStorage.getItem('toolslab_bpm_octave_shifts');
+    bpmOctaveShifts = raw ? JSON.parse(raw) : {};
+  } catch (e) { bpmOctaveShifts = {}; }
+}
+function bpmSaveShifts() {
+  try { localStorage.setItem('toolslab_bpm_octave_shifts', JSON.stringify(bpmOctaveShifts)); } catch (e) {}
+}
+function bpmShiftKey(chordIdx) {
+  return document.getElementById('bpmProgression').value + ':' + chordIdx;
+}
+function bpmGetShiftsArray() {
+  const progKey = document.getElementById('bpmProgression').value;
+  const prog = CHORD_PROGRESSIONS[progKey];
+  return prog.chords.map((_, i) => bpmOctaveShifts[progKey + ':' + i] || 0);
+}
+
 function bpmSlide() {
   document.getElementById('bpmValNum').textContent = document.getElementById('bpmVal').value;
   bpmApplyIfPlaying();
 }
 function bpmGetOptions() {
+  const progKey = document.getElementById('bpmProgression').value;
   return {
     bpm: parseInt(document.getElementById('bpmVal').value, 10),
     beatsPerBar: parseInt(document.getElementById('bpmBeats').value, 10),
     timbre: document.getElementById('bpmTimbre').value,
-    progressionKey: document.getElementById('bpmProgression').value,
+    pattern: document.getElementById('bpmPattern').value,
+    metronomeSound: document.getElementById('bpmMetroSound').value,
+    progression: CHORD_PROGRESSIONS[progKey],
     keyRoot: document.getElementById('bpmKeyRoot').value,
     keyMode: document.getElementById('bpmKeyMode').value,
     chordDuration: document.getElementById('bpmChordDur').value,
     chordsOn: document.getElementById('bpmChordsOn').checked,
+    countdownBars: parseInt(document.getElementById('bpmCountdown').value, 10),
     metronomeOn: true,
+    octaveShifts: bpmGetShiftsArray(),
   };
 }
 function bpmBuildDots() {
-  const beatsEl = document.getElementById('bpmBeats');
-  if (!beatsEl) return;
-  const beats = parseInt(beatsEl.value, 10);
+  const beats = parseInt(document.getElementById('bpmBeats').value, 10);
   const wrap = document.getElementById('bpmBeatDots');
   wrap.innerHTML = Array.from({length: beats}, (_, i) =>
     `<div class="bpm-dot" data-i="${i}" style="width:14px;height:14px;border-radius:50%;background:var(--border);transition:background .1s;"></div>`
   ).join('');
 }
+function bpmRenderSequence(activeIdx) {
+  const progKey = document.getElementById('bpmProgression').value;
+  const prog = CHORD_PROGRESSIONS[progKey];
+  const wrap = document.getElementById('bpmProgressionSeq');
+  wrap.innerHTML = prog.chords.map((c, i) => {
+    const label = ctpChordLabel(c);
+    const active = i === activeIdx;
+    return `<div style="padding:6px 12px;border-radius:8px;font-weight:700;font-size:.85rem;
+      border:2px solid ${active ? 'var(--blue)' : 'var(--border)'};
+      background:${active ? 'var(--blue-lt)' : 'var(--white)'};
+      color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>`;
+  }).join('');
+}
+function bpmUpdateStaff(activeIdx) {
+  const progKey = document.getElementById('bpmProgression').value;
+  const prog = CHORD_PROGRESSIONS[progKey];
+  const chordDef = prog.chords[activeIdx];
+  const shift = bpmOctaveShifts[bpmShiftKey(activeIdx)] || 0;
+  const keyRoot = document.getElementById('bpmKeyRoot').value;
+  const keyMode = document.getElementById('bpmKeyMode').value;
+  const keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
+  const notes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', shift);
+  document.getElementById('bpmStaff').innerHTML = ctpRenderStaffSVG(notes);
+  document.getElementById('bpmOctaveLabel').textContent = 'オクターブ: ' + (shift > 0 ? '+' : '') + shift;
+}
+let bpmCurrentChordIdx = 0;
+function bpmShiftOctave(delta) {
+  const key = bpmShiftKey(bpmCurrentChordIdx);
+  const cur = bpmOctaveShifts[key] || 0;
+  const next = Math.max(-2, Math.min(2, cur + delta));
+  bpmOctaveShifts[key] = next;
+  bpmSaveShifts();
+  bpmUpdateStaff(bpmCurrentChordIdx);
+  bpmApplyIfPlaying();
+}
+function bpmOnProgressionChange() {
+  bpmCurrentChordIdx = 0;
+  bpmRenderSequence(0);
+  bpmUpdateStaff(0);
+  bpmApplyIfPlaying();
+}
 function bpmToggle() {
   const btn = document.getElementById('bpmStartBtn');
-  if (!bpmEngine) bpmEngine = new ChordMetronomeEngine();
+  if (!bpmEngine) bpmEngine = new ChordMetronomeEngineV2();
   if (bpmEngine.isPlaying) {
     bpmEngine.stop();
     btn.textContent = '▶ メトロノーム開始';
+    document.getElementById('bpmStateLabel').textContent = '';
     document.querySelectorAll('.bpm-dot').forEach(d => d.style.background = 'var(--border)');
   } else {
     bpmBuildDots();
-    bpmEngine.onBeat = (beatInBar) => {
+    bpmEngine.onBeat = (beatInBar, beatsPerBar, state) => {
       document.querySelectorAll('.bpm-dot').forEach((d, i) => {
-        d.style.background = i === beatInBar ? 'var(--blue)' : 'var(--border)';
+        d.style.background = i === beatInBar ? (state === 'countdown' ? '#f59e0b' : 'var(--blue)') : 'var(--border)';
       });
+      document.getElementById('bpmStateLabel').textContent = state === 'countdown' ? 'カウント中…' : '';
     };
-    bpmEngine.onChordChange = (idx, chordDef) => {
-      const disp = document.getElementById('bpmChordDisplay');
-      if (disp) disp.textContent = chordDef.deg + (chordDef.q === 'm' ? 'm' : chordDef.q === '7' ? '7' : '');
+    bpmEngine.onChordChange = (idx) => {
+      bpmCurrentChordIdx = idx;
+      bpmRenderSequence(idx);
+      bpmUpdateStaff(idx);
     };
+    bpmEngine.metronomeGain = parseInt(document.getElementById('bpmMetroVol').value, 10) / 100;
+    bpmEngine.chordGain = parseInt(document.getElementById('bpmChordVol').value, 10) / 100;
     bpmEngine.start(bpmGetOptions());
     btn.textContent = '■ 停止';
   }
 }
 function bpmApplyIfPlaying() {
+  if (bpmEngine) {
+    bpmEngine.metronomeGain = parseInt(document.getElementById('bpmMetroVol').value, 10) / 100;
+    bpmEngine.chordGain = parseInt(document.getElementById('bpmChordVol').value, 10) / 100;
+  }
   if (bpmEngine && bpmEngine.isPlaying) bpmEngine.start(bpmGetOptions());
   bpmBuildDots();
 }
@@ -1111,6 +1445,12 @@ function bpmStopIfPlaying() {
     const btn = document.getElementById('bpmStartBtn');
     if (btn) btn.textContent = '▶ メトロノーム開始';
   }
+}
+function bpmInit() {
+  bpmLoadShifts();
+  bpmBuildDots();
+  bpmRenderSequence(0);
+  bpmUpdateStaff(0);
 }
 
 let pwLen = 16;
@@ -1303,7 +1643,7 @@ function openTool(toolId, cardEl) {
   if (toolId === 'world-clock')  { startClock(); }
   if (toolId === 'password')     { updatePwLen(); genPw(); }
   if (toolId === 'shichu') calcShichu();
-  if (toolId === 'bpm') bpmBuildDots();
+  if (toolId === 'bpm') bpmInit();
 }
 
 function closeTool() {
