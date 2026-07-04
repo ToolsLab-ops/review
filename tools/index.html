@@ -462,29 +462,27 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     return notes.map(function (n) { return n + shift; });
   }
 
-  // Applies voicing operations to a chord's note list: 'high' lowers the current
-  // highest-sounding note by an octave, 'low' lowers the current lowest-sounding note
-  // by an octave. Each op is applied in order to the RESULT of the previous op, so
-  // e.g. lowering the highest note twice in a row keeps lowering whichever note is
-  // highest at that moment (which may become a different note after the first lower).
-  // ops: { high: <times applied>, low: <times applied> }, applied high-then-low per round.
+  // Applies a voicing operation HISTORY to a chord's note list, in the exact order the user
+  // clicked: 'high' lowers whichever note is currently highest by an octave, 'up' raises
+  // whichever note is currently lowest by an octave. Replaying the clicks in original order
+  // (rather than tallying "N highs + M ups" and applying all highs then all ups) means
+  // alternating high/up presses behave the way a user watching the notes move would expect —
+  // e.g. high then up on the note that became the new lowest raises it back, matching
+  // "undo what I just did" rather than silently cancelling to a different, unintended voicing.
+  // ops: array of 'high' | 'up', in click order.
   function applyVoicingOps(notes, ops) {
     var result = notes.slice();
-    var high = (ops && ops.high) || 0;
-    var low = (ops && ops.low) || 0;
-    var rounds = Math.max(high, low);
-    for (var i = 0; i < rounds; i++) {
-      if (i < high) {
+    (ops || []).forEach(function (op) {
+      if (op === 'high') {
         var maxIdx = 0;
         for (var a = 1; a < result.length; a++) if (result[a] > result[maxIdx]) maxIdx = a;
         result[maxIdx] -= 12;
-      }
-      if (i < low) {
+      } else if (op === 'up') {
         var minIdx = 0;
         for (var b = 1; b < result.length; b++) if (result[b] < result[minIdx]) minIdx = b;
-        result[minIdx] -= 12;
+        result[minIdx] += 12;
       }
-    }
+    });
     return result;
   }
 
@@ -862,15 +860,17 @@ function ctpRenderStaffLines(semitones, clef, x0, width, top, lineGap, colorNote
   return clefGlyph + lineEls + noteEls;
 }
 
-// Renders a grand staff (treble + bass) for a chord's notes: the lowest-sounding note goes to
-// the bass clef, all remaining notes go to the treble clef. Returns an SVG string.
+// Renders a grand staff (treble + bass) for a chord.
+// `semitones` (treble): the FULL set of currently-sounding notes, including root/bass — this is
+// whatever the user's "最高音↓/最低音↑" voicing operations produced, shown as-is with no note removed.
+// `fixedBassSemitone`: the chord's bass/root pitch class as originally defined (unaffected by
+// voicing operations), shown an octave lower on the bass clef purely as a fixed reference —
+// it never moves when the treble voicing is changed.
 // Good enough for "which notes will sound, roughly where" reference — not full music engraving.
-function ctpRenderStaffSVG(semitones, width) {
+function ctpRenderStaffSVG(semitones, fixedBassSemitone, width) {
   width = width || 260;
-  var sorted = semitones.slice().sort(function (a, b) { return a - b; });
-  var bassNotes = sorted.length > 0 ? [sorted[0]] : [];
-  var trebleNotes = sorted.slice(1);
-  if (trebleNotes.length === 0) trebleNotes = bassNotes; // single-note chord edge case: show it on treble too
+  var trebleNotes = semitones.slice();
+  var bassNotes = fixedBassSemitone == null ? [] : [fixedBassSemitone - 12];
 
   var lineGap = 9;
   var trebleTop = 8;
@@ -1316,7 +1316,7 @@ const RENDERERS = {
       </label>
     </div>
 
-    <div style="font-size:.72rem;color:var(--muted);margin-top:10px;">🎼 各コードの構成音を五線譜で表示。「最高音↓」「最低音↓」でその場で鳴る音を上下できます（次回も記憶）</div>
+    <div style="font-size:.72rem;color:var(--muted);margin-top:10px;">🎼 各コードの構成音をト音記号（上声）＋ヘ音記号（ベース）の大譜表で表示。「最高音↓」「最低音↑」でその場で鳴る上声の音を動かせます（ベース音は固定・次回も記憶）</div>
   </div>
 `,
   default: (tool) => `
@@ -1421,7 +1421,7 @@ function bpmOpsKey(chordIdx) {
   return document.getElementById('bpmProgression').value + ':' + chordIdx;
 }
 function bpmGetOps(chordIdx) {
-  return bpmVoicingOps[bpmOpsKey(chordIdx)] || { high: 0, low: 0 };
+  return bpmVoicingOps[bpmOpsKey(chordIdx)] || [];
 }
 function bpmGetOpsArray() {
   const progKey = document.getElementById('bpmProgression').value;
@@ -1459,6 +1459,9 @@ function bpmBuildDots() {
     `<div class="bpm-dot" data-i="${i}" style="width:14px;height:14px;border-radius:50%;background:var(--border);transition:background .1s;"></div>`
   ).join('');
 }
+// Returns { notes, fixedBass }: `notes` is the current (possibly re-voiced) full chord;
+// `fixedBass` is the chord's bass/root pitch, fixed to its original definition and never
+// affected by voicing operations (used to anchor the bass-clef reference note).
 function bpmChordNotesFor(chordIdx) {
   const progKey = document.getElementById('bpmProgression').value;
   const prog = CHORD_PROGRESSIONS[progKey];
@@ -1466,8 +1469,10 @@ function bpmChordNotesFor(chordIdx) {
   const keyRoot = document.getElementById('bpmKeyRoot').value;
   const keyMode = document.getElementById('bpmKeyMode').value;
   const keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
-  const notes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', 0);
-  return applyVoicingOps(notes, bpmGetOps(chordIdx));
+  const baseNotes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', 0);
+  const fixedBass = baseNotes.length > 0 ? baseNotes[0] : null;
+  const notes = applyVoicingOps(baseNotes, bpmGetOps(chordIdx));
+  return { notes: notes, fixedBass: fixedBass };
 }
 function bpmRenderSequence(activeIdx) {
   const progKey = document.getElementById('bpmProgression').value;
@@ -1476,15 +1481,15 @@ function bpmRenderSequence(activeIdx) {
   wrap.innerHTML = prog.chords.map((c, i) => {
     const label = ctpChordLabel(c);
     const active = i === activeIdx;
-    const notes = bpmChordNotesFor(i);
+    const { notes, fixedBass } = bpmChordNotesFor(i);
     return `<div style="padding:8px 10px;border-radius:10px;min-width:120px;
       border:2px solid ${active ? 'var(--blue)' : 'var(--border)'};
       background:${active ? 'var(--blue-lt)' : 'var(--white)'};">
       <div style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:6px;color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>
-      <div style="background:#1a1d29;border-radius:6px;padding:4px;">${ctpRenderStaffSVG(notes, 130)}</div>
+      <div style="background:#1a1d29;border-radius:6px;padding:4px;">${ctpRenderStaffSVG(notes, fixedBass, 130)}</div>
       <div style="display:flex;gap:4px;margin-top:6px;">
         <button class="rate-btn" onclick="bpmVoicingOp(${i},'high')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最高音を1オクターブ下げる">最高音↓</button>
-        <button class="rate-btn" onclick="bpmVoicingOp(${i},'low')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最低音を1オクターブ下げる">最低音↓</button>
+        <button class="rate-btn" onclick="bpmVoicingOp(${i},'up')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最低音を1オクターブ上げる">最低音↑</button>
       </div>
       <button class="rate-btn" onclick="bpmVoicingReset(${i})" style="width:100%;margin-top:4px;padding:3px 2px;font-size:.62rem;color:var(--muted);">リセット</button>
     </div>`;
@@ -1493,8 +1498,7 @@ function bpmRenderSequence(activeIdx) {
 function bpmVoicingOp(chordIdx, which) {
   const key = bpmOpsKey(chordIdx);
   const cur = bpmGetOps(chordIdx);
-  const next = { high: cur.high, low: cur.low };
-  next[which] = Math.min(6, next[which] + 1);
+  const next = cur.concat([which]).slice(-12); // cap history length defensively
   bpmVoicingOps[key] = next;
   bpmSaveShifts();
   bpmRenderSequence(bpmCurrentChordIdx);
