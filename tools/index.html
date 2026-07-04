@@ -462,6 +462,32 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     return notes.map(function (n) { return n + shift; });
   }
 
+  // Applies voicing operations to a chord's note list: 'high' lowers the current
+  // highest-sounding note by an octave, 'low' lowers the current lowest-sounding note
+  // by an octave. Each op is applied in order to the RESULT of the previous op, so
+  // e.g. lowering the highest note twice in a row keeps lowering whichever note is
+  // highest at that moment (which may become a different note after the first lower).
+  // ops: { high: <times applied>, low: <times applied> }, applied high-then-low per round.
+  function applyVoicingOps(notes, ops) {
+    var result = notes.slice();
+    var high = (ops && ops.high) || 0;
+    var low = (ops && ops.low) || 0;
+    var rounds = Math.max(high, low);
+    for (var i = 0; i < rounds; i++) {
+      if (i < high) {
+        var maxIdx = 0;
+        for (var a = 1; a < result.length; a++) if (result[a] > result[maxIdx]) maxIdx = a;
+        result[maxIdx] -= 12;
+      }
+      if (i < low) {
+        var minIdx = 0;
+        for (var b = 1; b < result.length; b++) if (result[b] < result[minIdx]) minIdx = b;
+        result[minIdx] -= 12;
+      }
+    }
+    return result;
+  }
+
   function semitoneToFreq(semitoneFromC4) {
     var midi = 60 + semitoneFromC4;
     return 440 * Math.pow(2, (midi - 69) / 12);
@@ -703,6 +729,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     var chordBeatMap = { whole: beatsPerBar, half: beatsPerBar / 2, quarter: 1, eighth: 0.5 };
     var chordBeats = chordBeatMap[options.chordDuration] || beatsPerBar;
     var octaveShifts = options.octaveShifts || [];
+    var voicingOps = options.voicingOps || [];
     var countdownBars = options.countdownBars || 0;
 
     this.beatCount = 0;
@@ -717,13 +744,15 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 
     function soundChord() {
       if (!options.chordsOn) return;
-      var chordDef = progression.chords[self.chordIndex % progression.chords.length];
-      var shift = octaveShifts[self.chordIndex % progression.chords.length] || 0;
+      var idx = self.chordIndex % progression.chords.length;
+      var chordDef = progression.chords[idx];
+      var shift = octaveShifts[idx] || 0;
       var notes = buildChordNotes(chordDef, keyRootSemitone, isMinorKey, shift);
+      notes = applyVoicingOps(notes, voicingOps[idx]);
       var durSec = chordBeats * beatDurSec * 0.95;
       self.playChordNotes(notes, durSec, options.timbre, options.pattern);
       if (typeof self.onChordChange === 'function') {
-        self.onChordChange(self.chordIndex % progression.chords.length, chordDef, notes);
+        self.onChordChange(idx, chordDef, notes);
       }
     }
 
@@ -767,6 +796,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 
   root.ChordMetronomeEngineV2 = ChordMetronomeEngine;
   root.buildChordNotes = buildChordNotes;
+  root.applyVoicingOps = applyVoicingOps;
   root.semitoneToLabel = semitoneToLabel;
   root.NOTE_NAMES_V2 = NOTE_NAMES;
 })(window);
@@ -776,39 +806,83 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
    Requires: engine-v2.js loaded first (window.ChordMetronomeEngineV2, buildChordNotes, semitoneToLabel)
    ============================================================ */
 
-// Very small staff renderer: draws a 5-line treble staff and note heads for given semitone offsets (relative to C4=0).
-// Returns an SVG string. Good enough for "which notes will sound" reference, not full notation engraving.
+// Diatonic letter/accidental spelling for a semitone-in-octave value (0-11), C=0.
+// Uses "nearest natural, sharp if needed" — a simplified reference spelling, not full
+// key-signature-aware notation engraving.
+var CTP_LETTER_ORDER = ['C','D','E','F','G','A','B'];
+var CTP_LETTER_SEMI = { C:0, D:2, E:4, F:5, G:7, A:9, B:11 };
+function ctpSpellSemitone(semiInOctave) {
+  for (var i = 0; i < CTP_LETTER_ORDER.length; i++) {
+    var l = CTP_LETTER_ORDER[i];
+    if (CTP_LETTER_SEMI[l] === semiInOctave) return { letter: l, accidental: 0 };
+  }
+  for (var j = 0; j < CTP_LETTER_ORDER.length; j++) {
+    var l2 = CTP_LETTER_ORDER[j];
+    if (CTP_LETTER_SEMI[l2] === semiInOctave - 1) return { letter: l2, accidental: 1 };
+  }
+  return { letter: 'C', accidental: 0 };
+}
+// Returns a "staff position" integer: number of diatonic letter-steps above C0 (arbitrary origin),
+// used purely to compute vertical placement consistently across both clefs.
+function ctpDiatonicPosition(semitoneFromC4) {
+  var octave = 4 + Math.floor(semitoneFromC4 / 12);
+  var semiInOctave = ((semitoneFromC4 % 12) + 12) % 12;
+  var spelled = ctpSpellSemitone(semiInOctave);
+  var letterIndex = CTP_LETTER_ORDER.indexOf(spelled.letter);
+  return { pos: octave * 7 + letterIndex, accidental: spelled.accidental, letter: spelled.letter, octave: octave };
+}
+
+// Renders one 5-line staff (treble or bass) for a set of semitone-from-C4 notes.
+// refPos/refY anchor a known diatonic position to a known pixel Y so treble/bass share one coordinate system.
+function ctpRenderStaffLines(semitones, clef, x0, width, top, lineGap, colorNote) {
+  var lines = [0,1,2,3,4].map(function (i) { return top + i * lineGap; });
+  // Anchor: treble bottom line = E4, bass bottom line = G2.
+  var anchorSemitone = clef === 'bass' ? -17 : 4; // G2=-17, E4=4 (semitone-from-C4)
+  var anchorPos = ctpDiatonicPosition(anchorSemitone).pos;
+  var bottomLineY = top + 4 * lineGap;
+  var stepPx = lineGap / 2; // each diatonic step = half a line-gap (line-to-space)
+
+  var noteEls = semitones.map(function (s, i) {
+    var d = ctpDiatonicPosition(s);
+    var y = bottomLineY - (d.pos - anchorPos) * stepPx;
+    var x = x0 + i * 26;
+    var ledger = '';
+    if (y < top - 1) ledger = '<line x1="' + (x - 9) + '" y1="' + top + '" x2="' + (x + 9) + '" y2="' + top + '" stroke="#8b9bff" stroke-width="1"/>';
+    if (y > bottomLineY + 1) ledger = '<line x1="' + (x - 9) + '" y1="' + bottomLineY + '" x2="' + (x + 9) + '" y2="' + bottomLineY + '" stroke="#8b9bff" stroke-width="1"/>';
+    var accidentalEl = d.accidental ? '<text x="' + (x - 13) + '" y="' + (y + 4) + '" font-size="11" fill="' + colorNote + '">♯</text>' : '';
+    return ledger + accidentalEl + '<ellipse cx="' + x + '" cy="' + y + '" rx="5.5" ry="4.2" fill="' + colorNote + '"/>';
+  }).join('');
+
+  var lineEls = lines.map(function (y) {
+    return '<line x1="' + (x0 - 20) + '" y1="' + y + '" x2="' + (x0 + width) + '" y2="' + y + '" stroke="#555" stroke-width="1"/>';
+  }).join('');
+  var clefGlyph = clef === 'bass'
+    ? '<text x="' + (x0 - 34) + '" y="' + (top + 3 * lineGap + 5) + '" font-size="22" fill="' + colorNote + '">𝄢</text>'
+    : '<text x="' + (x0 - 34) + '" y="' + (top + 4 * lineGap + 4) + '" font-size="26" fill="' + colorNote + '">𝄞</text>';
+  return clefGlyph + lineEls + noteEls;
+}
+
+// Renders a grand staff (treble + bass) for a chord's notes: the lowest-sounding note goes to
+// the bass clef, all remaining notes go to the treble clef. Returns an SVG string.
+// Good enough for "which notes will sound, roughly where" reference — not full music engraving.
 function ctpRenderStaffSVG(semitones, width) {
   width = width || 260;
-  var height = 100;
-  var lineGap = 10;
-  var top = 20;
-  var linesY = [0,1,2,3,4].map(function(i){ return top + i*lineGap; });
-  // Staff line pitches (treble clef): E4 F4 G4 A4 B4 C5 D5 E5 F5 (bottom to top: E4,G4,B4,D5,F5)
-  // Map semitone-from-C4 to a vertical position using a simple diatonic step approximation.
-  var REF = { // semitone-from-C4 -> staff step (0 = bottom line E4), fractional steps for accidentals
-    '-8':-3.5,'-7':-3,'-6':-2.5,'-5':-2,'-4':-1.5,'-3':-1,'-2':-0.5,'-1':0,
-    '0':0.5,'1':1,'2':1.5,'3':2,'4':2.5,'5':3,'6':3.5,'7':4,'8':4.5,'9':5,'10':5.5,'11':6,
-    '12':6.5,'13':7,'14':7.5,'15':8,'16':8.5,'17':9,'18':9.5,'19':10,'20':10.5,'21':11,'22':11.5,'23':12
-  };
-  function stepFor(s) {
-    var v = REF[String(s)];
-    if (v == null) v = 6 + (s - 11) * 0.5; // fallback extrapolation for far-out notes
-    return v;
-  }
-  var noteEls = semitones.map(function (s, i) {
-    var step = stepFor(s);
-    var y = top + 4*lineGap - step*lineGap*0.7; // bottom line (E4)=step0 anchored near line index4
-    var x = 60 + i*28;
-    var ledger = '';
-    if (y < top - 2) ledger = '<line x1="'+(x-10)+'" y1="'+top+'" x2="'+(x+10)+'" y2="'+top+'" stroke="#8b9bff" stroke-width="1"/>';
-    if (y > top + 4*lineGap + 2) ledger = '<line x1="'+(x-10)+'" y1="'+(top+4*lineGap)+'" x2="'+(x+10)+'" y2="'+(top+4*lineGap)+'" stroke="#8b9bff" stroke-width="1"/>';
-    return ledger + '<ellipse cx="'+x+'" cy="'+y+'" rx="6" ry="4.5" fill="#8b9bff"/>';
-  }).join('');
-  var lines = linesY.map(function(y){ return '<line x1="20" y1="'+y+'" x2="'+width+'" y2="'+y+'" stroke="#555" stroke-width="1"/>'; }).join('');
-  return '<svg viewBox="0 0 '+width+' '+height+'" width="100%" height="'+height+'" xmlns="http://www.w3.org/2000/svg">'+
-    '<text x="18" y="'+(top+4*lineGap+4)+'" font-size="30" fill="#8b9bff">𝄞</text>' +
-    lines + noteEls + '</svg>';
+  var sorted = semitones.slice().sort(function (a, b) { return a - b; });
+  var bassNotes = sorted.length > 0 ? [sorted[0]] : [];
+  var trebleNotes = sorted.slice(1);
+  if (trebleNotes.length === 0) trebleNotes = bassNotes; // single-note chord edge case: show it on treble too
+
+  var lineGap = 9;
+  var trebleTop = 8;
+  var bassTop = trebleTop + 4 * lineGap + 22;
+  var height = bassTop + 4 * lineGap + 10;
+  var x0 = 46;
+
+  var trebleSvg = ctpRenderStaffLines(trebleNotes, 'treble', x0, width - x0, trebleTop, lineGap, '#8b9bff');
+  var bassSvg = ctpRenderStaffLines(bassNotes, 'bass', x0, width - x0, bassTop, lineGap, '#f0a878');
+
+  return '<svg viewBox="0 0 ' + width + ' ' + height + '" width="100%" height="' + height + '" xmlns="http://www.w3.org/2000/svg">' +
+    trebleSvg + bassSvg + '</svg>';
 }
 
 function ctpQualityLabel(q) {
@@ -1181,7 +1255,7 @@ const RENDERERS = {
       </select>
     </div>
 
-    <div id="bpmProgressionSeq" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;"></div>
+    <div id="bpmProgressionSeq" style="display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;"></div>
 
     <div class="tool-input-pair">
       <div class="tool-input-row">
@@ -1242,15 +1316,7 @@ const RENDERERS = {
       </label>
     </div>
 
-    <div style="margin-top:12px;">
-      <div style="font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:6px;">🎼 現在のコードの構成音（オクターブ上下可・次回も記憶）</div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-        <button class="rate-btn" onclick="bpmShiftOctave(-1)" style="width:auto;padding:6px 14px;">－1oct</button>
-        <span id="bpmOctaveLabel" style="font-size:.8rem;color:var(--muted);">オクターブ: 0</span>
-        <button class="rate-btn" onclick="bpmShiftOctave(1)" style="width:auto;padding:6px 14px;">+1oct</button>
-      </div>
-      <div id="bpmStaff" style="background:#1a1d29;border-radius:8px;padding:8px;"></div>
-    </div>
+    <div style="font-size:.72rem;color:var(--muted);margin-top:10px;">🎼 各コードの構成音を五線譜で表示。「最高音↓」「最低音↓」でその場で鳴る音を上下できます（次回も記憶）</div>
   </div>
 `,
   default: (tool) => `
@@ -1337,24 +1403,30 @@ function stopClock() { if (clockInterval) { clearInterval(clockInterval); clockI
 
 /* ToolsLab bpm glue v2 */
 let bpmEngine = null;
-let bpmOctaveShifts = {}; // { "progressionKey:chordIndex": shiftInt }
+// bpmVoicingOps: { "progressionKey:chordIndex": { high: N, low: M } }
+// high = number of times the current highest note has been dropped an octave;
+// low = number of times the current lowest note has been dropped an octave.
+let bpmVoicingOps = {};
 
 function bpmLoadShifts() {
   try {
-    const raw = localStorage.getItem('toolslab_bpm_octave_shifts');
-    bpmOctaveShifts = raw ? JSON.parse(raw) : {};
-  } catch (e) { bpmOctaveShifts = {}; }
+    const raw = localStorage.getItem('toolslab_bpm_voicing_ops');
+    bpmVoicingOps = raw ? JSON.parse(raw) : {};
+  } catch (e) { bpmVoicingOps = {}; }
 }
 function bpmSaveShifts() {
-  try { localStorage.setItem('toolslab_bpm_octave_shifts', JSON.stringify(bpmOctaveShifts)); } catch (e) {}
+  try { localStorage.setItem('toolslab_bpm_voicing_ops', JSON.stringify(bpmVoicingOps)); } catch (e) {}
 }
-function bpmShiftKey(chordIdx) {
+function bpmOpsKey(chordIdx) {
   return document.getElementById('bpmProgression').value + ':' + chordIdx;
 }
-function bpmGetShiftsArray() {
+function bpmGetOps(chordIdx) {
+  return bpmVoicingOps[bpmOpsKey(chordIdx)] || { high: 0, low: 0 };
+}
+function bpmGetOpsArray() {
   const progKey = document.getElementById('bpmProgression').value;
   const prog = CHORD_PROGRESSIONS[progKey];
-  return prog.chords.map((_, i) => bpmOctaveShifts[progKey + ':' + i] || 0);
+  return prog.chords.map((_, i) => bpmGetOps(i));
 }
 
 function bpmSlide() {
@@ -1376,7 +1448,8 @@ function bpmGetOptions() {
     chordsOn: document.getElementById('bpmChordsOn').checked,
     countdownBars: parseInt(document.getElementById('bpmCountdown').value, 10),
     metronomeOn: true,
-    octaveShifts: bpmGetShiftsArray(),
+    octaveShifts: [],
+    voicingOps: bpmGetOpsArray(),
   };
 }
 function bpmBuildDots() {
@@ -1386,6 +1459,16 @@ function bpmBuildDots() {
     `<div class="bpm-dot" data-i="${i}" style="width:14px;height:14px;border-radius:50%;background:var(--border);transition:background .1s;"></div>`
   ).join('');
 }
+function bpmChordNotesFor(chordIdx) {
+  const progKey = document.getElementById('bpmProgression').value;
+  const prog = CHORD_PROGRESSIONS[progKey];
+  const chordDef = prog.chords[chordIdx];
+  const keyRoot = document.getElementById('bpmKeyRoot').value;
+  const keyMode = document.getElementById('bpmKeyMode').value;
+  const keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
+  const notes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', 0);
+  return applyVoicingOps(notes, bpmGetOps(chordIdx));
+}
 function bpmRenderSequence(activeIdx) {
   const progKey = document.getElementById('bpmProgression').value;
   const prog = CHORD_PROGRESSIONS[progKey];
@@ -1393,38 +1476,40 @@ function bpmRenderSequence(activeIdx) {
   wrap.innerHTML = prog.chords.map((c, i) => {
     const label = ctpChordLabel(c);
     const active = i === activeIdx;
-    return `<div style="padding:6px 12px;border-radius:8px;font-weight:700;font-size:.85rem;
+    const notes = bpmChordNotesFor(i);
+    return `<div style="padding:8px 10px;border-radius:10px;min-width:120px;
       border:2px solid ${active ? 'var(--blue)' : 'var(--border)'};
-      background:${active ? 'var(--blue-lt)' : 'var(--white)'};
-      color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>`;
+      background:${active ? 'var(--blue-lt)' : 'var(--white)'};">
+      <div style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:6px;color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>
+      <div style="background:#1a1d29;border-radius:6px;padding:4px;">${ctpRenderStaffSVG(notes, 130)}</div>
+      <div style="display:flex;gap:4px;margin-top:6px;">
+        <button class="rate-btn" onclick="bpmVoicingOp(${i},'high')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最高音を1オクターブ下げる">最高音↓</button>
+        <button class="rate-btn" onclick="bpmVoicingOp(${i},'low')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最低音を1オクターブ下げる">最低音↓</button>
+      </div>
+      <button class="rate-btn" onclick="bpmVoicingReset(${i})" style="width:100%;margin-top:4px;padding:3px 2px;font-size:.62rem;color:var(--muted);">リセット</button>
+    </div>`;
   }).join('');
 }
-function bpmUpdateStaff(activeIdx) {
-  const progKey = document.getElementById('bpmProgression').value;
-  const prog = CHORD_PROGRESSIONS[progKey];
-  const chordDef = prog.chords[activeIdx];
-  const shift = bpmOctaveShifts[bpmShiftKey(activeIdx)] || 0;
-  const keyRoot = document.getElementById('bpmKeyRoot').value;
-  const keyMode = document.getElementById('bpmKeyMode').value;
-  const keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
-  const notes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', shift);
-  document.getElementById('bpmStaff').innerHTML = ctpRenderStaffSVG(notes);
-  document.getElementById('bpmOctaveLabel').textContent = 'オクターブ: ' + (shift > 0 ? '+' : '') + shift;
-}
-let bpmCurrentChordIdx = 0;
-function bpmShiftOctave(delta) {
-  const key = bpmShiftKey(bpmCurrentChordIdx);
-  const cur = bpmOctaveShifts[key] || 0;
-  const next = Math.max(-2, Math.min(2, cur + delta));
-  bpmOctaveShifts[key] = next;
+function bpmVoicingOp(chordIdx, which) {
+  const key = bpmOpsKey(chordIdx);
+  const cur = bpmGetOps(chordIdx);
+  const next = { high: cur.high, low: cur.low };
+  next[which] = Math.min(6, next[which] + 1);
+  bpmVoicingOps[key] = next;
   bpmSaveShifts();
-  bpmUpdateStaff(bpmCurrentChordIdx);
+  bpmRenderSequence(bpmCurrentChordIdx);
   bpmApplyIfPlaying();
 }
+function bpmVoicingReset(chordIdx) {
+  delete bpmVoicingOps[bpmOpsKey(chordIdx)];
+  bpmSaveShifts();
+  bpmRenderSequence(bpmCurrentChordIdx);
+  bpmApplyIfPlaying();
+}
+let bpmCurrentChordIdx = 0;
 function bpmOnProgressionChange() {
   bpmCurrentChordIdx = 0;
   bpmRenderSequence(0);
-  bpmUpdateStaff(0);
   bpmApplyIfPlaying();
 }
 function bpmToggle() {
@@ -1446,7 +1531,6 @@ function bpmToggle() {
     bpmEngine.onChordChange = (idx) => {
       bpmCurrentChordIdx = idx;
       bpmRenderSequence(idx);
-      bpmUpdateStaff(idx);
     };
     bpmEngine.metronomeGain = parseInt(document.getElementById('bpmMetroVol').value, 10) / 100;
     bpmEngine.chordGain = parseInt(document.getElementById('bpmChordVol').value, 10) / 100;
@@ -1485,8 +1569,8 @@ function bpmStopIfPlaying() {
 function bpmInit() {
   bpmLoadShifts();
   bpmBuildDots();
+  bpmCurrentChordIdx = 0;
   bpmRenderSequence(0);
-  bpmUpdateStaff(0);
 }
 
 let pwLen = 16;
