@@ -529,7 +529,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 
     if (sound === 'wood') {
       // Short noise burst through a bandpass filter -> woodblock-like tick
-      var bufferSize = ctx.sampleRate * 0.05;
+      var bufferSize = Math.floor(ctx.sampleRate * 0.05);
       var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
       var data = buffer.getChannelData(0);
       for (var i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 3);
@@ -540,7 +540,12 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
       filter.frequency.value = accent ? 1800 : 1200;
       filter.Q.value = 3;
       var gain = ctx.createGain();
-      gain.gain.setValueAtTime((accent ? 0.9 : 0.6) * vol, now);
+      // A narrow bandpass filter on white noise cuts most of the signal's energy
+      // (only the ~Q-wide band around `frequency` survives), so the post-filter level is
+      // far quieter than the pre-filter gain value suggests — boost to compensate, or the
+      // woodblock sound is effectively inaudible next to the other metronome sounds.
+      var boost = 6;
+      gain.gain.setValueAtTime((accent ? 0.9 : 0.6) * vol * boost, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
       noise.connect(filter).connect(gain).connect(ctx.destination);
       noise.start(now);
@@ -579,7 +584,10 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     var self = this;
 
     if (pattern === 'arpeggio-up' || pattern === 'arpeggio-updown') {
-      var seq = semitones.slice();
+      // Always play arpeggios in ascending pitch order (lowest to highest, matching how the
+      // notes read top-to-bottom on the treble staff), regardless of the order the chord's
+      // intervals were built in.
+      var seq = semitones.slice().sort(function (a, b) { return a - b; });
       if (pattern === 'arpeggio-updown') seq = seq.concat(seq.slice(0, -1).reverse());
       var step = durationSec / seq.length;
       seq.forEach(function (st, i) {
@@ -839,16 +847,27 @@ function ctpRenderStaffLines(semitones, clef, x0, width, top, lineGap, colorNote
   var anchorPos = ctpDiatonicPosition(anchorSemitone).pos;
   var bottomLineY = top + 4 * lineGap;
   var stepPx = lineGap / 2; // each diatonic step = half a line-gap (line-to-space)
+  // All notes of the chord sound on the same beat, so they share one x position (a real
+  // chord symbol, not a staircase of separate beats). Notes a 2nd apart (adjacent line/space,
+  // stepDiff===1) get a small left/right offset so their noteheads don't visually overlap —
+  // standard notation practice for seconds within a chord.
+  var centerX = x0 + width / 2;
 
-  var noteEls = semitones.map(function (s, i) {
+  var withPos = semitones.map(function (s) {
     var d = ctpDiatonicPosition(s);
     var y = bottomLineY - (d.pos - anchorPos) * stepPx;
-    var x = x0 + i * 26;
+    return { s: s, d: d, y: y, pos: d.pos };
+  }).sort(function (a, b) { return a.pos - b.pos; });
+
+  var noteEls = withPos.map(function (n, i) {
+    var prev = withPos[i - 1];
+    var isSecondFromPrev = prev && (n.pos - prev.pos === 1);
+    var x = centerX + (isSecondFromPrev ? 8 : 0);
     var ledger = '';
-    if (y < top - 1) ledger = '<line x1="' + (x - 9) + '" y1="' + top + '" x2="' + (x + 9) + '" y2="' + top + '" stroke="#8b9bff" stroke-width="1"/>';
-    if (y > bottomLineY + 1) ledger = '<line x1="' + (x - 9) + '" y1="' + bottomLineY + '" x2="' + (x + 9) + '" y2="' + bottomLineY + '" stroke="#8b9bff" stroke-width="1"/>';
-    var accidentalEl = d.accidental ? '<text x="' + (x - 13) + '" y="' + (y + 4) + '" font-size="11" fill="' + colorNote + '">♯</text>' : '';
-    return ledger + accidentalEl + '<ellipse cx="' + x + '" cy="' + y + '" rx="5.5" ry="4.2" fill="' + colorNote + '"/>';
+    if (n.y < top - 1) ledger = '<line x1="' + (x - 9) + '" y1="' + top + '" x2="' + (x + 9) + '" y2="' + top + '" stroke="#8b9bff" stroke-width="1"/>';
+    if (n.y > bottomLineY + 1) ledger = '<line x1="' + (x - 9) + '" y1="' + bottomLineY + '" x2="' + (x + 9) + '" y2="' + bottomLineY + '" stroke="#8b9bff" stroke-width="1"/>';
+    var accidentalEl = n.d.accidental ? '<text x="' + (x - 13 - (isSecondFromPrev ? 8 : 0)) + '" y="' + (n.y + 4) + '" font-size="11" fill="' + colorNote + '">♯</text>' : '';
+    return ledger + accidentalEl + '<ellipse cx="' + x + '" cy="' + n.y + '" rx="5.5" ry="4.2" fill="' + colorNote + '"/>';
   }).join('');
 
   var lineEls = lines.map(function (y) {
@@ -867,10 +886,22 @@ function ctpRenderStaffLines(semitones, clef, x0, width, top, lineGap, colorNote
 // voicing operations), shown an octave lower on the bass clef purely as a fixed reference —
 // it never moves when the treble voicing is changed.
 // Good enough for "which notes will sound, roughly where" reference — not full music engraving.
+// Drops a pitch by octaves until it sits within the bass clef's comfortable range
+// (between two ledger lines above and below the staff), rather than a single fixed -12.
+// A high bass/root (e.g. B4) would otherwise land far above the bass staff on one -12 shift;
+// this keeps dropping by 12 until it's actually readable on the bass clef.
+function ctpFitToBassRange(semitone) {
+  var s = semitone;
+  // Comfortable bass clef range: roughly C2 (-24) to C4 (0), i.e. up to ~2 ledger lines either side.
+  while (s > 0) s -= 12;
+  while (s < -24) s += 12;
+  return s;
+}
+
 function ctpRenderStaffSVG(semitones, fixedBassSemitone, width) {
   width = width || 260;
   var trebleNotes = semitones.slice();
-  var bassNotes = fixedBassSemitone == null ? [] : [fixedBassSemitone - 12];
+  var bassNotes = fixedBassSemitone == null ? [] : [ctpFitToBassRange(fixedBassSemitone)];
 
   var lineGap = 9;
   var trebleTop = 8;
@@ -1462,14 +1493,45 @@ function bpmBuildDots() {
 // Returns { notes, fixedBass }: `notes` is the current (possibly re-voiced) full chord;
 // `fixedBass` is the chord's bass/root pitch, fixed to its original definition and never
 // affected by voicing operations (used to anchor the bass-clef reference note).
+function bpmChordAvg(notes) {
+  return notes.reduce((a, b) => a + b, 0) / notes.length;
+}
+// Automatic voice leading: shifts each chord's UPPER voices (everything except the bass/root,
+// which always stays at its natural, fixed octave — see below) by whichever octave brings
+// their average pitch closest to the previous chord's upper-voice average, so the progression's
+// register doesn't jump around. Runs automatically whenever the progression or key changes,
+// BEFORE the user's manual 最高音↓/最低音↑ operations are applied on top of the result.
+function bpmVoiceLedBaseNotes(progKey, keyRootSemitone, isMinor) {
+  const prog = CHORD_PROGRESSIONS[progKey];
+  const result = [];
+  let prevUpperAvg = null;
+  prog.chords.forEach((chordDef) => {
+    const raw = buildChordNotes(chordDef, keyRootSemitone, isMinor, 0);
+    const bass = raw[0];
+    const upper = raw.slice(1);
+    if (upper.length === 0 || prevUpperAvg == null) {
+      result.push(raw);
+      prevUpperAvg = upper.length ? bpmChordAvg(upper) : bass;
+      return;
+    }
+    let bestUpper = upper, bestDist = Infinity;
+    for (let oct = -3; oct <= 3; oct++) {
+      const shifted = upper.map(n => n + oct * 12);
+      const dist = Math.abs(bpmChordAvg(shifted) - prevUpperAvg);
+      if (dist < bestDist) { bestDist = dist; bestUpper = shifted; }
+    }
+    result.push([bass].concat(bestUpper));
+    prevUpperAvg = bpmChordAvg(bestUpper);
+  });
+  return result;
+}
 function bpmChordNotesFor(chordIdx) {
   const progKey = document.getElementById('bpmProgression').value;
-  const prog = CHORD_PROGRESSIONS[progKey];
-  const chordDef = prog.chords[chordIdx];
   const keyRoot = document.getElementById('bpmKeyRoot').value;
   const keyMode = document.getElementById('bpmKeyMode').value;
   const keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
-  const baseNotes = buildChordNotes(chordDef, keyRootSemitone, keyMode === 'minor', 0);
+  const voiceLed = bpmVoiceLedBaseNotes(progKey, keyRootSemitone, keyMode === 'minor');
+  const baseNotes = voiceLed[chordIdx];
   const fixedBass = baseNotes.length > 0 ? baseNotes[0] : null;
   const notes = applyVoicingOps(baseNotes, bpmGetOps(chordIdx));
   return { notes: notes, fixedBass: fixedBass };
@@ -1562,6 +1624,9 @@ function bpmApplyIfPlaying() {
     document.querySelectorAll('.bpm-dot').forEach(d => d.style.background = 'var(--border)');
   }
   bpmBuildDots();
+  // Key/progression/voicing changes must re-render the note sequence & staves immediately,
+  // not just on the next onChordChange callback (which only fires once playback starts).
+  bpmRenderSequence(bpmCurrentChordIdx);
 }
 function bpmStopIfPlaying() {
   if (bpmEngine && bpmEngine.isPlaying) {
