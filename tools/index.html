@@ -582,6 +582,8 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     var master = ctx.createGain();
     master.connect(ctx.destination);
     vol = vol == null ? 1 : vol;
+    if (!this.activeVoices) this.activeVoices = [];
+    this.activeVoices.push(master);
 
     if (timbre === 'organ') {
       var partials = [1, 2, 3, 4];
@@ -651,12 +653,33 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     }
   };
 
+  // Immediately fades out and disconnects every currently-sounding chord voice.
+  // Needed because playChordNotes() schedules oscillators ahead of time via startTime/stop() —
+  // clearing the tick timer alone does not silence notes already in flight, so without this,
+  // starting a new chord (e.g. after a settings change) would overlap with the previous one
+  // and stack in volume.
+  ChordMetronomeEngine.prototype.silenceActiveVoices = function () {
+    if (!this.activeVoices || !this.ctx) { this.activeVoices = []; return; }
+    var ctx = this.ctx;
+    var now = ctx.currentTime;
+    this.activeVoices.forEach(function (master) {
+      try {
+        master.gain.cancelScheduledValues(now);
+        master.gain.setValueAtTime(master.gain.value, now);
+        master.gain.linearRampToValueAtTime(0.0001, now + 0.03);
+        setTimeout(function () { try { master.disconnect(); } catch (e) {} }, 50);
+      } catch (e) {}
+    });
+    this.activeVoices = [];
+  };
+
   ChordMetronomeEngine.prototype.stop = function () {
     this.isPlaying = false;
     this.state = 'idle';
     if (this.timerId) { clearTimeout(this.timerId); this.timerId = null; }
     this.beatCount = 0;
     this.chordIndex = 0;
+    this.silenceActiveVoices();
   };
 
   /**
@@ -1128,11 +1151,11 @@ const RENDERERS = {
   <div class="tool-input-pair">
     <div class="tool-input-row">
       <label>メトロノーム音量</label>
-      <input id="bpmMetroVol" type="range" min="0" max="100" value="80" oninput="bpmApplyIfPlaying()">
+      <input id="bpmMetroVol" type="range" min="0" max="100" value="80" oninput="bpmApplyVolume()">
     </div>
     <div class="tool-input-row">
       <label>コード音量</label>
-      <input id="bpmChordVol" type="range" min="0" max="100" value="80" oninput="bpmApplyIfPlaying()">
+      <input id="bpmChordVol" type="range" min="0" max="100" value="80" oninput="bpmApplyVolume()">
     </div>
   </div>
 
@@ -1431,12 +1454,25 @@ function bpmToggle() {
     btn.textContent = '■ 停止';
   }
 }
-function bpmApplyIfPlaying() {
+// Volume-only change: adjust gain live without interrupting playback (no stop/restart).
+function bpmApplyVolume() {
   if (bpmEngine) {
     bpmEngine.metronomeGain = parseInt(document.getElementById('bpmMetroVol').value, 10) / 100;
     bpmEngine.chordGain = parseInt(document.getElementById('bpmChordVol').value, 10) / 100;
   }
-  if (bpmEngine && bpmEngine.isPlaying) bpmEngine.start(bpmGetOptions());
+}
+// Any other setting change (BPM, key, pattern, timbre, chord duration, countdown, beats,
+// metronome sound, progression, octave shift): stop playback rather than restarting immediately,
+// so the old and new chord audio never overlap. The user presses start again to resume.
+function bpmApplyIfPlaying() {
+  bpmApplyVolume();
+  if (bpmEngine && bpmEngine.isPlaying) {
+    bpmEngine.stop();
+    const btn = document.getElementById('bpmStartBtn');
+    if (btn) btn.textContent = '▶ メトロノーム開始';
+    document.getElementById('bpmStateLabel').textContent = '';
+    document.querySelectorAll('.bpm-dot').forEach(d => d.style.background = 'var(--border)');
+  }
   bpmBuildDots();
 }
 function bpmStopIfPlaying() {
