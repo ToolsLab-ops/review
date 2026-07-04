@@ -720,7 +720,9 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
    *  chordDuration ('whole'|'half'|'quarter'|'eighth'),
    *  timbre, pattern, metronomeSound ('click'|'wood'|'beep'),
    *  metronomeOn, chordsOn, octaveShifts (array parallel to chords, semitone-octave shift per chord index),
-   *  countdownBars (int, number of metronome-only bars to play before EACH chord change; 0 = off)
+   *  countdownBars (int, number of metronome-only bars to play once at the START of this
+   *    playback run, before the first chord sounds; 0 = off. Does NOT repeat on later chord
+   *    changes within the same run — only on the next explicit start() call.)
    */
   ChordMetronomeEngine.prototype.start = function (options) {
     this.stop();
@@ -787,10 +789,10 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
         if (beatsIntoChord >= chordBeats) {
           beatsIntoChord = 0;
           self.chordIndex++;
-          if (countdownBars > 0 && options.chordsOn) {
-            self.state = 'countdown';
-            self.countdownBeatsLeft = countdownBars * beatsPerBar;
-          }
+          // Countdown only ever happens once, right after start() is called (see the initial
+          // `this.state` assignment below) — NOT on every subsequent chord change within the
+          // same playback run. Re-entering 'countdown' here on every chord change was the old
+          // (undesired) behavior.
         }
       }
 
@@ -892,9 +894,13 @@ function ctpRenderStaffLines(semitones, clef, x0, width, top, lineGap, colorNote
 // this keeps dropping by 12 until it's actually readable on the bass clef.
 function ctpFitToBassRange(semitone) {
   var s = semitone;
-  // Comfortable bass clef range: roughly C2 (-24) to C4 (0), i.e. up to ~2 ledger lines either side.
-  while (s > 0) s -= 12;
-  while (s < -24) s += 12;
+  // Comfortable bass clef range: G2 (bottom line, -17) up to A3 (top line, -3), with a little
+  // headroom (one ledger line) above and below. A note landing above the staff's top line
+  // (e.g. C4/middle C, semitone 0) sits in the empty gap between the two clefs and visually
+  // reads as overlapping the treble notes above it — so cap the top of the range at the bass
+  // staff's own top line, not up near middle C.
+  while (s > -3) s -= 12;
+  while (s < -20) s += 12;
   return s;
 }
 
@@ -1338,7 +1344,7 @@ const RENDERERS = {
         <input type="checkbox" id="bpmChordsOn" checked onchange="bpmApplyIfPlaying()"> コード進行を再生に含める
       </label>
       <label style="margin:0;display:flex;align-items:center;gap:6px;font-size:.8rem;">
-        コード変更前のカウント:
+        開始前のカウント:
         <select id="bpmCountdown" onchange="bpmApplyIfPlaying()" style="width:auto;">
           <option value="0">なし</option>
           <option value="1">1小節</option>
@@ -1501,27 +1507,51 @@ function bpmChordAvg(notes) {
 // their average pitch closest to the previous chord's upper-voice average, so the progression's
 // register doesn't jump around. Runs automatically whenever the progression or key changes,
 // BEFORE the user's manual 最高音↓/最低音↑ operations are applied on top of the result.
+// For a single upper-voice note, finds the octave transposition that lands it closest to ANY
+// note in the previous chord's upper voices — i.e. if this note shares a pitch class with a
+// note the previous chord held, it lands on that exact pitch (common tone kept, including its
+// octave), otherwise it moves by the smallest possible distance to its nearest neighbor.
+// Tie-break: when two octave candidates are equally close to the previous chord, prefer
+// whichever is closer to the note's own natural (untransposed) octave — otherwise a note can
+// jump to a distant octave for a marginal or tied improvement in nearness to an unrelated note,
+// which reads as a bigger, stranger leap than simply staying put.
+function bpmClosestOctave(note, prevUpperNotes) {
+  // Require a genuinely closer match (not just marginally closer) before jumping an extra
+  // octave away from the note's own position — otherwise "nearest by 1 semitone" can send a
+  // note two registers away for a barely-better fit against some unrelated previous note.
+  const MARGIN = 3;
+  let best = note, bestDist = Infinity, bestOwnDist = 0;
+  for (let oct = -2; oct <= 2; oct++) {
+    const candidate = note + oct * 12;
+    const ownDist = Math.abs(oct * 12);
+    prevUpperNotes.forEach((p) => {
+      const dist = Math.abs(candidate - p);
+      if (dist + MARGIN * ownDist / 12 < bestDist + MARGIN * bestOwnDist / 12) {
+        bestDist = dist; best = candidate; bestOwnDist = ownDist;
+      }
+    });
+  }
+  return best;
+}
 function bpmVoiceLedBaseNotes(progKey, keyRootSemitone, isMinor) {
   const prog = CHORD_PROGRESSIONS[progKey];
   const result = [];
-  let prevUpperAvg = null;
+  let prevUpper = null;
   prog.chords.forEach((chordDef) => {
     const raw = buildChordNotes(chordDef, keyRootSemitone, isMinor, 0);
     const bass = raw[0];
     const upper = raw.slice(1);
-    if (upper.length === 0 || prevUpperAvg == null) {
+    if (upper.length === 0 || prevUpper == null) {
       result.push(raw);
-      prevUpperAvg = upper.length ? bpmChordAvg(upper) : bass;
+      prevUpper = upper.length ? upper : [bass];
       return;
     }
-    let bestUpper = upper, bestDist = Infinity;
-    for (let oct = -3; oct <= 3; oct++) {
-      const shifted = upper.map(n => n + oct * 12);
-      const dist = Math.abs(bpmChordAvg(shifted) - prevUpperAvg);
-      if (dist < bestDist) { bestDist = dist; bestUpper = shifted; }
-    }
+    // Each upper note independently seeks the octave nearest to any note the previous
+    // chord's upper voices held — this keeps common tones (even across octaves) and gives
+    // genuinely smooth voice leading, rather than shifting the whole chord as one block.
+    const bestUpper = upper.map((n) => bpmClosestOctave(n, prevUpper));
     result.push([bass].concat(bestUpper));
-    prevUpperAvg = bpmChordAvg(bestUpper);
+    prevUpper = bestUpper;
   });
   return result;
 }
