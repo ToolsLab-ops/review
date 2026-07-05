@@ -934,6 +934,30 @@ function ctpChordLabel(chordDef) {
   return base;
 }
 
+// Degree (Roman numeral) -> semitone offset from the tonic, duplicated here (matching
+// DEGREE_MAJOR/DEGREE_MINOR inside the engine's own IIFE) because this file's chord-name
+// display logic lives in a separate <script> block from the engine and can't reach its
+// module-scoped constants directly.
+var CTP_DEGREE_MAJOR = { I:0, II:2, III:4, IV:5, V:7, VI:9, VII:11 };
+var CTP_DEGREE_MINOR = { I:0, II:2, IIIb:3, III:3, IV:5, V:7, VIb:8, VI:8, VIIb:10, VII:10 };
+
+// Resolves a chord definition (degree + quality, possibly a slash chord) to the concrete
+// chord name that actually sounds in the given key — e.g. deg:'IV' in key D major -> "G".
+function ctpActualChordName(chordDef, keyRoot, isMinor) {
+  var scaleMap = isMinor ? CTP_DEGREE_MINOR : CTP_DEGREE_MAJOR;
+  var keyRootSemitone = NOTE_NAMES_V2.indexOf(keyRoot);
+  var rootSemitone = ((keyRootSemitone + scaleMap[chordDef.deg]) % 12 + 12) % 12;
+  var rootName = NOTE_NAMES_V2[rootSemitone];
+  var name = rootName + ctpQualityLabel(chordDef.q);
+  if (chordDef.bassDeg && chordDef.bassDeg !== chordDef.deg) {
+    var bassOffset = scaleMap[chordDef.bassDeg];
+    if (chordDef.bassLowered) bassOffset -= 1;
+    var bassSemitone = ((keyRootSemitone + bassOffset) % 12 + 12) % 12;
+    name += '/' + NOTE_NAMES_V2[bassSemitone];
+  }
+  return name;
+}
+
 const CHORD_PROGRESSIONS = {
   oudou:    { name:'王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）', chords:[{deg:'IV',q:''},{deg:'V',q:''},{deg:'III',q:'m'},{deg:'VI',q:'m'}] },
   canon:    { name:'カノン進行（I-V-VIm-IIIm-IV-I-IV-V）', chords:[{deg:'I',q:''},{deg:'V',q:''},{deg:'VI',q:'m'},{deg:'III',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'IV',q:''},{deg:'V',q:''}] },
@@ -1569,15 +1593,19 @@ function bpmChordNotesFor(chordIdx) {
 function bpmRenderSequence(activeIdx) {
   const progKey = document.getElementById('bpmProgression').value;
   const prog = CHORD_PROGRESSIONS[progKey];
+  const keyRoot = document.getElementById('bpmKeyRoot').value;
+  const keyMode = document.getElementById('bpmKeyMode').value;
   const wrap = document.getElementById('bpmProgressionSeq');
   wrap.innerHTML = prog.chords.map((c, i) => {
     const label = ctpChordLabel(c);
+    const actualName = ctpActualChordName(c, keyRoot, keyMode === 'minor');
     const active = i === activeIdx;
     const { notes, fixedBass } = bpmChordNotesFor(i);
     return `<div style="padding:8px 10px;border-radius:10px;min-width:120px;
       border:2px solid ${active ? 'var(--blue)' : 'var(--border)'};
       background:${active ? 'var(--blue-lt)' : 'var(--white)'};">
-      <div style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:6px;color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>
+      <div style="font-weight:700;font-size:.85rem;text-align:center;margin-bottom:2px;color:${active ? 'var(--blue)' : 'var(--text)'};">${label}</div>
+      <div style="font-weight:900;font-size:1.3rem;text-align:center;margin-bottom:6px;color:${active ? 'var(--blue)' : 'var(--text)'};">${actualName}</div>
       <div style="background:#1a1d29;border-radius:6px;padding:4px;">${ctpRenderStaffSVG(notes, fixedBass, 130)}</div>
       <div style="display:flex;gap:4px;margin-top:6px;">
         <button class="rate-btn" onclick="bpmVoicingOp(${i},'high')" style="flex:1;padding:4px 2px;font-size:.65rem;" title="最高音を1オクターブ下げる">最高音↓</button>
