@@ -735,7 +735,13 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     var keyRootSemitone = noteNameToMidiBase(options.keyRoot || 'C');
     var isMinorKey = options.keyMode === 'minor';
     var chordBeatMap = { whole: beatsPerBar, half: beatsPerBar / 2, quarter: 1, eighth: 0.5 };
-    var chordBeats = chordBeatMap[options.chordDuration] || beatsPerBar;
+    var defaultChordBeats = chordBeatMap[options.chordDuration] || beatsPerBar;
+    // A chord definition may carry its own `beats` (e.g. a 12-bar blues where each chord holds
+    // a different number of bars, or a jazz turnaround where some chords get half a bar) — this
+    // takes priority over the tool's global chordDuration setting for that one chord.
+    function beatsForChord(chordDef) {
+      return chordDef.beats != null ? chordDef.beats : defaultChordBeats;
+    }
     var octaveShifts = options.octaveShifts || [];
     var voicingOps = options.voicingOps || [];
     var countdownBars = options.countdownBars || 0;
@@ -745,6 +751,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
     // beatsIntoChord counts how many "playing" beats have elapsed for the CURRENT chord,
     // BEFORE this tick. When it's 0, this tick must sound a new chord.
     var beatsIntoChord = 0;
+    var currentChordBeats = beatsForChord(progression.chords[0]);
     this.state = (countdownBars > 0 && options.chordsOn) ? 'countdown' : 'playing';
     this.countdownBeatsLeft = countdownBars * beatsPerBar;
 
@@ -754,10 +761,11 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
       if (!options.chordsOn) return;
       var idx = self.chordIndex % progression.chords.length;
       var chordDef = progression.chords[idx];
+      currentChordBeats = beatsForChord(chordDef);
       var shift = octaveShifts[idx] || 0;
       var notes = buildChordNotes(chordDef, keyRootSemitone, isMinorKey, shift);
       notes = applyVoicingOps(notes, voicingOps[idx]);
-      var durSec = chordBeats * beatDurSec * 0.95;
+      var durSec = currentChordBeats * beatDurSec * 0.95;
       self.playChordNotes(notes, durSec, options.timbre, options.pattern);
       if (typeof self.onChordChange === 'function') {
         self.onChordChange(idx, chordDef, notes);
@@ -786,7 +794,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
       if (self.state === 'playing') {
         if (beatsIntoChord === 0) soundChord();
         beatsIntoChord++;
-        if (beatsIntoChord >= chordBeats) {
+        if (beatsIntoChord >= currentChordBeats) {
           beatsIntoChord = 0;
           self.chordIndex++;
           // Countdown only ever happens once, right after start() is called (see the initial
@@ -962,9 +970,14 @@ const CHORD_PROGRESSIONS = {
   oudou:    { name:'王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）', chords:[{deg:'IV',q:''},{deg:'V',q:''},{deg:'III',q:'m'},{deg:'VI',q:'m'}] },
   canon:    { name:'カノン進行（I-V-VIm-IIIm-IV-I-IV-V）', chords:[{deg:'I',q:''},{deg:'V',q:''},{deg:'VI',q:'m'},{deg:'III',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'IV',q:''},{deg:'V',q:''}] },
   komuro:   { name:'小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'V',q:''}] },
-  marusa:   { name:'丸サ進行（I-VIm-IIm-V）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'II',q:'m'},{deg:'V',q:''}] },
+  // 丸サ進行はジャズのII-V-Iに近いテンポ感のため、1小節1コードではなく2拍単位で聴かせる（beats: 2）。
+  marusa:   { name:'丸サ進行（I-VIm-IIm-V）', chords:[{deg:'I',q:'',beats:2},{deg:'VI',q:'m',beats:2},{deg:'II',q:'m',beats:2},{deg:'V',q:'',beats:2}] },
   junkan:   { name:'循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''}] },
-  blues:    { name:'ブルース進行（Ⅰ-Ⅳ-Ⅴ）', chords:[{deg:'I',q:'7'},{deg:'IV',q:'7'},{deg:'V',q:'7'}] },
+  // 実際の12小節ブルース形式（I-I-I-I-IV-IV-I-I-V-IV-I-I）を展開。1小節=4拍として beats を指定。
+  blues:    { name:'ブルース進行（Ⅰ-Ⅳ-Ⅴ）', chords:[
+                {deg:'I',q:'7',beats:16},{deg:'IV',q:'7',beats:8},{deg:'I',q:'7',beats:8},
+                {deg:'V',q:'7',beats:4},{deg:'IV',q:'7',beats:4},{deg:'I',q:'7',beats:8},
+              ] },
   setsunai: { name:'切ない系進行（VIm-IV-V-VIm）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''},{deg:'VI',q:'m'}] },
   cliche:   { name:'クリシェ進行（I-I/VII-I7/♭VII-VIm）', chords:[
                 { deg:'I', q:'' , bassDeg:'I' },
