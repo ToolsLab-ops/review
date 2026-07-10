@@ -5,7 +5,7 @@ description: "AI英語学習アプリ「Speak（スピーク）」を徹底レ�
 date: 2026-05-23
 categories: [tools]
 tags: [Speak, 英語学習, AI英会話, 英語アプリ, スピーキング]
-image: /assets/images/speak-review.png
+image: /assets/images/speak-review.jpg
 ---
 
 ## AIが「英語を話す練習相手」になる時代
