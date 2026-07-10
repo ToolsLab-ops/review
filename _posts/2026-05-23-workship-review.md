@@ -5,7 +5,7 @@ description: "Workshipの特徴・評判・案件の取り方を徹底解説。�
 date: 2026-05-23
 categories: [tools]
 tags: [Workship, 副業, フリーランス, クラウドワークス, IT副業]
-image: /assets/images/workship-review.png
+image: /assets/images/workship-review.jpg
 ---
 
 ## Workshipとは — 「質重視」のフリーランスプラットフォーム
