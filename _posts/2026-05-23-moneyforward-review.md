@@ -5,7 +5,7 @@ description: "マネーフォワードME（家計簿）とマネーフォワー�
 date: 2026-05-23
 categories: [tools]
 tags: [マネーフォワード, 家計簿, 確定申告, 副業, 節税, 家計管理]
-image: /assets/images/moneyforward-review.png
+image: /assets/images/moneyforward-review.jpg
 ---
 
 ## マネーフォワードとは — 家計から確定申告まで一元管理
