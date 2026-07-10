@@ -5,7 +5,7 @@ description: "副業収入を増やすために使うべきAIツール10選を�
 date: 2026-05-23
 categories: [tools]
 tags: [AIツール, 副業, ChatGPT, Catchy, Notta, AI活用, 在宅ワーク]
-image: /assets/images/ai-tool-fukugyou.png
+image: /assets/images/ai-tool-fukugyou.jpg
 ---
 
 ## 副業にAIツールは「あると便利」から「必須」になった
