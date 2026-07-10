@@ -5,7 +5,7 @@ description: "クラウドワークスでAIツール（ChatGPT・Catchy）を活
 date: 2026-05-22
 categories: [tools]
 tags: [クラウドワークス, 副業, AI活用, ChatGPT, Catchy, 在宅ワーク]
-image: /assets/images/crowdworks-ai.png
+image: /assets/images/crowdworks-ai.jpg
 ---
 
 ## クラウドワークス × AI = 副業効率が激変する理由
