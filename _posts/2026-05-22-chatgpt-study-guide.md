@@ -5,7 +5,7 @@ description: "ChatGPTを使って英語学習・資格試験・プログラミ�
 date: 2026-05-22
 categories: [tools]
 tags: [ChatGPT, AI学習, 英語学習, 資格, 独学, 勉強法]
-image: /assets/images/chatgpt-study.png
+image: /assets/images/chatgpt-study.jpg
 ---
 
 ## ChatGPTが「個人専属AI講師」になる時代
