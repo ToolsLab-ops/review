@@ -5,7 +5,7 @@ description: "会社員の副業収入と確定申告の関係を徹底解説。
 date: 2026-05-23
 categories: [tools]
 tags: [副業, 確定申告, 税金, freee, 弥生, 住民税, 節税]
-image: /assets/images/fukugyou-tax.png
+image: /assets/images/fukugyou-tax.jpg
 ---
 
 ## 副業収入と確定申告 — 基本の「キ」
