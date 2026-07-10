@@ -5,7 +5,7 @@ description: "プログラミングスキルを使った副業の始め方を徹
 date: 2026-05-23
 categories: [tools]
 tags: [プログラミング, 副業, 在宅ワーク, 忍者CODE, Web制作]
-image: /assets/images/programming-fukugyou.png
+image: /assets/images/programming-fukugyou.jpg
 ---
 
 ## プログラミング副業 — なぜ今が最適のタイミングか
