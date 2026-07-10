@@ -5,7 +5,7 @@ description: "在宅でできる副業おすすめ10選を難易度・収益性�
 date: 2026-05-23
 categories: [tools]
 tags: [副業, 在宅ワーク, AI活用, おすすめ, 月5万円, クラウドワークス]
-image: /assets/images/zaitaku-fukugyou.png
+image: /assets/images/zaitaku-fukugyou.jpg
 ---
 
 ## 在宅副業 × AI — 2026年の最強コンビ
