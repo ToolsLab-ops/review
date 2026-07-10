@@ -5,7 +5,7 @@ description: "AIビジネス活用講座の選び方とおすすめ講座を比�
 date: 2026-05-23
 categories: [tools]
 tags: [AIビジネス活用, ChatGPT, オンライン講座, 副業, AI学習, スキルアップ]
-image: /assets/images/ai-business-kouza.png
+image: /assets/images/ai-business-kouza.jpg
 ---
 
 ## AIビジネス活用講座が急増している理由
