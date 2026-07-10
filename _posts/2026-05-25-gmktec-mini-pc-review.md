@@ -5,7 +5,7 @@ description: "GMKtecのミニPCをAI作業・在宅ワーク用途で解説。Nu
 date: 2026-05-25
 categories: [tools]
 tags: [ミニPC, GMKtec, AI作業, 在宅ワーク, Windows, NucBox, コスパ, ミニデスクトップ]
-image: /assets/images/thumb-gmktec.png
+image: /assets/images/thumb-gmktec.jpg
 ---
 
 ## 「まずミニPCを試したい」ならGMKtecが入口になる
