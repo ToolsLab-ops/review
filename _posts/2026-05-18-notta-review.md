@@ -5,7 +5,7 @@ description: "Nottaの評判・料金プラン・使い方を徹底解説。AI�
 date: 2026-05-18
 categories: [ai-tools, review]
 tags: [Notta, AI文字起こし, 音声テキスト化, 会議録, 業務効率化, AIツール]
-image: /assets/images/thumb-notta.png
+image: /assets/images/thumb-notta.jpg
 ---
 
 <p style="font-size:.85em;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;padding:.5rem 1rem;border-radius:4px;margin-bottom:1.5rem;">本記事はアフィリエイト広告（A8.net）を含みます。</p>
