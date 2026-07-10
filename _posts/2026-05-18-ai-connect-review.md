@@ -5,7 +5,7 @@ description: "AI CONNECTの評判・料金・カリキュラム・無料個別�
 date: 2026-05-18
 categories: [ai-tools, review]
 tags: [AI CONNECT, AIスキル, リスキリング, 生成AI, キャリアアップ, AI学習]
-image: /assets/images/thumb-ai-connect.png
+image: /assets/images/thumb-ai-connect.jpg
 ---
 
 <p style="font-size:.85em;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;padding:.5rem 1rem;border-radius:4px;margin-bottom:1.5rem;">本記事はアフィリエイト広告（A8.net）を含みます。</p>
