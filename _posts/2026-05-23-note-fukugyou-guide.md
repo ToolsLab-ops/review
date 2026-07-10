@@ -5,7 +5,7 @@ description: "noteを使って副業収入を得る具体的な方法を解説�
 date: 2026-05-23
 categories: [tools]
 tags: [note, 副業, デジタル製品, AI活用, コンテンツ販売, 有料記事]
-image: /assets/images/note-fukugyou.png
+image: /assets/images/note-fukugyou.jpg
 ---
 
 ## noteで稼ぐ仕組み — コンテンツを一度作れば収入が続く
