@@ -84,6 +84,16 @@ a { color: inherit; }
   font-weight: 900; line-height: 1.4;
 }
 
+.post-hero-image {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
 /* ── Post Content ── */
 .post-content {
   max-width: 720px; margin: 0 auto 80px;
