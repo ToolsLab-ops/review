@@ -1013,6 +1013,7 @@ const TOOLS = [
   { id:'qr',           cat:'design',   icon:'📱', name:'QRコード生成',       desc:'URLやテキストからQR生成' },
   { id:'color',        cat:'design',   icon:'🎨', name:'カラーコード変換',   desc:'HEX↔RGB↔HSL 相互変換' },
   { id:'password',     cat:'design',   icon:'🔑', name:'パスワード生成',     desc:'文字種・長さ指定で安全生成' },
+  { id:'shorten',      cat:'design',   icon:'🔗', name:'URL短縮',           desc:'長いURLを短縮リンクに変換' },
   // 健康
   { id:'bmi',          cat:'health',   icon:'⚖️', name:'BMI計算',           desc:'身長・体重から標準体重を算出' },
   { id:'calorie',      cat:'health',   icon:'🔥', name:'カロリー消費計算',   desc:'運動種目×体重×時間で算出' },
@@ -1107,6 +1108,12 @@ const ADS = {
     any: [
       { icon:'🔮', title:'電話占いヴェルニ', sub:'四柱推命・命式・大運…プロ占い師に5分無料相談', pr:'#7c3aed', cta:'鑑定する →' },
       { icon:'💍', title:'ゼクシィ縁結び', sub:'命式相性も各柱でチェック。真剣な出会い', pr:'#ec4899', cta:'無料登録 →' },
+    ],
+  },
+  shorten: {
+    any: [
+      { icon:'📱', title:'QRコードも一緒に作れます', sub:'短縮したURLをQRコード生成ツールで印刷物に', pr:'#0891b2', cta:'使う →' },
+      { icon:'📊', title:'クリック計測付きのリンク管理', sub:'Bitlyなどで詳細なアクセス解析も可能', pr:'#f97316', cta:'比較する →' },
     ],
   },
   default: {
@@ -1265,6 +1272,30 @@ const RENDERERS = {
         <button class="calc-btn" style="width:auto;padding:7px 18px;font-size:.8rem;background:var(--bg);color:var(--blue);border:1.5px solid var(--blue);" onclick="copyPw()">コピー</button>
       </div>
     </div>`,
+
+  shorten: () => `
+    <div class="tool-input-row">
+      <label>短縮したいURL</label>
+      <input id="shUrl" type="url" placeholder="https://example.com/very/long/path" oninput="shClearResult()" onkeydown="if(event.key==='Enter')shRun()">
+    </div>
+    <div class="tool-input-row">
+      <label>短縮サービス</label>
+      <div class="rate-grid" id="shServiceGrid">
+        <button class="rate-btn on" id="shSvc-tinyurl" onclick="shSetService('tinyurl')">TinyURL</button>
+        <button class="rate-btn" id="shSvc-dagd" onclick="shSetService('dagd')">da.gd</button>
+      </div>
+    </div>
+    <div class="tool-input-row" style="text-align:center;margin:14px 0 4px;">
+      <button class="calc-btn" id="shBtn" style="font-size:1rem;" onclick="shRun()">短縮する</button>
+    </div>
+    <div id="shError" style="display:none;color:#dc2626;font-size:.78rem;text-align:center;margin-top:6px;"></div>
+    <div class="result-area" id="shResultArea">
+      <div style="background:var(--bg);border-radius:10px;padding:14px 16px;font-family:monospace;font-size:.95rem;word-break:break-all;color:var(--blue);cursor:pointer;" id="shOutput" onclick="shCopy()" title="クリックでコピー">—</div>
+      <div style="text-align:right;margin-top:6px;display:flex;gap:8px;justify-content:flex-end;">
+        <button class="calc-btn" style="width:auto;padding:7px 18px;font-size:.8rem;background:var(--bg);color:var(--blue);border:1.5px solid var(--blue);" onclick="shCopy()">コピー</button>
+      </div>
+    </div>
+    <div id="shServiceNote" style="font-size:.68rem;color:var(--muted);text-align:center;margin-top:12px;">TinyURL の無料APIを利用しています。短縮URLは第三者が発行するリンクです。</div>`,
 
   shichu: () => `<div style="display:flex;gap:6px;margin-bottom:8px;"><div class="tool-input-row" style="flex:2;margin:0;"><label>生年月日</label><input id="scDate" type="date" min="1924-01-01" max="2060-12-31" value="1990-01-01" oninput="calcShichu()" style="font-size:.85rem;"></div><div class="tool-input-row" style="flex:3;margin:0;"><label>出生時刻（任意）</label><select id="scHour" onchange="calcShichu()"><option value="-1">不明</option><option value="0">子Ｈ23～1時）</option><option value="1">丑Ｈ1～3時）</option><option value="2">寅Ｈ3～5時）</option><option value="3">卯Ｈ5～7時）</option><option value="4">辰Ｈ7～9時）</option><option value="5">巳Ｈ9～11時）</option><option value="6">午Ｈ11～13時）</option><option value="7">未Ｈ13～15時）</option><option value="8">申Ｈ15～17時）</option><option value="9">酉Ｈ17～19時）</option><option value="10">戌Ｈ19～21時）</option><option value="11">亥Ｈ21～23時）</option></select></div></div><div class="tool-input-row" style="margin-bottom:10px;"><label>性別</label><div class="rate-grid"><button class="rate-btn on" id="scMale" onclick="scSetGender(0)">男命</button><button class="rate-btn" id="scFemale" onclick="scSetGender(1)">女命</button></div></div><div id="scResult"></div>`,
 
@@ -1731,6 +1762,80 @@ function copyPw() {
   navigator.clipboard?.writeText(pw).then(()=>{ const el=document.getElementById('pwOutput'); if(el){el.style.background='var(--blue-lt)'; setTimeout(()=>el.style.background='',800); }});
 }
 
+const SH_SERVICES = {
+  tinyurl: {
+    label: 'TinyURL', note: 'TinyURL の無料APIを利用しています。短縮URLは第三者が発行するリンクです。',
+    apiUrl: u => 'https://tinyurl.com/api-create.php?url=' + encodeURIComponent(u),
+    parse: async (res) => {
+      const text = (await res.text()).trim();
+      return /^https?:\/\//i.test(text) ? text : null;
+    },
+  },
+  dagd: {
+    label: 'da.gd', note: 'da.gd の無料APIを利用しています。短縮URLは第三者が発行するリンクです。',
+    apiUrl: u => 'https://da.gd/s?url=' + encodeURIComponent(u),
+    parse: async (res) => {
+      const text = (await res.text()).trim();
+      return /^https?:\/\//i.test(text) ? text : null;
+    },
+  },
+};
+let shService = 'tinyurl';
+function shSetService(id) {
+  shService = id;
+  const note = document.getElementById('shServiceNote');
+  if (note) note.textContent = (SH_SERVICES[id] || SH_SERVICES.tinyurl).note;
+  Object.keys(SH_SERVICES).forEach(k => {
+    document.getElementById('shSvc-' + k)?.classList.toggle('on', k === id);
+  });
+  shClearResult();
+}
+function shClearResult() {
+  const err = document.getElementById('shError'); if (err) err.style.display = 'none';
+  const area = document.getElementById('shResultArea'); if (area) area.classList.remove('visible');
+}
+async function shRun() {
+  const input = document.getElementById('shUrl');
+  const btn = document.getElementById('shBtn');
+  const err = document.getElementById('shError');
+  const area = document.getElementById('shResultArea');
+  const out = document.getElementById('shOutput');
+  if (!input || !btn || !err || !area || !out) return;
+
+  let url = input.value.trim();
+  if (!url) { err.textContent = 'URLを入力してください'; err.style.display = 'block'; area.classList.remove('visible'); return; }
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+  err.style.display = 'none';
+  area.classList.remove('visible');
+  btn.disabled = true;
+  btn.textContent = '短縮中…';
+
+  try {
+    const svc = SH_SERVICES[shService] || SH_SERVICES.tinyurl;
+    const res = await fetch(svc.apiUrl(url));
+    const shortUrl = await svc.parse(res);
+    if (!shortUrl) {
+      err.textContent = '短縮に失敗しました。URLを確認してください';
+      err.style.display = 'block';
+    } else {
+      out.textContent = shortUrl;
+      area.classList.add('visible');
+    }
+  } catch (e) {
+    err.textContent = '通信エラーが発生しました。時間をおいて再試行してください';
+    err.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '短縮する';
+  }
+}
+function shCopy() {
+  const url = document.getElementById('shOutput')?.textContent || '';
+  if (!url || url === '—') return;
+  navigator.clipboard?.writeText(url).then(()=>{ const el=document.getElementById('shOutput'); if(el){el.style.background='var(--blue-lt)'; setTimeout(()=>el.style.background='',800); }});
+}
+
 /* =============================================
    四柱推命 — SC_ CONSTANTS & FUNCTIONS
    ============================================= */
@@ -1904,6 +2009,7 @@ function openTool(toolId, cardEl) {
   if (toolId === 'password')     { updatePwLen(); genPw(); }
   if (toolId === 'shichu') calcShichu();
   if (toolId === 'bpm') bpmInit();
+  if (toolId === 'shorten') { shSetService('tinyurl'); }
 }
 
 function closeTool() {
