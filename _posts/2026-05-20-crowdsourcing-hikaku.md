@@ -5,7 +5,7 @@ description: "副業やフリーランスとしてクラウドソーシングを
 date: 2026-05-20
 categories: [tools, side-job, freelance]
 tags: [クラウドソーシング, 副業, フリーランス, クラウドワークス, クラウディア, Workship, 在宅ワーク]
-image: /assets/images/crowdsourcing-hikaku.png
+image: /assets/images/crowdsourcing-hikaku.jpg
 ---
 
 本記事にはプロモーションが含まれます。
