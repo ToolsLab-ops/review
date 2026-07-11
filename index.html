@@ -290,7 +290,8 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
 
 
 
-    .article-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .article-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, box-shadow .15s, transform .15s; overflow: hidden; }
+    .card-thumb { margin: -18px -18px 0; width: calc(100% + 36px); aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--border); }
 
 
 
@@ -1122,6 +1123,7 @@ description: "AIツールのレビューと、ブラウザで即使える無料�
         {% for post in site.posts %}
         {% if post.url contains 'kakuteishinkoku' or post.url contains 'moneyforward' %}{% assign sec = 'tax' %}{% elsif post.url contains 'minisforum' or post.url contains 'gmktec' or post.url contains 'sourcenext' %}{% assign sec = 'hardware' %}{% elsif post.url contains 'workship' or post.url contains 'crowdsourcing' or post.url contains 'crowdworks' or post.url contains 'zaitaku' or post.url contains 'note-fukugyou' or post.url contains 'programming-fukugyou' or post.url contains 'ai-tool-fukugyou' or post.url contains 'miraifu' %}{% assign sec = 'side-job' %}{% else %}{% assign sec = 'ai-tools' %}{% endif %}
         <a href="{{ post.url | relative_url }}" class="article-card" data-section="{{ sec }}">
+          {% if post.image %}<img class="card-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy">{% endif %}
           <div class="card-meta">
             <span class="card-tag">REVIEW</span>
             <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
