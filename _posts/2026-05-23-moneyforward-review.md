@@ -108,7 +108,6 @@ MEで日常管理 → クラウド確定申告で年1回の申告という二刀
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #3b82f6;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4B0; 副業のお金管理を今すぐ始める</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">マネーフォワード MEは無料で始められます。副業収入を含む家計全体を一元管理しましょう。</p>
-<a href="https://moneyforward.com/" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">マネーフォワード MEを無料で始める →</a>
+<a href="https://h.accesstrade.net/sp/cc?rk=0100pfkl00osk1&url=https%3A%2F%2Fmoneyforward.com%2F" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">マネーフォワード MEを無料で始める →</a>
 <a href="https://px.a8.net/svt/ejp?a8mat=4B3R2V+FLFW3E+3SPO+9FL80Y" rel="nofollow" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">freee会計も比較する →</a>
 </div>
-<!-- TODO: AccessTrade マネーフォワードプログラム承認後にアフィリエイトリンクに差し替える -->
