@@ -5,6 +5,7 @@ description: "副業で確定申告が必要になった方へ。freee・マネ�
 date: 2026-05-15
 categories: [tax, tools, side-job]
 tags: [確定申告, 副業, freee, マネーフォワード, 弥生, タックスナップ, ソリマチ, e-Tax]
+image: /assets/images/kakuteishinkoku-hikaku.jpg
 ---
 
 本記事にはプロモーションが含まれます。

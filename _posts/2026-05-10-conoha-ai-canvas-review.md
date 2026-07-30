@@ -5,6 +5,7 @@ description: "ConoHa AI Canvas（GMOインターネット）の評判・料金�
 date: 2026-05-10
 categories: [ai-tools]
 tags: [ConoHa, AI画像生成, 画像生成AI, GMO]
+image: /assets/images/conoha-ai-canvas.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。

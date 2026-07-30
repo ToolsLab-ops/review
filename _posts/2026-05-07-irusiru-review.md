@@ -5,6 +5,7 @@ description: "イルシルの評判・料金・機能を徹底解説。テキス
 date: 2026-05-07
 categories: [ai-tools]
 tags: [イルシル, AIスライド, プレゼン作成, 資料作成]
+image: /assets/images/irusiru.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。
