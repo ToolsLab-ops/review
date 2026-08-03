@@ -5,6 +5,7 @@ description: "AIライティングツール「Catchy」の機能・料金・使�
 date: 2026-05-12
 categories: [ai-tools, review]
 tags: [Catchy, AIライティング, キャッチコピー, コピーライティング, AI副業, ブログ]
+image: /assets/images/catchy.jpg
 ---
 
 本記事にはプロモーションが含まれます。

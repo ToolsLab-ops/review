@@ -5,6 +5,7 @@ description: "Neuro Dive（ニューロダイブ）の評判・カリキュラ�
 date: 2026-05-07
 categories: [ai-tools]
 tags: [neuro-dive, データサイエンス, 就労移行支援, ai学習]
+image: /assets/images/neuro-dive.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。

@@ -5,6 +5,7 @@ description: "Plaud NoteのAIボイスレコーダーの評判・使い方・料
 date: 2026-05-07
 categories: [ai-tools]
 tags: [Plaud, AIボイスレコーダー, 文字起こし, 会議録]
+image: /assets/images/plaud.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。

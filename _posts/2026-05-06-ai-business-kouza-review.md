@@ -5,6 +5,7 @@ description: "AIビジネス活用講座の評判・料金・個別相談の内�
 date: 2026-05-06
 categories: [ai-tools, review]
 tags: [ai, ビジネス, 副業, 講座, レビュー]
+image: /assets/images/ai-business-kouza.jpg
 ---
 
 本記事にはプロモーションが含まれます。

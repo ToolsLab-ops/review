@@ -5,6 +5,7 @@ description: "ミライフの評判・特徴・転職支援内容を解説。Saa
 date: 2026-05-07
 categories: [ai-tools]
 tags: [ミライフ, 転職エージェント, SaaS転職, AI業界転職]
+image: /assets/images/miraifu.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。

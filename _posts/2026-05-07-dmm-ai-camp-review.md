@@ -5,6 +5,7 @@ description: "DMM 生成AI CAMPの評判・料金・内容を徹底解説。Chat
 date: 2026-05-07
 categories: [ai-tools]
 tags: [DMM生成AI CAMP, AI学習, ChatGPT講座, 生成AI]
+image: /assets/images/dmm-ai-camp.jpg
 ---
 
 本記事には広告・プロモーションが含まれます。

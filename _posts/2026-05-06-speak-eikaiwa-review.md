@@ -5,6 +5,7 @@ description: "Speak（スピーク）AI英会話アプリの評判・料金・�
 date: 2026-05-06
 categories: [ai-tools, review]
 tags: [ai, 英会話, 英語学習, スピーク, speak]
+image: /assets/images/speak-eikaiwa.jpg
 ---
 
 本記事にはプロモーションが含まれます。
