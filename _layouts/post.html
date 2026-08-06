@@ -34,4 +34,37 @@ layout: default
       </div>
     </div>
   </div>
+  {% assign related = "" | split: "" %}
+  {% assign related_urls = "" | split: "" %}
+  {% for cat in page.categories %}
+    {% assign matches = site.posts | where_exp: "p", "p.categories contains cat" %}
+    {% for m in matches %}
+      {% unless m.url == page.url or related_urls contains m.url %}
+        {% assign related = related | push: m %}
+        {% assign related_urls = related_urls | push: m.url %}
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
+  {% assign related = related | sort: "date" | reverse %}
+  {% if related.size > 0 %}
+  <div class="container">
+    <div class="related-articles">
+      <h2 class="related-title">関連記事</h2>
+      <div class="articles-grid">
+        {% for post in related limit: 4 %}
+        <a href="{{ post.url | relative_url }}" class="article-card">
+          {% if post.image %}<img class="card-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy">{% endif %}
+          <div class="card-meta">
+            <span class="card-tag">REVIEW</span>
+            <span class="card-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          </div>
+          <h3 class="card-title">{{ post.title }}</h3>
+          <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          <p class="card-arrow">続きを読む →</p>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
 </article>
