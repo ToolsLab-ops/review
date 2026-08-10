@@ -164,6 +164,12 @@ AIツールは「全部入れる」より「1本を徹底的に使いこなす�
 
 この記事で紹介した10本はいずれも無料で始められる（または無料トライアルがある）ものを厳選しています。まずは自分の業務で「これに一番時間がかかっている」という作業に対応するツールを1本選んで、2週間試してみてください。
 
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">📦 ツールを使いこなすためのプロンプト集</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">ChatGPT・Claude対応のプロンプト集をnoteで配布しています。仕事効率化・ライティング用途別にまとめました。</p>
+<a href="https://note.com/tools_aria/n/nd9a73f75da10" target="_blank" rel="noopener" style="display:inline-block;background:#9333ea;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">ChatGPT仕事効率化プロンプト集を見る →</a>
+</div>
+
 ---
 
 ### 関連記事

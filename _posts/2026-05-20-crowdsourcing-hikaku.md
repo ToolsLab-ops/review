@@ -202,6 +202,12 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B3R2V+FK90VU+4F8I+BYT9E" alt="">
 </div>
 
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">📦 複数クライアントの案件・収支を一元管理</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">クラウドソーシングを掛け持ちすると、案件管理が煩雑になりがちです。フリーランス向けNotionテンプレートで、案件状況・入金予定を一画面にまとめられます。</p>
+<a href="https://note.com/tools_aria/n/n6e0638222c0f" target="_blank" rel="noopener" style="display:inline-block;background:#9333ea;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">フリーランス案件管理Notionテンプレートを見る →</a>
+</div>
+
 ---
 
 *最終更新: 2026年5月20日*
