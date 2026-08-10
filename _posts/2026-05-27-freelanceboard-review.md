@@ -95,3 +95,9 @@ image: /assets/images/thumb-freelanceboard-review.jpg
 <a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" rel="nofollow" target="_blank" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
 <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" alt="">
 </div>
+
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">📦 案件を獲得したら、収支をひとつにまとめる</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">フリーランスボード経由で複数エージェントに登録すると、案件・入金の管理が複雑になります。Notionテンプレートで一元管理できます。</p>
+<a href="https://note.com/tools_aria/n/n6e0638222c0f" target="_blank" rel="noopener" style="display:inline-block;background:#9333ea;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">フリーランス案件管理Notionテンプレートを見る →</a>
+</div>

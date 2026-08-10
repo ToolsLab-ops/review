@@ -129,3 +129,9 @@ noteはAIツールとの相性が抜群の副業プラットフォームです�
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">クラウドワークスで案件も並行 →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>
+
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">📦 note記事の構成に迷ったら</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">当サイト運営者（ToolsLab.ARIA）がnoteで配布しているAI記事作成プロンプト集です。構成案・見出し・導入文の型がそのまま使えます。</p>
+<a href="https://note.com/tools_aria/n/n1f4ccda82827" target="_blank" rel="noopener" style="display:inline-block;background:#9333ea;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">AI記事作成プロンプト50選を見る →</a>
+</div>

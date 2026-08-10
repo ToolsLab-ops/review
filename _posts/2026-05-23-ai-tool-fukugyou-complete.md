@@ -134,3 +134,10 @@ Canvaに搭載されたAI機能で、デザイン経験がなくてもプロ品�
 <a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyでライティングを効率化 →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>
+
+<div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
+<p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">📦 案件獲得と収支管理をまとめて効率化</p>
+<p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">AI記事作成プロンプト集と、複数クライアントの案件・収支を一元管理できるフリーランス向けNotionテンプレートをnoteで配布しています。</p>
+<a href="https://note.com/tools_aria/n/n1f4ccda82827" target="_blank" rel="noopener" style="display:inline-block;background:#9333ea;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">AI記事作成プロンプト50選 →</a>
+<a href="https://note.com/tools_aria/n/n6e0638222c0f" target="_blank" rel="noopener" style="display:inline-block;background:#7c3aed;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">フリーランス案件管理テンプレート →</a>
+</div>
