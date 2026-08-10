@@ -89,7 +89,7 @@ Plaudは専用ICレコーダー型のAIデバイスで、Nottaはスマホ・PC�
 
 ## 有料プランの申込方法
 
-1. [Notta公式サイト](https://www.notta.ai/)にアクセス
+1. [Notta公式サイト](https://px.a8.net/svt/ejp?a8mat=4B3KUS+8C2KR6+5988+5YJRM){:rel="sponsored nofollow"}にアクセス
 2. 「無料ではじめる」からアカウント登録（メールアドレスまたはGoogle/Appleアカウントで可）
 3. 無料プランでログイン後、プラン画面からプレミアムまたはビジネスを選択
 4. クレジットカードを登録して完了
