@@ -45,7 +45,7 @@ image: /assets/images/ai-tool-fukugyou.jpg
 
 **用途**: 音声・動画の自動文字起こし
 
-[Notta](https://www.notta.ai/){:rel="nofollow"}は会議・インタビュー・YouTube動画を自動でテキスト化します。文字起こし副業（1分 ¥100〜）で使えば、手作業の1/10の時間で完成します。
+[Notta](https://px.a8.net/svt/ejp?a8mat=4B3KUS+8C2KR6+5988+5YJRM){:rel="sponsored nofollow"}は会議・インタビュー・YouTube動画を自動でテキスト化します。文字起こし副業（1分 ¥100〜）で使えば、手作業の1/10の時間で完成します。
 
 ---
 

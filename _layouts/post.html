@@ -1,6 +1,31 @@
 ---
 layout: default
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ page.url | absolute_url | jsonify }} },
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  {% if page.image %}"image": [{{ page.image | absolute_url | jsonify }}],{% endif %}
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": "ja",
+  "author": { "@type": "Organization", "name": "ToolsLab.ARIA", "url": {{ '/' | absolute_url | jsonify }} },
+  "publisher": { "@type": "Organization", "name": {{ site.title | jsonify }}, "url": {{ '/' | absolute_url | jsonify }} }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": {{ '/' | absolute_url | jsonify }} },
+    { "@type": "ListItem", "position": 2, "name": {{ page.title | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+  ]
+}
+</script>
 <article>
   <div class="post-header">
     <div class="container">
@@ -34,24 +59,56 @@ layout: default
       </div>
     </div>
   </div>
+  {%- comment -%}
+    関連記事の選定（2026-08-10 改修）
+    旧実装は categories（全記事共通の "tools"）を日付降順で上位4件返していたため、
+    ほぼ全記事が同じ最新4本だけにリンクし、残りの記事が内部被リンクゼロになっていた。
+    現実装は「共有タグ優先 → 記事リングで補充」の2段構えで、
+    どの記事も必ず一定数の内部被リンクを受け取る構造にしている。
+  {%- endcomment -%}
   {% assign related = "" | split: "" %}
   {% assign related_urls = "" | split: "" %}
-  {% for cat in page.categories %}
-    {% assign matches = site.posts | where_exp: "p", "p.categories contains cat" %}
+
+  {%- comment -%} 1段目: タグが重なる記事を最大3件まで {%- endcomment -%}
+  {% for t in page.tags %}
+    {% assign matches = site.posts | where_exp: "p", "p.tags contains t" %}
     {% for m in matches %}
+      {% if related.size >= 3 %}{% break %}{% endif %}
       {% unless m.url == page.url or related_urls contains m.url %}
         {% assign related = related | push: m %}
         {% assign related_urls = related_urls | push: m.url %}
       {% endunless %}
     {% endfor %}
+    {% if related.size >= 3 %}{% break %}{% endif %}
   {% endfor %}
-  {% assign related = related | sort: "date" | reverse %}
+
+  {%- comment -%} 2段目: 全記事リストを環状にたどって6件まで補充（被リンクを全記事へ分散） {%- endcomment -%}
+  {% assign all_posts = site.posts %}
+  {% assign total_posts = all_posts.size %}
+  {% assign self_idx = 0 %}
+  {% for p in all_posts %}
+    {% if p.url == page.url %}{% assign self_idx = forloop.index0 %}{% break %}{% endif %}
+  {% endfor %}
+  {% for step in (1..20) %}
+    {% if related.size >= 6 %}{% break %}{% endif %}
+    {% assign j = self_idx | plus: step | modulo: total_posts %}
+    {% for cand in all_posts %}
+      {% if forloop.index0 == j %}
+        {% unless cand.url == page.url or related_urls contains cand.url %}
+          {% assign related = related | push: cand %}
+          {% assign related_urls = related_urls | push: cand.url %}
+        {% endunless %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
   {% if related.size > 0 %}
   <div class="container">
     <div class="related-articles">
       <h2 class="related-title">関連記事</h2>
       <div class="articles-grid">
-        {% for post in related limit: 4 %}
+        {% for post in related limit: 6 %}
         <a href="{{ post.url | relative_url }}" class="article-card">
           {% if post.image %}<img class="card-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy">{% endif %}
           <div class="card-meta">
