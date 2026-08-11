@@ -96,7 +96,7 @@ atama+は「塾に通う中高生の学習効率を最大化する」ツール�
 - 受験に向けて効率的に苦手を潰したい高校生
 
 **おすすめしない人**
-- 大人の学び直し・資格取得（→ Udemy・DMM生成AI CAMP等が適切）
+- 大人の学び直し・資格取得（→ [Udemy](//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3770660&pid=892627872){:rel="nofollow"}・[DMM生成AI CAMP](https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1){:rel="nofollow"}等が適切）
 - 個人向けオンラインサービスを探している（→ atama+は塾経由のみ）
 
 ---

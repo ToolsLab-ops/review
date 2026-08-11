@@ -103,7 +103,7 @@ Fammの詳細料金は無料説明会参加後に案内されます。
 - ChatGPT・画像AI・動画AIを一通り体験したい
 
 **おすすめしない人**
-- エンジニア・データサイエンス系の技術スキルを深く習得したい（→ AI CONNECT / Neuro Diveが向いている）
+- エンジニア・データサイエンス系の技術スキルを深く習得したい（→ AI CONNECT / [Neuro Dive](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX){:rel="nofollow"}が向いている）
 - 転職活動のためのAIスキル証明が必要（→ AI CONNECT）
 
 ---
