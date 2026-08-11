@@ -8,6 +8,8 @@ tags: [マネーフォワード, 家計簿, 確定申告, 副業, 節税, 家計
 image: /assets/images/moneyforward-review.jpg
 ---
 
+<p style="font-size:.85em;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;padding:.5rem 1rem;border-radius:4px;margin-bottom:1.5rem;">本記事はアフィリエイト広告を含む場合があります。</p>
+
 ## マネーフォワードとは — 家計から確定申告まで一元管理
 
 <figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="160" fill="#0f172a" rx="10"/><rect x="20" y="20" width="340" height="120" fill="#1e293b" rx="8" stroke="#3b82f6" stroke-width="1.5"/><text x="190" y="48" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#93c5fd" font-weight="bold">マネーフォワード ME（家計簿）</text><text x="190" y="70" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#60a5fa">銀行・クレカ・証券を自動連携</text><text x="190" y="88" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#60a5fa">収支を自動仕分け・グラフ表示</text><text x="190" y="106" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">無料プランあり（連携口座数に制限）</text><text x="190" y="124" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#93c5fd">→ 家計・副業収入の把握に最適</text><rect x="440" y="20" width="340" height="120" fill="#1e293b" rx="8" stroke="#22c55e" stroke-width="1.5"/><text x="610" y="48" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#86efac" font-weight="bold">マネーフォワード クラウド確定申告</text><text x="610" y="70" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4ade80">副業・フリーランスの申告書作成</text><text x="610" y="88" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4ade80">e-Tax連携・電子申告対応</text><text x="610" y="106" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">月額¥980〜（年払いで割安）</text><text x="610" y="124" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#86efac">→ 確定申告・帳簿管理に特化</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：マネーフォワードの2大サービス — MEと確定申告の使い分け</figcaption></figure>
@@ -46,6 +48,20 @@ image: /assets/images/moneyforward-review.jpg
 | プレミアム | ¥500/月 | 無制限 | 閲覧無制限・広告なし・CSV出力 |
 
 副業1〜2口座程度なら、**無料プランで十分**使えます。
+
+### 副業を始めたら「口座を分ける」
+
+家計簿ツールを入れる前にやっておくべきことがあります。**副業用の口座とクレジットカードを、生活用と分けること**です。
+
+同じ口座に生活費と副業の入出金が混ざっていると、後から経費を仕分ける作業が非常に面倒になります。副業用の口座を1つ用意し、そこにだけ副業の入金と経費の支払いを集約すれば、その口座の明細がほぼそのまま帳簿の材料になります。
+
+自動連携ツールの効果が最大化されるのは、この前提が整っているときです。ツールの導入より先に、口座の分離を済ませておくことを強くおすすめします。
+
+### 自動連携の限界も知っておく
+
+口座やカードの明細は自動で取り込まれますが、**用途の判断まで自動化されるわけではありません**。同じコンビニでの支払いが、経費なのか私的な買い物なのかは、本人にしか分かりません。
+
+そこで有効なのが、月に一度、10〜15分だけ「仕分けの時間」を取ることです。月末にまとめて分類すれば、年度末に1年分を思い出そうとして苦しむ事態を避けられます。現金払いの経費は自動連携されないため、レシートを撮影して記録する習慣もあわせて作っておくと安心です。
 
 ---
 
@@ -94,6 +110,34 @@ image: /assets/images/moneyforward-review.jpg
 4. **青色申告を選択** → 65万円控除を活用して節税
 
 MEで日常管理 → クラウド確定申告で年1回の申告という二刀流が最も効率的です。
+
+### 確定申告まわりで押さえておきたい前提
+
+- **「20万円」は収入ではなく所得** — 給与所得者の場合、副業の所得（収入から必要経費を引いた金額）が年間20万円以下であれば所得税の確定申告が不要になるケースがあります。判断されるのは売上そのものではなく、経費を差し引いた後の金額です。
+- **所得税が不要でも住民税の申告は別** — 所得税の申告が不要な場合でも、住民税については別途申告が必要になることがあります。お住まいの自治体の案内を確認してください。
+- **青色申告特別控除には条件がある** — 最大65万円の控除を受けるには、複式簿記による記帳に加えて、e-Taxによる電子申告または電子帳簿保存、そして期限内の申告といった要件を満たす必要があります。要件を満たさない場合は控除額が下がります。
+- **青色申告には事前の届出が必要** — 適用したい年について、あらかじめ所轄の税務署へ承認申請書を提出しておく必要があります。「申告のときに選べばよい」ものではない点に注意してください。
+
+> ⚠️ 税制の要件は改正されることがあり、個別の事情によって取り扱いが変わります。最終的な判断は国税庁の公式情報、または税務署・税理士にご確認ください。本記事は一般的な情報の整理であり、個別の税務判断を行うものではありません。
+
+---
+
+## 5. よくある質問
+
+**Q. 無料プランのままでも確定申告できますか？**  
+A. マネーフォワード MEは家計簿ツールであり、申告書の作成機能はありません。申告書まで作るならクラウド確定申告が必要です。ただし、副業の所得が小さく、記帳の量も少ないうちは、MEで収支を把握しつつ手作業で申告する運用も現実的です。
+
+**Q. 銀行口座を連携するのは安全ですか？**  
+A. 参照専用の連携が基本ですが、不安がある場合は連携する口座を副業用に限定するという方法もあります。いずれの場合も、二段階認証の設定と、推測されにくいパスワードの使用は必須と考えてください。
+
+**Q. 途中でfreeeから乗り換えられますか？**  
+A. 会計データの移行は可能な場合がありますが、形式や年度によって手間が変わります。年度の途中での移行は照合作業が煩雑になるため、切り替えるなら年度の変わり目が現実的です。
+
+**Q. スマホだけで完結しますか？**  
+A. 日々の記録や確認はスマートフォンで十分ですが、申告書の作成・提出はパソコンのほうが操作しやすい場面があります。
+
+**Q. インボイス制度への対応は必要ですか？**  
+A. 取引先が課税事業者で、適格請求書の発行を求められる場合には検討が必要になります。副業の規模や取引先の性質によって判断が変わるため、実際の取引条件を踏まえて確認してください。
 
 ---
 
