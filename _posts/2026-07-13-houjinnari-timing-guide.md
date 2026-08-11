@@ -5,6 +5,7 @@ description: "副業・フリーランスが法人成り（法人化）を検討
 date: 2026-07-13
 categories: [tools]
 tags: [法人成り, 法人化, フリーランス, 副業, 確定申告, 税金, freee]
+image: /assets/images/thumb-houjinnari-timing.jpg
 ---
 
 ## 法人成りとは — なぜ検討する必要があるのか
