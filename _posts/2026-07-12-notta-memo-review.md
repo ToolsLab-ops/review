@@ -5,6 +5,7 @@ description: "Notta Memoの価格・スペック・機能を徹底解説。98.86
 date: 2026-07-12
 categories: [ai-tools, review]
 tags: [Notta Memo, AIボイスレコーダー, 音声テキスト化, 会議録, 業務効率化, AIツール]
+image: /assets/images/thumb-notta-memo.jpg
 ---
 
 <p style="font-size:.85em;color:#64748b;background:#f8fafc;border:1px solid #e2e8f0;padding:.5rem 1rem;border-radius:4px;margin-bottom:1.5rem;">本記事はアフィリエイト広告（A8.net）を含みます。</p>
