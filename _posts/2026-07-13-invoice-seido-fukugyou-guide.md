@@ -5,6 +5,7 @@ description: "副業・フリーランスとインボイス制度（適格請求
 date: 2026-07-13
 categories: [tools]
 tags: [インボイス, 副業, フリーランス, 確定申告, 税金, freee, 弥生]
+image: /assets/images/thumb-invoice-seido.jpg
 ---
 
 ## インボイス制度とは — 副業ワーカーに関係あるのか
