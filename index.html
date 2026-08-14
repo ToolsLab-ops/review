@@ -2080,6 +2080,21 @@ const TOOLS = [
 
 const SECTION_LABELS = { global:'🌐 グローバル', money:'💰 お金・計算', datetime:'📅 日時', text:'📝 テキスト', design:'🎨 デザイン', health:'💪 健康', fun:'🔮 エンタメ' };
 
+/* ── 文脈広告（承認済みASPリンクを持つツールのみ） ── */
+const ADS = {
+  tax: [
+    { icon:'🧮', title:'freee会計', sub:'確定申告・帳簿付けをまるごと自動化', pr:'#3b82f6', cta:'無料で試す', url:'https://px.a8.net/svt/ejp?a8mat=4B3R2V+FLFW3E+3SPO+9FL80Y', img:'https://www15.a8.net/0.gif?a8mat=4B3R2V+FLFW3E+3SPO+9FL80Y' },
+    { icon:'📗', title:'やよいの青色申告 オンライン', sub:'初年度無料・シンプル操作で青色申告控除', pr:'#f59e0b', cta:'1年間無料で試す', url:'https://px.a8.net/svt/ejp?a8mat=4B3R2V+FM1BP6+35XE+5YJRM', img:'https://www12.a8.net/0.gif?a8mat=4B3R2V+FM1BP6+35XE+5YJRM' }
+  ]
+};
+
+function renderAds(toolId){
+  const ads = ADS[toolId];
+  if(!ads || !ads.length) return '';
+  const items = ads.map(a=>`<a class="ad-banner" href="${a.url}" target="_blank" rel="nofollow noopener" referrerpolicy="no-referrer-when-downgrade"><span class="ad-icon">${a.icon}</span><span class="ad-body"><span class="ad-title">${a.title}</span><br><span class="ad-sub">${a.sub}</span></span><span class="ad-pr" style="background:${a.pr}">PR</span><span class="ad-cta">${a.cta} →</span><img border="0" width="1" height="1" src="${a.img}" alt="" style="position:absolute;"/></a>`).join('');
+  return `<div class="ads-label">関連サービス</div>${items}`;
+}
+
 
 
 
@@ -3243,11 +3258,13 @@ function openTool(toolId, cardEl){
   const bodyHTML=fn(tool);
   const isMobile=window.innerWidth<=860;
 
+  const adsHTML=renderAds(toolId);
+
   if(isMobile){
     document.getElementById('sheetIcon').textContent=tool.icon;
     document.getElementById('sheetName').textContent=tool.name;
     document.getElementById('sheetDesc').textContent=tool.desc;
-    document.getElementById('sheetBody').innerHTML=bodyHTML;
+    document.getElementById('sheetBody').innerHTML=bodyHTML+(adsHTML?`<div class="contextual-ads" style="padding:14px 0 0;margin-top:14px;border-top:1px solid var(--border);">${adsHTML}</div>`:'');
     document.getElementById('mobileSheet').classList.add('open');
     document.getElementById('sheetOverlay').classList.add('visible');
   }else{
@@ -3268,7 +3285,9 @@ function openTool(toolId, cardEl){
 
 
 
-  document.getElementById('contextualAds').style.display='none';
+  const adsEl=document.getElementById('contextualAds');
+  if(adsHTML){ adsEl.innerHTML=adsHTML; adsEl.style.display='block'; }
+  else { adsEl.innerHTML=''; adsEl.style.display='none'; }
 
 
 
