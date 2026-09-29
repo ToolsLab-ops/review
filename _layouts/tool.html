@@ -1,0 +1,118 @@
+---
+layout: null
+---
+{%- assign tool_url = page.url | absolute_url -%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="6Qwa0FA5N2vR2nP44qoL5Tu5xaOoxwVvAQ-mE9r6MfA" />
+  <title>{{ page.title }} | ToolsLab.</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ tool_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ tool_url }}">
+  <meta property="og:site_name" content="ToolsLab.">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tool-page.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": {{ page.h1 | jsonify }},
+        "url": {{ tool_url | jsonify }},
+        "description": {{ page.description | jsonify }},
+        "applicationCategory": {{ page.app_category | default: "UtilitiesApplication" | jsonify }},
+        "operatingSystem": "Any",
+        "inLanguage": "ja",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "publisher": { "@type": "Organization", "name": "ToolsLab.", "url": "https://toolslab.sambleparker.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "ToolsLab.", "item": "https://toolslab.sambleparker.com/" },
+          { "@type": "ListItem", "position": 2, "name": "無料ツール一覧", "item": "https://toolslab.sambleparker.com/tools/" },
+          { "@type": "ListItem", "position": 3, "name": {{ page.h1 | jsonify }}, "item": {{ tool_url | jsonify }} }
+        ]
+      }{% if page.faq %},
+      {
+        "@type": "FAQPage",
+        "mainEntity": [{% for f in page.faq %}
+          { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+        ]
+      }{% endif %}
+    ]
+  }
+  </script>
+</head>
+<body data-tool="{{ page.tool_id }}">
+{% include tp-header.html %}
+
+<div class="tp-wrap">
+  <nav class="tp-breadcrumb" aria-label="パンくずリスト">
+    <a href="{{ '/' | relative_url }}">ToolsLab.</a><span>›</span><a href="{{ '/tools/' | relative_url }}">無料ツール一覧</a><span>›</span><span>{{ page.h1 }}</span>
+  </nav>
+
+  <h1 class="tp-title">{{ page.h1 }}</h1>
+  <p class="tp-lead">{{ page.lead }}</p>
+
+  <section class="tp-card" aria-label="{{ page.h1 }}">
+    <div class="bubble-tool-body" id="toolBody"><noscript>このツールはJavaScriptを有効にしてご利用ください。</noscript></div>
+    <div class="contextual-ads" id="toolAds" style="display:none"></div>
+  </section>
+
+  <article class="tp-article">
+    {{ content }}
+
+    {% if page.faq %}
+    <h2>よくある質問</h2>
+    <div class="tp-faq">
+      {% for f in page.faq %}
+      <details>
+        <summary>{{ f.q }}</summary>
+        <p>{{ f.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.posts %}
+    <h2>関連する記事</h2>
+    <ul class="tp-links">
+      {% for p in page.posts %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+
+  {% if page.related %}
+  <section class="tp-related">
+    <h2>あわせて使いたいツール</h2>
+    <div class="tp-related-grid">
+      {% for rid in page.related %}{% assign rt = site.tools | where: "tool_id", rid | first %}{% if rt %}
+      <a class="tp-related-card" href="{{ rt.url | relative_url }}"><span class="tp-related-name">{{ rt.h1 }}</span><span class="tp-related-desc">{{ rt.short }}</span></a>
+      {% endif %}{% endfor %}
+    </div>
+    <p class="tp-all"><a href="{{ '/tools/' | relative_url }}">無料ツールをすべて見る →</a></p>
+  </section>
+  {% endif %}
+</div>
+
+{% include tp-footer.html %}
+
+<script src="{{ '/assets/js/tools-engine.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+<script src="{{ '/assets/js/tools.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+<script src="{{ '/assets/js/tool-page.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+</body>
+</html>
