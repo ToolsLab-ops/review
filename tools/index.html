@@ -1,0 +1,60 @@
+---
+layout: null
+permalink: /tools/
+title: 無料ツール一覧｜計算・変換・生成ツール23種をブラウザで
+description: 消費税・手取り・ローン・割り勘などのお金の計算、日付計算、文字数カウント、パスワード生成、QRコード作成など、登録不要で使える無料ツール23種の一覧です。
+---
+{%- assign page_url = page.url | absolute_url -%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="6Qwa0FA5N2vR2nP44qoL5Tu5xaOoxwVvAQ-mE9r6MfA" />
+  <title>{{ page.title }} | ToolsLab.</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ page_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:site_name" content="ToolsLab.">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/tool-page.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+  {%- assign sorted = site.tools | sort: "order" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "ToolsLab. 無料ツール一覧",
+    "itemListElement": [{% for t in sorted %}
+      { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ t.h1 | jsonify }}, "url": {{ t.url | absolute_url | jsonify }} }{% unless forloop.last %},{% endunless %}{% endfor %}
+    ]
+  }
+  </script>
+</head>
+<body>
+{% include tp-header.html %}
+<div class="tp-wrap">
+  <nav class="tp-breadcrumb" aria-label="パンくずリスト">
+    <a href="{{ '/' | relative_url }}">ToolsLab.</a><span>›</span><span>無料ツール一覧</span>
+  </nav>
+  <h1 class="tp-title">無料ツール一覧</h1>
+  <p class="tp-lead">お金の計算、日付の計算、テキスト処理、デザインまで、ブラウザだけで使える無料ツールをまとめています。登録は不要です。</p>
+  {%- assign groups = "money:💰 お金・計算|datetime:📅 日時|text:📝 テキスト|design:🎨 デザイン|global:🌐 グローバル|health:💪 健康|fun:🔮 エンタメ" | split: "|" %}
+  {% for g in groups %}{% assign parts = g | split: ":" %}{% assign items = sorted | where: "cat", parts[0] %}
+  <section class="tp-hub-section">
+    <h2>{{ parts[1] }}</h2>
+    <div class="tp-related-grid">
+      {% for t in items %}<a class="tp-related-card" href="{{ t.url | relative_url }}"><span class="tp-related-name">{{ t.h1 }}</span><span class="tp-related-desc">{{ t.short }}</span></a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
+{% include tp-footer.html %}
+</body>
+</html>

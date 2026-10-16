@@ -17,3 +17,12 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "tools"
+    values:
+      layout: "tool"
+collections:
+  tools:
+    output: true
+    permalink: /tools/:name/
