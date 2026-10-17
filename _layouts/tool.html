@@ -55,6 +55,7 @@ layout: null
     ]
   }
   </script>
+  <script>if(/[?&]embed=1(&|$)/.test(location.search))document.documentElement.classList.add('tp-embed');</script>
 </head>
 <body data-tool="{{ page.tool_id }}">
 {% include tp-header.html %}
@@ -70,6 +71,7 @@ layout: null
   <section class="tp-card" aria-label="{{ page.h1 }}">
     <div class="bubble-tool-body" id="toolBody"><noscript>このツールはJavaScriptを有効にしてご利用ください。</noscript></div>
     <div class="contextual-ads" id="toolAds" style="display:none"></div>
+    <p class="tp-embed-credit"><a href="{{ tool_url }}" target="_blank" rel="noopener">Powered by ToolsLab.</a></p>
   </section>
 
   <article class="tp-article">
@@ -95,6 +97,24 @@ layout: null
     </ul>
     {% endif %}
   </article>
+
+  {%- capture embed_code -%}
+<iframe src="{{ tool_url }}?embed=1" title="{{ page.h1 | escape }}" width="100%" height="600" style="border:0;max-width:680px;" loading="lazy" allow="clipboard-write"></iframe>
+<p><a href="{{ tool_url }}">{{ page.h1 | escape }} - ToolsLab.</a></p>
+<script>addEventListener("message",function(e){if(e.origin!=="https://toolslab.sambleparker.com"||!e.data||!e.data.toolslabHeight)return;document.querySelectorAll('iframe[src^="https://toolslab.sambleparker.com/tools/"]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=e.data.toolslabHeight+"px";});});</script>
+  {%- endcapture %}
+  <section class="tp-embed-section" aria-labelledby="embedTitle">
+    <h2 id="embedTitle">このツールをあなたのサイトに設置する</h2>
+    <p>下のコードをブログやWebサイトに貼り付けると、このツールをそのまま使えます。WordPressでは「カスタムHTML」ブロックに貼り付けてください。無料で、登録も不要です。</p>
+    <textarea id="embedCode" class="tp-embed-code" rows="6" readonly>{{ embed_code | escape }}</textarea>
+    <div class="tp-embed-actions"><button type="button" id="embedCopy" class="tp-embed-btn">コードをコピー</button><span id="embedCopied" class="tp-embed-msg" hidden>コピーしました</span></div>
+    <ul class="tp-embed-terms">
+      <li>設置したツールに広告は表示されません。ツールの下に「Powered by ToolsLab.」のリンクが表示されます。</li>
+      <li>コード内のリンク（ツール名）は削除せずにお使いください。</li>
+      <li>計算結果は目安です。ToolsLab.は結果の正確性を保証しません。</li>
+      <li>最後の行の &lt;script&gt; は表示の高さを自動で合わせるためのものです。貼り付けられない場合は省いても使えます。</li>
+    </ul>
+  </section>
 
   {% if page.related %}
   <section class="tp-related">

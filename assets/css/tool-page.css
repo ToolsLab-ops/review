@@ -37,3 +37,24 @@
   .tp-title { font-size: 1.35rem; }
   .tp-card .bubble-tool-body { padding: 16px; }
 }
+
+.tp-embed-credit { display: none; }
+.tp-embed-section { margin-top: 48px; padding: 20px 22px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; }
+.tp-embed-section h2 { font-size: 1.1rem; font-weight: 800; margin: 0 0 10px; }
+.tp-embed-section p { font-size: .9rem; line-height: 1.8; margin: 0 0 12px; }
+.tp-embed-code { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .76rem; line-height: 1.5; padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--white); color: var(--text); resize: vertical; }
+.tp-embed-actions { display: flex; align-items: center; gap: 12px; margin: 10px 0 12px; }
+.tp-embed-btn { padding: 8px 16px; border: 0; border-radius: 8px; background: var(--blue); color: #fff; font-weight: 700; font-size: .85rem; cursor: pointer; font-family: inherit; }
+.tp-embed-btn:focus-visible { outline: 2px solid var(--blue-d); outline-offset: 2px; }
+.tp-embed-msg { font-size: .82rem; color: var(--blue); font-weight: 700; }
+.tp-embed-terms { margin: 0; padding-left: 1.2em; font-size: .8rem; color: var(--muted); line-height: 1.8; }
+/* 埋め込み表示（?embed=1） */
+.tp-embed body { background: var(--white); }
+.tp-embed .site-header, .tp-embed .site-footer, .tp-embed .tp-breadcrumb, .tp-embed .tp-lead,
+.tp-embed .tp-article, .tp-embed .tp-related, .tp-embed .tp-embed-section, .tp-embed #toolAds { display: none !important; }
+.tp-embed .tp-wrap { max-width: none; padding: 0; }
+.tp-embed .tp-title { font-size: 1rem; margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.tp-embed .tp-card { margin: 0; box-shadow: none; border-radius: 12px; }
+.tp-embed .tp-embed-credit { display: block; margin: 0; padding: 8px 16px 12px; text-align: right; font-size: .75rem; }
+.tp-embed .tp-embed-credit a { color: var(--muted); text-decoration: none; font-weight: 700; }
+.tp-embed .tp-embed-credit a:hover { color: var(--blue); }
