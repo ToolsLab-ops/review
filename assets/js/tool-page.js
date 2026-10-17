@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
   activeToolId = id;
   initTool(id);
   if (embed && window.parent !== window) {
-    var post = function () { window.parent.postMessage({ toolslabHeight: Math.ceil(document.documentElement.scrollHeight) }, '*'); };
-    if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+    var wrap = document.querySelector('.tp-wrap');
+    var post = function () { window.parent.postMessage({ toolslabHeight: Math.ceil(wrap.getBoundingClientRect().height) + 2 }, '*'); };
+    if (window.ResizeObserver) new ResizeObserver(post).observe(wrap);
     window.addEventListener('load', post);
     post();
   }
