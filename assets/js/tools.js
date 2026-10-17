@@ -140,7 +140,7 @@ const RENDERERS = {
 
   loan: ()=>`<div class="tool-input-pair"><div class="tool-input-row"><label>借入金額</label><div class="with-unit"><input id="lAmount" type="number" value="3000" oninput="calcLoan()"><span class="unit">万円</span></div></div><div class="tool-input-row"><label>年利</label><div class="with-unit"><input id="lRate" type="number" value="1.5" step="0.1" oninput="calcLoan()"><span class="unit">%</span></div></div></div><div class="tool-input-row"><label>返済期間</label><div class="with-unit"><input id="lYears" type="number" value="35" oninput="calcLoan()"><span class="unit">年</span></div></div><div class="result-area visible"><div class="result-grid"><div class="result-item span2"><div class="result-label">毎月の返済額</div><div class="result-value" id="lMonthly">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">総返済額</div><div class="result-value" id="lTotal">—<span class="unit">万円</span></div></div><div class="result-item"><div class="result-label">利息合計</div><div class="result-value" id="lInterest">—<span class="unit">万円</span></div></div></div></div>`,
 
-  tedori: ()=>`<div class="tool-input-row"><label>月収（顧面）</label><div class="with-unit"><input id="tdGross" type="number" value="30" oninput="calcTedori()"><span class="unit">万円</span></div></div><div class="tool-input-row"><label>年齢</label><div class="rate-grid"><button class="rate-btn on" id="td39" onclick="setTdAge(39)">40歳未満</button><button class="rate-btn" id="td40" onclick="setTdAge(40)">40歳以上（介護保険）</button></div></div><div class="result-area visible"><div class="result-grid"><div class="result-item"><div class="result-label">健保・介護</div><div class="result-value" id="tdHi">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">厚生年金</div><div class="result-value" id="tdPe">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">雇用保険</div><div class="result-value" id="tdEi">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">所得税（概算）</div><div class="result-value" id="tdTx">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">住民税（概算）</div><div class="result-value" id="tdRt">—<span class="unit">円</span></div></div><div class="result-item span2"><div class="result-label" style="font-weight:900;color:var(--blue);">月手取り（概算）</div><div class="result-value" id="tdNet" style="color:var(--blue);font-size:1.08rem;">—<span class="unit">円</span></div></div></div><p style="font-size:.68rem;color:var(--muted);margin:4px 0 0;">※協会けんぽ全国平均・会社員想定の概算。等級・扶養・各種控除により変動します</p></div>`,
+  tedori: ()=>`<div class="tool-input-row"><label>月収（顧面）</label><div class="with-unit"><input id="tdGross" type="number" value="30" oninput="calcTedori()"><span class="unit">万円</span></div></div><div class="tool-input-row"><label>年齢</label><div class="rate-grid"><button class="rate-btn on" id="td39" onclick="setTdAge(39)">40歳未満</button><button class="rate-btn" id="td40" onclick="setTdAge(40)">40歳以上（介護保険）</button></div></div><div class="result-area visible"><div class="result-grid"><div class="result-item"><div class="result-label">健保・介護・支援金</div><div class="result-value" id="tdHi">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">厚生年金</div><div class="result-value" id="tdPe">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">雇用保険</div><div class="result-value" id="tdEi">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">所得税（概算）</div><div class="result-value" id="tdTx">—<span class="unit">円</span></div></div><div class="result-item"><div class="result-label">住民税（概算）</div><div class="result-value" id="tdRt">—<span class="unit">円</span></div></div><div class="result-item span2"><div class="result-label" style="font-weight:900;color:var(--blue);">月手取り（概算）</div><div class="result-value" id="tdNet" style="color:var(--blue);font-size:1.08rem;">—<span class="unit">円</span></div></div></div><p style="font-size:.68rem;color:var(--muted);margin:4px 0 0;">※協会けんぽ全国平均・会社員想定の概算。等級・扶養・各種控除により変動します</p></div>`,
 
 
 
@@ -379,7 +379,33 @@ let tdAge=39;
 
 function setTdAge(a){tdAge=a;document.getElementById('td39').classList.toggle('on',a<40);document.getElementById('td40').classList.toggle('on',a>=40);calcTedori();}
 
-function calcTedori(){const g=(parseFloat(document.getElementById('tdGross')?.value)||0)*10000;if(g<=0){['tdHi','tdPe','tdEi','tdTx','tdRt','tdNet'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML='—<span class=\"unit\">円</span>';});return;}const hi=Math.round(g*0.04985);const kai=tdAge>=40?Math.round(g*0.0091):0;const pe=Math.round(g*0.0915);const ei=Math.round(g*0.006);const ins=(hi+kai+pe+ei)*12;const ag=g*12;let ded;if(ag<=1625000)ded=550000;else if(ag<=1800000)ded=ag*0.4-100000;else if(ag<=3600000)ded=ag*0.3+80000;else if(ag<=6600000)ded=ag*0.2+440000;else if(ag<=8500000)ded=ag*0.1+1100000;else ded=1950000;const taxable=Math.max(0,ag-ded-ins-480000);let itax;if(taxable<=1950000)itax=taxable*0.05;else if(taxable<=3300000)itax=taxable*0.1-97500;else if(taxable<=6950000)itax=taxable*0.2-427500;else if(taxable<=9000000)itax=taxable*0.23-636000;else if(taxable<=18000000)itax=taxable*0.33-1536000;else itax=taxable*0.4-2796000;const itaxM=Math.round(Math.max(0,itax)*1.021/12);const rtaxM=Math.round(Math.max(0,taxable*0.1/12))+417;const net=g-(hi+kai)-pe-ei-itaxM-rtaxM;const fmt=function(n){return Math.max(0,Math.round(n)).toLocaleString('ja-JP');};const set=function(id,v){var el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span class=\"unit\">円</span>';};set('tdHi',hi+kai);set('tdPe',pe);set('tdEi',ei);set('tdTx',itaxM);set('tdRt',rtaxM);var nel=document.getElementById('tdNet');if(nel)nel.innerHTML=fmt(net)+'<span class=\"unit\">円</span>';}
+function tdKyuyoKojo(ag,minimum,minUpTo){if(ag<=minUpTo)return minimum;if(ag<=3600000)return ag*0.3+80000;if(ag<=6600000)return ag*0.2+440000;if(ag<=8500000)return ag*0.1+1100000;return 1950000;}
+function tdKisoKojo(shotoku){if(shotoku<=4890000)return 1040000;if(shotoku<=6550000)return 670000;if(shotoku<=23500000)return 620000;if(shotoku<=24000000)return 480000;if(shotoku<=24500000)return 320000;if(shotoku<=25000000)return 160000;return 0;}
+function calcTedori(){
+  const g=(parseFloat(document.getElementById('tdGross')?.value)||0)*10000;
+  if(g<=0){['tdHi','tdPe','tdEi','tdTx','tdRt','tdNet'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML='—<span class="unit">円</span>';});return;}
+  // 2026年度 協会けんぽ東京都（本人負担）: 健保9.85%/2・介護1.62%/2・子ども子育て支援金0.23%/2、厚生年金18.3%/2（標準報酬月額の上限65万円）、雇用保険0.5%
+  const hi=Math.round(g*0.04925);
+  const kai=tdAge>=40?Math.round(g*0.0081):0;
+  const shien=Math.round(g*0.00115);
+  const pe=Math.round(Math.min(g,650000)*0.0915);
+  const ei=Math.round(g*0.005);
+  const ins=(hi+kai+shien+pe+ei)*12;
+  const ag=g*12;
+  // 所得税: 令和8年分（給与所得控除の最低74万円・基礎控除の特例）
+  const shotoku=Math.max(0,ag-tdKyuyoKojo(ag,740000,2200000));
+  const taxable=Math.floor(Math.max(0,shotoku-ins-tdKisoKojo(shotoku))/1000)*1000;
+  let itax;if(taxable<=1950000)itax=taxable*0.05;else if(taxable<=3300000)itax=taxable*0.1-97500;else if(taxable<=6950000)itax=taxable*0.2-427500;else if(taxable<=9000000)itax=taxable*0.23-636000;else if(taxable<=18000000)itax=taxable*0.33-1536000;else itax=taxable*0.4-2796000;
+  const itaxM=Math.round(Math.max(0,itax)*1.021/12);
+  // 住民税: 給与所得控除は最低65万円、基礎控除43万円、所得割10%＋均等割等5,000円/年
+  const rTaxable=Math.max(0,ag-tdKyuyoKojo(ag,650000,1900000)-ins-430000);
+  const rtaxM=Math.round((rTaxable*0.1+5000)/12);
+  const net=g-(hi+kai+shien)-pe-ei-itaxM-rtaxM;
+  const fmt=function(n){return Math.max(0,Math.round(n)).toLocaleString('ja-JP');};
+  const set=function(id,v){var el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span class="unit">円</span>';};
+  set('tdHi',hi+kai+shien);set('tdPe',pe);set('tdEi',ei);set('tdTx',itaxM);set('tdRt',rtaxM);
+  var nel=document.getElementById('tdNet');if(nel)nel.innerHTML=fmt(net)+'<span class="unit">円</span>';
+}
 
 
 
