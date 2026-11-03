@@ -547,9 +547,9 @@ function ctpActualChordName(chordDef, keyRoot, isMinor) {
 const CHORD_PROGRESSIONS = {
   oudou:    { name:'王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）', chords:[{deg:'IV',q:''},{deg:'V',q:''},{deg:'III',q:'m'},{deg:'VI',q:'m'}] },
   canon:    { name:'カノン進行（I-V-VIm-IIIm-IV-I-IV-V）', chords:[{deg:'I',q:''},{deg:'V',q:''},{deg:'VI',q:'m'},{deg:'III',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'IV',q:''},{deg:'V',q:''}] },
-  komuro:   { name:'小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'I',q:''},{deg:'V',q:''}] },
-  // 丸サ進行はジャズのII-V-Iに近いテンポ感のため、1小節1コードではなく2拍単位で聴かせる（beats: 2）。
-  marusa:   { name:'丸サ進行（I-VIm-IIm-V）', chords:[{deg:'I',q:'',beats:2},{deg:'VI',q:'m',beats:2},{deg:'II',q:'m',beats:2},{deg:'V',q:'',beats:2}] },
+  komuro:   { name:'小室進行（Ⅵm-Ⅳ-Ⅴ-Ⅰ）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''},{deg:'I',q:''}] },
+  // 丸サ進行（Just the Two of Us進行）: ⅣM7→Ⅲ7→Ⅵm7 を1小節ずつ、最後の小節は Ⅴm7→Ⅰ7 を2拍ずつ。
+  marusa:   { name:'丸サ進行（Ⅳmaj7-Ⅲ7-Ⅵm7-Ⅴm7-Ⅰ7）', chords:[{deg:'IV',q:'maj7',beats:4},{deg:'III',q:'7',beats:4},{deg:'VI',q:'m7',beats:4},{deg:'V',q:'m7',beats:2},{deg:'I',q:'7',beats:2}] },
   junkan:   { name:'循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）', chords:[{deg:'I',q:''},{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''}] },
   // 実際の12小節ブルース形式（I-I-I-I-IV-IV-I-I-V-IV-I-I）を展開。1小節=4拍として beats を指定。
   blues:    { name:'ブルース進行（Ⅰ-Ⅳ-Ⅴ）', chords:[
@@ -559,7 +559,7 @@ const CHORD_PROGRESSIONS = {
   setsunai: { name:'切ない系進行（VIm-IV-V-VIm）', chords:[{deg:'VI',q:'m'},{deg:'IV',q:''},{deg:'V',q:''},{deg:'VI',q:'m'}] },
   cliche:   { name:'クリシェ進行（I-I/VII-I7/♭VII-VIm）', chords:[
                 { deg:'I', q:'' , bassDeg:'I' },
-                { deg:'I', q:'' , bassDeg:'VII', bassLowered:true },
+                { deg:'I', q:'' , bassDeg:'VII' },
                 { deg:'I', q:'7', bassDeg:'VII', bassLowered:true },
                 { deg:'VI', q:'m', bassDeg:'VI' },
               ] },
