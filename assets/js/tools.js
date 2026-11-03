@@ -211,8 +211,8 @@ const RENDERERS = {
       <select id="bpmProgression" onchange="bpmOnProgressionChange()">
         <option value="oudou">王道進行（Ⅳ-Ⅴ-Ⅲm-Ⅵm）</option>
         <option value="canon">カノン進行（I-V-VIm-IIIm-IV-I-IV-V）</option>
-        <option value="komuro">小室進行（Ⅵm-Ⅳ-Ⅰ-Ⅴ）</option>
-        <option value="marusa">丸サ進行（I-VIm-IIm-V）</option>
+        <option value="komuro">小室進行（Ⅵm-Ⅳ-Ⅴ-Ⅰ）</option>
+        <option value="marusa">丸サ進行（Ⅳmaj7-Ⅲ7-Ⅵm7-Ⅴm7-Ⅰ7）</option>
         <option value="junkan">循環コード（Ⅰ-Ⅵm-Ⅳ-Ⅴ）</option>
         <option value="blues">ブルース進行（Ⅰ-Ⅳ-Ⅴ）</option>
         <option value="setsunai">切ない系進行（VIm-IV-V-VIm）</option>
