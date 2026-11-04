@@ -26,7 +26,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 | 副業初心者・操作を簡単にしたい | **freee 確定申告** |
 | 銀行・クレカ連携を重視したい | **マネーフォワード クラウド確定申告** |
 | 青色申告で節税を最大化したい | **弥生 やよいの青色申告オンライン** |
-| スマホでレシート管理したい | **タックスナップ** |
+| スマホ（iPhone）だけで仕訳から申告まで済ませたい | **タックスナップ** |
 | 農業・個人事業の帳簿をしっかり管理したい | **ソリマチ 農業簿記** |
 | 費用ゼロで確定申告したい | **国税庁e-Tax（手動）** |
 
@@ -165,20 +165,20 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 <figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#a78bfa" font-weight="bold">タックスナップ</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ レシート写真を撮るだけで経費登録</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ スマホネイティブ設計</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 副業・個人事業主の経費管理に特化</text><rect x="520" y="55" width="220" height="80" fill="#a78bfa" rx="8"/><text x="630" y="95" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">スマホで完結</text><text x="630" y="120" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#ede9fe">公式サイトで要確認</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">タックスナップの概要</figcaption></figure>
 
-**タックスナップ**は、レシートや領収書をスマホで撮影するだけで経費データを自動入力できる確定申告・経費管理アプリです。スマホ操作が中心の副業者・フリーランスに向いています。
+**タックスナップ**は、株式会社タックスナップが提供する個人事業主・副業向けの確定申告アプリです。日々の仕訳から申告書の作成・提出までをスマホアプリだけで行えます。
 
 ### タックスナップの強み
-- レシート写真→AIがデータを自動読取・分類
-- スマホアプリ中心設計で外出先でも即記録
-- 経費のカテゴリ分けをAIが自動提案
-- 確定申告書への出力・e-Tax連携に対応
+- 銀行口座・クレジットカードを連携すると、明細が経費かどうかと勘定科目を自動で判定（「丸投げ仕訳」）
+- 仕訳から申告書の作成・提出まで、アプリだけで完結
+- 2026年の確定申告期間に、App Storeの確定申告アプリで1位を獲得（運営会社の発表）
+- e-Tax（電子申告）に対応
 
 ### タックスナップの注意点
-- freeeや弥生ほど会計機能は多くない
-- 金融機関との自動連携は限定的
-- 比較的新しいサービスのため実績が少ない
+- App Storeの掲載情報ではiPhoneのみ対応（Android・パソコンで使いたい人はfreee・マネーフォワード・弥生）
+- 個人事業主・副業の確定申告向け（法人の決算には使えない）
+- 料金プランは公式サイトで最新情報を確認
 
-**外出先でレシートをその場で管理したい、スマホだけで完結させたい人に向いています。**
+**iPhoneだけで仕訳から申告まで完結させたい人に向いています。**
 
 > 公式サイト：[タックスナップ](https://taxnap.co.jp/){:rel="nofollow" target="_blank"}（アフィリエイトプログラムなし）
 
@@ -253,7 +253,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 **銀行・クレカを複数持ち、収支を自動でまとめたい方** → **マネーフォワード クラウド確定申告**（連携口座3,000超）
 
-**スマホでレシートをその場管理したい方** → **タックスナップ**（写真→自動入力）
+**iPhoneだけで確定申告を済ませたい方** → **タックスナップ**（口座連携で自動仕訳）
 
 **青色申告で最大65万円控除を狙う本格派** → **弥生 やよいの青色申告オンライン**（1年目無料）
 
@@ -268,7 +268,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 - **本格的な青色申告・節税重視** → **弥生**（1年目無料、2年目¥11,330/年〜）
 - **農業副業・個人事業** → **ソリマチ**（買い切り¥22,000〜）
 - **費用ゼロ・取引少ない** → **e-Tax手動**（完全無料）
-- **スマホレシート管理** → **タックスナップ**（詳細は公式サイト参照）
+- **iPhoneだけで完結** → **タックスナップ**（詳細は公式サイト参照）
 
 確定申告を一度習慣化すれば、毎年の作業は大幅に短縮できます。まずは**無料プランや1年無料**から試してみることをおすすめします。
 
