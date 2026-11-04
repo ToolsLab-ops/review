@@ -35,7 +35,7 @@ image: /assets/images/ai-tool-fukugyou.jpg
 
 **用途**: SEO記事・LP・SNS投稿の文章生成
 
-[Catchy](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}は日本語に特化したAIライティングツール。クラウドワークスのライティング案件をこなすスピードが3〜4倍になります。
+[Catchy](https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM){:rel="nofollow"}は日本語に特化したAIライティングツール。クラウドワークスのライティング案件をこなすスピードが3〜4倍になります。
 
 **月5万円達成シミュレーション**: 単価¥2,500 × 20記事 × 40分/記事 = 月13時間で達成
 
@@ -53,7 +53,7 @@ image: /assets/images/ai-tool-fukugyou.jpg
 
 **用途**: PowerPoint・スライド自動生成
 
-[イルシル](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}はテキストを入力するだけでプレゼン資料を自動生成。プレゼン制作代行（1件 ¥10,000〜）の作業時間を大幅短縮できます。
+[イルシル](https://px.a8.net/svt/ejp?a8mat=4B3KUS+8UJ0IA+5UMS+5YJRM){:rel="nofollow"}はテキストを入力するだけでプレゼン資料を自動生成。プレゼン制作代行（1件 ¥10,000〜）の作業時間を大幅短縮できます。
 
 ---
 
@@ -95,7 +95,7 @@ Canvaに搭載されたAI機能で、デザイン経験がなくてもプロ品�
 
 **用途**: AI活用スキルの習得・副業・転職
 
-[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX){:rel="nofollow"}でAIビジネス活用を体系的に学べば、AI導入支援コンサルとして月20〜50万円を稼ぐ道が開けます。
+[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6){:rel="nofollow"}でAIビジネス活用を体系的に学べば、AI導入支援コンサルとして月20〜50万円を稼ぐ道が開けます。
 
 ---
 
@@ -131,7 +131,7 @@ Canvaに搭載されたAI機能で、デザイン経験がなくてもプロ品�
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4BC; 副業を今すぐ始める</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">AIツールを武器に、クラウドワークスで最初の案件を取りましょう。</p>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">クラウドワークスで案件を探す →</a>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyでライティングを効率化 →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyでライティングを効率化 →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>
 

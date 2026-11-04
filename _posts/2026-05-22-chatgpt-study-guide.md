@@ -128,7 +128,7 @@ ChatGPTは汎用AI。専門の学習AIと組み合わせることで、さらに
 
 <figure style="text-align:center;margin:1.5rem auto;max-width:700px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 100" style="max-width:100%;height:auto;border-radius:8px;display:block;"><rect width="700" height="100" fill="#0f172a" rx="8"/><rect x="20" y="20" width="200" height="60" fill="#1e293b" rx="6" stroke="#3b82f6" stroke-width="1"/><text x="120" y="47" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#93c5fd">実務直結のAIスキル講座</text><text x="120" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#60a5fa">AI × ビジネス活用</text><rect x="250" y="20" width="200" height="60" fill="#1e293b" rx="6" stroke="#22c55e" stroke-width="1"/><text x="350" y="47" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#86efac">ChatGPT活用の実践コース</text><text x="350" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4ade80">業務効率化を体系的に学習</text><rect x="480" y="20" width="200" height="60" fill="#1e293b" rx="6" stroke="#f59e0b" stroke-width="1"/><text x="580" y="47" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d">転職・副業・昇進を目指す</text><text x="580" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fbbf24">社会人のAI学習に特化</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">Neuro Dive — 社会人向けAIスキル講座の3つの特徴</figcaption></figure>
 
-ChatGPTを「どう仕事に活かすか」を体系的に学べるのが[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX){:rel="nofollow"}です。実務直結のAIスキルを習得し、副業・転職・昇進につなげたい方に向けたサービスです。
+ChatGPTを「どう仕事に活かすか」を体系的に学べるのが[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6){:rel="nofollow"}です。実務直結のAIスキルを習得し、副業・転職・昇進につなげたい方に向けたサービスです。
 
 ### DMM生成AI CAMP — AIを基礎から学ぶオンライン講座
 
@@ -183,7 +183,7 @@ ChatGPTを学習に使うメリットをまとめると：
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #3b82f6;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4DA; AI学習をさらに加速させるサービス</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">ChatGPTと組み合わせて、AIを仕事・副業に活かすスキルを体系的に習得しましょう。</p>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Neuro Diveで学ぶ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Neuro Diveで学ぶ →</a>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">DMM生成AI CAMPを見る →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt="">
 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3770660&pid=892627872" rel="nofollow" style="display:inline-block;background:#a21caf;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3770660&pid=892627872" height="1" width="1" border="0">Udemyで講座を探す →</a>

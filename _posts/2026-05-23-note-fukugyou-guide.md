@@ -58,7 +58,7 @@ AIツールを使えば、コンテンツ制作の時間を大幅に短縮でき
 
 ### ステップ2: 記事の構成・下書き（Catchy / ChatGPT）
 
-[Catchy](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}でテーマを入力 → 記事の骨子を自動生成 → 自分の体験・具体例を追加します。
+[Catchy](https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM){:rel="nofollow"}でテーマを入力 → 記事の骨子を自動生成 → 自分の体験・具体例を追加します。
 
 **作業時間の目安**:
 - AI下書き生成: 10〜15分
@@ -172,7 +172,7 @@ noteはAIツールとの相性が抜群の副業プラットフォームです�
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">✍️ AIライティングでコンテンツ作成を加速</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">CatchyでAI下書き生成 → 自分の体験を加える → noteに有料投稿。副業の最速ルートです。</p>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Catchyを試す →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Catchyを試す →</a>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">クラウドワークスで案件も並行 →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>

@@ -37,7 +37,7 @@ AIツールの普及で、在宅副業の参入ハードルが大きく下がっ
 
 ブログ記事・SEO記事の執筆は、副業の王道。[クラウドワークス](https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1){:rel="nofollow" referrerpolicy="no-referrer-when-downgrade"}には常時数千件の案件があります。
 
-**AI活用法**: [Catchy](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}で記事の下書き生成 → 事実確認・個人視点追加 → 納品。1記事2時間が40分に短縮。
+**AI活用法**: [Catchy](https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM){:rel="nofollow"}で記事の下書き生成 → 事実確認・個人視点追加 → 納品。1記事2時間が40分に短縮。
 
 **月5万円シミュレーション**: ¥2,500 × 20記事 = ¥50,000 / Catchyで1記事40分 = 月13〜14時間
 
@@ -74,7 +74,7 @@ YouTubeやTikTok向けの動画編集。スマホアプリでも対応可能な�
 
 ランディングページ（LP）のコピーは高単価案件が多く、1件¥10,000〜30,000+になることも。
 
-**AI活用法**: [Catchy](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}のLPコピー生成機能で複数パターンを素早く生成し、最適なものを選択・修正。
+**AI活用法**: [Catchy](https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM){:rel="nofollow"}のLPコピー生成機能で複数パターンを素早く生成し、最適なものを選択・修正。
 
 ---
 
@@ -138,7 +138,7 @@ PowerPoint・Googleスライドを使ったプレゼン資料の代行制作。1
 
 ChatGPTや業務自動化ツールの導入支援・社内研修。AIリテラシーが高い人にとって最も高単価になりやすい副業です。
 
-**スキルの身につけ方**: [Neuro Dive](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX){:rel="nofollow"}や[DMM生成AI CAMP](https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1){:rel="nofollow"}でAIビジネス活用を体系的に学ぶ。
+**スキルの身につけ方**: [Neuro Dive](https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6){:rel="nofollow"}や[DMM生成AI CAMP](https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1){:rel="nofollow"}でAIビジネス活用を体系的に学ぶ。
 
 ---
 
@@ -171,6 +171,6 @@ ChatGPTや業務自動化ツールの導入支援・社内研修。AIリテラ�
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F680; 副業を今すぐ始める</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">日本最大のクラウドソーシングで案件を探し、AIツールで効率化しながら収入を増やしましょう。</p>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">クラウドワークスで案件を探す →</a>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyで作業を効率化 →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyで作業を効率化 →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>

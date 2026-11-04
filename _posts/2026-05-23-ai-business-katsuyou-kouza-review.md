@@ -50,7 +50,7 @@ ChatGPTを「なんとなく使っている」状態から、「業務効率化�
 
 <figure style="text-align:center;margin:1rem auto;max-width:700px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 80" style="max-width:100%;height:auto;border-radius:8px;display:block;"><rect width="700" height="80" fill="#0f172a" rx="8"/><rect x="15" y="10" width="205" height="60" fill="#1e293b" rx="6" stroke="#3b82f6" stroke-width="1"/><text x="117" y="40" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#93c5fd">実務直結のAI活用コース</text><text x="117" y="57" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#60a5fa">ChatGPT × ビジネス</text><rect x="235" y="10" width="205" height="60" fill="#1e293b" rx="6" stroke="#22c55e" stroke-width="1"/><text x="337" y="40" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#86efac">副業・転職サポートあり</text><text x="337" y="57" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4ade80">社会人のAIスキル特化</text><rect x="455" y="10" width="230" height="60" fill="#1e293b" rx="6" stroke="#f59e0b" stroke-width="1"/><text x="570" y="40" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d">昇進・年収アップを目指す</text><text x="570" y="57" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#fbbf24">実践型カリキュラム</text></svg></figure>
 
-[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX){:rel="nofollow"}は、ChatGPTをはじめとするAIツールを「仕事に活かす」ことに特化した社会人向け講座です。副業・転職・昇給を目標にAIスキルを習得したい方に向いています。
+[Neuro Dive](https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6){:rel="nofollow"}は、ChatGPTをはじめとするAIツールを「仕事に活かす」ことに特化した社会人向け講座です。副業・転職・昇給を目標にAIスキルを習得したい方に向いています。
 
 **特徴**:
 - 実務で使えるプロンプトエンジニアリングを習得
@@ -145,7 +145,7 @@ AIスキルは「持っているだけで差がつく」時代から、「持っ
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #3b82f6;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4DA; AIスキルを今すぐ身につける</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">体系的な学習で、AIを仕事・副業に直結させましょう。</p>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5IFG+5Z6WX" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Neuro Diveで学ぶ →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3JAH+BLCYXE+47GS+HV7V6" rel="nofollow" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">Neuro Diveで学ぶ →</a>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100pzhb00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">DMM生成AI CAMPを見る →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100pzhb00osk1" width="1" height="1" border="0" alt="">
 </div>
