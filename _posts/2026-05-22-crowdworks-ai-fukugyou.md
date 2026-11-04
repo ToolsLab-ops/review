@@ -58,7 +58,7 @@ image: /assets/images/crowdworks-ai.jpg
 
 ### Step 2: ライティング案件 → Catchyで本文下書き
 
-ライティング系の案件を受注したら、[Catchy](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM){:rel="nofollow"}のAIでドラフトを生成します。
+ライティング系の案件を受注したら、[Catchy](https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM){:rel="nofollow"}のAIでドラフトを生成します。
 
 **Catchyを使った記事制作フロー**:
 1. Catchyに「テーマ」「ターゲット」「文字数」を入力
@@ -102,7 +102,7 @@ LP（ランディングページ）やバナー広告のキャッチコピーは
 | サービス | 特徴 | 向いている人 |
 |---------|------|------------|
 | **クラウドワークス** | 案件数No.1・初心者向け | とにかく稼ぎたい初心者 |
-| **[クラウディア](https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5Z6WX){:rel="nofollow"}** | 手数料が安い（最大5%）・Web系案件多 | Web・IT系のスキルがある方 |
+| **[クラウディア](https://px.a8.net/svt/ejp?a8mat=4B3R2V+FK90VU+4F8I+BYT9E){:rel="nofollow"}** | 手数料が安い（最大5%）・Web系案件多 | Web・IT系のスキルがある方 |
 | **Lancers** | デザイン・Web制作系が充実 | デザイナー・エンジニア |
 
 **クラウディアの特徴**: クラウドワークスと比べて手数料が低い（最大20%→最大5%）ため、同じ案件でも手取りが増えます。両方に登録しておくのがベストです。
@@ -127,11 +127,11 @@ AIを使った副業は「ズル」ではなく「現代の標準装備」です
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4BC; 副業を今すぐ始める</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">日本最大のクラウドソーシングで、AI×副業のスタートを切りましょう。</p>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">クラウドワークスに登録する →</a>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5Z6WX" rel="nofollow" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">クラウディアも見る →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3R2V+FK90VU+4F8I+BYT9E" rel="nofollow" style="display:inline-block;background:#1e40af;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">クラウディアも見る →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">✍️ AIライティングツールを使いこなす</p>
-<a href="https://px.a8.net/svt/ejp?a8mat=3Z9NO1+BLYEJ6+5KRR+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyを試してみる →</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DBA1UA+52IU+5YJRM" rel="nofollow" style="display:inline-block;background:#16a34a;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">Catchyを試してみる →</a>
 </div>

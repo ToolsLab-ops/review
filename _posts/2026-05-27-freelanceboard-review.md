@@ -132,8 +132,7 @@ A. 案件情報は流動的で、掲載後に充足しているケースもあ�
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#eff6ff;border-left:4px solid #38bdf8;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">フリーランスボードで案件を探す（無料）</p>
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" rel="nofollow" target="_blank" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
-<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B3ZN4+F5D6RE+5R1M+5YJRM" alt="">
+<a href="https://freelance-board.com/" rel="nofollow" target="_blank" style="display:inline-block;background:#0284c7;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">フリーランスボード 公式サイトへ →</a>
 </div>
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#faf5ff;border-left:4px solid #9333ea;border-radius:8px;">
