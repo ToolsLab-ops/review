@@ -180,7 +180,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 **外出先でレシートをその場で管理したい、スマホだけで完結させたい人に向いています。**
 
-> 公式サイト：[タックスナップ](https://taxnap.jp/){:rel="nofollow" target="_blank"}（アフィリエイトプログラムなし）
+> 公式サイト：[タックスナップ](https://taxnap.co.jp/){:rel="nofollow" target="_blank"}（アフィリエイトプログラムなし）
 
 ---
 
