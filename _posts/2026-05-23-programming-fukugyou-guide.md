@@ -115,7 +115,7 @@ AIを活用すれば学習も案件対応も効率化でき、スタートまで
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;">
 <p style="margin:0 0 .6rem;font-weight:bold;font-size:1rem;">&#x1F4BB; プログラミング副業のスタートに</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">スキルを習得したらクラウドワークスで案件を探しましょう。</p>
-<a href="https://ninja-code.jp/" rel="nofollow" style="display:inline-block;background:#22c55e;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">忍者CODEを見る →</a>
+<a href="https://ninjacode.work/" rel="nofollow" style="display:inline-block;background:#22c55e;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;margin-right:.5rem;">忍者CODEを見る →</a>
 <a href="https://h.accesstrade.net/sp/cc?rk=0100p3ys00osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#3b82f6;color:#fff;padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;font-weight:bold;font-size:.95rem;">クラウドワークスで案件を探す →</a>
 <img src="https://h.accesstrade.net/sp/rr?rk=0100p3ys00osk1" width="1" height="1" border="0" alt="">
 </div>

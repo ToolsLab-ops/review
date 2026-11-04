@@ -114,6 +114,6 @@ TechAcademyや他のスクールと大きく異なるのは**価格の安さ**�
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">月額¥1,078からWeb制作スキルを習得する</p>
 <p style="margin:0 0 .8rem;font-size:.9rem;color:#334155;">副業目的ならコスト最小で始められる忍者CODEが最有力候補です。</p>
-<a href="https://ninja-code.jp/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#22c55e;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">忍者CODE 公式サイトへ →</a>
+<a href="https://ninjacode.work/" target="_blank" rel="nofollow noopener" style="display:inline-block;background:#22c55e;color:#fff;padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;">忍者CODE 公式サイトへ →</a>
 </div>
 <!-- TODO: 忍者CODE A8.net プログラム承認後（s00000025234001）にpx.a8.netリンクに差し替える（1.2.12） -->
