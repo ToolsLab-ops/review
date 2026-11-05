@@ -21,7 +21,7 @@ image: /assets/images/crowdsourcing-hikaku.jpg
     <rect x="290" y="30" width="220" height="140" fill="#1e293b" rx="10"/>
     <text x="400" y="70" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#a5b4fc" font-weight="bold">クラウディア</text>
     <text x="400" y="95" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#c7d2fe">登録者 100万人以上</text>
-    <text x="400" y="115" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#c7d2fe">手数料 最安5%〜</text>
+    <text x="400" y="115" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#c7d2fe">ワーカー手数料 3〜15%</text>
     <text x="400" y="140" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#818cf8">A8.net 提携済み</text>
     <rect x="550" y="30" width="220" height="140" fill="#172554" rx="10"/>
     <text x="660" y="70" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#7dd3fc" font-weight="bold">Workship</text>
@@ -47,13 +47,13 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 ## 各サービスの概要比較
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="260" fill="#0f172a" rx="10"/><rect x="20" y="20" width="760" height="40" fill="#1e293b" rx="6"/><text x="160" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#94a3b8" font-weight="bold">比較項目</text><text x="370" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#93c5fd" font-weight="bold">クラウドワークス</text><text x="560" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a5b4fc" font-weight="bold">クラウディア</text><text x="730" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7dd3fc" font-weight="bold">Workship</text><rect x="20" y="65" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">登録者数</text><text x="370" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">500万人超</text><text x="560" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">100万人超</text><text x="730" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">非公開</text><rect x="20" y="103" width="760" height="35" fill="#0f172a" rx="4"/><text x="160" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">手数料（ワーカー）</text><text x="370" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">5〜20%</text><text x="560" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">5〜20%（最安水準）</text><text x="730" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">10%（固定）</text><rect x="20" y="140" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">案件ジャンル</text><text x="370" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">全ジャンル網羅</text><text x="560" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">全ジャンル網羅</text><text x="730" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">IT・クリエイター特化</text><rect x="20" y="177" width="760" height="35" fill="#0f172a" rx="4"/><text x="160" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">AI/プログラミング案件</text><text x="370" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 多数</text><text x="560" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 増加中</text><text x="730" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 充実</text><rect x="20" y="214" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">登録・利用</text><text x="370" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text><text x="560" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text><text x="730" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">3サービス横断比較表</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="260" fill="#0f172a" rx="10"/><rect x="20" y="20" width="760" height="40" fill="#1e293b" rx="6"/><text x="160" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#94a3b8" font-weight="bold">比較項目</text><text x="370" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#93c5fd" font-weight="bold">クラウドワークス</text><text x="560" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a5b4fc" font-weight="bold">クラウディア</text><text x="730" y="45" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7dd3fc" font-weight="bold">Workship</text><rect x="20" y="65" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">登録者数</text><text x="370" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">500万人超</text><text x="560" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">100万人超</text><text x="730" y="87" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">6.8万人</text><rect x="20" y="103" width="760" height="35" fill="#0f172a" rx="4"/><text x="160" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">手数料（ワーカー）</text><text x="370" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">5〜20%</text><text x="560" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">3〜15%</text><text x="730" y="125" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text><rect x="20" y="140" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">案件ジャンル</text><text x="370" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">全ジャンル網羅</text><text x="560" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">全ジャンル網羅</text><text x="730" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">IT・クリエイター特化</text><rect x="20" y="177" width="760" height="35" fill="#0f172a" rx="4"/><text x="160" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">AI/プログラミング案件</text><text x="370" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 多数</text><text x="560" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 増加中</text><text x="730" y="199" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#22c55e">◎ 充実</text><rect x="20" y="214" width="760" height="35" fill="#1e293b" rx="4"/><text x="160" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#94a3b8">登録・利用</text><text x="370" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text><text x="560" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text><text x="730" y="236" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#e2e8f0">無料</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">3サービス横断比較表</figcaption></figure>
 
 ---
 
 ## 1. クラウドワークス — 業界最大手、案件数No.1
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#3b82f6" font-weight="bold">クラウドワークス</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 登録クライアント数・案件数ともに業界No.1</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ ライター・デザイン・エンジニア・AI活用まで全ジャンル</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ スキル0でも始められる短期タスク案件が豊富</text><rect x="520" y="55" width="220" height="80" fill="#1e3a8a" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#93c5fd" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">5〜20%</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">累積報酬額に応じて低下</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">クラウドワークスの特徴</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#3b82f6" font-weight="bold">クラウドワークス</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 登録クライアント数・案件数ともに業界No.1</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ ライター・デザイン・エンジニア・AI活用まで全ジャンル</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ スキル0でも始められる短期タスク案件が豊富</text><rect x="520" y="55" width="220" height="80" fill="#1e3a8a" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#93c5fd" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">5〜20%</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">報酬額の帯ごとに低下</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">クラウドワークスの特徴</figcaption></figure>
 
 **クラウドワークス**は2012年創業、登録者500万人以上を誇る日本最大のクラウドソーシングプラットフォームです。
 
@@ -65,13 +65,15 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 ### 料金・手数料
 
-クラウドワークスはワーカー（受注者）の手数料が累積報酬によって変動します。
+クラウドワークスのワーカー（受注者）の手数料は、1つの契約の報酬額を金額の帯に分けて計算します。
 
-| 累積報酬額 | 手数料率 |
+| 報酬額のうち | 手数料率 |
 |----------|---------|
-| 〜10万円 | 20% |
-| 10〜20万円 | 10% |
-| 20万円〜 | 5% |
+| 10万円以下の部分 | 20% |
+| 10万円超〜20万円以下の部分 | 10% |
+| 20万円を超える部分 | 5% |
+
+たとえば30万円の契約なら、2万円＋1万円＋5,000円＝3万5,000円が手数料です。タスク形式の仕事は金額にかかわらず20%です。
 
 クライアント（発注者）側の手数料は別途かかります。
 
@@ -79,7 +81,7 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 - 案件数が多い反面、競争率も高い（特にライティング系）
 - 最初のうちは低単価の案件から実績を積む必要がある
-- 手数料が最大20%と高め（クラウディアの5%と比較すると差がある）
+- 手数料が最大20%と高め（クラウディアは最大15%）
 
 <div style="text-align:center;margin:1.5rem 0;">
 <a href="https://h.accesstrade.net/sp/cc?rk=0100pop700osk1" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" style="display:inline-block;background:#1d4ed8;color:#fff;padding:12px 28px;border-radius:8px;font-weight:bold;text-decoration:none;">クラウドワークスに無料登録する</a>
@@ -90,7 +92,7 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 ## 2. クラウディア — 手数料最安水準、稼ぎやすい構造
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#818cf8" font-weight="bold">クラウディア（Craudia）</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 会員数100万人以上・月間新規登録1,000人超</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ ワーカー手数料が業界最安水準（5%〜）</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 発注手数料0円のプランあり（クライアント側）</text><rect x="520" y="55" width="220" height="80" fill="#312e81" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a5b4fc" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">5〜20%</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#c7d2fe">最安水準・段階制</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">クラウディアの特徴</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#818cf8" font-weight="bold">クラウディア（Craudia）</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 会員数100万人以上・月間新規登録1,000人超</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ ワーカー手数料3〜15%（業界最安水準）</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ クライアント（発注者）の手数料は0円</text><rect x="520" y="55" width="220" height="80" fill="#312e81" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a5b4fc" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">3〜15%</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#c7d2fe">3〜15%・段階制</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">クラウディアの特徴</figcaption></figure>
 
 **クラウディア（Craudia）**は、クラウドワークスに次ぐ規模のクラウドソーシングサービスです。特に**手数料の安さ**が特徴で、報酬を最大限に手元に残せる設計になっています。
 
@@ -104,10 +106,10 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 | 利用者 | 手数料 |
 |-------|-------|
-| ワーカー（受注者） | 5〜20%（累積報酬で低下） |
-| クライアント（発注者） | プランによりゼロ〜あり |
+| ワーカー（受注者） | 3〜15%（5万円までの部分15%、5万円超〜10万円10%、10万円超〜100万円5%、100万円超3%。時間制は一律10%） |
+| クライアント（発注者） | 0円 |
 
-手数料体系はクラウドワークスと似ていますが、クラウディアはクライアント側手数料ゼロのプランがある点で発注者にも使われやすく、案件の掲載コストが低い分、発注が集まりやすい傾向があります。
+報酬額の帯ごとに手数料率が下がる仕組みはクラウドワークスと似ていますが、最大でも15%と低めです。またクライアント側の手数料が0円である点で発注者にも使われやすく、案件の掲載コストが低い分、発注が集まりやすい傾向があります。
 
 ### クラウディアの注意点
 
@@ -124,7 +126,7 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 
 ## 3. Workship — IT・クリエイター特化、高単価案件
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#38bdf8" font-weight="bold">Workship（ワークシップ）</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ IT・エンジニア・デザイナー・マーケター特化</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 時給・月額報酬の継続案件が中心</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 新規会員登録報酬¥1,500（アフィリエイト）</text><rect x="520" y="55" width="220" height="80" fill="#0c4a6e" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7dd3fc" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">10%（固定）</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bae6fd">固定料率でシンプル</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">Workshipの特徴</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#38bdf8" font-weight="bold">Workship（ワークシップ）</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ IT・エンジニア・デザイナー・マーケター特化</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 時給・月額報酬の継続案件が中心</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ フリーランス側の利用は無料・成約時に1万円のお祝い金</text><rect x="520" y="55" width="220" height="80" fill="#0c4a6e" rx="8"/><text x="630" y="83" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7dd3fc" font-weight="bold">ワーカー手数料</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">無料</text><text x="630" y="122" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bae6fd">フリーランス側は無料</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">Workshipの特徴</figcaption></figure>
 
 **Workship**は、エンジニア・デザイナー・マーケターなどのIT系専門職に特化したフリーランスプラットフォームです。単発のタスク案件より、**継続案件・月額契約**のマッチングを得意としています。
 
@@ -189,7 +191,7 @@ image: /assets/images/crowdsourcing-hikaku.jpg
 | **向いている人** | 副業初心者・案件数重視 | 手数料を抑えたい | IT系・高単価狙い |
 | **始めやすさ** | ◎ | ◯ | △（専門スキル必要） |
 | **案件数** | ◎ | ◯ | △ |
-| **手数料** | △（最大20%） | ◎（最安水準） | ◯（10%固定） |
+| **手数料** | △（最大20%） | ◎（最大15%） | ◎（フリーランス側は無料） |
 | **AI関連案件** | ◎ | ◎ | ◎ |
 
 副業でクラウドソーシングを始めるなら、まず**クラウドワークスで登録して案件探しを開始**し、並行して**クラウディアにも登録**して手数料を比較しながら使い分けるのがおすすめです。
