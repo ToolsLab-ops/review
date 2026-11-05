@@ -51,30 +51,30 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 | ツール | 無料プラン | 月額費用（最安） | 青色申告 | e-Tax対応 | スマホ | 自動連携 | ASPアフィリエイト |
 |-------|-----------|----------------|---------|----------|-------|---------|----------------|
-| freee 確定申告 | ◯ | ¥1,480〜 | ◯ | ◯ | ◯ | ◯ | A8.net ✅ |
-| マネーフォワード | ◯（20件/年） | ¥2,816〜 | ◯ | ◯ | ◯ | ◯ | AccessTrade ✅ |
-| 弥生 青色申告 | △（1年無料） | ¥11,330/年〜 | ◯ | ◯ | ◯ | ◯ | A8.net ✅ |
+| freee 確定申告 | △（無料お試し） | ¥980〜（年払い時） | ◯ | ◯ | ◯ | ◯ | A8.net ✅ |
+| マネーフォワード | △（1か月無料お試し） | ¥900〜（年払い時・税抜） | ◯ | ◯ | ◯ | ◯ | AccessTrade ✅ |
+| 弥生 青色申告 | △（初年度無償キャンペーン） | ¥11,800/年〜（税抜） | ◯ | ◯ | ◯ | ◯ | A8.net ✅ |
 | タックスナップ | 要確認 | 要確認 | 要確認 | ◯ | ◎ | △ | なし |
-| ソリマチ 農業簿記 | × | ¥22,000〜 | ◯ | ◯ | △ | △ | なし |
+| ソリマチ 農業簿記 | × | 買い切り（最新版は販売店で6万円台） | ◯ | ◯ | △ | △ | なし |
 | e-Tax（手動） | ◯（無料） | ¥0 | ◯ | ◯ | △ | × | — |
 
 ---
 
 ## 1. freee 確定申告
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#3b82f6" font-weight="bold">freee 確定申告</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 初心者向けの圧倒的シンプルUI</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 質問に答えるだけで申告書作成</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 銀行・クレカ・Amazon自動取込</text><rect x="520" y="55" width="220" height="80" fill="#3b82f6" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">スターター</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">¥1,480/月</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bfdbfe">（年払い時）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">freee 確定申告の概要</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#3b82f6" font-weight="bold">freee 確定申告</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 初心者向けの圧倒的シンプルUI</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 質問に答えるだけで申告書作成</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 銀行・クレカ・Amazon自動取込</text><rect x="520" y="55" width="220" height="80" fill="#3b82f6" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">スターター</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">¥980/月</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bfdbfe">（年払い時）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">freee 確定申告の概要</figcaption></figure>
 
 **freee 確定申告**はクラウド会計ソフトのパイオニアで、「初心者でも迷わない」をコンセプトにしたUIが特徴です。
 
 ### 料金プラン
 
-| プラン | 月額（年払） | 主な機能 |
+| プラン | 月額（年払い時） | 主な違い |
 |--------|------------|---------|
-| スターター | ¥1,480 | 確定申告書作成、e-Tax、レシート読取 |
-| スタンダード | ¥2,680 | +消費税申告、給与計算 |
-| プレミアム | ¥4,980 | +税理士への無料相談 |
+| スターター | ¥980 | 確定申告のみ使う人向け（青色・白色申告、e-Tax） |
+| スタンダード | ¥1,980 | 日々のお金の管理も。消費税の申告（インボイス登録済みの人）はスタンダード以上 |
+| プレミアム | ¥3,316（年払いのみ） | 電話サポートなど充実したサポート付き |
 
-**無料プランあり**（機能制限付き）
+※2026年11月時点の公式料金ページの表示。無料プランはありませんが、**無料でお試し**できます。
 
 ### freeeの強み
 - 質問に答えるだけで確定申告書を自動作成
@@ -83,7 +83,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 - 確定申告書の提出まで全てアプリ内で完結（e-Tax対応）
 
 ### freeeの注意点
-- 青色申告65万円控除はスタンダード以上が必要
+- 消費税の申告が必要な人（インボイス登録済みなど）はスタンダード以上が必要
 - 弥生と比べると入力の自由度が低い場合がある
 
 **副業を始めたばかりで操作をシンプルにしたい人に最適です。**
@@ -97,17 +97,19 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 ## 2. マネーフォワード クラウド確定申告
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#22c55e" font-weight="bold">マネーフォワード クラウド確定申告</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 金融機関3,000社以上と自動連携</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 副業の銀行口座まとめて管理</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 無料プラン：年間20件まで対応</text><rect x="520" y="55" width="220" height="80" fill="#22c55e" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">パーソナルミニ</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">¥2,816/月</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#d1fae5">（年払い時）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">マネーフォワード クラウド確定申告の概要</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#22c55e" font-weight="bold">マネーフォワード クラウド確定申告</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 金融機関3,000社以上と自動連携</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 副業の銀行口座まとめて管理</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 1か月の無料お試しあり</text><rect x="520" y="55" width="220" height="80" fill="#22c55e" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">パーソナルミニ</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="bold">¥900/月</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#d1fae5">（年払い時・税抜）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">マネーフォワード クラウド確定申告の概要</figcaption></figure>
 
 **マネーフォワード クラウド確定申告**は、家計簿アプリ「マネーフォワード ME」で有名なマネーフォワードが提供する確定申告ツールです。金融機関との連携力が業界トップクラスです。
 
 ### 料金プラン
 
-| プラン | 月額（年払） | 主な機能 |
-|--------|------------|---------|
-| 無料 | ¥0 | 仕訳20件/年、基本機能 |
-| パーソナルミニ | ¥2,816 | 仕訳無制限、自動連携 |
-| パーソナル | ¥4,230 | +請求書作成、消費税申告 |
+| プラン | 月額（年払い時） | 月払い | 主な違い |
+|--------|------------|------|---------|
+| パーソナルミニ | ¥900 | ¥1,280 | 確定申告書の作成・提出、明細の自動取込（消費税申告は非対応） |
+| パーソナル | ¥1,280 | ¥1,680 | ＋消費税申告 |
+| パーソナルプラス | ¥2,980 | 年払いのみ | ＋電話サポート |
+
+※税抜。2026年11月時点の公式料金ページの表示。無料プランはなく、1か月の無料お試し（1事業者1回）があります。**2026年12月に料金体系の一部改定が予定されている**ため、申し込み前に公式サイトで最新の料金を確認してください。
 
 ### マネーフォワードの強み
 - **3,000以上の金融機関・サービス**と自動データ連携（楽天・PayPay・Amazonなど）
@@ -117,7 +119,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 ### マネーフォワードの注意点
 - freeeより若干UIが複雑
-- 無料プランは20件/年と制限が厳しい
+- 無料プランはない（1か月の無料お試しのみ）
 
 **銀行・証券・クレカを複数持ち、副業収入を一元管理したい人に最適です。**
 
@@ -129,7 +131,7 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 ## 3. 弥生 やよいの青色申告オンライン
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#f59e0b" font-weight="bold">弥生 やよいの青色申告オンライン</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 会計ソフト業界シェアNo.1ブランド</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 初年度1年間完全無料</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 青色申告65万円控除に完全対応</text><rect x="520" y="55" width="220" height="80" fill="#f59e0b" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">セルフプラン</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#fff" font-weight="bold">¥11,330/年</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fef3c7">（1年目無料）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">弥生 やよいの青色申告オンラインの概要</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#f59e0b" font-weight="bold">弥生 やよいの青色申告オンライン</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 会計ソフト業界シェアNo.1ブランド</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 初年度無償キャンペーン（2027/3/15申込分まで）</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 青色申告65万円控除に完全対応</text><rect x="520" y="55" width="220" height="80" fill="#f59e0b" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="bold">セルフプラン</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#fff" font-weight="bold">¥11,800/年</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fef3c7">（税抜・初年度無償）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">弥生 やよいの青色申告オンラインの概要</figcaption></figure>
 
 **弥生**は30年以上の歴史を持つ会計ソフトの老舗ブランドです。「売上実績No.1」を誇り、税理士・会計事務所への対応も充実しています。
 
@@ -137,25 +139,28 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 | プラン | 年額 | 主な機能 |
 |--------|------|---------|
-| セルフプラン（1年目） | **¥0** | 全機能、e-Tax、自動連携 |
-| セルフプラン（2年目〜） | ¥11,330 | 同上 |
-| ベーシックプラン | ¥22,000 | +電話・チャットサポート |
+| セルフプラン（初年度） | **¥0** | 全機能、e-Tax、自動連携 |
+| セルフプラン（2年目〜） | ¥11,800 | 同上 |
+| ベーシックプラン | ¥22,800（初年度¥0） | +電話・チャットサポート |
+| トータルプラン | ¥39,600（初年度半額） | +業務相談など |
+
+※税抜。2026年1月1日の価格改定後の金額です。初年度無償は2027年3月15日までの申し込みが対象のキャンペーン（1事業者1回、決済情報の登録が必要）。
 
 ### 弥生の強み
-- **初年度1年間完全無料**で全機能が使える
+- **初年度無償キャンペーン**（2027年3月15日申込分まで）で全機能を試せる
 - 青色申告65万円控除（電子申告）に完全対応
 - 会計の正確な仕訳入力が得意なユーザー向けの細かい設定が可能
-- 税理士事務所との連携実績が業界最多
+- 会計事務所での利用が多く、税理士とデータを共有しやすい
 
 ### 弥生の注意点
-- 2年目から年額¥11,330かかる（月換算で約945円）
+- 2年目から年額¥11,800（税抜）かかる（月換算で約983円）
 - UIはfreeeより少し専門的
-- 農業・特殊業種向けは別製品（ソリマチなど）
+- 農業向けの専用機能はない（農業の帳簿はソリマチ「農業簿記」などの専用ソフト）
 
 **青色申告で最大控除を狙いたい、本格的に事業展開したい人に最適です。**
 
 <div style="text-align:center;margin:1.5rem 0;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3R2V+FM1BP6+35XE+5YJRM" rel="nofollow" style="display:inline-block;background:#f59e0b;color:#fff;padding:12px 28px;border-radius:8px;font-weight:bold;text-decoration:none;">やよいの青色申告オンラインを無料で試す（1年間）</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4B3R2V+FM1BP6+35XE+5YJRM" rel="nofollow" style="display:inline-block;background:#f59e0b;color:#fff;padding:12px 28px;border-radius:8px;font-weight:bold;text-decoration:none;">やよいの青色申告オンラインを初年度無償で試す</a>
 <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4B3R2V+FM1BP6+35XE+5YJRM" alt="">
 </div>
 
@@ -186,15 +191,14 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 ## 5. ソリマチ 農業簿記
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#10b981" font-weight="bold">ソリマチ 農業簿記</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 農業・個人事業主の経営管理に特化</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 作付計画・収穫量・農薬管理まで対応</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ JAや農協向けの書類作成に対応</text><rect x="520" y="55" width="220" height="80" fill="#10b981" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#fff" font-weight="bold">農業簿記11</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#fff" font-weight="bold">¥22,000〜</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#d1fae5">（買切り）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">ソリマチ 農業簿記の概要</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><rect x="30" y="30" width="740" height="120" fill="#1e293b" rx="8"/><text x="60" y="65" font-family="sans-serif" font-size="18" fill="#10b981" font-weight="bold">ソリマチ 農業簿記</text><text x="60" y="90" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 農業・個人事業主の経営管理に特化</text><text x="60" y="110" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 作物（作目）ごとの収支管理に対応</text><text x="60" y="130" font-family="sans-serif" font-size="12" fill="#94a3b8">✓ 農業所得の青色申告決算書を作成</text><rect x="520" y="55" width="220" height="80" fill="#10b981" rx="8"/><text x="630" y="85" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#fff" font-weight="bold">農業簿記13</text><text x="630" y="105" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#fff" font-weight="bold">6万円台〜</text><text x="630" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#d1fae5">（買切り）</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;">ソリマチ 農業簿記の概要</figcaption></figure>
 
 **ソリマチ**は農業・個人事業主・小規模法人向けの会計ソフトです。「農業簿記」は農家や農業法人の経営管理に特化しており、一般的なITツール利用者よりも**農業を副業・本業にしている方**に向いています。
 
 ### ソリマチの強み
-- 農業特有の「作目別収支」「収穫量管理」「農薬台帳」に対応
-- JAや農協提出用の書類を直接出力できる
-- 農業所得の確定申告書を正確に作成
-- 買い切り型なので年額コストがかからない（サポート料別）
+- 作物（作目）ごとの収支など、農業特有の会計に対応
+- 農業所得用の青色申告決算書を作成できる
+- 買い切り型なので月額・年額の利用料がかからない（サポートは別料金。最新版「農業簿記13」は2026年6月発売、販売店価格は6万円台）
 
 ### ソリマチの注意点
 - 一般の副業者（デジタルコンテンツ・ブログ・せどりなど）には向かない
@@ -263,10 +267,10 @@ image: /assets/images/kakuteishinkoku-hikaku.jpg
 
 副業での確定申告ツール選びは、自分のライフスタイルと収益規模に合わせることが重要です。
 
-- **副業初心者・年間取引50件以下** → **freee**（月¥1,480〜、初心者向けUI）
-- **複数口座・金融連携重視** → **マネーフォワード**（月¥2,816〜、3,000機関連携）
-- **本格的な青色申告・節税重視** → **弥生**（1年目無料、2年目¥11,330/年〜）
-- **農業副業・個人事業** → **ソリマチ**（買い切り¥22,000〜）
+- **副業初心者・年間取引50件以下** → **freee**（年払いで月¥980〜、初心者向けUI）
+- **複数口座・金融連携重視** → **マネーフォワード**（年払いで月¥900〜・税抜、金融機関との連携が豊富）
+- **本格的な青色申告・節税重視** → **弥生**（初年度無償キャンペーン、2年目¥11,800/年〜・税抜）
+- **農業副業・個人事業** → **ソリマチ**（買い切り・最新版は6万円台）
 - **費用ゼロ・取引少ない** → **e-Tax手動**（完全無料）
 - **iPhoneだけで完結** → **タックスナップ**（詳細は公式サイト参照）
 

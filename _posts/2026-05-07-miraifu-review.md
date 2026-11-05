@@ -159,4 +159,4 @@ AI・SaaSの波に乗ったキャリアチェンジを考えているなら、�
 <a href="https://px.a8.net/svt/ejp?a8mat=4B3R2V+FK90VU+4F8I+BYT9E" rel="nofollow">日本最大級クラウドソーシング　クラウディアで仕事を探す →</a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4B3R2V+FK90VU+4F8I+BYT9E" alt="">
 
 また、AI・副業・業務効率化に関する記事も参考にしてください：
-- [AIツール・副業カテゴリの記事一覧](/categories/ai-tools/)
+- [ToolsLab.の記事一覧（トップページ）](/)

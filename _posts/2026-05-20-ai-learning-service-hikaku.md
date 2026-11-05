@@ -95,7 +95,7 @@ AI CONNECTは、ビジネス現場でのAI活用スキルに特化したオン�
 - 短期間で実践スキルを身につけたい
 - 会社のDX推進担当者
 
-> ※ AI CONNECTの詳細な料金プランはこちら → [AI CONNECT公式サイトで確認する](/2026/05/ai-connect-review)
+> ※ AI CONNECTの詳細な料金プランはこちら → [AI CONNECT公式サイトで確認する](/2026/05/18/ai-connect-review/)
 
 ---
 
@@ -133,9 +133,9 @@ Copilotなど企業向けツールの習得に強みがあります。
 
 ### 関連記事
 
-- [【2026年版】仕事で使えるAIツールおすすめ10選](/2026/05/ai-tools-best10)
-- [AI CONNECT詳細レビュー：料金・特徴・口コミを徹底解説](/2026/05/ai-connect-review)
-- [AI文字起こしツール比較5選（Notta・PLAUD NOTE）](/2026/05/ai-transcription-comparison)
+- [【2026年版】仕事で使えるAIツールおすすめ10選](/2026/05/20/ai-tools-best10/)
+- [AI CONNECT詳細レビュー：料金・特徴・口コミを徹底解説](/2026/05/18/ai-connect-review/)
+- [AI文字起こしツール比較5選（Notta・PLAUD NOTE）](/2026/05/20/ai-transcription-comparison/)
 
 ---
 

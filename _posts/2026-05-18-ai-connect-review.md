@@ -93,7 +93,7 @@ AI学習サービスを選ぶ際によく比較される**DMM生成AI CAMP**と�
 
 転職・キャリアアップを明確な目標とする在職社会人には**AI CONNECT**、まず生成AIの基礎を幅広く学びたい方には**DMM生成AI CAMP**が向いています。
 
-<a href="/2026/05/06/dmm-ai-camp-review/">→ DMM生成AI CAMPの詳細レビューはこちら</a>
+<a href="/2026/05/07/dmm-ai-camp-review/">→ DMM生成AI CAMPの詳細レビューはこちら</a>
 
 ---
 

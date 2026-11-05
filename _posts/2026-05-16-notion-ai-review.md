@@ -47,16 +47,18 @@ image: /assets/images/notion-ai.jpg
 
 ## 料金プラン
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2020/svg" viewBox="0 0 800 200" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="200" fill="#0f172a" rx="10"/><rect x="20" y="20" width="220" height="160" fill="#1e293b" rx="8" stroke="#64748b" stroke-width="1"/><text x="130" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#94a3b8" font-weight="bold">Notion無料プラン</text><text x="130" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">¥0</text><text x="130" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">AI機能なし</text><text x="130" y="125" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">基本ページ機能のみ</text><text x="130" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">1人・個人用</text><rect x="260" y="20" width="240" height="160" fill="#1e293b" rx="8" stroke="#3b82f6" stroke-width="2"/><text x="380" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#60a5fa" font-weight="bold">Plus + Notion AI</text><text x="380" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">$16</text><text x="380" y="98" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">/月（年払い・1メンバー）</text><text x="380" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">AI機能フル利用</text><text x="380" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">ページ無制限</text><text x="380" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">個人・フリーランス向け</text><rect x="520" y="20" width="260" height="160" fill="#1e293b" rx="8" stroke="#7c3aed" stroke-width="2"/><text x="650" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a78bfa" font-weight="bold">Business + Notion AI</text><text x="650" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">$18</text><text x="650" y="98" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">/月（年払い・1メンバー）</text><text x="650" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">AI機能フル利用</text><text x="650" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">高度なコラボ機能</text><text x="650" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">チーム・企業向け</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：Notionプランとコスト感（2026年時点・為替変動あり）</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2020/svg" viewBox="0 0 800 200" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="200" fill="#0f172a" rx="10"/><rect x="20" y="20" width="220" height="160" fill="#1e293b" rx="8" stroke="#64748b" stroke-width="1"/><text x="130" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#94a3b8" font-weight="bold">Notion無料プラン</text><text x="130" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">¥0</text><text x="130" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">AIはお試しのみ</text><text x="130" y="125" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">基本ページ機能のみ</text><text x="130" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">1人・個人用</text><rect x="260" y="20" width="240" height="160" fill="#1e293b" rx="8" stroke="#3b82f6" stroke-width="2"/><text x="380" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#60a5fa" font-weight="bold">プラス</text><text x="380" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">¥1,650</text><text x="380" y="98" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">/月（1メンバー）</text><text x="380" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">AIはお試しのみ</text><text x="380" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">ページ無制限</text><text x="380" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bfdbfe">個人・フリーランス向け</text><rect x="520" y="20" width="260" height="160" fill="#1e293b" rx="8" stroke="#7c3aed" stroke-width="2"/><text x="650" y="55" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#a78bfa" font-weight="bold">ビジネス</text><text x="650" y="80" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#f1f5f9" font-weight="bold">¥3,150</text><text x="650" y="98" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#94a3b8">/月（1メンバー）</text><text x="650" y="120" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">Notion AIを本格利用</text><text x="650" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">高度なコラボ機能</text><text x="650" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ddd6fe">チーム・企業向け</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：Notionのプランと料金（2026年11月時点・1メンバーあたり月額）</figcaption></figure>
 
-| プラン | 月額（年払い） | Notion AI | 対象 |
+| プラン | 月額（1メンバー） | Notion AI | 対象 |
 |--------|--------------|-----------|------|
-| **Free** | ¥0 | なし | 個人・お試し |
-| **Plus** | $10 + AI $8 = **$16/月** | ◎ フル利用 | 個人・フリーランス |
-| **Business** | $15 + AI $8 = **$18/月** | ◎ フル利用 | チーム・SMB |
-| **Enterprise** | 要問合せ | ◎ フル利用 | 大企業 |
+| **フリー** | ¥0 | お試しのみ | 個人・お試し |
+| **プラス** | ¥1,650 | お試しのみ | 個人・小規模チーム |
+| **ビジネス** | ¥3,150 | ◎ 本格利用（Notionエージェント・AIミーティングノートなど） | チーム・企業 |
+| **エンタープライズ** | 要問合せ | ◎ 本格利用 | 大企業 |
 
-※Notion AIは月額$8/メンバーの追加オプション（年払いの場合）。Plusプランと合わせて約¥2,400〜/月（為替による）。
+※2026年11月時点の公式料金ページの表示。年払いにすると最大20%安くなります。最新の料金は公式サイトで確認してください。
+
+以前は「どのプランにも月$8のNotion AIを追加できる」形でしたが、現在の公式料金ページではAI追加オプションは案内されておらず、**Notion AIを本格的に使うにはビジネスプラン以上**が前提です。フリー・プラスではお試しの範囲で使えます。
 
 ---
 
@@ -68,7 +70,7 @@ image: /assets/images/notion-ai.jpg
 | **文脈理解** | 自分のNotionページを参照 | 会話内のテキストのみ |
 | **強み** | 既存資料の活用・社内Q&A | 汎用的な質問対応・コード生成 |
 | **日本語対応** | ◎ 良好 | ◎ 良好 |
-| **料金** | $8/月追加（Plusプランが必要） | $20/月（Plus）またはAPI従量課金 |
+| **料金** | ビジネスプラン（¥3,150/月〜）で本格利用 | $20/月（Plus）またはAPI従量課金 |
 | **向いている用途** | 議事録要約・ドキュメント整理・ナレッジ検索 | コード生成・汎用タスク・リサーチ |
 
 **Notion AIが勝る場面**: すでにNotionで資料管理している→AIが文脈を理解して的確に補助  
@@ -126,8 +128,8 @@ Notion AIのみ使いたい方はこれで完結しますが、コピーライ�
 
 | ツール | 特徴 | 月額料金 |
 |--------|------|---------|
-| **Notion AI** | Notion連携・ドキュメント整理に最強 | $8/月〜 |
-| **Catchy** | 日本語コピーライティング特化・140種テンプレート | ¥3,000〜 |
+| **Notion AI** | Notion連携・ドキュメント整理に最強 | ¥3,150/月〜（ビジネスプラン） |
+| **Catchy** | 日本語コピーライティング特化・豊富なテンプレート | 無料プランあり・有料は¥3,000〜 |
 | **ChatGPT Plus** | 汎用・コード生成・英語に強い | $20/月 |
 
 広告文・SNS投稿・商品説明などのコピーライティングに特化したAIツールが欲しい場合は、**Catchy（キャッチー）**も検討してみてください。Notionでの管理＋Catchyでのコピー生成という組み合わせも効果的です。
@@ -139,7 +141,7 @@ Notion AIのみ使いたい方はこれで完結しますが、コピーライ�
 ## よくある質問
 
 **Q. 無料プランでNotion AIは使えますか？**  
-A. 使えません。Notion AIは有料プランへの追加オプション（$8/月）です。フリープランではAI機能は利用できません。
+A. お試しの範囲で使えます。フリー・プラスプランにはNotion AIの体験版が含まれますが、本格的に使うにはビジネスプラン以上が必要です。
 
 **Q. 日本語で使えますか？**  
 A. はい、日本語での入力・出力に対応しています。「要約して」「翻訳して」「書き直して」などのコマンドを日本語で入力できます。
@@ -148,7 +150,7 @@ A. はい、日本語での入力・出力に対応しています。「要約�
 A. 問題ありません。Notion AIはドキュメント整理・要約に、ChatGPTはリサーチや複雑なタスクに、と使い分けるのが効果的です。
 
 **Q. チームで使う場合のコストは？**  
-A. メンバー数×$8/月（年払い）です。5名のチームならAI分だけで$40/月。Plusプランのベースコストが加わります。
+A. Notion AIを本格的に使うならビジネスプランで、1メンバーあたり¥3,150/月（2026年11月時点の表示）です。5名なら月¥15,750が目安です。
 
 **Q. セキュリティは大丈夫ですか？**  
 A. NotionはSOC 2 Type 2認定を取得しています。ただし機密性の高い情報の取り扱いは企業のセキュリティポリシーに従って判断してください。
@@ -159,9 +161,9 @@ A. NotionはSOC 2 Type 2認定を取得しています。ただし機密性の�
 
 Notion AIは**「すでにNotionを使っている人が、さらに生産性を上げるための最短ルート」**です。
 
-ドキュメントの文脈を理解したAIが議事録要約・文章生成・Q&Aを担ってくれるため、情報管理と業務効率化を一体で進められます。月$8という費用対効果は、ライティングや情報管理に週5時間以上使っている方なら十分に回収できます。
+ドキュメントの文脈を理解したAIが議事録要約・文章生成・Q&Aを担ってくれるため、情報管理と業務効率化を一体で進められます。ビジネスプランの費用は、ライティングや情報管理に週5時間以上使っている方なら十分に回収できます。
 
-まずは無料プランでNotionに慣れ、業務への活用が見えてきた段階でAIオプションを追加するのが賢い進め方です。
+まずは無料プランでNotionとAIのお試しに触れ、業務への活用が見えてきた段階でビジネスプランを検討するのが賢い進め方です。
 
 <a href="https://www.notion.so/ja-jp/product/ai" target="_blank" rel="noopener">Notion AIの詳細・プランを確認する →</a>
 

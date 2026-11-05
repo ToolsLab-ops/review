@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "文賢（ぶんけん）の評判・料金・機能を解説【2026年版】日本語AI文章品質チェックツール"
-description: "文賢（ぶんけん）の評判・料金・機能・使い方を徹底解説。表記ゆれチェック・読みやすさ採点・AIリライトなど主要機能を紹介し、Catchyとの違いや向いている人もわかります。"
+description: "文賢（ぶんけん）の評判・料金・機能・使い方を徹底解説。表記ゆれチェック・ルール校正/推敲・AIアシストなど主要機能を紹介し、Catchyとの違いや向いている人もわかります。"
 date: 2026-05-27
 categories: [ai-tools, review]
 tags: [文賢, AIライティング, 文章品質, 表記ゆれ, 日本語ライティング, コピーライティング]
@@ -12,11 +12,11 @@ image: /assets/images/thumb-bunken-review.jpg
 
 ## 【結論】文賢（ぶんけん）とは
 
-<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><defs><marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f59e0b"/></marker></defs><rect x="16" y="55" width="130" height="70" fill="#1e293b" rx="8" stroke="#f59e0b" stroke-width="1.5"/><text x="81" y="83" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d" font-weight="bold">① 原稿入力</text><text x="81" y="99" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">ブラウザに</text><text x="81" y="112" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">テキスト貼り付け</text><line x1="146" y1="90" x2="166" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="170" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#f59e0b" stroke-width="1.5"/><text x="240" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d" font-weight="bold">② AIが自動解析</text><text x="240" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">表記ゆれ・読みやすさ</text><text x="240" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">文末・薬機法など</text><line x1="310" y1="90" x2="330" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="334" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="404" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">③ 改善提案</text><text x="404" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">修正箇所をハイライト</text><text x="404" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">AIリライト候補表示</text><line x1="474" y1="90" x2="494" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="498" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="568" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">④ 一括修正</text><text x="568" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">ワンクリックで</text><text x="568" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">表記を統一</text><line x1="638" y1="90" x2="658" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="662" y="55" width="122" height="70" fill="#064e3b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="723" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">⑤ 完成</text><text x="723" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">品質の高い</text><text x="723" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">日本語テキスト</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：文賢の文章改善ワークフロー — 入力から品質チェック・修正完了まで</figcaption></figure>
+<figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="180" fill="#0f172a" rx="10"/><defs><marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f59e0b"/></marker></defs><rect x="16" y="55" width="130" height="70" fill="#1e293b" rx="8" stroke="#f59e0b" stroke-width="1.5"/><text x="81" y="83" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d" font-weight="bold">① 原稿入力</text><text x="81" y="99" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">ブラウザに</text><text x="81" y="112" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">テキスト貼り付け</text><line x1="146" y1="90" x2="166" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="170" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#f59e0b" stroke-width="1.5"/><text x="240" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fcd34d" font-weight="bold">② AIが自動解析</text><text x="240" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">表記ゆれ・読みやすさ</text><text x="240" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">誤字脱字・表現など</text><line x1="310" y1="90" x2="330" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="334" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="404" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">③ 改善提案</text><text x="404" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">修正箇所をハイライト</text><text x="404" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">AIリライト候補表示</text><line x1="474" y1="90" x2="494" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="498" y="55" width="140" height="70" fill="#1e293b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="568" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">④ 一括修正</text><text x="568" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">ワンクリックで</text><text x="568" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">表記を統一</text><line x1="638" y1="90" x2="658" y2="90" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr)"/><rect x="662" y="55" width="122" height="70" fill="#064e3b" rx="8" stroke="#10b981" stroke-width="1.5"/><text x="723" y="79" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6ee7b7" font-weight="bold">⑤ 完成</text><text x="723" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">品質の高い</text><text x="723" y="108" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#34d399">日本語テキスト</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：文賢の文章改善ワークフロー — 入力から品質チェック・修正完了まで</figcaption></figure>
 
-**文賢（ぶんけん）**は、ウォンダーキャット株式会社が提供する日本語特化のAI文章品質チェックツールです。Webライター・コピーライター・PR担当者が原稿をブラウザに貼り付けるだけで、表記ゆれ・読みやすさ・文末統一などを自動チェックし、AIが改善候補を提案してくれます。
+**文賢（ぶんけん）**は、株式会社ウェブライダーが提供する日本語の文章校正・推敲支援ツールです。Webライター・コピーライター・PR担当者が原稿をブラウザに貼り付けると、誤字脱字・表記ゆれ・読みにくい表現などを指摘し、AIが言い換えやリライトの候補を出してくれます。
 
-単なるスペルチェッカーとは異なり、**文章の"伝わりやすさ"をスコアで可視化**し、読者視点での改善提案を行う点が最大の特徴です。
+単なる誤字チェッカーとは異なり、**日本語の誤りを見る「ルール校正」（13項目）と、読みやすさを高める「ルール推敲」（22項目）、さらにAIによる提案（AIアシスト）を組み合わせて使える**のが特徴です。
 
 ---
 
@@ -24,25 +24,26 @@ image: /assets/images/thumb-bunken-review.jpg
 
 | 機能 | 内容 |
 |------|------|
-| **表記ゆれチェック** | 「Web」と「WEB」「ウェブ」など同一概念の表記ばらつきを検出・統一 |
-| **読みやすさ採点** | 文の長さ・漢字比率・句読点位置などから0〜100点でスコアリング |
-| **文末表現チェック** | 「〜です」「〜ます」「〜だ」の混在を検出し統一を支援 |
-| **AIリライト提案** | ぎこちない表現や冗長な文をAIが自動リライトして候補を表示 |
-| **薬機法・景表法チェック** | 「最高」「保証」などリスクワードをマーキング（上位プラン） |
-| **NG表現チェック** | 社内独自のNG・推奨ワードをカスタム登録 |
-| **読者印象分析** | 文章から読者が感じる「印象」「感情」を可視化 |
+| **ルール校正** | 誤字脱字や差別語・不快語など、日本語の誤りを13項目でチェック。独自のカテゴリも追加できる |
+| **ルール推敲** | 表記ゆれ・冗長な表現など、読みやすさを高めるための22項目をチェック |
+| **AIアシスト** | 誤字脱字・不自然な表現・トラブルにつながる表現などのチェック、リライト（読みやすく・フォーマル・情緒的）、構成やタイトル案の提案、要約 |
+| **読者の感想シミュレーション** | 文章を読んだ人がどう感じそうかをAIが想定して示す |
+| **辞書・チーム共有** | 表記ルールを辞書に登録。組織内でカスタム辞書を共同編集できる |
+| **ファイル読み込み** | Word・Excel・PowerPoint・PDF・TXTに対応 |
+| **その他** | 文字数・漢字の使用率のカウント、音声読み上げ、チェックリストなど |
 
 ---
 
 ## 料金プラン
 
-| プラン | 月額（月払い） | 月額（年払い） | 主な機能 |
-|--------|------------|------------|---------|
-| **ライター** | ¥1,980 | ¥1,650 | 表記ゆれ・読みやすさ・AIリライト |
-| **Pro** | ¥3,480 | ¥2,900 | ライター全機能 ＋ 薬機法・景表法チェック |
-| **Business** | 要問合わせ | 要問合わせ | チーム利用・管理機能 |
+| プラン | 対象 | 1か月更新 | 1年更新（月あたり） |
+|--------|------|------------|------------|
+| **パーソナル** | 個人（1名） | ¥1,980 | ¥1,650 |
+| **ビジネスチーム** | 法人・組織（1名〜） | ¥3,300／1ユーザー | ¥2,750／1ユーザー |
 
-年払いを選ぶと月換算で約17〜20%お得です。個人ライターには**ライタープラン**、メディアのマーケティング担当や薬機法対応が必要な方には**Proプラン**が向いています。
+※いずれも税込（2026年11月時点の公式サイト表示）。
+
+**14日間の無料トライアル**があり、期間中に解約すれば料金はかかりません。個人のライターは**パーソナル**、表記ルールや辞書をチームで共有したい編集部・企業は**ビジネスチーム**が向いています。
 
 最新料金は<a href="https://px.a8.net/svt/ejp?a8mat=4B3ZN4+F6K1YY+3Q2O+HYFLU" target="_blank" rel="nofollow noopener">文賢公式サイト</a>でご確認ください。
 
@@ -54,10 +55,10 @@ image: /assets/images/thumb-bunken-review.jpg
 ブラウザ上の専用エディタに文章を貼り付け（またはリアルタイム入力）。Wordやメモ帳からのコピペでOKです。
 
 **ステップ2: チェックボタンを押すだけ**  
-「チェック開始」を押すと、問題箇所が色分けでハイライト表示されます。表記ゆれは青、薬機法ワードは赤など、種類ごとに色分けされるため一目でわかります。
+チェックを実行すると、問題のある箇所と指摘の内容が表示されます。誤字脱字・表記ゆれ・読みにくい表現などをまとめて確認できます。
 
 **ステップ3: 一括修正または個別承認**  
-表記ゆれは「一括修正」ボタンで全件統一。AIリライト候補は1クリックで採用・却下できます。修正後は再スコアリングで改善度が確認できます。
+指摘を見ながら原稿を直し、AIアシストのリライト候補は良いものだけ取り入れます。直したあとにもう一度チェックすれば、指摘が残っていないか確認できます。
 
 ### 校正ツールが最も効く場面
 
@@ -67,19 +68,19 @@ image: /assets/images/thumb-bunken-review.jpg
 
 一人で運営している場合でも効果はあります。自分の書き癖は自分では見えません。「文末が3回続けて『〜ます。』になっている」「一文が90文字を超えている」といった指摘は、指摘されて初めて気づくものです。
 
-### 数値化されることの価値
+### 指摘が具体的であることの価値
 
-「読みやすい文章を書きましょう」という助言は、具体的に何をすればよいのか分かりません。一方、「一文の平均が長すぎる」「漢字の比率が高い」と指標で示されれば、直す方向が明確になります。
+「読みやすい文章を書きましょう」という助言は、具体的に何をすればよいのか分かりません。一方、「この文は長すぎる」「漢字が続いて読みにくい」と箇所ごとに示されれば、直す方向が明確になります。
 
-ただしスコアは万能ではありません。**スコアを上げること自体が目的化すると、内容の薄い読みやすいだけの文章になります**。指標はあくまで「読者がつまずきそうな箇所を見つける道具」として扱い、最終判断は書き手が行うという姿勢が重要です。
+ただし指摘をすべて消すことが目的ではありません。**指摘に機械的に従うと、内容の薄い、読みやすいだけの文章になります**。指摘は「読者がつまずきそうな箇所を見つける道具」として扱い、最終判断は書き手が行うという姿勢が重要です。
 
 ---
 
-## 薬機法・景表法チェックの位置づけ
+## 「トラブルにつながる表現」のチェックと薬機法・景表法
 
-健康食品・化粧品・医療関連の記事を扱う場合、表現規制は避けて通れません。「治る」「必ず痩せる」「日本一」といった表現は、根拠なく使えば法令違反となる可能性があります。
+文賢のAIアシストには「トラブルにつながる表現」のチェックがあり、ルール校正では差別語・不快語も指摘されます。一方で、**公式サイトには薬機法・景品表示法に特化したチェック機能の記載はありません**。健康食品・化粧品・医療関連の広告表現を確認したい場合は、薬機法・景表法専用のチェックツールや専門家の確認を検討してください。
 
-ツールによるチェックは、こうしたリスクワードの見落としを減らす助けになります。ただし重要な前提として、**ツールが「問題なし」と判定したことは、法令適合を保証するものではありません**。文脈によって同じ言葉でも判断が変わりますし、法令や運用は改正されます。
+「治る」「必ず痩せる」「日本一」といった表現は、根拠なく使えば法令違反となる可能性があります。ツールによるチェックは見落としを減らす助けになります。ただし重要な前提として、**ツールが「問題なし」と判定したことは、法令適合を保証するものではありません**。文脈によって同じ言葉でも判断が変わりますし、法令や運用は改正されます。
 
 現実的な使い方は次の通りです。
 
@@ -98,10 +99,10 @@ image: /assets/images/thumb-bunken-review.jpg
 | 比較項目 | 文賢 | Catchy |
 |---------|------|--------|
 | **主な用途** | 既存文章の品質チェック・修正 | 新規文章の自動生成 |
-| **強み** | 表記ゆれ・読みやすさ・薬機法チェック | ブログ・広告コピーのゼロからの生成 |
+| **強み** | 誤字脱字・表記ゆれ・読みやすさのチェック | ブログ・広告コピーのゼロからの生成 |
 | **AI機能** | 既存文章のリライト提案 | プロンプトから文章を自動生成 |
 | **対象ユーザー** | 既に書ける人の品質向上 | 文章生成のスピードアップ |
-| **料金** | ¥1,980〜/月 | ¥3,300〜/月 |
+| **料金** | ¥1,650〜/月（1年更新時） | 無料プランあり・有料は¥3,000〜/月 |
 
 「自分で書いた原稿をブラッシュアップしたい」なら**文賢**、「まずAIに原稿の骨格を作ってほしい」なら**Catchy**が向いています。
 
@@ -114,13 +115,14 @@ image: /assets/images/thumb-bunken-review.jpg
 **おすすめする人**
 - Webライターとして記事納品前の品質チェックを効率化したい
 - 複数ライターが執筆する媒体で表記ゆれを統一したい
-- 健康・美容・医療ジャンルで薬機法リスクを下げたい
-- 読みやすさスコアを数値で見たい
+- トラブルにつながる表現や差別語・不快語の見落としを減らしたい
+- 媒体の表記ルールを辞書に登録してチームで共有したい
 
 **おすすめしない人**
 - 文章生成そのものをAIに任せたい（→ Catchy / ChatGPTが向いている）
 - 英語コンテンツを主に扱う（→ 文賢は日本語専用）
 - 短い一言コピーのみを扱う（→ チェック機能が活かしにくい）
+- 薬機法・景表法のチェックが主な目的（→ 専用のチェックツールを検討）
 
 ---
 
@@ -136,10 +138,10 @@ A. なくなりません。機械的に検出できるのは表記の揺れや�
 A. 判断の目安は「校正に月何時間使っているか」です。月4時間を1時間に減らせるなら、多くの場合は元が取れます。逆に月に数本しか書かない場合は、コストに見合わない可能性があります。
 
 **Q. 独自のルールを登録できますか？**  
-A. NG表現や推奨表現をカスタム登録する機能があります。媒体ごとの表記ルール（数字は半角、括弧の種類など）を登録しておくと、レギュレーション遵守の確認が自動化できます。
+A. できます。辞書に表記ルールを登録でき、ビジネスチームプランでは組織内でカスタム辞書を共同編集できます。ルール校正・ルール推敲にも独自のカテゴリを追加できるため、媒体ごとの表記ルール（数字は半角、括弧の種類など）の確認を自動化できます。
 
 **Q. 文章の生成もできますか？**  
-A. 主目的は既存文章のチェックとリライト提案です。ゼロから文章を作る用途には、文章生成に特化したツールを併用してください。
+A. 主目的は既存文章の校正・推敲です。AIアシストで構成案やタイトル案、要約を作ることはできますが、ゼロから長い文章を作る用途には、文章生成に特化したツールを併用してください。
 
 **Q. どんな文章に向いていますか？**  
 A. ある程度の長さがあるWeb記事・レポート・広報文で効果を発揮します。数十文字のキャッチコピーだけを扱う場合、チェックできる項目が少なくなります。
@@ -148,9 +150,9 @@ A. ある程度の長さがあるWeb記事・レポート・広報文で効果�
 
 ## まとめ
 
-文賢は**日本語の文章品質を数値で可視化し、効率よく改善できる専門ツール**です。特に表記ゆれ管理・薬機法チェック・読みやすさ改善の3点が強みで、Webライター・コピーライター・マーケターの業務効率を大きく高めます。
+文賢は**日本語の文章を、ルールに基づくチェックとAIの提案の両方で磨ける校正・推敲支援ツール**です。特に誤字脱字・表記ゆれの管理と読みやすさの改善が強みで、Webライター・コピーライター・マーケターの確認作業を軽くします。
 
-月¥1,980のライタープランから始められるため、まず1ヶ月試してみることをおすすめします。
+14日間の無料トライアルがあるため、まず自分の原稿で試してみることをおすすめします。
 
 <div style="margin:2rem 0;padding:1.2rem 1.5rem;background:#fefce8;border-left:4px solid #f59e0b;border-radius:8px;">
 <p style="margin:0 0 .5rem;font-weight:bold;">文賢の詳細・無料体験はこちら</p>
