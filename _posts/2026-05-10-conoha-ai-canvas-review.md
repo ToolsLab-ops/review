@@ -14,7 +14,7 @@ image: /assets/images/conoha-ai-canvas.jpg
 
 <figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="200" fill="#0f172a" rx="10"/><defs><marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/></marker></defs><rect x="95" y="68" width="130" height="64" fill="#3b82f6" rx="8"/><text x="160" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">ブラウザから</text><text x="160" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">ログイン</text><line x1="227" y1="100" x2="251" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="255" y="68" width="130" height="64" fill="#6366f1" rx="8"/><text x="320" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">モデルと</text><text x="320" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">プロンプトを設定</text><line x1="387" y1="100" x2="411" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="415" y="68" width="130" height="64" fill="#ec4899" rx="8"/><text x="480" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">GPUサーバーで</text><text x="480" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">画像を生成</text><line x1="547" y1="100" x2="571" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="575" y="68" width="130" height="64" fill="#14b8a6" rx="8"/><text x="640" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">生成画像を</text><text x="640" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">ダウンロード</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：ConoHa AI Canvas で画像を生成するまでの流れ</figcaption></figure>
 
-<p style="background:#fef2f2;border:1px solid #fecaca;padding:.7rem 1rem;border-radius:6px;font-size:.92em;"><strong>2026年11月5日追記</strong>：ConoHa AI Canvasは、2026年10月24日から緊急メンテナンスのため<strong>新規申し込みの受付を停止</strong>しています（再開時期は未定・公式サイトのお知らせより）。また、料金を公式サイトの最新の表示に合わせて訂正しました。</p>
+<p style="background:#fef2f2;border:1px solid #fecaca;padding:.7rem 1rem;border-radius:6px;font-size:.92em;"><strong>2026年11月21日更新</strong>：ConoHa AI Canvasの新規申し込みは、緊急メンテナンスで2026年10月24日から停止していましたが、<strong>2026年11月13日に受付を再開</strong>しました（運営会社のお知らせより）。また、料金を公式サイトの最新の表示に合わせて訂正しました。</p>
 
 **ConoHa AI Canvas**は、GMOインターネット株式会社が提供する**ブラウザ完結型のAI画像生成サービス**です。
 
@@ -141,7 +141,7 @@ ConoHa AI Canvasで作成できる画像の例：
 ## よくある質問
 
 **Q. 無料トライアルはありますか？**  
-A. 公式サイトに無料トライアルの案内はありません。最も安いのはエントリープラン（月額¥1,100）です。なお、2026年10月24日から新規申し込みの受付が停止されています。
+A. 公式サイトに無料トライアルの案内はありません。最も安いのはエントリープラン（月額¥1,100）です。
 
 **Q. 生成した画像は商用利用できますか？**  
 A. 利用規約の範囲内で商用利用可能です。詳細は公式サイトの利用規約をご確認ください。
