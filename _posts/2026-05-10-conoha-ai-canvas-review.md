@@ -10,18 +10,19 @@ image: /assets/images/conoha-ai-canvas.jpg
 
 本記事には広告・プロモーションが含まれます。
 
+**【受付停止中】ConoHa AI Canvasは現在、新規申し込みができません（2026年11月22日確認）。**
+
 ## ConoHa AI Canvasとは？ブラウザだけで使えるAI画像生成サービス
 
 <figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="200" fill="#0f172a" rx="10"/><defs><marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/></marker></defs><rect x="95" y="68" width="130" height="64" fill="#3b82f6" rx="8"/><text x="160" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">ブラウザから</text><text x="160" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">ログイン</text><line x1="227" y1="100" x2="251" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="255" y="68" width="130" height="64" fill="#6366f1" rx="8"/><text x="320" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">モデルと</text><text x="320" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">プロンプトを設定</text><line x1="387" y1="100" x2="411" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="415" y="68" width="130" height="64" fill="#ec4899" rx="8"/><text x="480" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">GPUサーバーで</text><text x="480" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">画像を生成</text><line x1="547" y1="100" x2="571" y2="100" stroke="#3b82f6" stroke-width="2" marker-end="url(#ah)"/><rect x="575" y="68" width="130" height="64" fill="#14b8a6" rx="8"/><text x="640" y="96" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">生成画像を</text><text x="640" y="114" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f1f5f9">ダウンロード</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：ConoHa AI Canvas で画像を生成するまでの流れ</figcaption></figure>
 
-<p style="background:#fef2f2;border:1px solid #fecaca;padding:.7rem 1rem;border-radius:6px;font-size:.92em;"><strong>2026年11月21日更新</strong>：ConoHa AI Canvasの新規申し込みは、緊急メンテナンスで2026年10月24日から停止していましたが、<strong>2026年11月13日に受付を再開</strong>しました（運営会社のお知らせより）。また、料金を公式サイトの最新の表示に合わせて訂正しました。</p>
+<p style="background:#fef2f2;border:1px solid #fecaca;padding:.7rem 1rem;border-radius:6px;font-size:.92em;"><strong>2026年11月22日訂正</strong>：ConoHa AI Canvasは、2026年11月14日16:55頃から緊急メンテナンスのため<strong>新規申し込みの受付を停止</strong>しています（再開時期は未定・<a href="https://www.conoha.jp/wing/news/?ap=2015055013" rel="nofollow noopener" target="_blank">運営会社のお知らせ</a>）。11月21日の更新で「受付を再開」とご案内しましたが、11月13日の再開は翌14日に再び停止されており、誤りでした。お詫びして訂正します。</p>
 
 **ConoHa AI Canvas**は、GMOインターネット株式会社が提供する**ブラウザ完結型のAI画像生成サービス**です。
 
 インストール不要でブラウザからすぐに利用でき、テキストで指示するだけで本格的な画像を生成できます。クリエイティブな作業やSNS用の画像制作、ビジネス資料のビジュアル制作など、幅広い用途に対応しています。
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" rel="nofollow">【ConoHa AI Canvas】ブラウザだけで本格AI画像生成を試してみる →</a>
-<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" alt="">
+<p><strong>現在、新規申し込みの受付は停止中です。</strong></p>
 
 ### こんな人におすすめ
 
@@ -40,7 +41,7 @@ image: /assets/images/conoha-ai-canvas.jpg
 |------|------|
 | **テキスト→画像生成** | プロンプト（指示文）を入力するだけで高品質な画像を生成 |
 | **ブラウザ完結** | インストール不要・OSに依存せず利用可能 |
-| **GMOの安心インフラ** | 国内大手GMOグループが提供する安定した環境 |
+| **運営会社** | GMOインターネット株式会社（2026年10月以降、緊急メンテナンスによる受付停止が2回発生） |
 | **多様なスタイル対応** | リアル系・イラスト系など幅広い画風に対応 |
 
 **Midjourney・Stable Diffusionとの違い**は、完全日本語サポートと日本国内でのサービス提供です。個人情報・生成データの管理が日本法人によって行われるため、ビジネス用途での安心感があります。
@@ -124,7 +125,7 @@ ConoHa AI Canvasで作成できる画像の例：
 
 ---
 
-## 申込方法
+## 申込方法（受付再開後の手順）
 
 <figure style="text-align:center;margin:2rem auto;max-width:800px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" style="max-width:100%;height:auto;border-radius:10px;display:block;"><rect width="800" height="260" fill="#0f172a" rx="10"/><defs><marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/></marker></defs><circle cx="55" cy="46" r="22" fill="#3b82f6"/><text x="55" y="52" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">1</text><rect x="90" y="22" width="690" height="48" fill="#1e293b" rx="7"/><text x="108" y="42" text-anchor="start" font-family="sans-serif" font-size="13" fill="#f1f5f9" font-weight="bold">公式サイトへアクセス</text><text x="108" y="59" text-anchor="start" font-family="sans-serif" font-size="11" fill="#94a3b8">ボタンから無料登録ページへ</text><line x1="55" y1="68" x2="55" y2="78" stroke="#3b82f6" stroke-width="2"/><circle cx="55" cy="104" r="22" fill="#6366f1"/><text x="55" y="110" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">2</text><rect x="90" y="80" width="690" height="48" fill="#1e293b" rx="7"/><text x="108" y="100" text-anchor="start" font-family="sans-serif" font-size="13" fill="#f1f5f9" font-weight="bold">アカウント情報を入力</text><text x="108" y="117" text-anchor="start" font-family="sans-serif" font-size="11" fill="#94a3b8">メール・パスワードを設定</text><line x1="55" y1="126" x2="55" y2="136" stroke="#6366f1" stroke-width="2"/><circle cx="55" cy="162" r="22" fill="#ec4899"/><text x="55" y="168" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">3</text><rect x="90" y="138" width="690" height="48" fill="#1e293b" rx="7"/><text x="108" y="158" text-anchor="start" font-family="sans-serif" font-size="13" fill="#f1f5f9" font-weight="bold">プランを選択</text><text x="108" y="175" text-anchor="start" font-family="sans-serif" font-size="11" fill="#94a3b8">無料/有料プランを選ぶ</text><line x1="55" y1="184" x2="55" y2="194" stroke="#ec4899" stroke-width="2"/><circle cx="55" cy="220" r="22" fill="#14b8a6"/><text x="55" y="226" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">4</text><rect x="90" y="196" width="690" height="48" fill="#1e293b" rx="7"/><text x="108" y="216" text-anchor="start" font-family="sans-serif" font-size="13" fill="#f1f5f9" font-weight="bold">利用開始</text><text x="108" y="233" text-anchor="start" font-family="sans-serif" font-size="11" fill="#94a3b8">初期設定完了で即スタート</text></svg><figcaption style="font-size:.82em;color:#64748b;margin-top:.4em;font-family:sans-serif;">図：申込・登録の手順</figcaption></figure>
 
@@ -133,15 +134,14 @@ ConoHa AI Canvasで作成できる画像の例：
 3. プランを選択して初回利用料金を支払い
 4. ブラウザ上ですぐに画像生成を開始
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" rel="nofollow">ConoHa AI Canvas を試してみる →</a>
-<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" alt="">
+<p><strong>現在、新規申し込みの受付は停止中です。</strong></p>
 
 ---
 
 ## よくある質問
 
 **Q. 無料トライアルはありますか？**  
-A. 公式サイトに無料トライアルの案内はありません。最も安いのはエントリープラン（月額¥1,100）です。
+A. 公式サイトに無料トライアルの案内はありません。最も安いのはエントリープラン（月額¥1,100）です。なお、2026年11月14日から新規申し込みの受付が停止されています。
 
 **Q. 生成した画像は商用利用できますか？**  
 A. 利用規約の範囲内で商用利用可能です。詳細は公式サイトの利用規約をご確認ください。
@@ -166,7 +166,6 @@ A. 契約形態によって手続きが異なるため、申し込み前に解�
 
 ---
 
-インストール不要でブラウザからすぐに使えるAI画像生成サービスとして、ConoHa AI Canvasは入門として最適な選択肢のひとつです。まずはエントリープランで試してみてください。
+インストール不要でブラウザからすぐに使えるAI画像生成サービスとして、ConoHa AI Canvasは入門向けの選択肢のひとつです。ただし現在は新規申し込みができないため、受付再開を公式のお知らせでご確認ください。
 
-<a href="https://px.a8.net/svt/ejp?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" rel="nofollow">【ConoHa AI Canvas】今すぐAI画像生成を始める →</a>
-<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B3KUS+DMLAC2+50+7RUDGZ" alt="">
+<p><strong>現在、新規申し込みの受付は停止中です。</strong></p>
