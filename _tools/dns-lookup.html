@@ -1,0 +1,52 @@
+---
+tool_id: dns-lookup
+cat: network
+order: 25
+title: DNSレコード検索（nslookup）｜A・MX・TXT・NSを一括確認【無料】
+h1: DNSレコード検索
+short: A・MX・TXT・NSなどを一括取得
+description: ドメイン名を入力するだけで、A・AAAA・CNAME・MX・NS・TXT・SOA・CAAレコードを一括で確認できる無料のDNS検索ツール。IPアドレスを入れると逆引き（PTR）も調べられ、CloudflareとGoogleのDNSを切り替えて比べられます。
+lead: ドメイン名のDNSレコードを、ブラウザからnslookup・digのように調べられます。DNSを変更した後の反映確認や、メール・Webサイトの設定確認に使えます。
+app_category: DeveloperApplication
+related:
+- mail-auth
+- ip-info
+- whois
+faq:
+- q: "DNSを変更したのに、古い値が表示されます。"
+  a: "DNSの値はTTL（キャッシュの有効時間）の間、各地のDNSサーバーに保存されます。変更前のTTLが3600秒なら最大1時間ほど古い値が返ることがあります。「DNSサーバー」をCloudflareとGoogleで切り替えると、反映の進み具合を比べられます。"
+- q: "「NXDOMAIN」と表示されました。"
+  a: "その名前がDNSに存在しないという意味です。綴りの誤りのほか、ドメインの期限切れ、ネームサーバーの設定漏れなどが考えられます。"
+- q: "nslookupやdigとの違いは？"
+  a: "このツールはCloudflare・GoogleのDNS over HTTPSを使って問い合わせるため、コマンドを使えない環境やスマホからでも同じように確認できます。会社のネットワーク内だけで使われる名前（社内DNS）は調べられません。"
+---
+<h2>使い方</h2>
+<ol>
+<li>ドメイン名（例: example.com）を入力します。URLを貼り付けても、ドメイン部分だけを取り出して調べます。</li>
+<li>「レコードの種類」を選びます。「主要なレコードをすべて」ならA・AAAA・CNAME・MX・NS・TXT・SOA・CAAを同時に調べます。</li>
+<li>IPアドレス（例: 8.8.8.8）を入力すると、自動で逆引き（PTRレコード）を調べます。</li>
+</ol>
+
+<h2>レコードの種類</h2>
+<table>
+<tr><th>種類</th><th>内容</th><th>主な使われ方</th></tr>
+<tr><td>A / AAAA</td><td>ドメインに対応するIPv4 / IPv6アドレス</td><td>Webサイトの公開先</td></tr>
+<tr><td>CNAME</td><td>別名。別のドメイン名に転送する</td><td>www付きのドメインや、外部サービス（ブログ・ECサイト）への接続</td></tr>
+<tr><td>MX</td><td>メールの受け取り先サーバーと優先度（数字が小さいほど優先）</td><td>Google Workspace・Microsoft 365の設定</td></tr>
+<tr><td>NS</td><td>そのドメインを管理するネームサーバー</td><td>DNSの引っ越し・レジストラの変更</td></tr>
+<tr><td>TXT</td><td>自由な文字列</td><td>SPF・DMARC・サービスの所有権確認（Google Search Consoleなど）</td></tr>
+<tr><td>SOA</td><td>ゾーンの管理情報（シリアル番号や更新間隔）</td><td>ゾーンが更新されたかの確認</td></tr>
+<tr><td>CAA</td><td>SSL証明書を発行してよい認証局</td><td>証明書の不正発行の防止</td></tr>
+<tr><td>PTR</td><td>IPアドレスからホスト名への逆引き</td><td>メールサーバーの信頼性確認</td></tr>
+</table>
+
+<h2>こんなときに</h2>
+<ul>
+<li><strong>サイトの引っ越し後</strong>：Aレコードが新しいサーバーのIPアドレスになっているか確認する</li>
+<li><strong>メールが届かない</strong>：MXレコードの向き先と優先度を確認する</li>
+<li><strong>Google Workspaceなどの所有権確認が通らない</strong>：TXTレコードが正しく登録されているか確認する</li>
+<li><strong>SSL証明書の発行に失敗する</strong>：CAAレコードで認証局が制限されていないか確認する</li>
+</ul>
+
+<h2>結果の見方</h2>
+<p>CNAMEが設定された名前では、A・AAAAの行の「名前」欄に転送先の名前が表示されます。「DNSSEC検証済み」は、回答が電子署名で正しいと確認できたことを表します。TTLは問い合わせ先のキャッシュに残っている秒数なので、問い合わせるたびに減っていきます。</p>
