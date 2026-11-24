@@ -44,7 +44,7 @@ description: 消費税・手取り・ローン・割り勘などのお金の計�
   </nav>
   <h1 class="tp-title">無料ツール一覧</h1>
   <p class="tp-lead">お金の計算、日付の計算、テキスト処理、デザインまで、ブラウザだけで使える無料ツールをまとめています。登録は不要です。</p>
-  {%- assign groups = "money:💰 お金・計算|datetime:📅 日時|text:📝 テキスト|design:🎨 デザイン|global:🌐 グローバル|health:💪 健康|fun:🔮 エンタメ" | split: "|" %}
+  {%- assign groups = "money:💰 お金・計算|datetime:📅 日時|text:📝 テキスト|design:🎨 デザイン|global:🌐 グローバル|health:💪 健康|network:📡 ネットワーク|fun:🔮 エンタメ" | split: "|" %}
   {% for g in groups %}{% assign parts = g | split: ":" %}{% assign items = sorted | where: "cat", parts[0] %}
   <section class="tp-hub-section">
     <h2>{{ parts[1] }}</h2>

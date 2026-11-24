@@ -1,0 +1,56 @@
+---
+tool_id: mail-auth
+cat: network
+order: 24
+title: SPF・DKIM・DMARCチェッカー｜メール認証の設定を無料で診断
+h1: SPF・DKIM・DMARCチェッカー
+short: メール送信ドメイン認証の設定を診断
+description: ドメインを入力するだけで、SPF・DKIM・DMARCの設定と誤りを診断できる無料ツール。SPFのDNS参照回数（上限10回）、DMARCのポリシー、DKIMの鍵の長さ、Gmailの送信者ガイドラインへの対応を確認できます。
+lead: ドメイン（またはメールアドレス）を入力すると、なりすましメール対策の3つの設定（SPF・DKIM・DMARC）をDNSから読み取り、誤りや弱い設定を指摘します。Gmail・Yahoo!・Outlook.comが送信者に求めている要件を満たしているかも確認できます。
+app_category: DeveloperApplication
+related:
+- dns-lookup
+- whois
+- ssl-ct
+faq:
+- q: "DKIMが「自動では見つからず」と表示されます。設定されていないのでしょうか？"
+  a: "そうとは限りません。DKIMの公開鍵は「セレクタ名._domainkey.ドメイン」に置かれ、セレクタ名は送信サービスが自由に決めます。このツールはよく使われる約40種類を探すだけなので、受信したメールのヘッダーにある「DKIM-Signature」の「s=」の値をセレクタ欄に入れて確認してください。"
+- q: "DMARCを p=none にしていますが、問題ありますか？"
+  a: "Gmail等の大量送信者向け要件は p=none でも満たせます。ただし p=none は「監視のみ」で、なりすましメールは止まりません。集計レポートで正規の送信元がすべて認証に通っていることを確かめてから、quarantine、reject へと段階的に強めるのが一般的です。"
+- q: "入力したドメインはどこに送信されますか？"
+  a: "DNSの問い合わせのため、CloudflareのDNSサービス（つながらない場合はGoogle Public DNS）に送られます。ToolsLab.のサーバーには送信も保存もされません。"
+---
+<h2>使い方</h2>
+<ol>
+<li>調べたいドメイン（例: example.com）を入力し、「チェック」を押します。メールアドレスを貼り付けても、@より後ろのドメインで調べます。</li>
+<li>DKIMのセレクタが分かっている場合は、2つ目の欄に入力すると、そのセレクタだけを確実に確認します。</li>
+<li>最初に全体の判定、続けてSPF・DKIM・DMARC・MXの詳細と、直すべき点が表示されます。</li>
+</ol>
+
+<h2>SPF・DKIM・DMARCの役割</h2>
+<table>
+<tr><th>設定</th><th>何を確かめるか</th><th>置き場所（DNS）</th></tr>
+<tr><td>SPF</td><td>メールを送ったサーバーが、そのドメインから送ってよいサーバーとして登録されているか</td><td>ドメイン自体のTXTレコード（v=spf1 …）</td></tr>
+<tr><td>DKIM</td><td>メールに付いた電子署名が正しく、途中で書き換えられていないか</td><td>セレクタ._domainkey.ドメイン のTXTレコード</td></tr>
+<tr><td>DMARC</td><td>SPFかDKIMの結果が差出人のドメインと一致しないとき、受信側にどう扱ってほしいか（監視のみ・迷惑メール扱い・拒否）と、結果のレポートの送付先</td><td>_dmarc.ドメイン のTXTレコード</td></tr>
+</table>
+
+<h2>よくある設定ミス</h2>
+<ul>
+<li><strong>SPFのDNS参照が10回を超えている</strong>：include・a・mx・ptr・exists・redirect は、たどる先も含めて合計10回までと決まっています（RFC 7208）。送信サービスを足していくと超えやすく、超えるとSPFがエラーになり、認証に失敗します。</li>
+<li><strong>SPFのレコードが2件ある</strong>：サービスごとに「v=spf1」を追加してしまう例です。1件にまとめ、includeを並べてください。</li>
+<li><strong>解約したサービスのincludeが残っている</strong>：参照先にSPFが無いとエラーになります。</li>
+<li><strong>「+all」や「?all」で終わっている</strong>：誰でも送信できる、または判定しない設定になり、なりすまし対策の効果がありません。</li>
+<li><strong>DKIMの鍵が1024ビット</strong>：現在は2048ビットが推奨されています。送信サービスの管理画面で鍵を作り直せることが多いです。</li>
+<li><strong>DMARCのレポート送付先（rua）が無い</strong>：設定の効果や、正規のメールが失敗していることに気づけません。</li>
+</ul>
+
+<h2>Gmail・Yahoo!・Outlook.comの送信者要件</h2>
+<p>Gmailと米Yahoo!は2024年2月から、Outlook.comは2025年5月から、送信元の認証を求めています。すべての送信者はSPFかDKIMのどちらかが必要で、1日5,000通以上を送る送信者はSPF・DKIM・DMARC（p=noneでも可）のすべてが必要です。あわせて、差出人（From）のドメインとSPFまたはDKIMのドメインを一致させること（アラインメント）、ワンクリックで配信停止できることなども求められています。アラインメントはDNSだけでは判定できないため、実際に送ったメールのヘッダー（Authentication-Results）で確認してください。</p>
+
+<h2>この診断で分からないこと</h2>
+<ul>
+<li>実際のメールがSPF・DKIMに合格しているか（送信経路や転送の有無で変わります）</li>
+<li>自動検出の対象外のセレクタで公開しているDKIM鍵</li>
+<li>迷惑メール率など、受信側の評価</li>
+</ul>
