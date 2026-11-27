@@ -165,19 +165,26 @@ function ntV6Type(g) {
 /* ── DNS over HTTPS ── */
 var NT_TYPES = { A: 1, NS: 2, CNAME: 5, SOA: 6, PTR: 12, MX: 15, TXT: 16, AAAA: 28, SRV: 33, CAA: 257 };
 var NT_TYPENAME = {}; Object.keys(NT_TYPES).forEach(function (k) { NT_TYPENAME[NT_TYPES[k]] = k; });
-async function ntDns(name, type, resolver) {
-  var r = resolver || 'cloudflare';
+async function ntDnsOnce(name, type, r) {
   var url = r === 'google'
     ? 'https://dns.google/resolve?name=' + encodeURIComponent(name) + '&type=' + type
     : 'https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(name) + '&type=' + type;
-  var res;
-  try { res = await ntFetchT(url, r === 'google' ? {} : { headers: { accept: 'application/dns-json' } }, 10000); }
-  catch (e) { if (!resolver) return ntDns(name, type, 'google'); throw new Error('DNSサービスに接続できませんでした。通信環境を確認して再実行してください。'); }
-  if (!res.ok) { if (!resolver) return ntDns(name, type, 'google'); throw new Error('DNSサービスがエラーを返しました（HTTP ' + res.status + '）。'); }
-  var j = await res.json();
+  var res = await ntFetchT(url, r === 'google' ? {} : { headers: { accept: 'application/dns-json' } }, 10000);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
+/* 選んだDNSサービスに接続できないときは、もう一方へ自動で切り替える（2026-11-27） */
+async function ntDns(name, type, resolver) {
+  var first = resolver === 'google' ? 'google' : 'cloudflare';
+  var order = [first, first === 'google' ? 'cloudflare' : 'google'];
+  var j = null, via = null;
+  for (var i = 0; i < order.length && !j; i++) {
+    try { j = await ntDnsOnce(name, type, order[i]); via = order[i]; } catch (e) { j = null; }
+  }
+  if (!j) throw new Error('DNSサービス（Cloudflare・Google）のどちらにも接続できませんでした。広告ブロック・セキュリティソフト・会社や学校のネットワーク設定で、cloudflare-dns.com／dns.google への通信が止められている可能性があります。別の回線（スマホのモバイル回線など）や別のブラウザで再実行してください。');
   var want = NT_TYPES[type];
   var all = j.Answer || [];
-  return { status: j.Status, ad: !!j.AD, all: all, answers: all.filter(function (a) { return a.type === want; }) };
+  return { status: j.Status, ad: !!j.AD, all: all, via: via, answers: all.filter(function (a) { return a.type === want; }) };
 }
 function ntTxt(data) {
   var m = String(data).match(/"((?:[^"\\]|\\.)*)"/g);
@@ -472,7 +479,7 @@ async function ntDnsLookup() {
     var ad = rs.some(function (r) { return r.ad; });
     out.innerHTML = ntCard('検索結果: ' + ntEsc(name), ad ? ntBadge('ok', 'DNSSEC検証済み') : ntBadge('info', 'DNSSECなし'),
       '<div class="nt-tblwrap"><table class="nt-tbl"><tr><th>種類</th><th>名前</th><th>値</th><th>TTL</th></tr>' + rows + '</table></div>' +
-      '<div class="nt-note">問い合わせ先: ' + (resv === 'google' ? 'Google Public DNS（8.8.8.8）' : 'Cloudflare（1.1.1.1）') + '。TTLはキャッシュの残り時間のため、問い合わせのたびに変わります。DNSを変更した直後は、古い値がTTLの間残ることがあります。</div>');
+      '<div class="nt-note">問い合わせ先: ' + (rs[0].via === 'google' ? 'Google Public DNS（8.8.8.8）' : 'Cloudflare（1.1.1.1）') + (rs[0].via !== resv ? '（選んだDNSサービスに接続できなかったため切り替えました）' : '') + '。TTLはキャッシュの残り時間のため、問い合わせのたびに変わります。DNSを変更した直後は、古い値がTTLの間残ることがあります。</div>');
   } catch (e) { out.innerHTML = ntErr(ntEsc(e.message)); }
   finally { btn.disabled = false; }
 }
