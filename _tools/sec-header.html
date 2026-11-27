@@ -1,0 +1,42 @@
+---
+tool_id: sec-header
+cat: network
+order: 34
+title: セキュリティヘッダー診断｜HSTS・CSP・X-Frame-Optionsをチェック【無料】
+h1: セキュリティヘッダー診断
+short: HSTS・CSPなどの設定を採点
+description: URLを入力するだけで、HSTS・Content-Security-Policy・X-Content-Type-Options・X-Frame-Options・Referrer-Policy・Permissions-Policyの設定状況を確認し、A〜Fで採点する無料ツール。足りない設定の意味と設定例も表示します。
+lead: Webサイトの応答ヘッダーから、ブラウザ側で働くセキュリティ対策が設定されているかを診断します。未設定の項目は、何を防ぐ設定なのかと設定例を表示します。
+app_category: SecurityApplication
+related:
+- http-header
+- redirect
+- ssl-ct
+faq:
+- q: "評価がFでした。サイトは危険ですか？"
+  a: "ただちに危険という意味ではありません。セキュリティヘッダーは、万一の攻撃の被害を小さくする「追加の守り」です。WordPressなどでは、プラグインやサーバーの設定画面から追加できることが多いです。"
+- q: "CSPを設定したらサイトの表示が崩れました。"
+  a: "CSPは読み込んでよい外部ファイルの出どころを細かく指定するため、広告やアクセス解析のタグが動かなくなることがあります。まず Content-Security-Policy-Report-Only で試し、問題がないことを確認してから本番に切り替えるのが安全です。"
+- q: "採点の基準は？"
+  a: "ToolsLab.独自の目安です。HSTS 25点・CSP 20点・X-Content-Type-Options 15点・クリックジャッキング対策 15点・Referrer-Policy 15点・Permissions-Policy 10点の合計で、ソフトウェアのバージョン番号が見えている場合は5点引きます。"
+---
+<h2>使い方</h2>
+<ol>
+<li>診断したいページのURLを入力し、「診断」を押します。</li>
+<li>リダイレクトがある場合は、最終的なページのヘッダーで判定します。</li>
+<li>項目ごとに OK・注意・要修正 と、その設定が防ぐ攻撃や設定例を表示します。</li>
+</ol>
+
+<h2>診断する項目</h2>
+<table>
+<tr><th>ヘッダー</th><th>防げること</th><th>設定例</th></tr>
+<tr><td>Strict-Transport-Security</td><td>暗号化されていないHTTPでの接続（通信の盗み見・改ざん）</td><td>max-age=31536000; includeSubDomains</td></tr>
+<tr><td>Content-Security-Policy</td><td>XSS（悪意あるスクリプトの埋め込み）の被害</td><td>default-src 'self'（サイトに合わせて調整）</td></tr>
+<tr><td>X-Content-Type-Options</td><td>ファイルの種類の取り違えを悪用した攻撃</td><td>nosniff</td></tr>
+<tr><td>X-Frame-Options / frame-ancestors</td><td>クリックジャッキング（他サイトに埋め込んでボタンを押させる）</td><td>SAMEORIGIN</td></tr>
+<tr><td>Referrer-Policy</td><td>URLに含まれる情報の外部への流出</td><td>strict-origin-when-cross-origin</td></tr>
+<tr><td>Permissions-Policy</td><td>カメラ・マイク・位置情報などの不要な機能の悪用</td><td>camera=(), microphone=(), geolocation=()</td></tr>
+</table>
+
+<h2>注意</h2>
+<p>診断はそのページの応答ヘッダーだけで行います。サーバーの脆弱性やプログラムの不具合を調べるものではありません。また、ページによってヘッダーが違うサイトもあるため、重要なページは個別に確認してください。</p>
