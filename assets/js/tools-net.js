@@ -1,6 +1,7 @@
 /* ToolsLab. ネットワーク・ドメイン系ツール（2026-11-25 追加）
    すべてブラウザ内で動作。DNSはCloudflare / GoogleのDNS over HTTPS、
    IP確認はipify、ドメイン情報はrdap.org、証明書はcrt.sh（CTログ）、AS番号はTeam CymruのDNSを利用する。
+   HTTPヘッダー・リダイレクト・セキュリティヘッダー・ポート開放・HTTPS疎通の5種（2026-11-27）は、ToolsLab.のWorker（toolslab-net）を使う。
    tools.js の後に読み込むこと（TOOLS・RENDERERS・SECTION_LABELS・initTool を拡張する）。 */
 
 TOOLS.push(
@@ -827,3 +828,221 @@ var NET_INIT = { 'my-ip': ntMyIp, 'subnet': ntSubnetInit, 'punycode': ntPunyCalc
     if (q && NT_RUN[id] && NT_RUN[id][1]) NT_RUN[id][1]();
   };
 })();
+
+/* ════ 第2弾（2026-11-27）: ToolsLab.のWorker（scripts/toolslab-net）を使う5種 ════
+   Workerはヘッダーと接続結果だけを返し、ページ本文は返さない。ポート開放確認は利用者自身のIPだけを調べる。 */
+TOOLS.push(
+  { id:'http-header', cat:'network', icon:'🧾', name:'HTTPヘッダー確認',         desc:'ステータスコードと応答ヘッダーを表示' },
+  { id:'redirect',    cat:'network', icon:'↪️', name:'リダイレクト確認',         desc:'転送の経路と301/302を一覧表示' },
+  { id:'sec-header',  cat:'network', icon:'🛡️', name:'セキュリティヘッダー診断', desc:'HSTS・CSPなどの設定を採点' },
+  { id:'port-check',  cat:'network', icon:'🚪', name:'ポート開放確認',           desc:'自分の回線のポートが外から開いているか' },
+  { id:'https-check', cat:'network', icon:'📶', name:'HTTPS疎通確認',            desc:'サイトにHTTPSで接続できるか・応答時間' }
+);
+var NT_API = 'https://toolslab-net.cooltakestudio.workers.dev';
+async function ntApi(path) {
+  var res;
+  try { res = await ntFetchT(NT_API + path, {}, 45000); }
+  catch (e) { throw new Error('確認用サーバーに接続できませんでした。通信環境を確認して再実行してください。'); }
+  var j = null;
+  try { j = await res.json(); } catch (e) { }
+  if (!j) throw new Error('確認用サーバーがエラーを返しました（HTTP ' + res.status + '）。');
+  if (res.status === 429 || (res.status >= 400 && j.error && !j.hops)) throw new Error(ntEsc(j.error));
+  return j;
+}
+var NT_COLO = { NRT: '東京', KIX: '大阪', FUK: '福岡', OKA: '沖縄', HND: '東京', ICN: 'ソウル', TPE: '台北', HKG: '香港', SIN: 'シンガポール', LAX: 'ロサンゼルス', SJC: 'サンノゼ' };
+function ntColo(c) { return c ? 'Cloudflare ' + (NT_COLO[c] ? NT_COLO[c] + '（' + c + '）' : c) : 'Cloudflare'; }
+function ntUrlIn(raw) {
+  var v = (raw || '').trim();
+  if (!v) return '';
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) v = 'https://' + v;
+  return v;
+}
+var NT_STATUS = {
+  200: '正常（OK）', 204: '正常（本文なし）', 301: '恒久的な転送（Moved Permanently）', 302: '一時的な転送（Found）', 303: '別のURLを参照（See Other）', 304: '変更なし（Not Modified）',
+  307: '一時的な転送（メソッド維持）', 308: '恒久的な転送（メソッド維持）', 400: 'リクエストが不正（Bad Request）', 401: '認証が必要（Unauthorized）', 403: 'アクセス拒否（Forbidden）',
+  404: 'ページが見つからない（Not Found）', 405: '許可されていないメソッド', 410: '削除済み（Gone）', 429: 'アクセスが多すぎる（Too Many Requests）', 500: 'サーバー内部エラー',
+  502: 'ゲートウェイの応答が不正（Bad Gateway）', 503: '一時的に利用できない（Service Unavailable）', 504: 'ゲートウェイのタイムアウト', 520: 'Cloudflare: 配信元サーバーから不明な応答',
+  521: 'Cloudflare: 配信元サーバーが停止中', 522: 'Cloudflare: 配信元サーバーへの接続がタイムアウト', 523: 'Cloudflare: 配信元サーバーに到達できない', 525: 'Cloudflare: 配信元とのSSL接続に失敗', 526: 'Cloudflare: 配信元の証明書が無効'
+};
+function ntStatusBadge(s) {
+  var k = s < 300 ? 'ok' : s < 400 ? 'info' : s < 500 ? 'warn' : 'ng';
+  return ntBadge(k, s + (NT_STATUS[s] ? ' ' + NT_STATUS[s] : ''));
+}
+function ntHdr(hop, name) {
+  var n = name.toLowerCase(), v = null;
+  (hop.headers || []).forEach(function (h) { if (h[0].toLowerCase() === n) v = v == null ? h[1] : v + ', ' + h[1]; });
+  return v;
+}
+async function ntHttpRun(prefix, follow, render) {
+  var out = ntEl(prefix + 'Out'), btn = ntEl(prefix + 'Btn');
+  var url = ntUrlIn(ntVal(prefix + 'Url'));
+  if (!url) { out.innerHTML = ntErr('URLを入力してください（例: https://example.com）。'); return; }
+  btn.disabled = true;
+  out.innerHTML = ntLoading(url + ' に問い合わせています…');
+  try {
+    var j = await ntApi('/v1/http?follow=' + (follow ? '1' : '0') + '&url=' + encodeURIComponent(url));
+    if (!j.hops || !j.hops.length) { out.innerHTML = ntErr(ntEsc(j.error || '応答がありませんでした。')); return; }
+    out.innerHTML = render(j) + '<div class="nt-note">確認元: ' + ntEsc(ntColo(j.colo)) + 'のサーバーからGETで取得（ToolsLab.のサーバーは本文を受け取らず、ヘッダーだけを表示しています）。</div>';
+  } catch (e) { out.innerHTML = ntErr(e.message); }
+  finally { btn.disabled = false; }
+}
+function ntHeaderTable(hop) {
+  return '<div class="nt-tblwrap"><table class="nt-tbl"><tr><th>ヘッダー</th><th>値</th></tr>' +
+    (hop.headers || []).map(function (h) { return '<tr><td><b>' + ntEsc(h[0]) + '</b></td><td style="font-family:monospace">' + ntEsc(h[1]) + '</td></tr>'; }).join('') + '</table></div>';
+}
+
+/* ════ HTTPヘッダー確認 ════ */
+function ntHttpHeader() {
+  var follow = ntEl('hhFollow') && ntEl('hhFollow').checked;
+  ntHttpRun('hh', follow, function (j) {
+    var last = j.hops[j.hops.length - 1];
+    var chain = j.hops.length > 1 ? '<div class="nt-note">リダイレクトを' + (j.hops.length - 1) + '回たどった先の応答です。経路は「リダイレクト確認」で詳しく見られます。</div>' : '';
+    return (j.error ? ntCard('途中で止まりました', ntBadge('warn', '注意'), '<div>' + ntEsc(j.error) + '</div>') : '') +
+      ntCard(ntEsc(last.url), ntStatusBadge(last.status),
+        '<div class="nt-note" style="margin:0 0 6px">応答時間（ヘッダー受信まで）: ' + last.ms + 'ミリ秒／ヘッダー ' + last.headers.length + '件</div>' + ntHeaderTable(last) + chain);
+  });
+}
+
+/* ════ リダイレクト確認 ════ */
+function ntRedirect() {
+  ntHttpRun('rd', true, function (j) {
+    var hops = j.hops, issues = [];
+    var rows = hops.map(function (h, i) {
+      var loc = ntHdr(h, 'location');
+      return '<tr><td>' + (i + 1) + '</td><td>' + ntStatusBadge(h.status) + '</td><td style="font-family:monospace">' + ntEsc(h.url) + (loc && i === hops.length - 1 ? '<br>→ ' + ntEsc(loc) : '') + '</td><td>' + h.ms + 'ms</td></tr>';
+    }).join('');
+    var n = hops.length - 1, first = hops[0], last = hops[hops.length - 1];
+    if (n === 0) issues.push(['info', 'リダイレクトはありません。入力したURLがそのまま応答しています。']);
+    if (n > 2) issues.push(['warn', 'リダイレクトが' + n + '回あります。1〜2回にまとめると表示が速くなり、検索エンジンの評価も引き継がれやすくなります（例: http://example.com → https://www.example.com を1回で）。']);
+    hops.slice(0, -1).forEach(function (h) {
+      if (h.status === 302 || h.status === 307) issues.push(['warn', h.url + ' は' + h.status + '（一時的な転送）です。恒久的な引っ越しなら301か308にすると、検索エンジンが新しいURLを正式なものとして扱います。']);
+    });
+    for (var i = 1; i < hops.length; i++) if (/^https:/.test(hops[i - 1].url) && /^http:/.test(hops[i].url)) issues.push(['ng', 'HTTPSからHTTPへ戻る転送があります（' + ntEsc(hops[i].url) + '）。通信が暗号化されない区間ができます。']);
+    if (/^http:/.test(last.url)) issues.push(['warn', '最終的な表示先がHTTP（暗号化なし）です。HTTPSへの転送を設定してください。']);
+    else if (/^http:/.test(first.url) && n >= 1) issues.push(['ok', 'HTTPからHTTPSへ転送されています。']);
+    if (j.loop) issues.push(['ng', 'リダイレクトがループしています。ブラウザでは「リダイレクトが多すぎます」と表示されます。']);
+    if (j.error && !j.loop) issues.push(['ng', ntEsc(j.error)]);
+    if (last.status >= 400) issues.push(['ng', '最終的な表示先がエラー（' + last.status + '）です。']);
+    return ntCard('転送の経路（' + n + '回）', last.status < 300 ? ntBadge('ok', '最終 ' + last.status) : ntStatusBadge(last.status),
+      '<div class="nt-tblwrap"><table class="nt-tbl"><tr><th>#</th><th>ステータス</th><th>URL</th><th>時間</th></tr>' + rows + '</table></div>' + ntIssues(issues));
+  });
+}
+
+/* ════ セキュリティヘッダー診断 ════ */
+function ntSecEval(hop) {
+  var https = /^https:/.test(hop.url), items = [], score = 0;
+  function add(name, ok, pts, msg, kind) { items.push([name, kind || (ok ? 'ok' : 'ng'), msg]); if (ok) score += pts; }
+  var hsts = ntHdr(hop, 'strict-transport-security');
+  if (!https) add('Strict-Transport-Security', false, 0, 'HTTPSで配信されていないため設定できません。まずHTTPSへの転送を設定してください。');
+  else if (!hsts) add('Strict-Transport-Security', false, 25, '未設定。ブラウザに「このサイトは常にHTTPSで開く」と覚えさせる設定です。例: max-age=31536000; includeSubDomains');
+  else {
+    var ma = +(/max-age=(\d+)/i.exec(hsts) || [0, 0])[1];
+    if (ma >= 15552000) add('Strict-Transport-Security', true, 25, '設定済み（有効期間 ' + Math.round(ma / 86400) + '日' + (/includesubdomains/i.test(hsts) ? '・サブドメインも対象' : '') + '）。');
+    else { add('Strict-Transport-Security', false, 0, '設定されていますが有効期間が短すぎます（' + ma + '秒）。180日（15552000秒）以上を推奨します。', 'warn'); score += 10; }
+  }
+  var csp = ntHdr(hop, 'content-security-policy');
+  if (!csp) add('Content-Security-Policy', false, 20, '未設定。読み込んでよいスクリプトや画像の出どころを限定し、XSS（スクリプトの埋め込み攻撃）の被害を抑えます。', ntHdr(hop, 'content-security-policy-report-only') ? 'warn' : 'ng');
+  else if (/'unsafe-inline'|'unsafe-eval'/.test(csp) && !/'nonce-|'strict-dynamic'/.test(csp)) { add('Content-Security-Policy', false, 0, "設定済みですが 'unsafe-inline' または 'unsafe-eval' を許可しているため、XSS対策としての効果は限定的です。", 'warn'); score += 12; }
+  else add('Content-Security-Policy', true, 20, '設定済み。');
+  var xcto = ntHdr(hop, 'x-content-type-options');
+  add('X-Content-Type-Options', /nosniff/i.test(xcto || ''), 15, /nosniff/i.test(xcto || '') ? '設定済み（nosniff）。' : '未設定。nosniff を指定すると、ファイルの種類の取り違えを悪用した攻撃を防げます。');
+  var xfo = ntHdr(hop, 'x-frame-options'), fa = csp && /frame-ancestors/i.test(csp);
+  add('クリックジャッキング対策', !!(fa || /deny|sameorigin/i.test(xfo || '')), 15, fa ? 'CSPの frame-ancestors で設定済み。' : /deny|sameorigin/i.test(xfo || '') ? 'X-Frame-Options（' + xfo + '）で設定済み。' : '未設定。他のサイトに枠（iframe）で埋め込まれ、気づかないうちにボタンを押させる攻撃を防ぎます。X-Frame-Options: SAMEORIGIN か CSPの frame-ancestors を設定します。');
+  var rp = ntHdr(hop, 'referrer-policy');
+  add('Referrer-Policy', !!rp && !/unsafe-url|no-referrer-when-downgrade/i.test(rp), 15, rp ? (/unsafe-url|no-referrer-when-downgrade/i.test(rp) ? '設定値（' + rp + '）では、ほかのサイトへURLの全体が渡ります。strict-origin-when-cross-origin を推奨します。' : '設定済み（' + rp + '）。') : '未設定（多くのブラウザは strict-origin-when-cross-origin として動きます）。明示しておくと、URLに含まれる情報が外部へ渡るのを確実に防げます。', rp ? null : 'warn');
+  var pp = ntHdr(hop, 'permissions-policy');
+  add('Permissions-Policy', !!pp, 10, pp ? '設定済み。' : '未設定。カメラ・マイク・位置情報などの機能を使わないページでは、無効にしておくと安全です。', pp ? null : 'warn');
+  var leaks = [];
+  var sv = ntHdr(hop, 'server'); if (sv && /\d/.test(sv)) leaks.push('Server: ' + sv);
+  ['x-powered-by', 'x-aspnet-version', 'x-aspnetmvc-version', 'x-generator'].forEach(function (k) { var v = ntHdr(hop, k); if (v) leaks.push(k + ': ' + v); });
+  if (leaks.length) { items.push(['ソフトウェア名・バージョンの露出', 'warn', 'バージョン番号が見えていると、古いソフトの弱点を狙われやすくなります。表示しない設定を推奨します（' + ntEsc(leaks.join('／')) + '）。']); score -= 5; }
+  else items.push(['ソフトウェア名・バージョンの露出', 'ok', 'バージョン番号は表示されていません。']);
+  score = Math.max(0, Math.min(100, score));
+  var grade = score >= 90 ? 'A' : score >= 75 ? 'B' : score >= 55 ? 'C' : score >= 35 ? 'D' : 'F';
+  return { items: items, score: score, grade: grade };
+}
+function ntSecHeader() {
+  ntHttpRun('sh', true, function (j) {
+    var last = j.hops[j.hops.length - 1];
+    var r = ntSecEval(last);
+    var kind = r.grade === 'A' ? 'ok' : r.grade === 'B' ? 'info' : r.grade === 'C' ? 'warn' : 'ng';
+    var rows = r.items.map(function (it) { return '<tr><td><b>' + ntEsc(it[0]) + '</b></td><td>' + ntBadge(it[1], NT_LABEL[it[1]]) + '</td><td>' + it[2] + '</td></tr>'; }).join('');
+    return ntCard('判定: <span class="nt-big">' + r.grade + '</span>（' + r.score + '点／100点）', ntBadge(kind, ntEsc(last.url)),
+      (j.hops.length > 1 ? '<div class="nt-note" style="margin:0 0 6px">リダイレクトを' + (j.hops.length - 1) + '回たどった最終的なページ（' + ntEsc(last.url) + '）を診断しました。</div>' : '') +
+      '<div class="nt-tblwrap"><table class="nt-tbl"><tr><th>項目</th><th>結果</th><th>内容</th></tr>' + rows + '</table></div>' +
+      '<div class="nt-note">採点はToolsLab.独自の目安です（HSTS 25・CSP 20・nosniff 15・クリックジャッキング対策 15・Referrer-Policy 15・Permissions-Policy 10、バージョン露出は−5）。ヘッダーはサーバー全体ではなく、このページの応答で判定しています。</div>');
+  });
+}
+
+/* ════ ポート開放確認（自分の回線だけ） ════ */
+async function ntPortCheck() {
+  var out = ntEl('pkOut'), btn = ntEl('pkBtn');
+  var port = parseInt(ntVal('pkPort'), 10);
+  if (!(port >= 1 && port <= 65535)) { out.innerHTML = ntErr('ポート番号は1〜65535の数字で入力してください。'); return; }
+  btn.disabled = true;
+  out.innerHTML = ntLoading(port + '番ポートを外から確認しています…（最大5秒）');
+  try {
+    var j = await ntApi('/v1/port?port=' + port);
+    if (j.error) { out.innerHTML = ntErr(ntEsc(j.error)); return; }
+    var v6 = j.ip.indexOf(':') >= 0;
+    var st = { open: ['ok', '開いています', '外部から ' + j.ip + ' の' + port + '番ポートに接続できました。ポート開放（ポートフォワーディング）は機能しています。'],
+      closed: ['warn', '閉じています（接続拒否）', 'ルーターまたはパソコンまで届きましたが、そのポートで待ち受けているソフトがありません。ソフト（ゲーム・サーバー）を起動した状態で再確認してください。'],
+      filtered: ['ng', '応答がありません', '5秒以内に応答がありませんでした。ルーターでポートが開いていない、ファイアウォールで遮断されている、またはプロバイダ側で届かない（下の注意）可能性があります。'],
+      error: ['ng', '確認できません', '接続を試みましたが、判定できませんでした（' + ntEsc(j.reason || '') + '）。'] }[j.state] || ['ng', '確認できません', ''];
+    out.innerHTML = ntCard(ntEsc(j.ip) + ' : ' + port, ntBadge(st[0], st[1]), '<div>' + st[2] + '</div>' +
+      '<div class="nt-note">確認元: ' + ntEsc(ntColo(j.colo)) + '。調べたのは、このページを開いている回線のIPアドレス（' + (v6 ? 'IPv6' : 'IPv4') + '）だけです。' +
+      (v6 ? 'IPv6で確認しています。ルーターのIPv6ファイアウォール（「IPv6パケットフィルタ」など）で許可が必要な場合があります。' : '') +
+      'v6プラス・IPv6オプション・OCNバーチャルコネクトなどのIPv4 over IPv6接続や、マンションの共有回線・モバイル回線（CGNAT）では、IPv4のポート開放ができない、または使えるポート番号が限られています。</div>');
+  } catch (e) { out.innerHTML = ntErr(e.message); }
+  finally { btn.disabled = false; }
+}
+
+/* ════ HTTPS疎通確認（PINGではない） ════ */
+async function ntHttpsCheck() {
+  var out = ntEl('hcOut'), btn = ntEl('hcBtn');
+  var raw = ntVal('hcHost').trim();
+  var host = ntDomain(raw) || raw.replace(/^\[|\]$/g, '');
+  if (!host) { out.innerHTML = ntErr('ドメイン名またはIPアドレスを入力してください（例: example.com）。'); return; }
+  host = /[^\x00-\x7f]/.test(host) ? ntToAscii(host) : host.toLowerCase();
+  btn.disabled = true;
+  out.innerHTML = ntLoading(host + ' にHTTPS（443番）で接続しています…');
+  try {
+    var j = await ntApi('/v1/https?n=4&host=' + encodeURIComponent(host));
+    if (j.error) { out.innerHTML = ntErr(ntEsc(j.error)); return; }
+    var ok = j.tries.filter(function (t) { return t.ok; });
+    var ms = ok.map(function (t) { return t.ms; });
+    var min = ms.length ? Math.min.apply(null, ms) : null, avg = ms.length ? Math.round(ms.reduce(function (a, b) { return a + b; }, 0) / ms.length) : null, max = ms.length ? Math.max.apply(null, ms) : null;
+    var why = { timeout: '時間切れ（8秒）', refused: '接続拒否', origin: '配信元サーバーに接続できない（Cloudflareのエラー）', error: '接続失敗' };
+    var rows = j.tries.map(function (t, i) { return '<tr><td>' + (i + 1) + '回目</td><td>' + (t.ok ? ntBadge('ok', '成功') : ntBadge('ng', why[String(t.reason).split(':')[0]] || '失敗')) + '</td><td>' + t.ms + 'ms</td></tr>'; }).join('');
+    var badge = ok.length === j.tries.length ? ntBadge('ok', '接続できます') : ok.length ? ntBadge('warn', j.tries.length + '回中' + ok.length + '回成功') : ntBadge('ng', '接続できません');
+    var how = j.method === 'https-request'
+      ? 'このサイトはCloudflare経由で配信されているため、HTTPSの要求を送って応答ヘッダーが返るまでの時間を測りました（Cloudflareの拠点までの時間で、配信元サーバーまでの時間ではありません）。'
+      : 'TCPで接続し、TLS（HTTPSの暗号化）の確立が終わるまでの時間を測りました。';
+    out.innerHTML = ntCard(ntEsc(host) + '（443番）', badge,
+      (ms.length ? '<div class="result-area visible"><div class="result-grid"><div class="result-item"><div class="result-label">最小</div><div class="result-value">' + min + '<span style="font-size:.7rem">ms</span></div></div><div class="result-item"><div class="result-label">平均</div><div class="result-value">' + avg + '<span style="font-size:.7rem">ms</span></div></div><div class="result-item"><div class="result-label">最大</div><div class="result-value">' + max + '<span style="font-size:.7rem">ms</span></div></div></div></div>' : '') +
+      '<div class="nt-tblwrap"><table class="nt-tbl"><tr><th>試行</th><th>結果</th><th>時間</th></tr>' + rows + '</table></div>' +
+      (j.ips && j.ips.length ? '<div class="nt-note">接続先のIPアドレス: ' + j.ips.map(ntEsc).join('、') + '</div>' : '') +
+      '<div class="nt-note">確認元: ' + ntEsc(ntColo(j.colo)) + '。' + how + 'あなたのパソコンからの時間ではなく、確認用サーバーからの時間です。PING（ICMP）とは仕組みが違い、PINGに応答しない設定のサーバーでも確認できます。</div>');
+  } catch (e) { out.innerHTML = ntErr(e.message); }
+  finally { btn.disabled = false; }
+}
+
+/* ── 第2弾の描画 ── */
+(function () {
+  var urlRow = function (p, label, fn, btnText, extra) {
+    return '<div class="tool-input-row"><label>' + label + '</label><div class="nt-row"><input id="' + p + 'Url" type="text" placeholder="https://example.com" style="font-family:monospace" onkeydown="if(event.key===\'Enter\')' + fn + '()"><button class="nt-btn" id="' + p + 'Btn" onclick="' + fn + '()">' + btnText + '</button></div></div>' + (extra || '') + '<div id="' + p + 'Out" class="nt-out"></div>';
+  };
+  var ports = [[80, 'HTTP（Webサーバー）'], [443, 'HTTPS'], [3389, 'リモートデスクトップ'], [22, 'SSH'], [21, 'FTP'], [8080, 'Web（代替）'], [25565, 'Minecraft Java版'], [19132, 'Minecraft 統合版（UDPのため参考）'], [27015, 'Steam系ゲームサーバー'], [5000, 'Synology NAS（HTTP）'], [5001, 'Synology NAS（HTTPS）'], [32400, 'Plex']];
+  Object.assign(RENDERERS, {
+    'http-header': function () { return urlRow('hh', '調べるURL', 'ntHttpHeader', '取得', '<label style="font-size:.8rem;display:flex;gap:6px;align-items:center;margin-top:-4px"><input type="checkbox" id="hhFollow" checked> リダイレクトをたどって最終的なページのヘッダーを表示</label>'); },
+    'redirect': function () { return urlRow('rd', '調べるURL（http:// から入れるとHTTPSへの転送も確認できます）', 'ntRedirect', '確認'); },
+    'sec-header': function () { return urlRow('sh', '診断するURL', 'ntSecHeader', '診断'); },
+    'port-check': function () {
+      return '<div class="tool-input-row"><label>ポート番号</label><div class="nt-row"><input id="pkPort" type="number" min="1" max="65535" value="80" style="font-family:monospace" onkeydown="if(event.key===\'Enter\')ntPortCheck()"><button class="nt-btn" id="pkBtn" onclick="ntPortCheck()">確認</button></div></div>' +
+        '<div class="tool-input-row"><label>よく使うポート</label><select onchange="if(this.value){ntEl(\'pkPort\').value=this.value}"><option value="">選んで入力</option>' + ports.map(function (p) { return '<option value="' + p[0] + '">' + p[0] + '：' + p[1] + '</option>'; }).join('') + '</select></div>' +
+        '<div class="nt-note" style="margin-top:0">調べられるのは、このページを開いている回線（あなたのIPアドレス）だけです。TCPのポートのみ確認できます（UDPは確認できません）。</div><div id="pkOut" class="nt-out"></div>';
+    },
+    'https-check': function () { return '<div class="tool-input-row"><label>ドメイン名（URLを貼り付けても可）</label><div class="nt-row"><input id="hcHost" type="text" placeholder="example.com" style="font-family:monospace" onkeydown="if(event.key===\'Enter\')ntHttpsCheck()"><button class="nt-btn" id="hcBtn" onclick="ntHttpsCheck()">確認</button></div></div><div class="nt-note" style="margin-top:0">PINGの代わりに、HTTPS（443番）で接続できるかと、その時間を4回測ります。</div><div id="hcOut" class="nt-out"></div>'; }
+  });
+})();
+Object.assign(NT_RUN, { 'http-header': ['hhUrl', ntHttpHeader], 'redirect': ['rdUrl', ntRedirect], 'sec-header': ['shUrl', ntSecHeader], 'https-check': ['hcHost', ntHttpsCheck], 'port-check': ['pkPort', null] });
